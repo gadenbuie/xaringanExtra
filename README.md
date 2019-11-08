@@ -6,6 +6,7 @@
 
 <!-- Links -->
 [xaringan]: https://slides.yihuie.name/xaringan
+[animate.css]: http://daneden.github.io/animate.css
 
 `xaringanExtra` is a playground of enhancements and addins for [xaringan] slides.
 
@@ -65,3 +66,30 @@ by adding the following code chunk to your slides' R Markdown.
 xaringanExtra::use_slide_tone()
 ```
 ````
+
+## &#x1F4FD; Animate.css
+
+#### &#x1F4FA; [Animate.css Demo](https://gadenbuie.github.io/xaringanExtra/animate-css)
+
+[Animate.css] is a popular collection of CSS animations. It contains 
+
+> a bunch of cool, fun, and cross-browser animations for you to use in your
+> projects. Great for emphasis, home pages, sliders, and general
+> just-add-water-awesomeness.
+
+Use `use_animate_css()` to include the animate.css stylesheets in your slides.
+This function automatically modifies the CSS selector that enables the animation
+so that only the slides that are visible are animated.
+This drastically improves performance on large slide decks with many animations.
+
+To use animate.css in your slides, 
+add the following code chunk to your slides' R Markdown.
+
+````markdown
+```{r xaringan-animate-css, echo=FALSE}
+xaringanExtra::use_animate_css()
+```
+````
+
+For use in other HTML documents, 
+set `xaringan = FALSE` to disable the performance tweak mentioned above.
