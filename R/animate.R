@@ -42,7 +42,7 @@ use_animate_css <- function(minified = FALSE, xaringan = TRUE) {
 }
 
 #' @describeIn animate_css Returns an [htmltools::htmlDependency] with the tile
-#'   view dependencies. Most users will want to use `use_tile_view()`.
+#'   view dependencies. Most users will want to use `use_animate_css()`.
 #' @export
 html_dependency_animate_css <- function(minified = FALSE, xaringan = TRUE) {
   if (xaringan) {

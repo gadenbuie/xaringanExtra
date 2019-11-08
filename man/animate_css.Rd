@@ -34,7 +34,7 @@ just-add-water-awesomeness."
 \item \code{use_animate_css}: Use animate.css in your xaringan slides.
 
 \item \code{html_dependency_animate_css}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
-view dependencies. Most users will want to use \code{use_tile_view()}.
+view dependencies. Most users will want to use \code{use_animate_css()}.
 }}
 
 \section{Usage}{
