@@ -20,7 +20,7 @@ set.seed(424242)
 ```
 
 ```{r dep-tile-view, echo=FALSE}
-xaringanExtra::xaringan_tile_view()
+xaringanExtra::use_tile_view()
 ```
 
 ???

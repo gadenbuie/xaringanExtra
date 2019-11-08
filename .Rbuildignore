@@ -1,3 +1,4 @@
 ^xaringanExtra\.Rproj$
 ^\.Rproj\.user$
 ^docs$
+^make\.R$

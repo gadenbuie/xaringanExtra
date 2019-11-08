@@ -2,13 +2,13 @@
 % Please edit documentation in R/slide-tone.R
 \name{slide_tone}
 \alias{slide_tone}
-\alias{xaringan_slide_tone}
-\alias{xaringan_slide_tone_dependency}
+\alias{use_slide_tone}
+\alias{html_dependency_slide_tone}
 \title{Slide Tone}
 \usage{
-xaringan_slide_tone()
+use_slide_tone()
 
-xaringan_slide_tone_dependency()
+html_dependency_slide_tone()
 }
 \value{
 An \link[htmltools:tagList]{htmltools::tagList} with the slide tone dependencies, or an
@@ -21,16 +21,16 @@ same for incremental slides.
 }
 \section{Functions}{
 \itemize{
-\item \code{xaringan_slide_tone}: Adds slide tone to your xaringan slides.
+\item \code{use_slide_tone}: Adds slide tone to your xaringan slides.
 
-\item \code{xaringan_slide_tone_dependency}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
-view dependencies. Most users will want to use \code{xaringan_slide_tone()}.
+\item \code{html_dependency_slide_tone}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
+view dependencies. Most users will want to use \code{use_slide_tone()}.
 }}
 
 \section{Usage}{
  To add slide tone to your xaringan presentation, add the
 following code chunk to your slides' R Markdown file.\preformatted{```{r xaringan-slide-tone, echo=FALSE}
-xaringanExtra::xaringan_slide_tone()
+xaringanExtra::use_slide_tone()
 ```
 }
 }

@@ -2,13 +2,13 @@
 % Please edit documentation in R/tile-view.R
 \name{tile_view}
 \alias{tile_view}
-\alias{xaringan_tile_view}
-\alias{xaringan_tile_view_dependency}
+\alias{use_tile_view}
+\alias{html_dependency_tile_view}
 \title{Tile View}
 \usage{
-xaringan_tile_view()
+use_tile_view()
 
-xaringan_tile_view_dependency()
+html_dependency_tile_view()
 }
 \value{
 An \link[htmltools:tagList]{htmltools::tagList} with the tile view dependencies, or an
@@ -21,16 +21,16 @@ jump to the slide, or press \code{T} to exit tile view.
 }
 \section{Functions}{
 \itemize{
-\item \code{xaringan_tile_view}: Adds tile view to your xaringan slides.
+\item \code{use_tile_view}: Adds tile view to your xaringan slides.
 
-\item \code{xaringan_tile_view_dependency}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
-view dependencies. Most users will want to use \code{xaringan_tile_view()}.
+\item \code{html_dependency_tile_view}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
+view dependencies. Most users will want to use \code{use_tile_view()}.
 }}
 
 \section{Usage}{
  To add tile view to your xaringan presentation, add the
 following code chunk to your slides' R Markdown file.\preformatted{```{r xaringan-tile-view, echo=FALSE}
-xaringanExtra::xaringan_tile_view()
+xaringanExtra::use_tile_view()
 ```
 }
 }

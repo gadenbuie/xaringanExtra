@@ -11,7 +11,7 @@ output:
 
 ```{r slide-tone, echo=FALSE}
 options(htmltools.dir.version = FALSE)
-xaringanExtra::xaringan_slide_tone()
+xaringanExtra::use_slide_tone()
 ```
 
 ## tone.js demo

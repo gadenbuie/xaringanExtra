@@ -33,7 +33,7 @@ add the following code chunk to your slides' R Markdown file.
 
 ````markdown
 ```{r xaringan-tile-view, echo=FALSE}
-xaringanExtra::xaringan_tile_view()
+xaringanExtra::use_tile_view()
 ```
 ````
 
@@ -62,6 +62,6 @@ by adding the following code chunk to your slides' R Markdown.
 
 ````markdown
 ```{r xaringan-slide-tone, echo=FALSE}
-xaringanExtra::xaringan_slide_tone()
+xaringanExtra::use_slide_tone()
 ```
 ````

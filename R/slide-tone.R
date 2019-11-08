@@ -11,7 +11,7 @@
 #'
 #'   ````markdown
 #'   ```{r xaringan-slide-tone, echo=FALSE}
-#'   xaringanExtra::xaringan_slide_tone()
+#'   xaringanExtra::use_slide_tone()
 #'   ```
 #'   ````
 #'
@@ -21,16 +21,16 @@ NULL
 
 #' @describeIn slide_tone Adds slide tone to your xaringan slides.
 #' @export
-xaringan_slide_tone <- function() {
+use_slide_tone <- function() {
 	htmltools::tagList(
-		xaringan_slide_tone_dependency()
+		html_dependency_slide_tone()
 	)
 }
 
 #' @describeIn slide_tone Returns an [htmltools::htmlDependency] with the tile
-#'   view dependencies. Most users will want to use `xaringan_slide_tone()`.
+#'   view dependencies. Most users will want to use `use_slide_tone()`.
 #' @export
-xaringan_slide_tone_dependency <- function() {
+html_dependency_slide_tone <- function() {
 	htmltools::htmlDependency(
 		name = "slide-tone",
 		version = utils::packageVersion("xaringanExtra"),
