@@ -19,6 +19,8 @@ Authors@R:
              role = "ctb"))
 Description: Extra addons for xaringan slides.
 License: MIT + file LICENSE
+URL: https://github.com/gadenbuie/xaringanExtra
+BugReports: https://github.com/gadenbuie/xaringanExtra/issues
 Imports: 
     htmltools,
     utils
