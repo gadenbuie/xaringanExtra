@@ -138,8 +138,8 @@ In the
 you can compose classes by chaining them together.
 For example, 
 the following markdown produces a box with a 
-washed green background (`.bg-washed-green`),
-a dark green border (`.b--dark-green`)
+washed green background (`.bg-washed-green`)
+and a dark green border (`.b--dark-green`)
 on all sides (`.ba`)
 with line width 2 (`.bw2`)
 and border radius (`.br3`).
