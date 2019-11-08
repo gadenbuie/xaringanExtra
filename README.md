@@ -91,5 +91,21 @@ xaringanExtra::use_animate_css()
 ```
 ````
 
+Then add the `animated` class and the [desired animation class][animate.css] to the slides you want to animate.
+
+```markdown
+---
+class: animated slideInRight
+
+This slide slides in from the right
+
+---
+class: animated fadeIn
+layout: true
+---
+
+This and all slides until next `layout: false` all fade in
+```
+
 For use in other HTML documents, 
 set `xaringan = FALSE` to disable the performance tweak mentioned above.
