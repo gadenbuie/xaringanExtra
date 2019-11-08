@@ -21,22 +21,21 @@ NULL
 #' @describeIn tile_view Adds tile view to your xaringan slides.
 #' @export
 use_tile_view <- function() {
-	htmltools::tagList(
-		html_dependency_tile_view()
-	)
+  htmltools::tagList(
+    html_dependency_tile_view()
+  )
 }
 
 #' @describeIn tile_view Returns an [htmltools::htmlDependency] with the tile
 #'   view dependencies. Most users will want to use `use_tile_view()`.
 #' @export
 html_dependency_tile_view <- function() {
-	htmltools::htmlDependency(
-		name = "tile-view",
-		version = utils::packageVersion("xaringanExtra"),
-		package = "xaringanExtra",
-		src = "tile-view",
-		script = "tile-view.js",
-		stylesheet = "tile-view.css"
-	)
+  htmltools::htmlDependency(
+    name = "tile-view",
+    version = utils::packageVersion("xaringanExtra"),
+    package = "xaringanExtra",
+    src = "tile-view",
+    script = "tile-view.js",
+    stylesheet = "tile-view.css"
+  )
 }
-

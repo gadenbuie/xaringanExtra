@@ -22,20 +22,20 @@ NULL
 #' @describeIn slide_tone Adds slide tone to your xaringan slides.
 #' @export
 use_slide_tone <- function() {
-	htmltools::tagList(
-		html_dependency_slide_tone()
-	)
+  htmltools::tagList(
+    html_dependency_slide_tone()
+  )
 }
 
 #' @describeIn slide_tone Returns an [htmltools::htmlDependency] with the tile
 #'   view dependencies. Most users will want to use `use_slide_tone()`.
 #' @export
 html_dependency_slide_tone <- function() {
-	htmltools::htmlDependency(
-		name = "slide-tone",
-		version = utils::packageVersion("xaringanExtra"),
-		package = "xaringanExtra",
-		src = "slide-tone",
-		script = c("tone.js", "slide-tone.js")
-	)
+  htmltools::htmlDependency(
+    name = "slide-tone",
+    version = utils::packageVersion("xaringanExtra"),
+    package = "xaringanExtra",
+    src = "slide-tone",
+    script = c("tone.js", "slide-tone.js")
+  )
 }
