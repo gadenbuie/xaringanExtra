@@ -1,0 +1,89 @@
+---
+title: "xaringan<br/>slide-change sounds<br/>using tone.js"
+subtitle: "&#x1F50A;"
+author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
+date: 'xaringanExtra'
+output:
+  xaringan::moon_reader:
+    css: [robot-fonts, robot]
+    lib_dir: libs
+---
+
+```{r slide-tone, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+xaringanExtra::xaringan_slide_tone()
+```
+
+## tone.js demo
+
+<iframe height="450" style="width: 100%;" scrolling="no" title="tone-js-single-note-demo" src="https://codepen.io/grrrck/embed/abogWXm?height=265&theme-id=light&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/grrrck/pen/abogWXm'>tone-js-single-note-demo</a> by garrick
+  (<a href='https://codepen.io/grrrck'>@grrrck</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+---
+
+class: center middle
+
+## But wait...
+
+--
+
+This 
+--
+slide 
+--
+builds 
+--
+suspense...
+
+---
+
+class: center middle
+layout: true
+
+```{r results='asis', echo = FALSE}
+# Create 26 place-holder slides with giant letters
+
+glue::glue("
+
+---
+
+# {LETTERS}
+
+"
+)
+```
+
+---
+layout: false
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
+
+
+```{css echo=FALSE}
+/* Fancy Giant Letters */
+.remark-slide-content h1 {
+  margin: 0;
+  background: -webkit-linear-gradient(#0cbaba, #01baef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 30em;
+  line-height: 1;
+  text-shadow: 1px 4px 6px rgba(255,255,255,0.3);
+}
+a {
+  color: #01baef;
+}
+a:hover {
+  color: #0cbaba;
+}
+.remark-slide .title-slide h3 {
+  color: #8d9597;
+}
+```

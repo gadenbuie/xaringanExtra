@@ -1,0 +1,24 @@
+Package: xaringanExtra
+Title: Extras And Addons for Xaringan Slides
+Version: 0.0.1
+Authors@R: 
+    c(person(given = "Garrick",
+             family = "Aden-Buie",
+             role = c("aut", "cre"),
+             email = "garrick@aden-buie.com",
+             comment = c(ORCID = "0000-0002-7111-0077")),
+      person(given = "Yotam",
+             family = "Mann",
+             role = "ctb",
+             comment = "tone.js"))
+Description: Extra addons for xaringan slides.
+License: MIT + file LICENSE
+Imports: 
+    htmltools,
+    utils
+Suggests: 
+    xaringan
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
