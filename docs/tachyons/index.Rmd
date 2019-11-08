@@ -1,0 +1,92 @@
+---
+title: "tachyons"
+subtitle: "&#x1F3D7;"
+author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
+date: 'xaringanExtra<br>`use_tachyons()`'
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [robot-fonts, robot]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+class: center middle
+
+```{r xaringan-tachyons, echo=FALSE}
+xaringanExtra::use_tachyons()
+```
+# .huge-not-tachyons[Tachyons is a utility css toolkit]
+
+---
+
+## Chain small utility classes together
+
+```markdown
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
+The only way to write good code is to write tons of bad code first. 
+Feeling shame about bad code stops you from getting to good code
+
+.tr[
+— Hadley Wickham
+]]
+```
+
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
+The only way to write good code is to write tons of bad code first. 
+Feeling shame about bad code stops you from getting to good code
+
+.tr[
+— Hadley Wickham
+]]
+
+.footnote[[&commat;hadleywickham April 17, 2015](https://twitter.com/hadleywickham/status/589068687669243905?s=20)]
+
+---
+
+class: huge-not-tachyons middle
+
+# Learn more
+
+[tachyons]: http://tachyons.io/
+[tachyons-docs]: http://tachyons.io/docs/
+[tachyons-cheatsheet]: https://roperzh.github.io/tachyons-cheatsheet/
+
+- [Tachyons]
+
+- [Tachyons Documentation][tachyons-docs]
+
+- [Tachyons Cheat Sheet][tachyons-cheatsheet]
+
+---
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
+
+
+
+```{css echo=FALSE}
+/* Fancy Giant Letters */
+.remark-slide-content h1 {
+  margin: 0;
+  background: -webkit-linear-gradient(#0cbaba, #01baef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+a {
+  color: #01baef;
+}
+a:hover {
+  color: #0cbaba;
+}
+.remark-slide .title-slide h3 {
+  color: #8d9597;
+}
+.huge-not-tachyons {
+  font-size: 200%;
+}
+```

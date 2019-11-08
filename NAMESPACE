@@ -2,7 +2,9 @@
 
 export(html_dependency_animate_css)
 export(html_dependency_slide_tone)
+export(html_dependency_tachyons)
 export(html_dependency_tile_view)
 export(use_animate_css)
 export(use_slide_tone)
+export(use_tachyons)
 export(use_tile_view)

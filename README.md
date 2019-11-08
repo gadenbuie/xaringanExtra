@@ -6,6 +6,7 @@
 
 <!-- Links -->
 [xaringan]: https://slides.yihuie.name/xaringan
+[remarkjs]: http://remarkjs.com/
 [animate.css]: http://daneden.github.io/animate.css
 
 `xaringanExtra` is a playground of enhancements and addins for [xaringan] slides.
@@ -109,3 +110,56 @@ This and all slides until next `layout: false` all fade in
 
 For use in other HTML documents, 
 set `xaringan = FALSE` to disable the performance tweak mentioned above.
+
+## &#x1F3D7; Tachyons
+
+#### &#x1F4FA; [Tachyons Demo](https://gadenbuie.github.io/xaringanExtra/tachyons)
+
+[tachyons]: http://tachyons.io/
+[tachyons-docs]: http://tachyons.io/docs/
+[tachyons-cheatsheet]: https://roperzh.github.io/tachyons-cheatsheet/
+
+[Tachyons] is a collection of CSS utility classes
+that works beautifully with [xaringan] presentations
+and the [remarkjs] class syntax.
+
+To use tachyons in your slides,
+add the following code chunk to your slides' R Markdown.
+
+````markdown
+```{r xaringan-tachyons, echo=FALSE}
+xaringanExtra::use_tachyons()
+```
+````
+
+Tachyons provides small, single-purpose CSS classes that are easily composed to achieve larger functionality and styles.
+In the 
+[remarkjs content classes syntax](https://github.com/gnab/remark/wiki/Markdown#content-classes),
+you can compose classes by chaining them together.
+For example, 
+the following markdown produces a box with a 
+washed green background (`.bg-washed-green`),
+a dark green border (`.b--dark-green`)
+on all sides (`.ba`)
+with line width 2 (`.bw2`)
+and border radius (`.br3`).
+The box has a shadow (`.shadow-5`)
+and medium-large horizontal padding (`.ph4`)
+with a large top margin (`.mt5`).
+
+```markdown
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
+The only way to write good code is to write tons of bad code first. 
+Feeling shame about bad code stops you from getting to good code
+
+.tr[
+— Hadley Wickham
+]]
+```
+
+![](man/figures/tachyons.png)
+
+Tachyons provides hundreds of CSS classes that are abbreviated and terse,
+so it takes some time to learn.
+In addition to the [tachyons documentation][tachyons-docs],
+the [Tachyons Cheatsheet][tachyons-cheatsheet] is an excellent and easy to use reference.

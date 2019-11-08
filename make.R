@@ -1,7 +1,10 @@
 devtools::document()
 devtools::install()
 
-docs <- c("docs/slide-tone", "docs/tile-view", "docs/animate-css")
+docs <- file.path(
+	"docs",
+	c("slide-tone", "tile-view", "animate-css", "tachyons")
+)
 
 for (doc in docs) {
 	if (dir.exists(file.path(doc, "libs"))) {

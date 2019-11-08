@@ -1,6 +1,6 @@
 Package: xaringanExtra
 Title: Extras And Addons for Xaringan Slides
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: 
     c(person(given = "Garrick",
              family = "Aden-Buie",
@@ -14,7 +14,9 @@ Authors@R:
       person(given = "Daniel",
              family = "Eden",
              role = "ctb",
-             comment = "animate.css"))
+             comment = "animate.css"),
+      person(family = "Tachyons authors",
+             role = "ctb"))
 Description: Extra addons for xaringan slides.
 License: MIT + file LICENSE
 Imports: 
