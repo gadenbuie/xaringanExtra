@@ -3,7 +3,7 @@ devtools::install()
 
 docs <- file.path(
 	"docs",
-	c("slide-tone", "tile-view", "animate-css", "tachyons")
+	c("slide-tone", "tile-view", "animate-css", "tachyons", "text-poster")
 )
 
 for (doc in docs) {

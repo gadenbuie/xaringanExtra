@@ -16,7 +16,11 @@ Authors@R:
              role = "ctb",
              comment = "animate.css"),
       person(family = "Tachyons authors",
-             role = "ctb"))
+             role = "ctb"),
+      person(given = "Eric",
+             family = "Londaits",
+             role = "ctb",
+             comment = "text-poster.js"))
 Description: Extra addons for xaringan slides.
 License: MIT + file LICENSE
 URL: https://github.com/gadenbuie/xaringanExtra

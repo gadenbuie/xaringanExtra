@@ -8,6 +8,7 @@
 [xaringan]: https://slides.yihuie.name/xaringan
 [remarkjs]: http://remarkjs.com/
 [animate.css]: http://daneden.github.io/animate.css
+[text-poster]: https://github.com/IMAGINARY/text-poster#readme
 
 `xaringanExtra` is a playground of enhancements and addins for [xaringan] slides.
 
@@ -163,3 +164,35 @@ Tachyons provides hundreds of CSS classes that are abbreviated and terse,
 so it takes some time to learn.
 In addition to the [tachyons documentation][tachyons-docs],
 the [Tachyons Cheatsheet][tachyons-cheatsheet] is an excellent and easy to use reference.
+
+## &#x1F520; Text Poster
+
+#### &#x1F4FA; [Text Poster Demo](https://gadenbuie.github.io/xaringanExtra/text-poster)
+
+_Text poster_ typesets text to fit within a rectangular bounding box, 
+with the text on each line scaled to fit the horizontal space.
+Built using [text-poster.js][text-poster].
+
+![](man/figures/text-poster.png)
+
+````markdown
+---
+class: center middle
+
+`r xaringanExtra::text_poster(
+  "There are no 
+  routine statistical
+  questions, only questionable 
+  statistical routines."
+)`
+
+.footnote.pull-right[— Sir David Cox]
+
+```{css echo=FALSE}
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300');
+
+.text-poster {
+	font-family: 'Merriweather', serif;
+}
+```
+````
