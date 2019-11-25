@@ -12,6 +12,12 @@
 
 `xaringanExtra` is a playground of enhancements and addins for [xaringan] slides.
 
+- Add an overview of your presentation with [tile view](#-tile-view)
+- Announce slide changes with a [subtle tone](#-slide-tone)
+- Animate slide transitions with [animate.css](#-animatecss)
+- Use the [Tachyons CSS utility toolkit](#-tachyons)
+- Create fancy [poster-style text blocks](#-text-poster)
+
 ## Installation
 
 You can install the current version of xaringanExtra from GitHub.
