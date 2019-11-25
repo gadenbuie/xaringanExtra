@@ -1,0 +1,56 @@
+---
+title: "xaringan<br/>fit slides to screen"
+subtitle: "&#x1F4D0;"
+author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
+date: 'xaringanExtra'
+output:
+  xaringan::moon_reader:
+    css: [default, rladies-fonts, rladies]
+    nature:
+      ratio: 4:3
+---
+
+class: center middle
+
+```{r echo=FALSE}
+xaringanExtra::use_fit_screen()
+```
+
+# Press <u>Alt/Option + F</u>
+
+---
+
+```{r eval=FALSE}
+emperors %>%
+  count(cause) %>%
+  arrange(n) %>%
+  mutate(cause = fct_inorder(cause)) %>%
+  ggplot(aes(x = n, y = cause)) +
+  geom_col() +
+  geom_text(
+    aes(label = n, x = n - .25),
+    color = "white",
+    size = 5,
+    hjust = 1
+  ) +
+  cowplot::theme_minimal_vgrid(16) +
+  theme(
+    axis.title.y = element_blank(),
+    legend.position = "none"
+  ) +
+  xlab("number of emperors")
+```
+
+---
+class: center middle
+
+# Reload the slides to undo...
+
+.footnote[Sorry, it's the easiest way to reset everything]
+
+---
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
