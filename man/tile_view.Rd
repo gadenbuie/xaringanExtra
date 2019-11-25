@@ -15,9 +15,9 @@ An \link[htmltools:tagList]{htmltools::tagList} with the tile view dependencies,
 \link[htmltools:htmlDependency]{htmltools::htmlDependency}.
 }
 \description{
-Tile view gives you a way to quickly jump between slides. Just press \code{T} at
+Tile view gives you a way to quickly jump between slides. Just press \strong{O} at
 any point in your slideshow and the tile view appears. Click on a slide to
-jump to the slide, or press \code{T} to exit tile view.
+jump to the slide, or press \strong{O} to exit tile view.
 }
 \section{Functions}{
 \itemize{

@@ -41,7 +41,7 @@ class: inverse, center, middle
 
 --
 
-## Hint: Press `T`!
+## Hint: Press `O`!
 
 ---
 

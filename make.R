@@ -1,5 +1,5 @@
 devtools::document()
-devtools::install()
+devtools::install(dependencies = FALSE)
 
 docs <- file.path(
 	"docs",

@@ -1,8 +1,8 @@
 #' Tile View
 #'
-#' Tile view gives you a way to quickly jump between slides. Just press `T` at
+#' Tile view gives you a way to quickly jump between slides. Just press **O** at
 #' any point in your slideshow and the tile view appears. Click on a slide to
-#' jump to the slide, or press `T` to exit tile view.
+#' jump to the slide, or press **O** to exit tile view.
 #'
 #' @return An [htmltools::tagList] with the tile view dependencies, or an
 #'   [htmltools::htmlDependency].

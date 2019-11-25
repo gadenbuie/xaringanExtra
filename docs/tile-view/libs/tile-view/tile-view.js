@@ -29,7 +29,7 @@
   };
 
   ready(function() {
-    const T = 84; // keycode for T, used to enable tile view
+    const launchKey = 79; // keycode for O, used to enable tile view
 
     // Slides container
     const remarkSlideShow = document.querySelector('div.remark-slides-area');
@@ -109,7 +109,7 @@
     const blockEvent = ev => ev.stopPropagation();
 
     document.addEventListener('keyup', ev => {
-      if (ev.keyCode !== T) {
+      if (ev.keyCode !== launchKey) {
         return;
       }
 
@@ -161,7 +161,7 @@
         return;
       }
       const newRow = document.createElement('tr');
-      newRow.innerHTML += `<td><span class="key">t</span></td>`;
+      newRow.innerHTML += `<td><span class="key">o</span></td>`;
       newRow.innerHTML += `<td>Tile View: Overview of Slides</td>`;
       helpTable.append(newRow);
     };
