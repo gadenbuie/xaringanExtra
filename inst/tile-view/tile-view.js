@@ -150,7 +150,24 @@
       }
     });
 
+    const addTileViewHelpText = () => {
+      const helpTable = document.querySelector(
+        '.remark-help-content table.light-keys'
+      );
+      if (!helpTable) {
+        console.error(
+          'Could not find remark help table, has remark been initialized?'
+        );
+        return;
+      }
+      const newRow = document.createElement('tr');
+      newRow.innerHTML += `<td><span class="key">t</span></td>`;
+      newRow.innerHTML += `<td>Tile View: Overview of Slides</td>`;
+      helpTable.append(newRow);
+    };
+
     createTileView({ minSize: 200 });
     toggleElement(tileView);
+    addTileViewHelpText();
   });
 })();
