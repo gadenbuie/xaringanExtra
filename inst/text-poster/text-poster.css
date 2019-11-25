@@ -1,0 +1,29 @@
+.text-poster {
+  box-sizing: border-box;
+}
+
+.text-poster__text {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.text-poster__text .line-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.text-poster__text .line {
+  display: inline-block;
+  white-space: nowrap;
+  position: absolute;
+  transform-origin: top left;
+  text-align: justify;
+	text-justify: inter-word;
+}
+
+.remark-slide-content {
+  height: 100%;
+  width: 100%;
+}

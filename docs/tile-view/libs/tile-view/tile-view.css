@@ -8,6 +8,7 @@
   width: 100%;
   height: 100%;
   padding: 3em;
+  font-size: 18px;
   box-sizing: border-box;
   overflow: scroll;
 }
@@ -27,7 +28,6 @@
   position: relative;
   margin: 0.5em;
   padding: 0.5em;
-  border-radius: 10px;
 }
 
 .remark__tile-view__slide-container {
