@@ -13,6 +13,7 @@ output:
 class: center middle
 
 ```{r echo=FALSE}
+options(htmltools.dir.version = FALSE)
 xaringanExtra::use_fit_screen()
 ```
 
