@@ -16,9 +16,23 @@
 #'   ```
 #'
 #'   ---
-#'   class: animated fadeInLeft
+#'   class: animated fadeInLeft slideOutRight
 #'
-#'   This slide fades in from the left!
+#'   This slide fades in from the left and slides out to the right!
+#'   ````
+#'
+#'   Note that when `xaringan = TRUE`, as is the default, out animations are
+#'   only applied to slides that are exiting so that you can specify both in
+#'   and out behavior of each slide.
+#'
+#'   Or use `use_animate_all()` to set default in and out animations for all
+#'   slides. Animations can be disabled for individual slides by adding the
+#'   class `.no-animation` to the slide.
+#'
+#'   ````markdown
+#'   ```{r xaringan-animate, echo=FALSE}
+#'   xaringanExtra::use_animate_all("slide_left")
+#'   ```
 #'   ````
 #'
 #' @references See [animate.css](http://daneden.github.io/animate.css) for a
@@ -45,29 +59,42 @@ use_animate_css <- function(minified = FALSE, xaringan = TRUE) {
 #'   view dependencies. Most users will want to use `use_animate_css()`.
 #' @export
 html_dependency_animate_css <- function(minified = FALSE, xaringan = TRUE) {
-  if (xaringan) {
-    css_file <- add_remark_visible_class(minified)
-  }
+  css_file <- "animate"
+  if (xaringan) css_file <- paste0(css_file, ".xaringan")
+  if (minified) css_file <- paste0(css_file, ".min")
+  css_file <- paste0(css_file, ".css")
+
   htmltools::htmlDependency(
     name = "animate.css",
     version = "3.7.2",
-    src = dirname(css_file),
-    stylesheet = basename(css_file),
+    package = "xaringanExtra",
+    src = "animate-css",
+    stylesheet = css_file,
     all_files = FALSE
   )
 }
 
-add_remark_visible_class <- function(minified) {
-  css_file <- if (minified) "animate.min.css" else "animate.css"
-  css <- readLines(
-    xe_file("animate-css", css_file)
+#' @describeIn animate_css Use a default animation for all slides. Sets coupled
+#'   in an out animations for all slides that can be disabled on individual
+#'   slides by adding the class `.no-animation`.
+use_animate_all <- function(
+  style = c(
+    "slide_left",
+    "slide_right",
+    "slide_up",
+    "slide_down",
+    "roll",
+    "fade"
+  )) {
+  css_file <- paste0("animate.", match.arg(style), ".css")
+  htmltools::tagList(
+    htmltools::htmlDependency(
+      name = "animate.css-xaringan",
+      version = "3.7.2",
+      package = "xaringanExtra",
+      src = "animate-css",
+      stylesheet = css_file,
+      all_files = FALSE
+    )
   )
-  if (!minified) {
-    css <- sub("^([.]animated [{])", ".remark-visible \\1", css)
-  } else {
-    css <- sub("[}][.]animated[{]", "}.remark-visible .animated{", css)
-  }
-  tmp <- file.path(tempdir(), css_file)
-  writeLines(css, tmp)
-  tmp
 }

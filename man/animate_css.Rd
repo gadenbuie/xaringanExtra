@@ -4,11 +4,15 @@
 \alias{animate_css}
 \alias{use_animate_css}
 \alias{html_dependency_animate_css}
+\alias{use_animate_all}
 \title{Animate.css}
 \usage{
 use_animate_css(minified = FALSE, xaringan = TRUE)
 
 html_dependency_animate_css(minified = FALSE, xaringan = TRUE)
+
+use_animate_all(style = c("slide_left", "slide_right", "slide_up",
+  "slide_down", "roll", "fade"))
 }
 \arguments{
 \item{minified}{Should the minified or full CSS source be used?}
@@ -35,6 +39,10 @@ just-add-water-awesomeness."
 
 \item \code{html_dependency_animate_css}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
 view dependencies. Most users will want to use \code{use_animate_css()}.
+
+\item \code{use_animate_all}: Use a default animation for all slides. Sets coupled
+in an out animations for all slides that can be disabled on individual
+slides by adding the class \code{.no-animation}.
 }}
 
 \section{Usage}{
@@ -44,9 +52,20 @@ xaringanExtra::use_animate_css()
 ```
 
 ---
-class: animated fadeInLeft
+class: animated fadeInLeft slideOutRight
 
-This slide fades in from the left!
+This slide fades in from the left and slides out to the right!
+}
+
+Note that when \code{xaringan = TRUE}, as is the default, out animations are
+only applied to slides that are exiting so that you can specify both in
+and out behavior of each slide.
+
+Or use \code{use_animate_all()} to set default in and out animations for all
+slides. Animations can be disabled for individual slides by adding the
+class \code{.no-animation} to the slide.\preformatted{```{r xaringan-animate, echo=FALSE}
+xaringanExtra::use_animate_all("slide_left")
+```
 }
 }
 

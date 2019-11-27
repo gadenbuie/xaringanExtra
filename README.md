@@ -101,20 +101,31 @@ xaringanExtra::use_animate_css()
 ````
 
 Then add the `animated` class and the [desired animation class][animate.css] to the slides you want to animate.
+`Out` animations are only applied to slides on exit.
 
 ```markdown
 ---
-class: animated slideInRight
+class: animated slideInRight fadeOutLeft
 
-This slide slides in from the right
+## This slide...
 
----
-class: animated fadeIn
-layout: true
----
-
-This and all slides until next `layout: false` all fade in
+- slides in from the right 
+- and fades out to the left on exit
 ```
+
+If you want to use the same slide transitions for all slides,
+you can use `use_animate_all()`.
+This function sets a default in and out animation for all slides. 
+Animations can be disabled for individual slides 
+by adding the class `.no-animation` to the slide.
+
+````markdown
+```{r xaringan-animate, echo=FALSE}
+xaringanExtra::use_animate_all("slide_left")
+```
+````
+
+Note: if you want to use other animation from `animate.css` use both `use_animation()` and `use_animation_default()`.
 
 For use in other HTML documents, 
 set `xaringan = FALSE` to disable the performance tweak mentioned above.
