@@ -19,6 +19,15 @@
 - Create fancy [poster-style text blocks](#-text-poster)
 - Fit your slides to [fill the browser window](#-fit-to-screen)
 
+Each item can be enabled separately, 
+or load everything at once with a single call.
+
+````markdown
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons"))
+```
+````
+
 ## Installation
 
 You can install the current version of xaringanExtra from GitHub.
