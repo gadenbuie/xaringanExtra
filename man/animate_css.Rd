@@ -22,6 +22,16 @@ animation is only applied when the slide is visible. Without this,
 presentations with many animated slides may have poor performance,
 especially on page load. Set to \code{FALSE} to use animate.css in other
 HTML-based documents.}
+
+\item{style}{Animation style to be used for all slides.
+\itemize{
+\item \code{slide_left}: Slide in from the right and out to the left
+\item \code{slide_right}: Slide in from the left and out to the right
+\item \code{slide_up}: Slide in from the bottom and out to the top
+\item \code{slide_down}: Slide in from the top and out to the bottom
+\item \code{roll}: Roll in from the left and roll out to the right
+\item \code{fade}: Fade in
+}}
 }
 \value{
 An \link[htmltools:tagList]{htmltools::tagList} with the tile view dependencies, or an

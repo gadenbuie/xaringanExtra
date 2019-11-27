@@ -77,6 +77,15 @@ html_dependency_animate_css <- function(minified = FALSE, xaringan = TRUE) {
 #' @describeIn animate_css Use a default animation for all slides. Sets coupled
 #'   in an out animations for all slides that can be disabled on individual
 #'   slides by adding the class `.no-animation`.
+#' @param style Animation style to be used for all slides.
+#'
+#'   - `slide_left`: Slide in from the right and out to the left
+#'   - `slide_right`: Slide in from the left and out to the right
+#'   - `slide_up`: Slide in from the bottom and out to the top
+#'   - `slide_down`: Slide in from the top and out to the bottom
+#'   - `roll`: Roll in from the left and roll out to the right
+#'   - `fade`: Fade in
+#' @export
 use_animate_all <- function(
   style = c(
     "slide_left",
