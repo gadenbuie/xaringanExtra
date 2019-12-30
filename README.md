@@ -99,6 +99,8 @@ Use `use_animate_css()` to include the animate.css stylesheets in your slides.
 This function automatically modifies the CSS selector that enables the animation
 so that only the slides that are visible are animated.
 This drastically improves performance on large slide decks with many animations.
+For use in other HTML documents, 
+set `xaringan = FALSE` to disable the performance tweak mentioned above.
 
 To use animate.css in your slides, 
 add the following code chunk to your slides' R Markdown.
@@ -126,18 +128,17 @@ If you want to use the same slide transitions for all slides,
 you can use `use_animate_all()`.
 This function sets a default in and out animation for all slides. 
 Animations can be disabled for individual slides 
-by adding the class `.no-animation` to the slide.
+by adding the class `no-animation` to the slide.
 
 ````markdown
-```{r xaringan-animate, echo=FALSE}
+```{r xaringan-animate-all, echo=FALSE}
 xaringanExtra::use_animate_all("slide_left")
 ```
 ````
 
-Note: if you want to use other animation from `animate.css` use both `use_animation()` and `use_animation_default()`.
-
-For use in other HTML documents, 
-set `xaringan = FALSE` to disable the performance tweak mentioned above.
+Note: because `use_animate_all()` only imports the CSS required for the slide in and slide out animations, 
+you need to also include `use_animate_css()` (see above)
+if you want to use other animations from `animate.css` in your slides.
 
 ## &#x1F3D7; Tachyons
 
