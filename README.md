@@ -42,7 +42,9 @@ devtools::install_github("gadenbuie/xaringanExtra")
 #### &#x1F4FA; [Tile View Demo](https://gadenbuie.github.io/xaringanExtra/tile-view)
 
 Tile view gives you a way to quickly jump between slides.
-Just press <kbd>O</kbd> at any point in your slideshow and the tile view appears.
+Just press <kbd>O</kbd> 
+(the letter **O** for **O**verview)
+at any point in your slideshow and the tile view appears.
 Click on a slide to jump to the slide, or press <kbd>O</kbd> to exit tile view.
 
 ![](man/figures/tile-view.png)
