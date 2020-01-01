@@ -29,7 +29,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Garrick Aden-Buie \email{garrick@aden-buie.com} (0000-0002-7111-0077)
+\strong{Maintainer}: Garrick Aden-Buie \email{garrick@aden-buie.com} (\href{https://orcid.org/0000-0002-7111-0077}{ORCID})
 
 Other contributors:
 \itemize{

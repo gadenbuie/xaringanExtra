@@ -4,8 +4,9 @@
 \alias{use_xaringan_extra}
 \title{Use xaringanExtra Extensions}
 \usage{
-use_xaringan_extra(include = c("tile_view", "animate_css", "tachyons",
-  "panelset"))
+use_xaringan_extra(
+  include = c("tile_view", "animate_css", "tachyons", "panelset")
+)
 }
 \arguments{
 \item{include}{Character vector of extensions to include. One or more of

@@ -27,7 +27,7 @@ view dependencies. Most users will want to use \code{use_panelset()}.
 
 \section{Usage}{
  To add panelset to your xaringan presentation, add the
-following code chunk to your slides' R Markdown file.\preformatted{```{r xaringan-panelset, echo=FALSE}
+following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r xaringan-panelset, echo=FALSE\}
 xaringanExtra::use_panelset()
 ```
 
@@ -44,7 +44,7 @@ hist(runif(100))
 Take a look at the R code in that other panel.
 ]
 ]
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Customizing styles}{
@@ -52,15 +52,16 @@ Take a look at the R code in that other panel.
 it easier to change the styles of the panel tabs. The default values are
 shown in the CSS code below. You can copy the whole CSS block to your
 slides and modify the values to customize the style to fit your
-presentation.\preformatted{```{css echo=FALSE}
-.panelset {
+presentation.\if{html}{\out{<div class="markdown">}}\preformatted{```\{css echo=FALSE\}
+.panelset \{
   --panel-tabs-color: currentColor;
   --panel-tabs-color-active: currentColor;
   --panel-tabs-color-hover: currentColor;
   --panel-tabs-border-bottom: #ddd;
+  --panel-tabs-inactive-opacity: 0.5;
   --panel-tabs-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-}
+\}
 ```
-}
+}\if{html}{\out{</div>}}
 }
 

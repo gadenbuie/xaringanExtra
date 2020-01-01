@@ -29,9 +29,9 @@ view dependencies. Most users will want to use \code{use_tile_view()}.
 
 \section{Usage}{
  To add tile view to your xaringan presentation, add the
-following code chunk to your slides' R Markdown file.\preformatted{```{r xaringan-tile-view, echo=FALSE}
+following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r xaringan-tile-view, echo=FALSE\}
 xaringanExtra::use_tile_view()
 ```
-}
+}\if{html}{\out{</div>}}
 }
 

@@ -5,6 +5,7 @@
   --panel-tabs-color: currentColor;
   --panel-tabs-color-active: currentColor;
   --panel-tabs-color-hover: currentColor;
+  --panel-tabs-inactive-opacity: 0.5;
   --panel-tabs-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
@@ -31,7 +32,7 @@
   align-items: center;
   padding: 0.5em 1em;
   font-family: var(--panel-tabs-font-family);
-  opacity: 0.5;
+  opacity: var(--panel-tabs-inactive-opacity);
   border-top: 2px solid transparent;
   color: var(--panel-tabs-color);
 }

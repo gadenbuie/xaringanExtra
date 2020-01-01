@@ -6,8 +6,14 @@
 \alias{html_dependency_text_poster}
 \title{Text Poster}
 \usage{
-text_poster(text, width = "100\%", height = "100\%", padding = "1em",
-  class = NULL, ...)
+text_poster(
+  text,
+  width = "100\%",
+  height = "100\%",
+  padding = "1em",
+  class = NULL,
+  ...
+)
 
 use_text_poster()
 
@@ -18,20 +24,20 @@ html_dependency_text_poster()
 to force new lines in the block.}
 
 \item{width, height, padding}{The width, height, and padding of the poster text
-container \code{<div>}. Set to \code{NULL} to leave unset, but be sure to use global
+container \verb{<div>}. Set to \code{NULL} to leave unset, but be sure to use global
 CSS rules to set the width and height of the \code{.text-poster} container.}
 
-\item{class}{Additional classes added to the poster text container \code{<div>}.}
+\item{class}{Additional classes added to the poster text container \verb{<div>}.}
 
 \item{...}{Additional named arguments added to the poster text container
-\code{<div>} as inline styles, e.g. \code{margin = "0 auto"}.}
+\verb{<div>} as inline styles, e.g. \code{margin = "0 auto"}.}
 }
 \value{
 The \code{text_poster()} function returns HTML with the following
-structure:\preformatted{<div class="text-poster" style="width:100\%;height:100\%;padding:1em;">
-  <div class="text-poster__text" data-text="first line\\nsecond line"></div>
+structure:\if{html}{\out{<div class="html">}}\preformatted{<div class="text-poster" style="width:100\%;height:100\%;padding:1em;">
+  <div class="text-poster__text" data-text="first line\\\\nsecond line"></div>
 </div>
-}
+}\if{html}{\out{</div>}}
 
 If specified, additional classes are added to the \code{.text-poster} \code{div}.
 Additional inline styles can be applied using named arguments to
@@ -39,15 +45,15 @@ Additional inline styles can be applied using named arguments to
 equal to \code{NULL}. Note that the \code{div.text-poster} must have a width and
 height.
 
-Once rendered, the final output will have the following structure:\preformatted{<div class="text-poster" style="width:100\%;height:100\%;padding:1em;">
-  <div class="text-poster__text" data-text="first line\\nsecond line">
+Once rendered, the final output will have the following structure:\if{html}{\out{<div class="html">}}\preformatted{<div class="text-poster" style="width:100\%;height:100\%;padding:1em;">
+  <div class="text-poster__text" data-text="first line\\\\nsecond line">
     <div class="line-container">
       <div class="line">first line</div>
       <div class="line">second line</div>
     </div>
   </div>
 </div>
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Text poster typesets text to fit within a rectangular bounding box, with the
@@ -68,13 +74,13 @@ need to call this function.
 \section{Usage}{
  To add text-poster to your xaringan presentation, use
 \code{text_poster()} to create a block of poster text. Include line breaks in
-the text string to split the text block.\preformatted{xaringanExtra::text_poster(
+the text string to split the text block.\if{html}{\out{<div class="{r poster-text, echo=FALSE}">}}\preformatted{xaringanExtra::text_poster(
   "There are no
   routine statistical
   questions, only questionable
   statistical routines."
 )
-}\preformatted{}
+}\if{html}{\out{</div>}}\preformatted{}
 }
 
 \references{

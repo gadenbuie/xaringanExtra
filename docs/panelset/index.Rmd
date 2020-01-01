@@ -89,6 +89,7 @@ Just drop this code chunk in your slides and edit.
   --panel-tabs-color-active: #0051BA;
   --panel-tabs-color-hover: #d22;
   --panel-tabs-border-bottom: #ddd;
+  --panel-tabs-inactive-opacity: 0.5;
   --panel-tabs-font-family: Roboto, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;\
 }
 ```

@@ -28,10 +28,10 @@ view dependencies. Most users will want to use \code{use_tachyons()}.
 
 \section{Usage}{
  To add tachyons to your xaringan presentation, add the
-following code chunk to your slides' R Markdown file.\preformatted{```{r xaringan-tachyons, echo=FALSE}
+following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r xaringan-tachyons, echo=FALSE\}
 xaringanExtra::use_tachyons()
 ```
-}
+}\if{html}{\out{</div>}}
 
 Tachyons provides small, single-purpose CSS classes that are easily composed
 to achieve larger functionality and styles. In the \href{https://github.com/gnab/remark/wiki/Markdown#content-classes}{remarkjs content classes syntax}, you
@@ -40,14 +40,14 @@ markdown produces a box with a washed green background (\code{.bg-washed-green})
 a dark green border (\code{.b--dark-green}) on all sides (\code{.ba}) with line width
 2 (\code{.bw2}) and border radius (\code{.br3}). The box has a shadow (\code{.shadow-5})
 and medium-large horizontal padding (\code{.ph4}) with a large top margin
-(\code{.mt5}).\preformatted{.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
+(\code{.mt5}).\if{html}{\out{<div class="markdown">}}\preformatted{.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
 The only way to write good code is to write tons of bad code first.
 Feeling shame about bad code stops you from getting to good code
 
 .tr[
 — Hadley Wickham
 ]]
-}
+}\if{html}{\out{</div>}}
 }
 
 \references{

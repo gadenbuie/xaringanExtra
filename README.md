@@ -207,6 +207,7 @@ modify the values to customize the style to fit your presentation.
   --panel-tabs-color-active: currentColor;
   --panel-tabs-color-hover: currentColor;
   --panel-tabs-border-bottom: #ddd;
+  --panel-tabs-inactive-opacity: 0.5;
   --panel-tabs-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 ```
