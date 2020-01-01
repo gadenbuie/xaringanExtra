@@ -15,6 +15,7 @@
 - Add an overview of your presentation with [tile view](#-tile-view)
 - Announce slide changes with a [subtle tone](#-slide-tone)
 - Animate slide transitions with [animate.css](#-animatecss)
+- Add tabbed panels to slides with [panelset](#-panelset)
 - Use the [Tachyons CSS utility toolkit](#-tachyons)
 - Create fancy [poster-style text blocks](#-text-poster)
 - Fit your slides to [fill the browser window](#-fit-to-screen)
@@ -142,6 +143,69 @@ xaringanExtra::use_animate_all("slide_left")
 Note: because `use_animate_all()` only imports the CSS required for the slide in and slide out animations, 
 you need to also include `use_animate_css()` (see above)
 if you want to use other animations from `animate.css` in your slides.
+
+## &#x1F5C2; Panelset
+
+#### &#x1F4FA; [Panelset Demo](https://gadenbuie.github.io/xaringanExtra/panelset)
+
+Panelset adds accessible tabbed panels — 
+just like R Markdown's `.tabset` panels —
+to your xaringan slides.
+To use panel set, add the following chunk to your slides.
+
+````markdown
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+````
+
+![](man/figures/panelset.gif)
+
+Then, create a `.panelset[...]` that contains `.panels[]`.
+Each `.panel[]` should have a `.panel-name[]` and content 
+(everything that isn't the panel's name).
+
+```markdown
+.panel[.panel-name[NAME]
+...content...
+]
+```
+
+Here's the example used in the demo slides.
+
+````markdown
+.panelset[
+.panel[.panel-name[R Code]
+
+```{r panel-chunk, fig.show='hide'}`r ''`
+# ... r code ...
+```
+]
+
+.panel[.panel-name[Plot]
+
+![](`r knitr::fig_chunk("panel-chunk", ".png")`)
+]
+]
+````
+
+The panelset uses custom CSS properties to make
+it easier to change the styles of the panel tabs.
+The default values are shown in the CSS code below. 
+You can copy the whole CSS block to your slides and 
+modify the values to customize the style to fit your presentation.
+
+````markdown
+```{css echo=FALSE}
+.panelset {
+  --panel-tabs-color: currentColor;
+  --panel-tabs-color-active: currentColor;
+  --panel-tabs-color-hover: currentColor;
+  --panel-tabs-border-bottom: #ddd;
+  --panel-tabs-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+}
+```
+````
 
 ## &#x1F3D7; Tachyons
 
