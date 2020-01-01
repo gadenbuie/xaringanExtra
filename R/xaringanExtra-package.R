@@ -29,7 +29,8 @@
 use_xaringan_extra <- function(
   include = c("tile_view", "animate_css", "tachyons", "panelset")
 ) {
-  opts <- c("tile_view", "animate_css", "tachyons", "slide_tone", "fit_screen")
+  opts <- c("tile_view", "animate_css", "tachyons", "slide_tone", "fit_screen",
+            "panelset")
   include <- match.arg(include, opts, TRUE)
   includes <- function(x) x %in% include
   htmltools::tagList(
