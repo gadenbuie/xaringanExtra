@@ -4,15 +4,16 @@
 \alias{use_xaringan_extra}
 \title{Use xaringanExtra Extensions}
 \usage{
-use_xaringan_extra(include = c("tile_view", "animate_css", "tachyons"))
+use_xaringan_extra(include = c("tile_view", "animate_css", "tachyons",
+  "panelset"))
 }
 \arguments{
 \item{include}{Character vector of extensions to include. One or more of
-\code{"tile_view"}, \code{"animate_css"}, \code{"tachyons"}, \code{"slide_tone"},
+\code{"tile_view"}, \code{"animate_css"}, \code{"panelset"} \code{"tachyons"}, \code{"slide_tone"},
 \code{"fit_screen"}.}
 }
 \value{
-An \code{\link[htmltools:tagList]{htmltools::tagList()}} with the \code{\link[htmltools:html_dependency]{htmltools::html_dependency()}}s
+An \code{\link[htmltools:tagList]{htmltools::tagList()}} with the \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}s
 for the requested extensions.
 }
 \description{
