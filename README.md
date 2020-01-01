@@ -177,7 +177,7 @@ Here's the example used in the demo slides.
 .panelset[
 .panel[.panel-name[R Code]
 
-```{r panel-chunk, fig.show='hide'}`r ''`
+```{r panel-chunk, fig.show='hide'}
 # ... r code ...
 ```
 ]
