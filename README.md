@@ -151,7 +151,12 @@ if you want to use other animations from `animate.css` in your slides.
 Panelset adds accessible tabbed panels — 
 just like R Markdown's `.tabset` panels —
 to your xaringan slides.
-To use panel set, add the following chunk to your slides.
+You can activate a panel by clicking on the tab,
+or you can use the keyboard.
+When you reach a slide with a panelset,
+the left and right arrows will step through the panels.
+
+To use panelset, add the following chunk to your slides.
 
 ````markdown
 ```{r xaringan-panelset, echo=FALSE}
