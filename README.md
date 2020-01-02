@@ -203,12 +203,12 @@ modify the values to customize the style to fit your presentation.
 ````markdown
 ```{css echo=FALSE}
 .panelset {
-  --panel-tabs-color: currentColor;
-  --panel-tabs-color-active: currentColor;
-  --panel-tabs-color-hover: currentColor;
+  --panel-tab-color: currentColor;
+  --panel-tab-color-active: currentColor;
+  --panel-tab-color-hover: currentColor;
   --panel-tabs-border-bottom: #ddd;
-  --panel-tabs-inactive-opacity: 0.5;
-  --panel-tabs-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+  --panel-tab-inactive-opacity: 0.5;
+  --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 ```
 ````

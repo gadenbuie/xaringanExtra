@@ -1,12 +1,14 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.23, autoprefixer: v9.7.3) */
+
 .panelset {
   width: 100%;
   position: relative;
   --panel-tabs-border-bottom: #ddd;
-  --panel-tabs-color: currentColor;
-  --panel-tabs-color-active: currentColor;
-  --panel-tabs-color-hover: currentColor;
-  --panel-tabs-inactive-opacity: 0.5;
-  --panel-tabs-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+  --panel-tab-color: currentColor;
+  --panel-tab-color-active: currentColor;
+  --panel-tab-color-hover: currentColor;
+  --panel-tab-inactive-opacity: 0.5;
+  --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
 .panelset * {
@@ -14,45 +16,55 @@
 }
 
 .panel-tabs {
+  display: -webkit-box;
   display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+          align-items: center;
   border-bottom: 2px solid var(--panel-tabs-border-bottom);
 }
 
 .panel-tabs * {
-  transition: opacity 0.25s linear, color 0.25s linear;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
 .panel-tab {
   min-height: 50px;
+  display: -webkit-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
   padding: 0.5em 1em;
-  font-family: var(--panel-tabs-font-family);
-  opacity: var(--panel-tabs-inactive-opacity);
+  font-family: var(--panel-tab-font-family);
+  opacity: var(--panel-tab-inactive-opacity);
   border-top: 2px solid transparent;
-  color: var(--panel-tabs-color);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  color: var(--panel-tab-color);
 }
 
 .panel-tab:hover {
-  border-top: 2px solid;
-  border-top-color: currentColor;
-  color: var(--panel-tabs-color-hover);
+  border-bottom-color: currentColor;
+  color: var(--panel-tab-color-hover);
   opacity: 1;
   cursor: pointer;
 }
 
 .panel-tab:focus {
-  outline-color: currentColor;
+  outline: none;
+  border-bottom-color: var(--panel-tab-color-active);
 }
 
 .panel-tab.panel-tab-active {
-  border-top: 2px solid;
   border-top-color: currentColor;
-  color: var(--panel-tabs-color-active);
+  color: var(--panel-tab-color-active);
   opacity: 1;
 }
 
