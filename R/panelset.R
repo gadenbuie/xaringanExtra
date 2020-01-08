@@ -45,6 +45,14 @@
 #'   }
 #'   ```
 #'   ````
+#'
+#'   Or use [style_panelset()]:
+#'
+#'   ````markdown
+#'   ```{r echo=FALSE}
+#'   style_panelset(panel_tab_color_active = "red")
+#'   ```
+#'   ````
 #' @name panelset
 NULL
 
@@ -54,6 +62,45 @@ use_panelset <- function() {
   htmltools::tagList(
     html_dependency_panelset()
   )
+}
+
+#' @describeIn panelset Style the panelset. Returns an \pkg{htmltools} `<style>`
+#'   tag.
+#' @param panel_tab_color The text color of a non-active panel tab, default is
+#'   `currentColor`.
+#' @param panel_tab_color_active The text color of an active, as in selected,
+#'   panel tab. Default is `currentColor`
+#' @param panel_tab_color_hover The text color of a hovered panel tab. Default
+#'   is `currentColor`.
+#' @param panel_tabs_border_bottom The border color between the tabs and
+#'   content. Default is `#ddd`.
+#' @param panel_tab_inactive_opacity The opacity of inactive panel tabs,
+#'   default is `0.5`.
+#' @param panel_tab_font_family The font family to be used for the panel tabs
+#'   text. Default is a monospace system font stack.
+#' @export
+style_panelset <- function(
+  panel_tab_color = NULL,
+  panel_tab_color_active = NULL,
+  panel_tab_color_hover = NULL,
+  panel_tabs_border_bottom = NULL,
+  panel_tab_inactive_opacity = NULL,
+  panel_tab_font_family = NULL
+) {
+  args <- lapply(names(formals()), function(x) get(x))
+  names(args) <- names(formals())
+  args <- args[vapply(args, function(x) !is.null(x), TRUE)]
+  if (!length(args)) return(invisible())
+  style <- ""
+  for (arg in names(args)) {
+    style <- paste0(
+      style,
+      if (style != "") "\n",
+      "  --", gsub("_", "-", arg), ": ", args[arg], ";"
+    )
+  }
+  style <- paste(".panelset {", style, "}", sep = "\n")
+  htmltools::tags$style(htmltools::HTML(style))
 }
 
 #' @describeIn panelset Returns an [htmltools::htmlDependency] with the tile

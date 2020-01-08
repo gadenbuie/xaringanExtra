@@ -194,6 +194,16 @@ Here's the example used in the demo slides.
 ]
 ````
 
+To customize the appearnce of your panels,
+you can use `style_panelset()` 
+called directly in an R chunk in your slides.
+
+````markdown
+```{r echo=FALSE}
+style_panelset(panel_tab_color_active = "red")
+```
+````
+
 The panelset uses custom CSS properties to make
 it easier to change the styles of the panel tabs.
 The default values are shown in the CSS code below. 

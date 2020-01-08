@@ -80,7 +80,27 @@ Wrap everything in `.panelset[...]` and create a new panel with
 ## Customize appearance 
 
 ...with custom CSS properties! 
-Just drop this code chunk in your slides and edit.
+You can use `style_panelset()`
+
+````markdown
+```{r echo=FALSE}`r ''`
+xaringanExtra::style_panelset(
+  panel_tab_color_active = "#0051BA",
+  panel_tab_color_hover = "#d22",
+  panel_tabs_font_family = "Roboto"
+)
+```
+````
+
+```{r echo=FALSE}
+xaringanExtra::style_panelset(
+  panel_tab_color_active = "#0051BA",
+  panel_tab_color_hover = "#d22",
+  panel_tab_font_family = "Roboto"
+)
+```
+
+or CSS directly
 
 ````markdown
 ```{css echo=FALSE}`r ''`
@@ -95,15 +115,7 @@ Just drop this code chunk in your slides and edit.
 ```
 ````
 
-```{css echo=FALSE}
-.panelset {
-  --panel-tab-color: currentcolor;
-  --panel-tab-color-active: #0051BA;
-  --panel-tab-color-hover: #d22;
-  --panel-tabs-border-bottom: #ddd;
-  --panel-tab-font-family: Roboto, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-}
-```
+<sup>The CSS above shows all customization options</sup>
 
 ---
 class: center middle

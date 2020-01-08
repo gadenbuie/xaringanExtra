@@ -3,12 +3,41 @@
 \name{panelset}
 \alias{panelset}
 \alias{use_panelset}
+\alias{style_panelset}
 \alias{html_dependency_panelset}
 \title{Panelset}
 \usage{
 use_panelset()
 
+style_panelset(
+  panel_tab_color = NULL,
+  panel_tab_color_active = NULL,
+  panel_tab_color_hover = NULL,
+  panel_tabs_border_bottom = NULL,
+  panel_tab_inactive_opacity = NULL,
+  panel_tab_font_family = NULL
+)
+
 html_dependency_panelset()
+}
+\arguments{
+\item{panel_tab_color}{The text color of a non-active panel tab, default is
+\code{currentColor}.}
+
+\item{panel_tab_color_active}{The text color of an active, as in selected,
+panel tab. Default is \code{currentColor}}
+
+\item{panel_tab_color_hover}{The text color of a hovered panel tab. Default
+is \code{currentColor}.}
+
+\item{panel_tabs_border_bottom}{The border color between the tabs and
+content. Default is \verb{#ddd}.}
+
+\item{panel_tab_inactive_opacity}{The opacity of inactive panel tabs,
+default is \code{0.5}.}
+
+\item{panel_tab_font_family}{The font family to be used for the panel tabs
+text. Default is a monospace system font stack.}
 }
 \value{
 An \link[htmltools:tagList]{htmltools::tagList} with the panelset dependencies, or an
@@ -20,6 +49,9 @@ A panelset designed for showing off code, but useful for anything really.
 \section{Functions}{
 \itemize{
 \item \code{use_panelset}: Adds panelset to your xaringan slides.
+
+\item \code{style_panelset}: Style the panelset. Returns an \pkg{htmltools} \verb{<style>}
+tag.
 
 \item \code{html_dependency_panelset}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
 view dependencies. Most users will want to use \code{use_panelset()}.
@@ -61,6 +93,11 @@ presentation.\if{html}{\out{<div class="markdown">}}\preformatted{```\{css echo=
   --panel-tab-inactive-opacity: 0.5;
   --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 \}
+```
+}\if{html}{\out{</div>}}
+
+Or use \code{\link[=style_panelset]{style_panelset()}}:\if{html}{\out{<div class="markdown">}}\preformatted{```\{r echo=FALSE\}
+style_panelset(panel_tab_color_active = "red")
 ```
 }\if{html}{\out{</div>}}
 }
