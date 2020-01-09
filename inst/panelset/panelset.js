@@ -1,5 +1,4 @@
-var $slide
-
+/* global slideshow */
 (function () {
   const ready = function (fn) {
     /* MIT License Copyright (c) 2016 Nuclei */

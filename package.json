@@ -1,0 +1,30 @@
+{
+  "name": "xaringanExtra",
+  "version": "0.1.0",
+  "description": "Extras And Addons for Xaringan Slides",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard inst/*/*.js",
+    "lint:fix": "standard --fix inst/*/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gadenbuie/xaringanExtra.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gadenbuie/xaringanExtra/issues"
+  },
+  "homepage": "https://github.com/gadenbuie/xaringanExtra#readme",
+  "standard": {
+    "ignore": [
+      "inst/slide-tone/tone.js",
+      "inst/text-poster/text-poster.js"
+    ]
+  },
+  "devDependencies": {
+    "standard": "^14.3.1"
+  }
+}

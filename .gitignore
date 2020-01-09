@@ -3,6 +3,7 @@
 .Rhistory
 .RData
 .DS_Store
+node_modules/
 
 # Directories that start with _
 _*/
