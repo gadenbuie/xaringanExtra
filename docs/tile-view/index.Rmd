@@ -213,7 +213,7 @@ grep('天', dojutsu, value = TRUE)
 
 # R Plots
 
-```{r cars, fig.height=4, dev='svg'}
+```{r cars, fig.height=4}
 par(mar = c(4, 4, 1, .1))
 plot(cars, pch = 19, col = 'darkgray', las = 1)
 abline(fit, lwd = 2)
