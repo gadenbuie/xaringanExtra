@@ -4,6 +4,7 @@
 #' \pkg{xaringan} slides.
 #'
 #' - Add an overview of your presentation with [use_tile_view()]
+#' - Make your slide content editable with [use_editable()]
 #' - Announce slide changes with a subtle tone: [use_slide_tone()]
 #' - Animate slide transitions with [use_animate_css()]
 #' - Add tabbed panels to slides with [use_panelset()]
@@ -23,14 +24,14 @@
 #' @return An [htmltools::tagList()] with the [htmltools::htmlDependency()]s
 #'   for the requested extensions.
 #' @param include Character vector of extensions to include. One or more of
-#'   `"tile_view"`, `"animate_css"`, `"panelset"` `"tachyons"`, `"slide_tone"`,
-#'   `"fit_screen"`.
+#'   `"tile_view"`, `"editable"`, `"slide_tone"`, `"animate_css"`, `"panelset"`
+#'   `"tachyons"`, `"fit_screen"`.
 #' @export
 use_xaringan_extra <- function(
   include = c("tile_view", "animate_css", "tachyons", "panelset")
 ) {
   opts <- c("tile_view", "animate_css", "tachyons", "slide_tone", "fit_screen",
-            "panelset")
+            "panelset", "editable")
   include <- match.arg(include, opts, TRUE)
   includes <- function(x) x %in% include
   htmltools::tagList(
@@ -39,7 +40,8 @@ use_xaringan_extra <- function(
     if (includes("tachyons")) html_dependency_tachyons(),
     if (includes("slide_tone")) html_dependency_slide_tone(),
     if (includes("fit_screen")) html_dependency_fit_screen(),
-    if (includes("panelset")) html_dependency_panelset()
+    if (includes("panelset")) html_dependency_panelset(),
+    if (includes("editable")) html_dependency_editable()
   )
 }
 
