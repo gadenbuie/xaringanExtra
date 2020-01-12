@@ -10,7 +10,7 @@
 [animate.css]: http://daneden.github.io/animate.css
 [text-poster]: https://github.com/IMAGINARY/text-poster#readme
 
-`xaringanExtra` is a playground of enhancements and addins for [xaringan] slides.
+`xaringanExtra` is a playground of enhancements and extensions for [xaringan] slides.
 
 - Add an overview of your presentation with [tile view](#-tile-view)
 - Make your slides [editable](#-editable)
@@ -251,7 +251,7 @@ Here's the example used in the demo slides.
 ]
 ````
 
-To customize the appearnce of your panels,
+To customize the appearance of your panels,
 you can use `style_panelset()` 
 called directly in an R chunk in your slides.
 

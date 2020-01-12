@@ -1,6 +1,6 @@
 #' xaringanExtra: Extensions for xaringan
 #'
-#' `xaringanExtra` is a playground of enhancements and addins for
+#' `xaringanExtra` is a playground of enhancements and extensions for
 #' \pkg{xaringan} slides.
 #'
 #' - Add an overview of your presentation with [use_tile_view()]

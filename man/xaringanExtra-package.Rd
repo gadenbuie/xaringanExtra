@@ -6,7 +6,7 @@
 \alias{xaringanExtra-package}
 \title{xaringanExtra: Extensions for xaringan}
 \description{
-\code{xaringanExtra} is a playground of enhancements and addins for
+\code{xaringanExtra} is a playground of enhancements and extensions for
 \pkg{xaringan} slides.
 }
 \details{
@@ -37,6 +37,8 @@ Other contributors:
   \item Yotam Mann (tone.js) [contributor]
   \item Daniel Eden (animate.css) [contributor]
   \item  Tachyons authors [contributor]
+  \item  Klaus Hartl, Fagner Brack, GitHub Contributors (js-cookie) [contributor]
+  \item  Chris Andrejewski (himalaya) [contributor]
   \item Eric Londaits (text-poster.js) [contributor]
 }
 
