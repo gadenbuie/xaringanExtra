@@ -40,22 +40,35 @@
 NULL
 
 #' @describeIn tachyons Adds tachyons to your xaringan slides.
+#' @param minified Use the minified Tachyons css file? Default is `TRUE`.
 #' @export
-use_tachyons <- function() {
-	htmltools::tagList(
-		html_dependency_tachyons()
-	)
+use_tachyons <- function(minified = TRUE) {
+  htmltools::tagList(
+    html_dependency_tachyons()
+  )
 }
 
 #' @describeIn tachyons Returns an [htmltools::htmlDependency] with the tile
 #'   view dependencies. Most users will want to use `use_tachyons()`.
 #' @export
-html_dependency_tachyons <- function() {
-	htmltools::htmlDependency(
-		name = "tachyons",
-		version = "4.10.0",
-		package = "xaringanExtra",
-		src = "tachyons",
-		stylesheet = "tachyons.min.css"
-	)
+html_dependency_tachyons <- function(minified = TRUE) {
+  if (minified) {
+    htmltools::htmlDependency(
+      name = "tachyons",
+      version = "4.11.1",
+      package = "xaringanExtra",
+      src = "libs/tachyons",
+      stylesheet = "tachyons.min.css",
+      all_files = FALSE
+    )
+  } else {
+    htmltools::htmlDependency(
+      name = "tachyons",
+      version = "4.11.1",
+      package = "xaringanExtra",
+      src = "libs/tachyons",
+      stylesheet = "tachyons.css",
+      all_files = FALSE
+    )
+  }
 }

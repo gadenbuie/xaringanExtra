@@ -6,9 +6,12 @@
 \alias{html_dependency_tachyons}
 \title{Tachyons}
 \usage{
-use_tachyons()
+use_tachyons(minified = TRUE)
 
-html_dependency_tachyons()
+html_dependency_tachyons(minified = TRUE)
+}
+\arguments{
+\item{minified}{Use the minified Tachyons css file? Default is \code{TRUE}.}
 }
 \value{
 An \link[htmltools:tagList]{htmltools::tagList} with the tachyons dependencies, or an
