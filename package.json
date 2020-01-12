@@ -7,9 +7,9 @@
     "lint": "standard inst/*/*.js",
     "lint:fix": "standard --fix inst/*/*.js",
     "copy": "npm run copy:tone && npm run copy:himalaya && npm run copy:js-cookie",
-    "copy:tone": "cpy 'node_modules/tone/build/Tone.js' inst/js-lib/tone/",
-    "copy:himalaya": "cpy 'node_modules/himalaya/docs/dist/himalaya.js*' inst/js-lib/himalaya/",
-    "copy:js-cookie": "cpy 'node_modules/js-cookie/src/js.cookie.js' inst/js-lib/js-cookie/",
+    "copy:tone": "cpy 'node_modules/tone/build/Tone.js' inst/libs/tone/",
+    "copy:himalaya": "cpy 'node_modules/himalaya/docs/dist/himalaya.js*' inst/libs/himalaya/",
+    "copy:js-cookie": "cpy 'node_modules/js-cookie/src/js.cookie.js' inst/libs/js-cookie/",
     "build": "npm run copy && npm run lint:fix"
   },
   "repository": {
@@ -27,7 +27,7 @@
     "ignore": [
       "inst/slide-tone/tone.js",
       "inst/text-poster/text-poster.js",
-      "inst/js-lib/*"
+      "inst/libs/*"
     ]
   },
   "devDependencies": {
