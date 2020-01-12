@@ -1,5 +1,5 @@
 Package: xaringanExtra
-Title: Extras And Addons for Xaringan Slides
+Title: Extras And Extensions for Xaringan Slides
 Version: 0.0.11
 Authors@R: 
     c(person(given = "Garrick",
@@ -17,11 +17,22 @@ Authors@R:
              comment = "animate.css"),
       person(family = "Tachyons authors",
              role = "ctb"),
+      person(family = "Klaus Hartl, Fagner Brack, GitHub Contributors",
+             role = "ctb",
+             comment = "js-cookie"),
+      person(family = "Chris Andrejewski",
+             role = "ctb",
+             comment = "himalaya"),
       person(given = "Eric",
              family = "Londaits",
              role = "ctb",
              comment = "text-poster.js"))
-Description: Extra addons for xaringan slides.
+Description: Extras and extensions for xaringan slides. Nagivate
+    your slides with tile view. Make your slides editable, live! Announce
+    slide changes with subtle tones. Animate slide transitions with
+    animate.css. Add tabbed panels to slides with panelset. Use the
+    Tachyons CSS utility toolkit.  Create fancy poster-style text blocks.
+    Fit your slides to fill the browser window.
 License: MIT + file LICENSE
 URL: https://github.com/gadenbuie/xaringanExtra
 BugReports: https://github.com/gadenbuie/xaringanExtra/issues
