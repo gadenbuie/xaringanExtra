@@ -3,3 +3,7 @@
 ^docs$
 ^make\.R$
 ^LICENSE\.md$
+^node_modules$
+^package-lock\.json$
+^package\.json$
+^_tmp$
