@@ -31,11 +31,21 @@ use_slide_tone <- function() {
 #'   view dependencies. Most users will want to use `use_slide_tone()`.
 #' @export
 html_dependency_slide_tone <- function() {
-  htmltools::htmlDependency(
-    name = "slide-tone",
-    version = utils::packageVersion("xaringanExtra"),
-    package = "xaringanExtra",
-    src = "slide-tone",
-    script = c("tone.js", "slide-tone.js")
-  )
+	htmltools::tagList(
+	  htmltools::htmlDependency(
+	    name = "tone",
+	    version = "13.8.25",
+	    package = "xaringanExtra",
+	    src = "js-lib/tone",
+	    script = "Tone.js",
+	    all_files = FALSE
+	  ),
+	  htmltools::htmlDependency(
+	  	name = "slide-tone",
+	  	version = utils::packageVersion("xaringanExtra"),
+	  	package = "xaringanExtra",
+	  	src = "slide-tone",
+	  	script = "slide-tone.js"
+	  )
+	)
 }

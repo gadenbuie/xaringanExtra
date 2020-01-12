@@ -6,9 +6,11 @@
   "scripts": {
     "lint": "standard inst/*/*.js",
     "lint:fix": "standard --fix inst/*/*.js",
+    "copy": "npm run copy:tone && npm run copy:himalaya && npm run copy:js-cookie",
+    "copy:tone": "cpy 'node_modules/tone/build/Tone.js' inst/js-lib/tone/",
     "copy:himalaya": "cpy 'node_modules/himalaya/docs/dist/himalaya.js*' inst/js-lib/himalaya/",
     "copy:js-cookie": "cpy 'node_modules/js-cookie/src/js.cookie.js' inst/js-lib/js-cookie/",
-    "build": "npm run copy:himalaya && npm run copy:js-cookie && npm run lint:fix"
+    "build": "npm run copy && npm run lint:fix"
   },
   "repository": {
     "type": "git",
@@ -34,6 +36,7 @@
   },
   "dependencies": {
     "himalaya": "^1.1.0",
-    "js-cookie": "^2.2.1"
+    "js-cookie": "^2.2.1",
+    "tone": "^13.8.25"
   }
 }
