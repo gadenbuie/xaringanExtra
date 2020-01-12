@@ -1,0 +1,86 @@
+---
+title: "editable<br>.gray[for xaringan]"
+subtitle: ".big[&#x1F4DD;]"
+author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
+date: 'xaringanExtra'
+output:
+  xaringan::moon_reader:
+    css: [robot-fonts, robot]
+    lib_dir: libs
+---
+
+```{r xaringan-panelset, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+xaringanExtra::use_editable()
+```
+
+```{css, echo=FALSE}
+.gray { color: #999; }
+.big { font-size: 200%; }
+.red { color: #d22; }
+```
+
+## What do you think of .can-edit.red[xaringan]?
+
+.pull-left[
+### &#x1F917; Things I like
+
+.can-edit.key-likes[
+- pro
+]
+]
+
+.pull-right[
+### &#x1F620; Things I don't like
+
+.can-edit.key-dislikes[
+- con
+]
+]
+
+---
+
+## How it works
+
+Use **editable** from [xaringanExtra](https://github.com/gadenbuie/xaringanExtra).
+
+````markdown
+```{r xaringan-editable, echo=FALSE}`r ''`
+xaringanExtra::use_editable()
+```
+````
+
+Wrap editable things in the `.can-edit[ ]` class.
+
+```markdown
+## What do you think of .can-edit.red[xaringan]?
+```
+
+Make edits persist across sessions by including a `.key-NAME` class.
+
+```markdown
+## What do you think of .can-edit.red.key-Package[xaringan]?
+```
+
+---
+
+## A few more details
+
+The `expires` argument of `use_editable()` sets how long edited values are stored.
+
+Stored values are tied to each render of the document,
+so newer versions of a document won't use the values from previous versions.
+
+Once your slides are "in production", 
+and the editable fields and names won't change much,
+use the `id` argument of `use_editable()`
+to persist values across document versions.
+
+---
+
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
+

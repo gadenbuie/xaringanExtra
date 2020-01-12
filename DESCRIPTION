@@ -27,7 +27,8 @@ URL: https://github.com/gadenbuie/xaringanExtra
 BugReports: https://github.com/gadenbuie/xaringanExtra/issues
 Imports: 
     htmltools,
-    utils
+    utils,
+    uuid
 Suggests: 
     xaringan
 Encoding: UTF-8
