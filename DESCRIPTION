@@ -1,6 +1,6 @@
 Package: xaringanExtra
 Title: Extras And Extensions for Xaringan Slides
-Version: 0.0.11
+Version: 0.0.12
 Authors@R: 
     c(person(given = "Garrick",
              family = "Aden-Buie",
@@ -41,7 +41,8 @@ Imports:
     utils,
     uuid
 Suggests: 
-    xaringan
+    xaringan,
+    testthat (>= 2.1.0)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

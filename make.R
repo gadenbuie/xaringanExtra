@@ -4,7 +4,7 @@ devtools::install(dependencies = FALSE)
 docs <- file.path(
 	"docs",
 	c("slide-tone", "tile-view", "animate-css", "tachyons", "text-poster",
-		"panelset", "editable")
+		"panelset", "editable", "logo")
 )
 
 for (doc in docs) {

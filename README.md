@@ -17,6 +17,7 @@
 - Announce slide changes with a [subtle tone](#-slide-tone)
 - Animate slide transitions with [animate.css](#-animatecss)
 - Add tabbed panels to slides with [panelset](#-panelset)
+- Add a logo to all of your slides with [logo](#-logo)
 - Use the [Tachyons CSS utility toolkit](#-tachyons)
 - Create fancy [poster-style text blocks](#-text-poster)
 - Fit your slides to [fill the browser window](#-fit-to-screen)
@@ -279,6 +280,30 @@ modify the values to customize the style to fit your presentation.
 }
 ```
 ````
+
+
+## &#x1F48C; Logo
+
+#### &#x1F4FA; [Logo Demo](https://gadenbuie.github.io/xaringanExtra/logo)
+
+`use_logo()` adds a logo to all of your slides. 
+You can make the logo a clickable link and choose where on the slide it is placed. 
+You can also set which types of slides will not get the logo by default.
+
+To add a logo to your xaringan presentation, 
+add the following code chunk to your slides' R Markdown file.
+
+````markdown
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png"
+)
+```
+````
+
+See the documentation for `?use_logo` for more options regarding sizing
+and positioning. You can also make the logo a link using `link_url`.
+
 
 ## &#x1F3D7; Tachyons
 
