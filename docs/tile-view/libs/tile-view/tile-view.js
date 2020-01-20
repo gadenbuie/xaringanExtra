@@ -160,7 +160,7 @@
       }
     }
 
-    document.addEventListener('keyup', ev => {
+    document.addEventListener('keydown', ev => {
       if (ev.keyCode === launchKey) {
         toggleTileView()
       }
