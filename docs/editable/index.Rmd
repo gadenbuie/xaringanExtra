@@ -11,6 +11,7 @@ output:
 
 ```{r xaringan-panelset, echo=FALSE}
 options(htmltools.dir.version = FALSE)
+xaringanExtra::use_tile_view()
 xaringanExtra::use_editable(id = "xaringanExtra-editable-demo-1")
 ```
 
