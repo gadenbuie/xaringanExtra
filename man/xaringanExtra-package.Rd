@@ -16,6 +16,7 @@
 \item Announce slide changes with a subtle tone: \code{\link[=use_slide_tone]{use_slide_tone()}}
 \item Animate slide transitions with \code{\link[=use_animate_css]{use_animate_css()}}
 \item Add tabbed panels to slides with \code{\link[=use_panelset]{use_panelset()}}
+\item Add a logo to all of your slides with \code{\link[=use_logo]{use_logo()}}
 \item Use the Tachyons CSS utility toolkit: \code{\link[=use_tachyons]{use_tachyons()}}
 \item Create fancy poster-style text blocks with \code{\link[=text_poster]{text_poster()}}
 \item Fit your slides to fill the browser window: \code{\link[=use_fit_screen]{use_fit_screen()}}

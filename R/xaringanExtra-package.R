@@ -8,6 +8,7 @@
 #' - Announce slide changes with a subtle tone: [use_slide_tone()]
 #' - Animate slide transitions with [use_animate_css()]
 #' - Add tabbed panels to slides with [use_panelset()]
+#' - Add a logo to all of your slides with [use_logo()]
 #' - Use the Tachyons CSS utility toolkit: [use_tachyons()]
 #' - Create fancy poster-style text blocks with [text_poster()]
 #' - Fit your slides to fill the browser window: [use_fit_screen()]
