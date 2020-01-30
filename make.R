@@ -25,3 +25,9 @@ for (doc in docs) {
 	message("Rendering ", doc)
 	rmarkdown::render(file.path(doc, "index.Rmd"), quiet = TRUE)
 }
+
+message("Rendering docs/index.html from README.md")
+rmarkdown::render("README.md", output_file = "docs/index.html")
+x <- readLines("docs/index.html")
+x <- gsub("docs/", "", x, fixed = TRUE)
+writeLines(x, "docs/index.html")
