@@ -90,13 +90,19 @@ style_panelset <- function(
   args <- lapply(names(formals()), function(x) get(x))
   names(args) <- names(formals())
   args <- args[vapply(args, function(x) !is.null(x), TRUE)]
-  if (!length(args)) return(invisible())
+  if (!length(args)) {
+    return(invisible())
+  }
   style <- ""
   for (arg in names(args)) {
     style <- paste0(
       style,
       if (style != "") "\n",
-      "  --", gsub("_", "-", arg), ": ", args[arg], ";"
+      "  --",
+      gsub("_", "-", arg),
+      ": ",
+      args[arg],
+      ";"
     )
   }
   style <- paste(".panelset {", style, "}", sep = "\n")

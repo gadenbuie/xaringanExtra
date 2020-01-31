@@ -62,78 +62,77 @@ NULL
 #'   be stored before being released.
 #' @export
 use_editable <- function(id = NULL, expires = 14) {
-	htmltools::tagList(
-		html_dependency_editable(expires = expires, id = id)
-	)
+  htmltools::tagList(
+    html_dependency_editable(expires = expires, id = id)
+  )
 }
 
 #' @describeIn editable Returns an [htmltools::htmlDependency] with the tile
 #'   view dependencies. Most users will want to use `use_editable()`.
 #' @export
 html_dependency_editable <- function(expires = 14, id = NULL) {
-	htmltools::tagList(
-		html_dependency_editable_id(expires = expires, id = id),
-		htmltools::htmlDependency(
-			name = "himalaya",
-			version = "1.1.0",
-			package = "xaringanExtra",
-			src = "libs/himalaya",
-			script = "himalaya.js",
-			all_files = TRUE
-		),
-		htmltools::htmlDependency(
-			name = "js-cookie",
-			version = "3.0.0",
-			package = "xaringanExtra",
-			src = "libs/js-cookie",
-			script = "js.cookie.js",
-			all_files = FALSE
-		),
-		htmltools::htmlDependency(
-			name = "editable",
-			version = utils::packageVersion("xaringanExtra"),
-			package = "xaringanExtra",
-			src = "editable",
-			script = "editable.js",
-			stylesheet = "editable.css",
-			all_files = FALSE
-		)
-	)
+  htmltools::tagList(
+    html_dependency_editable_id(expires = expires, id = id),
+    htmltools::htmlDependency(
+      name = "himalaya",
+      version = "1.1.0",
+      package = "xaringanExtra",
+      src = "libs/himalaya",
+      script = "himalaya.js",
+      all_files = TRUE
+    ),
+    htmltools::htmlDependency(
+      name = "js-cookie",
+      version = "3.0.0",
+      package = "xaringanExtra",
+      src = "libs/js-cookie",
+      script = "js.cookie.js",
+      all_files = FALSE
+    ),
+    htmltools::htmlDependency(
+      name = "editable",
+      version = utils::packageVersion("xaringanExtra"),
+      package = "xaringanExtra",
+      src = "editable",
+      script = "editable.js",
+      stylesheet = "editable.css",
+      all_files = FALSE
+    )
+  )
 }
 
 # Insert JSON in the document head containing editable options, in particular
 # the document id and expiration time for cookies.
 html_dependency_editable_id <- function(expires = NULL, id = NULL) {
-	id <- id %||% uuid()
-	expires <- if (is.null(expires)) {
-		"null"
-	} else {
-		if (is.numeric(expires)) {
-			expires <- format(expires)
-		} else {
-			stop(
-				"`expires` must be a numeric number of days for retention of stored values",
-				call. = FALSE
-			)
-		}
-	}
-	htmltools::htmlDependency(
-		name = "xaringanExtra-editable-id",
-		version = utils::packageVersion("xaringanExtra"),
-		src = ".",
-		head = format(htmltools::tags$script(
-			type = "application/json",
-			id = "xaringanExtra-editable-docid",
-			sprintf('{"id":"%s","expires":%s}', id, expires)
-		)),
-		all_files = FALSE
-	)
+  id <- id %||% uuid()
+  expires <- if (is.null(expires)) {
+    "null"
+  } else {
+    if (is.numeric(expires)) {
+      expires <- format(expires)
+    } else {
+      stop(
+        "`expires` must be a numeric number of days for retention of stored values",
+        call. = FALSE
+      )
+    }
+  }
+  htmltools::htmlDependency(
+    name = "xaringanExtra-editable-id",
+    version = utils::packageVersion("xaringanExtra"),
+    src = ".",
+    head = format(htmltools::tags$script(
+      type = "application/json",
+      id = "xaringanExtra-editable-docid",
+      sprintf('{"id":"%s","expires":%s}', id, expires)
+    )),
+    all_files = FALSE
+  )
 }
 
 uuid <- function() {
-	# Create a unique id for this document, ensure that it's a valid HTML ID
-	x <- uuid::UUIDgenerate()
-	if (!substr(x, 1, 1) %in% letters) substr(x, 1, 1) <- "x"
-	gsub("-", "", x)
+  # Create a unique id for this document, ensure that it's a valid HTML ID
+  x <- uuid::UUIDgenerate()
+  if (!substr(x, 1, 1) %in% letters) substr(x, 1, 1) <- "x"
+  gsub("-", "", x)
 }
-

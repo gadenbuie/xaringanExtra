@@ -27,21 +27,21 @@ NULL
 #' @describeIn fit_screen Use the fit-to-screen extension in your xaringan slides.
 #' @export
 use_fit_screen <- function() {
-	htmltools::tagList(
-		html_dependency_fit_screen()
-	)
+  htmltools::tagList(
+    html_dependency_fit_screen()
+  )
 }
 
 #' @describeIn fit_screen Returns an [htmltools::htmlDependency] with the fit
 #'   screen dependencies. Most users will want to use `use_fit_screen()`.
 #' @export
 html_dependency_fit_screen <- function() {
-	htmltools::htmlDependency(
-		name = "xaringanExtra_fit-screen",
-		version = utils::packageVersion("xaringanExtra"),
-		package = "xaringanExtra",
-		src = "fit-screen",
-		script = "fit-screen.js",
-		all_files = FALSE
-	)
+  htmltools::htmlDependency(
+    name = "xaringanExtra_fit-screen",
+    version = utils::packageVersion("xaringanExtra"),
+    package = "xaringanExtra",
+    src = "fit-screen",
+    script = "fit-screen.js",
+    all_files = FALSE
+  )
 }
