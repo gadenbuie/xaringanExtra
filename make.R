@@ -27,7 +27,7 @@ for (doc in docs) {
 }
 
 message("Rendering docs/index.html from README.md")
-rmarkdown::render("README.md", output_file = "docs/index.html")
+rmarkdown::render("README.md", output_format = cleanrmd::html_document_clean(theme = "vanilla"), output_file = "docs/index.html")
 x <- readLines("docs/index.html")
 x <- gsub("docs/", "", x, fixed = TRUE)
 x <- gsub("#-", "#", x, fixed = TRUE)
