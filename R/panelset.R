@@ -2,8 +2,8 @@
 #'
 #' A panelset designed for showing off code, but useful for anything really.
 #'
-#' @return An [htmltools::tagList] with the panelset dependencies, or an
-#'   [htmltools::htmlDependency].
+#' @return An `htmltools::tagList()` with the panelset dependencies, or an
+#'   [htmltools::htmlDependency()].
 #' @section Usage: To add panelset to your xaringan presentation, add the
 #'   following code chunk to your slides' R Markdown file.
 #'
@@ -109,7 +109,7 @@ style_panelset <- function(
   htmltools::tags$style(htmltools::HTML(style))
 }
 
-#' @describeIn panelset Returns an [htmltools::htmlDependency] with the tile
+#' @describeIn panelset Returns an [htmltools::htmlDependency()] with the tile
 #'   view dependencies. Most users will want to use `use_panelset()`.
 #' @export
 html_dependency_panelset <- function() {

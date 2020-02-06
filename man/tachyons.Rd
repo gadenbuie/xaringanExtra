@@ -14,8 +14,8 @@ html_dependency_tachyons(minified = TRUE)
 \item{minified}{Use the minified Tachyons css file? Default is \code{TRUE}.}
 }
 \value{
-An \link[htmltools:tagList]{htmltools::tagList} with the tachyons dependencies, or an
-\link[htmltools:htmlDependency]{htmltools::htmlDependency}.
+An \code{htmltools::tagList()} with the tachyons dependencies, or an
+\code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}.
 }
 \description{
 Tachyons is a collection of CSS utility classes that works beautifully with
@@ -25,7 +25,7 @@ Tachyons is a collection of CSS utility classes that works beautifully with
 \itemize{
 \item \code{use_tachyons}: Adds tachyons to your xaringan slides.
 
-\item \code{html_dependency_tachyons}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
+\item \code{html_dependency_tachyons}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
 view dependencies. Most users will want to use \code{use_tachyons()}.
 }}
 

@@ -35,8 +35,8 @@ HTML-based documents.}
 }}
 }
 \value{
-An \link[htmltools:tagList]{htmltools::tagList} with the tile view dependencies, or an
-\link[htmltools:htmlDependency]{htmltools::htmlDependency}.
+An \code{htmltools::tagList()} with the tile view dependencies, or an
+\code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}.
 }
 \description{
 Animate.css is a popular collection of CSS animations. It contains "a
@@ -48,7 +48,7 @@ just-add-water-awesomeness."
 \itemize{
 \item \code{use_animate_css}: Use animate.css in your xaringan slides.
 
-\item \code{html_dependency_animate_css}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
+\item \code{html_dependency_animate_css}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
 view dependencies. Most users will want to use \code{use_animate_css()}.
 
 \item \code{use_animate_all}: Use a default animation for all slides. Sets coupled

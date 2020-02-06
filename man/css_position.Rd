@@ -17,7 +17,6 @@ good idea to set both top and bottom or right and left.
 }
 \examples{
 css_position(top = "1em", right = "1em") # top right corner
-css_position(top = "1em", left = "1em")  # top left corner
-css_position(bottom = 0, right = 0)      # bottom right corner
-
+css_position(top = "1em", left = "1em") # top left corner
+css_position(bottom = 0, right = 0) # bottom right corner
 }

@@ -26,7 +26,7 @@ expire and \code{expires} provides the number of days that those values should
 be stored before being released.}
 }
 \value{
-An \link[htmltools:tagList]{htmltools::tagList} with the editable dependencies, or an
+An \code{htmltools::tagList()} with the editable dependencies, or an
 \link[htmltools:htmlDependency]{htmltools::htmlDependency}.
 }
 \description{

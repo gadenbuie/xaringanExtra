@@ -4,8 +4,8 @@
 #' clickable link and choose where on the page it is placed. You can also set
 #' which types of slides will not get the logo by default.
 #'
-#' @return An [htmltools::tagList] with the Add Logo dependencies, or an
-#'   [htmltools::htmlDependency].
+#' @return An `htmltools::tagList()` with the Add Logo dependencies, or an
+#'   [htmltools::htmlDependency()].
 #' @section Usage: To add a logo to your xaringan presentation, add the
 #'   following code chunk to your slides' R Markdown file.
 #'

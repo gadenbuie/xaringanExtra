@@ -7,8 +7,8 @@
 #' another window. To enable fit-to-screen, press **Alt**/**Option** + **F** during the
 #' slideshow. To disable, reload the slides.
 #'
-#' @return An [htmltools::tagList] with the fit-to-screen dependency, or an
-#'   [htmltools::htmlDependency].
+#' @return An`htmltools::tagList()` with the fit-to-screen dependency, or an
+#'   [htmltools::htmlDependency()].
 #'
 #' @section Usage: To enable fit-to-screen, add the following code chunk to your
 #'   slides:
@@ -32,7 +32,7 @@ use_fit_screen <- function() {
   )
 }
 
-#' @describeIn fit_screen Returns an [htmltools::htmlDependency] with the fit
+#' @describeIn fit_screen Returns an [htmltools::htmlDependency()] with the fit
 #'   screen dependencies. Most users will want to use `use_fit_screen()`.
 #' @export
 html_dependency_fit_screen <- function() {

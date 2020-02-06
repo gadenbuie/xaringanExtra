@@ -40,8 +40,8 @@ default is \code{0.5}.}
 text. Default is a monospace system font stack.}
 }
 \value{
-An \link[htmltools:tagList]{htmltools::tagList} with the panelset dependencies, or an
-\link[htmltools:htmlDependency]{htmltools::htmlDependency}.
+An \code{htmltools::tagList()} with the panelset dependencies, or an
+\code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}.
 }
 \description{
 A panelset designed for showing off code, but useful for anything really.
@@ -53,7 +53,7 @@ A panelset designed for showing off code, but useful for anything really.
 \item \code{style_panelset}: Style the panelset. Returns an \pkg{htmltools} \verb{<style>}
 tag.
 
-\item \code{html_dependency_panelset}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
+\item \code{html_dependency_panelset}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
 view dependencies. Most users will want to use \code{use_panelset()}.
 }}
 

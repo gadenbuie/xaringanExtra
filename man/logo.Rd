@@ -38,8 +38,8 @@ default, the title slide, inverse slides and slides with the \code{hide-logo}
 class are excluded.}
 }
 \value{
-An \link[htmltools:tagList]{htmltools::tagList} with the Add Logo dependencies, or an
-\link[htmltools:htmlDependency]{htmltools::htmlDependency}.
+An \code{htmltools::tagList()} with the Add Logo dependencies, or an
+\code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}.
 }
 \description{
 \code{use_logo()} adds a logo to all of your slides. You can make the logo a

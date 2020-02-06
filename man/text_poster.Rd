@@ -67,7 +67,7 @@ text on each line scaled to fit the horizontal space.
 If you use \code{text_poster()} to create your poster-block text, you do not
 need to call this function.
 
-\item \code{html_dependency_text_poster}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the
+\item \code{html_dependency_text_poster}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
 \code{text-poster} dependencies. Most users will want to use \code{use_text_poster()}.
 }}
 

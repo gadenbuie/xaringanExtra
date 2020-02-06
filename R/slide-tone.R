@@ -4,7 +4,7 @@
 #' pitch for each slide from a low C to a high C note. The tone pitch stays the
 #' same for incremental slides.
 #'
-#' @return An [htmltools::tagList] with the slide tone dependencies, or an
+#' @return An `htmltools::tagList()` with the slide tone dependencies, or an
 #'   [htmltools::htmlDependency].
 #' @section Usage: To add slide tone to your xaringan presentation, add the
 #'   following code chunk to your slides' R Markdown file.

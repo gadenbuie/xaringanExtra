@@ -7,7 +7,7 @@
 #' element a `.key-<NAME>` class, where `<NAME>` is a unique identifier (and
 #' valid CSS class).
 #'
-#' @return An [htmltools::tagList] with the editable dependencies, or an
+#' @return An `htmltools::tagList()` with the editable dependencies, or an
 #'   [htmltools::htmlDependency].
 #' @section Usage: To make your xaringan presentations _editable_, add the
 #'   following code chunk to your slides' R Markdown file.

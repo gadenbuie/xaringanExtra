@@ -3,8 +3,8 @@
 #' Tachyons is a collection of CSS utility classes that works beautifully with
 #' \pkg{xaringan} presentations using the `remarkjs`` class syntax.
 #'
-#' @return An [htmltools::tagList] with the tachyons dependencies, or an
-#'   [htmltools::htmlDependency].
+#' @return An `htmltools::tagList()` with the tachyons dependencies, or an
+#'   [htmltools::htmlDependency()].
 #' @section Usage: To add tachyons to your xaringan presentation, add the
 #'   following code chunk to your slides' R Markdown file.
 #'
@@ -48,7 +48,7 @@ use_tachyons <- function(minified = TRUE) {
   )
 }
 
-#' @describeIn tachyons Returns an [htmltools::htmlDependency] with the tile
+#' @describeIn tachyons Returns an [htmltools::htmlDependency()] with the tile
 #'   view dependencies. Most users will want to use `use_tachyons()`.
 #' @export
 html_dependency_tachyons <- function(minified = TRUE) {
