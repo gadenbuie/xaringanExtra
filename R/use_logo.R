@@ -32,6 +32,8 @@ NULL
 #' @param exclude_class The slide classes that should not receive the logo. By
 #'   default, the title slide, inverse slides and slides with the `hide-logo`
 #'   class are excluded.
+#' @param width Width in CSS units of the logo
+#' @param height Height in CSS units of the logo
 #' @export
 use_logo <- function(
   image_url,
@@ -132,6 +134,8 @@ logo_css <- function(url, width, height, position) {
   p <- lapply(dirs, function(pos) {
     if (!is.null(position[[pos]])) sprintf("%s:%s;", pos, position[[pos]]) else ""
   })
+  width <- htmltools::validateCssUnit(width)
+  height <- htmltools::validateCssUnit(height)
   sprintf("
 .xaringan-extra-logo {
   width: %s;
