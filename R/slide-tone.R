@@ -36,7 +36,7 @@ html_dependency_slide_tone <- function() {
       name = "tone",
       version = "13.8.25",
       package = "xaringanExtra",
-      src = "libs/tone",
+      src = "jslib/tone",
       script = "Tone.js",
       all_files = FALSE
     ),

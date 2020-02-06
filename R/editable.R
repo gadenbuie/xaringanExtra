@@ -77,7 +77,7 @@ html_dependency_editable <- function(expires = 14, id = NULL) {
       name = "himalaya",
       version = "1.1.0",
       package = "xaringanExtra",
-      src = "libs/himalaya",
+      src = "jslib/himalaya",
       script = "himalaya.js",
       all_files = TRUE
     ),
@@ -85,7 +85,7 @@ html_dependency_editable <- function(expires = 14, id = NULL) {
       name = "js-cookie",
       version = "3.0.0",
       package = "xaringanExtra",
-      src = "libs/js-cookie",
+      src = "jslib/js-cookie",
       script = "js.cookie.js",
       all_files = FALSE
     ),

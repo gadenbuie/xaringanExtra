@@ -57,7 +57,7 @@ html_dependency_tachyons <- function(minified = TRUE) {
       name = "tachyons",
       version = "4.11.1",
       package = "xaringanExtra",
-      src = "libs/tachyons",
+      src = "jslib/tachyons",
       stylesheet = "tachyons.min.css",
       all_files = FALSE
     )
@@ -66,7 +66,7 @@ html_dependency_tachyons <- function(minified = TRUE) {
       name = "tachyons",
       version = "4.11.1",
       package = "xaringanExtra",
-      src = "libs/tachyons",
+      src = "jslib/tachyons",
       stylesheet = "tachyons.css",
       all_files = FALSE
     )
