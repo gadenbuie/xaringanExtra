@@ -28,6 +28,10 @@ html_dependency_logo(
 \item{image_url}{The URL to the image file of your logo. In general, either
 a full URL or the path to the image relative to your slides file.}
 
+\item{width}{Width in CSS units of the logo}
+
+\item{height}{Height in CSS units of the logo}
+
 \item{position}{The position of the logo from the sides of the slide. Use
 \code{\link[=css_position]{css_position()}} to specify.}
 
