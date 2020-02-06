@@ -112,7 +112,7 @@ use_text_poster <- function() {
   )
 }
 
-#' @describeIn text_poster Returns an [htmltools::htmlDependency] with the
+#' @describeIn text_poster Returns an [htmltools::htmlDependency()] with the
 #'   `text-poster` dependencies. Most users will want to use `use_text_poster()`.
 #' @export
 html_dependency_text_poster <- function() {

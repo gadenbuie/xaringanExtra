@@ -22,7 +22,7 @@
 #' loaded with this function, except for [text_poster()] which is more easily
 #' called directly as needed.
 #'
-#' @return An [htmltools::tagList()] with the [htmltools::htmlDependency()]s
+#' @return An `htmltools::tagList()` with the [htmltools::htmlDependency()]s
 #'   for the requested extensions.
 #' @param include Character vector of extensions to include. One or more of
 #'   `"tile_view"`, `"editable"`, `"slide_tone"`, `"animate_css"`, `"panelset"`

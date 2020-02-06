@@ -11,8 +11,8 @@ use_fit_screen()
 html_dependency_fit_screen()
 }
 \value{
-An \link[htmltools:tagList]{htmltools::tagList} with the fit-to-screen dependency, or an
-\link[htmltools:htmlDependency]{htmltools::htmlDependency}.
+An\code{htmltools::tagList()} with the fit-to-screen dependency, or an
+\code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}.
 }
 \description{
 This extension resizes the slides to match the browser window height and
@@ -26,7 +26,7 @@ slideshow. To disable, reload the slides.
 \itemize{
 \item \code{use_fit_screen}: Use the fit-to-screen extension in your xaringan slides.
 
-\item \code{html_dependency_fit_screen}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the fit
+\item \code{html_dependency_fit_screen}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the fit
 screen dependencies. Most users will want to use \code{use_fit_screen()}.
 }}
 

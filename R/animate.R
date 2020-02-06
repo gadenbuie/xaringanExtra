@@ -5,8 +5,8 @@
 #' projects. Great for emphasis, home pages, sliders, and general
 #' just-add-water-awesomeness."
 #'
-#' @return An [htmltools::tagList] with the tile view dependencies, or an
-#'   [htmltools::htmlDependency].
+#' @return An `htmltools::tagList()` with the tile view dependencies, or an
+#'   [htmltools::htmlDependency()].
 #' @section Usage: To add animate.css to your xaringan presentation, add the
 #'   following code chunk to your slides' R Markdown file.
 #'
@@ -55,7 +55,7 @@ use_animate_css <- function(minified = FALSE, xaringan = TRUE) {
   )
 }
 
-#' @describeIn animate_css Returns an [htmltools::htmlDependency] with the tile
+#' @describeIn animate_css Returns an [htmltools::htmlDependency()] with the tile
 #'   view dependencies. Most users will want to use `use_animate_css()`.
 #' @export
 html_dependency_animate_css <- function(minified = FALSE, xaringan = TRUE) {

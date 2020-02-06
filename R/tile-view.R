@@ -4,8 +4,8 @@
 #' any point in your slideshow and the tile view appears. Click on a slide to
 #' jump to the slide, or press **O** to exit tile view.
 #'
-#' @return An [htmltools::tagList] with the tile view dependencies, or an
-#'   [htmltools::htmlDependency].
+#' @return An `htmltools::tagList()` with the tile view dependencies, or an
+#'   [htmltools::htmlDependency()].
 #' @section Usage: To add tile view to your xaringan presentation, add the
 #'   following code chunk to your slides' R Markdown file.
 #'
@@ -26,7 +26,7 @@ use_tile_view <- function() {
   )
 }
 
-#' @describeIn tile_view Returns an [htmltools::htmlDependency] with the tile
+#' @describeIn tile_view Returns an [htmltools::htmlDependency()] with the tile
 #'   view dependencies. Most users will want to use `use_tile_view()`.
 #' @export
 html_dependency_tile_view <- function() {

@@ -11,7 +11,7 @@ use_slide_tone()
 html_dependency_slide_tone()
 }
 \value{
-An \link[htmltools:tagList]{htmltools::tagList} with the slide tone dependencies, or an
+An \code{htmltools::tagList()} with the slide tone dependencies, or an
 \link[htmltools:htmlDependency]{htmltools::htmlDependency}.
 }
 \description{

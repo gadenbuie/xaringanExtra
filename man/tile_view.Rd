@@ -11,8 +11,8 @@ use_tile_view()
 html_dependency_tile_view()
 }
 \value{
-An \link[htmltools:tagList]{htmltools::tagList} with the tile view dependencies, or an
-\link[htmltools:htmlDependency]{htmltools::htmlDependency}.
+An \code{htmltools::tagList()} with the tile view dependencies, or an
+\code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}.
 }
 \description{
 Tile view gives you a way to quickly jump between slides. Just press \strong{O} at
@@ -23,7 +23,7 @@ jump to the slide, or press \strong{O} to exit tile view.
 \itemize{
 \item \code{use_tile_view}: Adds tile view to your xaringan slides.
 
-\item \code{html_dependency_tile_view}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
+\item \code{html_dependency_tile_view}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
 view dependencies. Most users will want to use \code{use_tile_view()}.
 }}
 

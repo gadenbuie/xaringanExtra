@@ -14,7 +14,7 @@ use_xaringan_extra(
 \code{"tachyons"}, \code{"fit_screen"}.}
 }
 \value{
-An \code{\link[htmltools:tagList]{htmltools::tagList()}} with the \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}s
+An \code{htmltools::tagList()} with the \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}s
 for the requested extensions.
 }
 \description{
