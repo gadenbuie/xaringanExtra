@@ -18,8 +18,8 @@ class: title center middle
 options(htmltools.dir.version = FALSE)
 ```
 
-```{r hacker-typing, echo=FALSE}
-xaringanExtra::use_hacker_typing()
+```{r hacker-type, echo=FALSE}
+xaringanExtra::use_hacker_type()
 ```
 
 ```{r eval=FALSE, include=FALSE}

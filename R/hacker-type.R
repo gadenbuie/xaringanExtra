@@ -1,15 +1,15 @@
 #' @title Hacker Typing
 #' @description FIXME
 #' @export
-use_hacker_typing <- function() {
-	html_dependency_hacker_typing()
+use_hacker_type <- function() {
+	html_dependency_hacker_type()
 }
 
-#' @describeIn use_hacker_typing Returns an [htmltools::htmlDependency] with the
+#' @describeIn use_hacker_type Returns an [htmltools::htmlDependency] with the
 #'   hacker tpying dependencies. Most users will want to use
-#'   `use_hacker_typing()`.
+#'   `use_hacker_type()`.
 #' @export
-html_dependency_hacker_typing <- function() {
+html_dependency_hacker_type <- function() {
   htmltools::tagList(
     htmltools::htmlDependency(
       name = "typer-js",
