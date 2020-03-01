@@ -18,6 +18,9 @@ class HackerTyper {
 			}
 			.fix-white-space .white-space {
 			  white-space: normal;
+			}
+			.remark-code-line {
+				white-space: pre;
 			}`
 		document.head.appendChild(styles)
   }

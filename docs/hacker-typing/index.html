@@ -104,8 +104,8 @@ Click the block below to start coding!
 babynames &lt;-
   babynames::babynames %&gt;%
   filter(
-  	name %in% c("May", "June", "August"),
-  	year &gt;= 2000
+    name %in% c("May", "June", "August"),
+    year &gt;= 2000
   ) %&gt;%
   group_by(year, name) %&gt;%
   summarize(n = sum(n)) %&gt;%

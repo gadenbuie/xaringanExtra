@@ -126,8 +126,8 @@ Click the block below to start coding!
 babynames <-
   babynames::babynames %>%
   filter(
-  	name %in% c("May", "June", "August"),
-  	year >= 2000
+    name %in% c("May", "June", "August"),
+    year >= 2000
   ) %>%
   group_by(year, name) %>%
   summarize(n = sum(n)) %>%
