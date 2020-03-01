@@ -11,6 +11,7 @@
     "copy:himalaya": "cpy 'node_modules/himalaya/docs/dist/himalaya.js*' inst/libs/himalaya/",
     "copy:js-cookie": "cpy 'node_modules/js-cookie/src/js.cookie.js' inst/libs/js-cookie/",
     "copy:tachyons": "cpy 'node_modules/tachyons/css/*.css' inst/libs/tachyons",
+    "copy:typer-js": "cpy 'node_modules/typer-js/typer.*' inst/libs/typer-js",
     "build": "npm run copy && npm run lint:fix"
   },
   "repository": {
@@ -39,6 +40,7 @@
     "himalaya": "^1.1.0",
     "js-cookie": "^2.2.1",
     "tachyons": "^4.11.1",
-    "tone": "^13.8.25"
+    "tone": "^13.8.25",
+    "typer-js": "^5.0.2"
   }
 }

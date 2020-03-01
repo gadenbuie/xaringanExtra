@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>xaringan poster text</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Garrick Aden-Buie" />
+    <link href="libs/remark-css/robot-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/robot.css" rel="stylesheet" />
+    <link href="libs/typer-js/typer.css" rel="stylesheet" />
+    <script src="libs/typer-js/typer.min.js"></script>
+    <script src="libs/hacker-type/hacker-type.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title center middle
+
+
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.code {
+	font-family: Inconsolata, Consolas, Monaco, monospace;
+}
+&lt;/style&gt;
+
+# xaringan&lt;br&gt;.hacker-type[hacker type]
+
+## &amp;#x2328;&amp;#xFE0F;
+
+[Garrick Aden-Buie](https://www.garrickadenbuie.com)
+
+.hacker-type.hacker-type-military.hacker-type-hide-cursor.code[
+xaringanExtra
+]
+
+---
+
+## Quick Start
+
+.hacker-type[
+In your slides, type:
+
+````
+```{r xaringanExtra}
+xaringanExtra::use_hacker_type()
+```
+````
+
+### Then type live without breaking a sweat
+
+Use the `.hacker-type` class to add live typing to parts of your slides.
+
+&lt;pre&gt;&lt;code&gt;---&lt;br&gt;
+&lt;br&gt;
+# Type live...&lt;br&gt;
+&lt;br&gt;
+.hacker-type&amp;zwj;[&lt;br&gt;
+The quick dog jumped over the lazy fox&lt;br&gt;
+]&lt;/code&gt;&lt;/pre&gt;
+]
+
+---
+
+class: inverse hacker-type
+background-image: url('hacker-laptop.jpg')
+background-size: cover
+
+&lt;!-- background image source: https://unsplash.com/photos/FXFz-sW0uwo --&gt;
+
+# Write the whole slide live
+
+Use the slide class `hacker-type` to write  
+your slide content "live" for your audience.
+
+```
+---
+class: hacker-type
+
+# Write the whole slide live...
+```
+
+
+---
+
+# Controlled live typing
+
+Add the class `.hacker-type-on-click`
+to `.hacker-type`
+to be able to start, pause and restart the typing
+with a click.
+
+The code block below is wrapped in `.hacker-type.hacker-type-on-click[...]`
+
+Click the block below to start coding!
+
+.hacker-type.hacker-type-on-click[
+
+```r
+babynames &lt;-
+  babynames::babynames %&gt;%
+  filter(
+  	name %in% c("May", "June", "August"),
+  	year &gt;= 2000
+  ) %&gt;%
+  group_by(year, name) %&gt;%
+  summarize(n = sum(n)) %&gt;%
+  ungroup()
+```
+]
+
+---
+layout: true
+# Other Options
+
+---
+
+## Military typing
+
+Add the `.hacker-type-miliary` class to use military scrambled typing.
+
+```md
+.hacker-type.hacker-type-military[military]
+```
+
+.hacker-type.hacker-type-military[password]
+
+---
+
+## Show or Hide the cursor
+
+The cursor is automatically shown or hidden 
+depending on what tends to look the best.
+But you can force the cursor to be shown or hidden:
+
+Add the `.hacker-type-hide-cursor` class to **hide** the cursor.
+
+.hacker-type.hacker-type-hide-cursor[
+```md
+.hacker-type.hacker-type-hide-cursor[hide the cursor.]
+```
+]
+
+Add the `.hacker-type-show-cursor` class to **show** the cursor.
+
+.hacker-type.hacker-type-show-cursor[
+```md
+---
+class: hacker-type hacker-type-show-cursor
+
+Show the cursor when typing this slide...
+```
+]
+
+
+
+
+---
+layout: false
+
+# Speed
+
+## Fast
+
+.hacker-type.hacker-type-fast[Add `.hacker-type-fast[]` for fast typing]
+
+## Normal
+
+.hacker-type.hacker-type-normal[Add `.hacker-type-normal[]` for normal typing (or don't add anything)]
+
+## Slow
+
+.hacker-type.hacker-type-slow[Add `.hacker-type-slow[]`  for slower typing]
+
+---
+layout: false
+
+# Notes
+
+## .hacker-type[typer.js]
+
+This extension uses [typer.js](https://github.com/qodesmith/typer),
+a nice, low-dependency JavaScript library for automatic typing.
+
+## Details
+
+typer.js does the typing into a `&lt;div&gt;` tag, 
+which means that anything that is live typed
+is typed on a new line.
+
+Or in other words, 
+you can't live type just a few words in a sentence.
+
+---
+layout: false
+class: center middle
+
+&lt;img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" /&gt;
+
+### &lt;span class="hacker-type" style="color:#0051BA;"&gt;[gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)&lt;/span&gt;
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
