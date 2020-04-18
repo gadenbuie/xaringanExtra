@@ -98,14 +98,14 @@ is_css_position <- function(x) {
 #' @param inline In [html_dependency_logo()], should the JS and CSS code to
 #'   create the logo be returned inline (inside the rendered slides) or in
 #'   separate CSS and JS documents attacheds as an html dependency? The default
-#'   is to use inline for \pkg{xaringan} version 0.16 or later.
+#'   is to use inline for \pkg{xaringan} version 0.17 or later.
 #' @export
 html_dependency_logo <- function(
 	link_url = NULL,
   exclude_class = c("title-slide", "inverse", "hide_logo"),
 	inline = NULL
 ) {
-	inline <- inline %||% xaringan_version("0.16")
+	inline <- inline %||% xaringan_version("0.17")
 
 	logo_code_js <- logo_js(link_url, exclude_class)
 
