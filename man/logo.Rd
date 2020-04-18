@@ -16,12 +16,9 @@ use_logo(
 )
 
 html_dependency_logo(
-  image_url,
-  width = "110px",
-  height = "128px",
-  position = css_position(top = "1em", right = "1em"),
   link_url = NULL,
-  exclude_class = c("title-slide", "inverse", "hide_logo")
+  exclude_class = c("title-slide", "inverse", "hide_logo"),
+  inline = NULL
 )
 }
 \arguments{
@@ -40,6 +37,11 @@ a full URL or the path to the image relative to your slides file.}
 \item{exclude_class}{The slide classes that should not receive the logo. By
 default, the title slide, inverse slides and slides with the \code{hide-logo}
 class are excluded.}
+
+\item{inline}{In \code{\link[=html_dependency_logo]{html_dependency_logo()}}, should the JS and CSS code to
+create the logo be returned inline (inside the rendered slides) or in
+separate CSS and JS documents attacheds as an html dependency? The default
+is to use inline for \pkg{xaringan} version 0.16 or later.}
 }
 \value{
 An \code{htmltools::tagList()} with the Add Logo dependencies, or an

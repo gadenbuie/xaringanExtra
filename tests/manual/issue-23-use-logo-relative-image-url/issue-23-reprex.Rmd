@@ -1,0 +1,37 @@
+---
+title: "xaringanExtra use_logo issue"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    seal: false
+---
+
+class: center, middle
+
+```{r include=FALSE, eval=FALSE}
+# Not run inside the slide
+download.file("http://placekitten.com/200/200", "kitten.jpg")
+```
+
+```{r xaringan-extra, echo=FALSE}
+xaringanExtra::use_logo("kitten.jpg", width="100px")
+```
+
+# xaringan
+
+### /ʃaː.'riŋ.ɡan/
+
+---
+class: inverse, center, middle
+
+# Get Started
+
+---
+
+# Hello World
+
+Install the **xaringan** package from [Github](https://github.com/yihui/xaringan):
+
+```{r eval=FALSE, tidy=FALSE}
+devtools::install_github("yihui/xaringan")
+```

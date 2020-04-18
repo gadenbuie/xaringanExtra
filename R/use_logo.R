@@ -43,16 +43,15 @@ use_logo <- function(
   link_url = NULL,
   exclude_class = c("title-slide", "inverse", "hide_logo")
 ) {
-  htmltools::tagList(
-    html_dependency_logo(
-      image_url,
-      width,
-      height,
-      position,
-      link_url,
-      exclude_class
-    )
-  )
+	htmltools::tagList(
+		html_dependency_logo(link_url, exclude_class),
+		htmltools::tags$style(
+			type = "text/css",
+			htmltools::HTML(
+				logo_css(image_url, width, height, position)
+			)
+		)
+	)
 }
 
 #' Helper to set absolute position of an element.
@@ -96,33 +95,37 @@ is_css_position <- function(x) {
 
 #' @describeIn logo Returns an [htmltools::htmlDependency()] with the tile
 #'   view dependencies. Most users will want to use `use_logo()`.
+#' @param inline In [html_dependency_logo()], should the JS and CSS code to
+#'   create the logo be returned inline (inside the rendered slides) or in
+#'   separate CSS and JS documents attacheds as an html dependency? The default
+#'   is to use inline for \pkg{xaringan} version 0.16 or later.
 #' @export
 html_dependency_logo <- function(
-  image_url,
-  width = "110px",
-  height = "128px",
-  position = css_position(top = "1em", right = "1em"),
-  link_url = NULL,
-  exclude_class = c("title-slide", "inverse", "hide_logo")
+	link_url = NULL,
+  exclude_class = c("title-slide", "inverse", "hide_logo"),
+	inline = NULL
 ) {
-  image_url # force missing value error to come from this function
-  tmpdir <- tempfile("xaringanExtra-add-logo_")
-  dir.create(tmpdir)
-  css <- file.path(tmpdir, "logo.css")
-  cat(logo_css(image_url, width, height, position), file = css)
+	inline <- inline %||% xaringan_version("0.16")
 
-  js <- file.path(tmpdir, "logo.js")
-  cat(logo_js(link_url, exclude_class), file = js)
+	logo_code_js <- logo_js(link_url, exclude_class)
 
-  htmltools::tagList(
-    htmltools::htmlDependency(
-      name = "xaringanExtra-logo",
-      version = utils::packageVersion("xaringanExtra"),
-      src = tmpdir,
-      script = "logo.js",
-      stylesheet = "logo.css"
-    )
-  )
+	ret <- if (inline) {
+		htmltools::tags$script(htmltools::HTML(logo_code_js))
+	} else {
+		tmpdir <- tempfile("xaringanExtra-add-logo_")
+		js <- file.path(tmpdir, "logo.js")
+		dir.create(tmpdir)
+		cat(logo_code_js, file = js)
+
+		htmltools::htmlDependency(
+			name = "xaringanExtra-logo",
+			version = utils::packageVersion("xaringanExtra"),
+			src = tmpdir,
+			script = "logo.js"
+		)
+	}
+
+  htmltools::tagList(ret)
 }
 
 logo_css <- function(url, width, height, position) {
@@ -180,7 +183,6 @@ function addLogo() {
     	.forEach(el => el.innerHTML += '%s')
   }
 }
-
 document.addEventListener('DOMContentLoaded', addLogo)
 })()
 ", exclude_class, element)
