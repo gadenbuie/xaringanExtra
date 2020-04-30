@@ -74,13 +74,10 @@ need to call this function.
 \section{Usage}{
  To add text-poster to your xaringan presentation, use
 \code{text_poster()} to create a block of poster text. Include line breaks in
-the text string to split the text block.\if{html}{\out{<div class="{r poster-text, echo=FALSE}">}}\preformatted{xaringanExtra::text_poster(
-  "There are no
-  routine statistical
-  questions, only questionable
-  statistical routines."
-)
-}\if{html}{\out{</div>}}\preformatted{}
+the text string to split the text block. <!--html_preserve--><div class="text-poster" style="width:100\%;height:100\%;padding:1em;">
+<div class="text-poster__text" data-text="There are no&#10;  routine statistical&#10;  questions, only questionable&#10;  statistical routines."></div>
+</div><!--/html_preserve-->
+  ````
 }
 
 \references{

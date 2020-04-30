@@ -41,7 +41,7 @@ use_logo <- function(
   height = "128px",
   position = css_position(top = "1em", right = "1em"),
   link_url = NULL,
-  exclude_class = c("title-slide", "inverse", "hide_logo")
+  exclude_class = c("title-slide", "inverse", "hide-logo")
 ) {
 	htmltools::tagList(
 		html_dependency_logo(link_url, exclude_class),

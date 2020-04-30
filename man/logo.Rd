@@ -12,7 +12,7 @@ use_logo(
   height = "128px",
   position = css_position(top = "1em", right = "1em"),
   link_url = NULL,
-  exclude_class = c("title-slide", "inverse", "hide_logo")
+  exclude_class = c("title-slide", "inverse", "hide-logo")
 )
 
 html_dependency_logo(
@@ -41,7 +41,7 @@ class are excluded.}
 \item{inline}{In \code{\link[=html_dependency_logo]{html_dependency_logo()}}, should the JS and CSS code to
 create the logo be returned inline (inside the rendered slides) or in
 separate CSS and JS documents attacheds as an html dependency? The default
-is to use inline for \pkg{xaringan} version 0.16 or later.}
+is to use inline for \pkg{xaringan} version 0.17 or later.}
 }
 \value{
 An \code{htmltools::tagList()} with the Add Logo dependencies, or an
