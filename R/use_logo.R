@@ -144,7 +144,7 @@ logo_css <- function(url, width, height, position) {
   width: %s;
   height: %s;
   z-index: 0;
-  background-image: url('%s');
+  background-image: url(%s);
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
