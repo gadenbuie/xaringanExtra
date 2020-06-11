@@ -226,7 +226,7 @@ abline(fit, lwd = 2)
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
 ```{r}
-knitr::kable(head(iris), format = 'html')
+knitr::kable(head(mtcars), format = 'html')
 ```
 
 ---
@@ -398,12 +398,12 @@ When you enable line-highlighting, you can also use the chunk option `highlight.
 
 ````md
 `r ''````{r, highlight.output=c(1, 3)}
-head(iris)
+head(mtcars)
 ```
 ````
 
 ```{r, highlight.output=c(1, 3), echo=FALSE}
-head(iris)
+head(mtcars)
 ```
 
 Question: what does `highlight.output = c(TRUE, FALSE)` mean? (Hint: think about R's recycling of vectors)
