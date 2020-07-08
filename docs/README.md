@@ -39,7 +39,7 @@ devtools::install_github("gadenbuie/xaringanExtra")
 
 ## 🗺 Tile View :id=tile-view
 
-<iframe src="/tile-view/index.html" title="Tile View Demo" width=100% height=400px loading=lazy></iframe>
+<iframe src="./tile-view/index.html" title="Tile View Demo" width=100% height=400px loading=lazy></iframe>
 
 Tile view gives you a way to quickly jump between slides. Just press
 <kbd>O</kbd> (the letter **O** for **O**verview) at any point in your
@@ -64,7 +64,7 @@ by [Stephen Hesperus](https://github.com/StephenHesperus).
 
 ## 📝 Editable :id=editable
 
-<iframe src="/editable/index.html" title="Editable Demo" width=100% height=400px loading=lazy></iframe>
+<iframe src="./editable/index.html" title="Editable Demo" width=100% height=400px loading=lazy></iframe>
 
 Editable gives you a way to write directly inside your slides, updating
 your content live. Make any element of your slides editable by using the
@@ -116,7 +116,7 @@ or to use placeholder text.
 
 ## 🔊 Slide Tone :id=slide-tone
 
-<iframe src="/slide-tone/index.html" title="Slide Tone Demo" width=100% height=400px loading=lazy></iframe>
+<iframe src="./slide-tone/index.html" title="Slide Tone Demo" width=100% height=400px loading=lazy></iframe>
 
 Slide tone plays a subtle sound when you change slides. It was
 [requested by a blind R
@@ -140,7 +140,7 @@ xaringanExtra::use_slide_tone()
 
 ## 📽 Animate.css :id=animate-css
 
-<iframe src="/animate-css/index.html" title="Animate.css Demo" width=100% height=400px loading=lazy></iframe>
+<iframe src="./animate-css/index.html" title="Animate.css Demo" width=100% height=400px loading=lazy></iframe>
 
 [Animate.css](http://daneden.github.io/animate.css) is a popular
 collection of CSS animations. It contains
@@ -198,7 +198,7 @@ slide in and slide out animations, you need to also include
 
 ## 🗂 Panelset :id=panelset
 
-<iframe src="/panelset/index.html" title="Panelset Demo" width=100% height=400px loading=lazy></iframe>
+<iframe src="./panelset/index.html" title="Panelset Demo" width=100% height=400px loading=lazy></iframe>
 
 Panelset adds accessible tabbed panels — just like R Markdown’s
 `.tabset` panels — to your xaringan slides. You can activate a panel by
@@ -272,7 +272,7 @@ values to customize the style to fit your presentation.
 
 ## 💌 Logo :id=logo
 
-<iframe src="/logo/index.html" title="Logo Demo" width=100% height=400px loading=lazy></iframe>
+<iframe src="./logo/index.html" title="Logo Demo" width=100% height=400px loading=lazy></iframe>
 
 `use_logo()` adds a logo to all of your slides. You can make the logo a
 clickable link and choose where on the slide it is placed. You can also
@@ -294,7 +294,7 @@ and positioning. You can also make the logo a link using `link_url`.
 
 ## 🏗 Tachyons :id=tachyons
 
-<iframe src="/tachyons/index.html" title="Tachyons Demo" width=100% height=400px loading=lazy></iframe>
+<iframe src="./tachyons/index.html" title="Tachyons Demo" width=100% height=400px loading=lazy></iframe>
 
 [Tachyons](http://tachyons.io/) is a collection of CSS utility classes
 that works beautifully with
@@ -341,7 +341,7 @@ excellent and easy to use reference.
 
 ## 🤳 Webcam :id=webcam
 
-<iframe src="/webcam/index.html" title="Webcam Demo" width=100% height=400px loading=lazy></iframe>
+<iframe src="./webcam/index.html" title="Webcam Demo" width=100% height=400px loading=lazy></iframe>
 
 Add a live video of your webcam into your slides (in your own browser
 only). Useful when you are presenting via video conference to include
@@ -366,7 +366,7 @@ Xie, author of [xaringan](https://slides.yihuie.name/xaringan).
 
 ## 📐 Fit to Screen :id=fit-to screen
 
-<iframe src="/fit-screen/index.html" title="Fit to Screen Demo" width=100% height=400px loading=lazy></iframe>
+<iframe src="./fit-screen/index.html" title="Fit to Screen Demo" width=100% height=400px loading=lazy></iframe>
 
 xaringan/remark slides scale at a consistent ratio when the browser
 window is resized. In other words, if the slide ratio is `4:3`, then

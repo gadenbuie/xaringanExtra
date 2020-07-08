@@ -48,7 +48,7 @@ headers <- paste0(headers, " :id=", headers_slug)
 x[idx_headers] <- headers
 x <- sub(
 	"^#### 📺 \\[(.+?)\\]\\(.+gadenbuie.github.io/xaringanExtra/(.+?)\\)\\s*$",
-	'<iframe src="/\\2/index.html" title="\\1" width=100% height=400px loading=lazy></iframe>',
+	'<iframe src="./\\2/index.html" title="\\1" width=100% height=400px loading=lazy></iframe>',
 	x
 )
 writeLines(x, "docs/README.md")
