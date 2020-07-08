@@ -42,30 +42,29 @@
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
   <script>
-    (function setCoverBg(i) {
+	  // Plugin
+		function restyleBackground(hook, vm) {
+		  hook.doneEach(function() {
     	let el = document.querySelector('.cover.show')
-    	if (!el || !el.style.background || i >= 0) {
-    		if (el && el.style.background) {
-    			setTimeout(() => setCoverBg(-1), 500);
-    			return;
-    		}
-    		if (i < 20) setTimeout(() => setCoverBg(++i), 100);
-    	} else {
-    		el.style.backgroundImage = 'linear-gradient(45deg, rgba(58, 58, 197, 0.5) 0%,' +
-    		' rgba(58, 58, 197, 0.5) 16.667%,rgba(94, 66, 189, 0.5) 16.667%, ' +
-    		'rgba(94, 66, 189, 0.5) 33.334%,rgba(130, 74, 181, 0.5) 33.334%,' +
-    		'rgba(130, 74, 181, 0.5) 50.001%,rgba(167, 82, 173, 0.5) 50.001%,' +
-    		'rgba(167, 82, 173, 0.5) 66.668%,rgba(203, 90, 165, 0.5) 66.668%,' +
-    		'rgba(203, 90, 165, 0.5) 83.335%,rgba(239, 98, 157, 0.5) 83.335%,' +
-    		'rgba(239, 98, 157, 0.5) 100.002%),linear-gradient(135deg,' +
-    		'rgb(124, 22, 73) 0%, rgb(124, 22, 73) 16.667%,rgb(149, 30, 78) 16.667%,' +
-    		'rgb(149, 30, 78) 33.334%,rgb(174, 38, 83) 33.334%,' +
-    		'rgb(174, 38, 83) 50.001%,rgb(200, 45, 88) 50.001%,' +
-    		'rgb(200, 45, 88) 66.668%,rgb(225, 53, 93) 66.668%,' +
-    		'rgb(225, 53, 93) 83.335%,rgb(250, 61, 98) 83.335%,' +
-    		'rgb(250, 61, 98) 100.002%)';
-    	}
-    })(0)
+    	if (!el) return;
+  		el.style.backgroundImage = 'linear-gradient(45deg, rgba(58, 58, 197, 0.5) 0%,' +
+  		' rgba(58, 58, 197, 0.5) 16.667%,rgba(94, 66, 189, 0.5) 16.667%, ' +
+  		'rgba(94, 66, 189, 0.5) 33.334%,rgba(130, 74, 181, 0.5) 33.334%,' +
+  		'rgba(130, 74, 181, 0.5) 50.001%,rgba(167, 82, 173, 0.5) 50.001%,' +
+  		'rgba(167, 82, 173, 0.5) 66.668%,rgba(203, 90, 165, 0.5) 66.668%,' +
+  		'rgba(203, 90, 165, 0.5) 83.335%,rgba(239, 98, 157, 0.5) 83.335%,' +
+  		'rgba(239, 98, 157, 0.5) 100.002%),linear-gradient(135deg,' +
+  		'rgb(124, 22, 73) 0%, rgb(124, 22, 73) 16.667%,rgb(149, 30, 78) 16.667%,' +
+  		'rgb(149, 30, 78) 33.334%,rgb(174, 38, 83) 33.334%,' +
+  		'rgb(174, 38, 83) 50.001%,rgb(200, 45, 88) 50.001%,' +
+  		'rgb(200, 45, 88) 66.668%,rgb(225, 53, 93) 66.668%,' +
+  		'rgb(225, 53, 93) 83.335%,rgb(250, 61, 98) 83.335%,' +
+  		'rgb(250, 61, 98) 100.002%)';
+		  });
+		}
+
+		// Add to plugin array
+		$docsify.plugins = [].concat(restyleBackground, $docsify.plugins);
     </script>
 </body>
 </html>
