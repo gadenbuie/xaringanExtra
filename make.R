@@ -28,23 +28,27 @@ for (doc in docs) {
 message("Rendering README")
 rmarkdown::render("README.Rmd", quiet = TRUE)
 
-message("Rendering docs/index.html from README.md")
-if (fs::dir_exists("docs/index_files")) fs::dir_delete("docs/index_files")
+message("Rendering docs/README.md from README.md")
+
 if (fs::dir_exists("docs/figures")) fs::dir_delete("docs/figures")
-rmarkdown::render(
-	"README.Rmd",
-	output_format = cleanrmd::html_document_clean(
-		theme = "vanilla",
-		self_contained = FALSE
-	),
-	output_dir = "docs",
-	output_file = "index.html",
-	quiet = TRUE
-)
 fs::dir_copy("man/figures", "docs/figures", overwrite = TRUE)
-x <- readLines("docs/index.html")
+
+fs::file_copy("README.md", "docs/README.md", overwrite = TRUE)
+x <- readLines("docs/README.md")
+x <- c("## xaringanExtra", x[-1:-2])
 x <- gsub(paste0(getwd(), "/man/"), "", x, fixed = TRUE)
 x <- gsub("docs/", "", x, fixed = TRUE)
 x <- gsub("#-", "#", x, fixed = TRUE)
 x <- gsub("#animatecss", "#animate.css", x, fixed = TRUE)
-writeLines(x, "docs/index.html")
+idx_headers <- grep("^(## [^[:graph:]]+ (.+))", x, perl = TRUE)
+headers <- x[idx_headers]
+headers_slug <- sub("^## [^[:graph:]]+ ", "", headers, perl = TRUE)
+headers_slug <- sub("[^[:alnum:]]", "-", tolower(headers_slug), perl = TRUE)
+headers <- paste0(headers, " :id=", headers_slug)
+x[idx_headers] <- headers
+x <- sub(
+	"^#### 📺 \\[(.+?)\\]\\(.+gadenbuie.github.io/xaringanExtra/(.+?)\\)\\s*$",
+	'<iframe src="/\\2/index.html" title="\\1" width=100% height=400px loading=lazy></iframe>',
+	x
+)
+writeLines(x, "docs/README.md")

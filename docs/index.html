@@ -1,291 +1,55 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>xaringanExtra</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
-
-  <script src="index_files/header-attrs/header-attrs.js"></script>
-  <link href="index_files/cleanrmd/vanilla.css" rel="stylesheet" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
 </head>
 <body>
-<style type="text/css" charset="utf-8">
-main {
-  max-width: 48em;
-  margin: auto;
-}
-
-@media only screen and (max-width: 768px) {
-  main {
-    max-width: 100%;
-  }
-}
-
-img {
-  max-width: 100%;
-}
-</style>
-
-
-<main>
-<header>
-<h1 id="title" class="toc-ignore">xaringanExtra</h1>
-
-</header>
-
-
-<!-- badges: start -->
-<!-- badges: end -->
-<style type="text/css">
-@media only screen and (max-width: 1000px) {
-  main {
-    margin: 0 1em;
-  }
-}
-</style>
-<!-- Links -->
-<p><code>xaringanExtra</code> is a playground of enhancements and extensions for <a href="https://slides.yihuie.name/xaringan">xaringan</a> slides.</p>
-<ul>
-<li>Add an overview of your presentation with <a href="#tile-view">tile view</a></li>
-<li>Make your slides <a href="#editable">editable</a></li>
-<li>Announce slide changes with a <a href="#slide-tone">subtle tone</a></li>
-<li>Animate slide transitions with <a href="#animate.css">animate.css</a></li>
-<li>Add tabbed panels to slides with <a href="#panelset">panelset</a></li>
-<li>Add a logo to all of your slides with <a href="#logo">logo</a></li>
-<li>Use the <a href="#tachyons">Tachyons CSS utility toolkit</a></li>
-<li>Add a live video feed of your <a href="#webcam">webcam</a></li>
-<li>Fit your slides to <a href="#fit-to-screen">fill the browser window</a></li>
-</ul>
-<p>Each item can be enabled separately, or load everything at once with a single call.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="in">```{r xaringanExtra, echo=FALSE}</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="in">xaringanExtra::use_xaringan_extra(c(&quot;tile_view&quot;, &quot;animate_css&quot;, &quot;tachyons&quot;))</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="in">```</span></span></code></pre></div>
-<h2 id="installation">Installation</h2>
-<p>You can install the current version of xaringanExtra from GitHub.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;gadenbuie/xaringanExtra&quot;</span>)</span></code></pre></div>
-<h2 id="tile-view">🗺 Tile View</h2>
-<h4 id="tile-view-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/tile-view">Tile View Demo</a></h4>
-<p>Tile view gives you a way to quickly jump between slides. Just press <kbd>O</kbd> (the letter <strong>O</strong> for <strong>O</strong>verview) at any point in your slideshow and the tile view appears. Click on a slide to jump to the slide, or press <kbd>O</kbd> to exit tile view.</p>
-<p><img src="figures/tile-view.png" /></p>
-<p>To add tile view to your xaringan presentation, add the following code chunk to your slides’ R Markdown file.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="in">```{r xaringan-tile-view, echo=FALSE}</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="in">xaringanExtra::use_tile_view()</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="in">```</span></span></code></pre></div>
-<p>Tile view is heavily inspired by (and is essentially a port to Vanilla JavaScript of) <a href="https://github.com/StephenHesperus/remark-hook/">a jQuery remarkjs hook</a> by the same name by <a href="https://github.com/StephenHesperus">Stephen Hesperus</a>.</p>
-<h2 id="editable">📝 Editable</h2>
-<h4 id="editable-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/editable">Editable Demo</a></h4>
-<p>Editable gives you a way to write directly inside your slides, updating your content live. Make any element of your slides editable by using the <code>.can-edit[...]</code> class.</p>
-<p><img src="figures/editable.gif" /></p>
-<p>Make your slides editable with the following code chunk.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="in">```{r xaringan-editable, echo=FALSE}</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="in">xaringanExtra::use_editable(expires = 1)</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="in">```</span></span></code></pre></div>
-<p>Then, to make a component of your slides editable, use the <code>.can-edit[]</code> class.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">## .can-edit[You can edit this slide title]</span></span></code></pre></div>
-<p>Editable fields that only have the <code>.can-edit</code> class are reset whenever the slides are re-loaded in your browser. If you want to store the edited values and have them persist across browser sessions, give each editable field a <code>.key-&lt;NAME&gt;</code> class. Be sure to make each key unique and note that the key name must be a valid CSS class, i.e. it cannot contain spaces.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">## .can-edit.key-firstSlideTitle[Change this title and then reload the page]</span></span></code></pre></div>
-<p>For more complicated HTML elements, it’s best to make only spans of text editable, such as</p>
-<pre><code>Hello, .can-edit[world], and welcome to my talk!</code></pre>
-<p>or to use placeholder text.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">## A few of my favorite things</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a>.can-edit.key-likes[</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="ss">- </span>thing one</span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="ss">- </span>thing two</span>
-<span id="cb8-6"><a href="#cb8-6"></a>]</span></code></pre></div>
-<h2 id="slide-tone">🔊 Slide Tone</h2>
-<h4 id="slide-tone-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/slide-tone">Slide Tone Demo</a></h4>
-<p>Slide tone plays a subtle sound when you change slides. It was <a href="https://github.com/yihui/xaringan/issues/214">requested by a blind R user</a> and enables users to hear an auditory signal of their progress through the slides.</p>
-<p>The tones increase in pitch for each slide from a low C to a high C note. The tone pitch stays the same for incremental slides.</p>
-<p>Visit the <a href="https://gadenbuie.github.io/xaringanExtra/slide-tone">slide tone demo slides</a> to experience it yourself. Or include slide tone in your next xaringan presentation by adding the following code chunk to your slides’ R Markdown.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="in">```{r xaringan-slide-tone, echo=FALSE}</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="in">xaringanExtra::use_slide_tone()</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="in">```</span></span></code></pre></div>
-<h2 id="animate.css">📽 Animate.css</h2>
-<h4 id="animate.css-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/animate-css">Animate.css Demo</a></h4>
-<p><a href="http://daneden.github.io/animate.css">Animate.css</a> is a popular collection of CSS animations. It contains</p>
-<blockquote>
-<p>a bunch of cool, fun, and cross-browser animations for you to use in your projects. Great for emphasis, home pages, sliders, and general just-add-water-awesomeness.</p>
-</blockquote>
-<p>Use <code>use_animate_css()</code> to include the animate.css stylesheets in your slides. This function automatically modifies the CSS selector that enables the animation so that only the slides that are visible are animated. This drastically improves performance on large slide decks with many animations. For use in other HTML documents, set <code>xaringan = FALSE</code> to load the default <code>animate.css</code> file without this performance tweak.</p>
-<p>To use animate.css in your slides, add the following code chunk to your slides’ R Markdown.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a><span class="in">```{r xaringan-animate-css, echo=FALSE}</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="in">xaringanExtra::use_animate_css()</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="in">```</span></span></code></pre></div>
-<p>Then add the <code>animated</code> class and the <a href="http://daneden.github.io/animate.css">desired animation class</a> to the slides you want to animate. <code>Out</code> animations are only applied to slides on exit.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">---</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="an">class:</span><span class="co"> animated slideInRight fadeOutLeft</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co">## This slide...</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="co">- slides in from the right </span></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="co">- and fades out to the left on exit</span></span></code></pre></div>
-<p>If you want to use the same slide transitions for all slides, you can use <code>use_animate_all()</code>. This function sets a default in and out animation for all slides. Animations can be disabled for individual slides by adding the class <code>no-animation</code> to the slide.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1"></a><span class="in">```{r xaringan-animate-all, echo=FALSE}</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="in">xaringanExtra::use_animate_all(&quot;slide_left&quot;)</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="in">```</span></span></code></pre></div>
-<p>Note: because <code>use_animate_all()</code> only imports the CSS required for the slide in and slide out animations, you need to also include <code>use_animate_css()</code> (see above) if you want to use other animations from <code>animate.css</code> in your slides.</p>
-<h2 id="panelset">🗂 Panelset</h2>
-<h4 id="panelset-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/panelset">Panelset Demo</a></h4>
-<p>Panelset adds accessible tabbed panels — just like R Markdown’s <code>.tabset</code> panels — to your xaringan slides. You can activate a panel by clicking on the tab, or you can use the keyboard. When you reach a slide with a panelset, the left and right arrows will step through the panels.</p>
-<p>To use panelset, add the following chunk to your slides.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="in">```{r xaringan-panelset, echo=FALSE}</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="in">xaringanExtra::use_panelset()</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="in">```</span></span></code></pre></div>
-<p><img src="figures/panelset.gif" /></p>
-<p>Then, create a <code>.panelset[...]</code> that contains <code>.panels[]</code>. Each <code>.panel[]</code> should have a <code>.panel-name[]</code> and content (everything that isn’t the panel’s name).</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a>.panel<span class="co">[</span><span class="ot">.panel-name[NAME</span><span class="co">]</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>...content...</span>
-<span id="cb14-3"><a href="#cb14-3"></a>]</span></code></pre></div>
-<p>Here’s the example used in the demo slides.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a>.panelset[</span>
-<span id="cb15-2"><a href="#cb15-2"></a>.panel<span class="co">[</span><span class="ot">.panel-name[R Code</span><span class="co">]</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="in">```{r panel-chunk, fig.show=&#39;hide&#39;}</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="in"># ... r code ...</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="in">```</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a>]</span>
-<span id="cb15-8"><a href="#cb15-8"></a></span>
-<span id="cb15-9"><a href="#cb15-9"></a>.panel<span class="co">[</span><span class="ot">.panel-name[Plot</span><span class="co">]</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a></span>
-<span id="cb15-11"><a href="#cb15-11"></a><span class="al">![](/Users/garrick/Repos/xaringanExtra/index_files/figure-html5/panel-chunk-1.png)</span></span>
-<span id="cb15-12"><a href="#cb15-12"></a>]</span>
-<span id="cb15-13"><a href="#cb15-13"></a>]</span></code></pre></div>
-<p>To customize the appearance of your panels, you can use <code>style_panelset()</code> called directly in an R chunk in your slides.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a><span class="in">```{r echo=FALSE}</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="in">style_panelset(panel_tab_color_active = &quot;red&quot;)</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="in">```</span></span></code></pre></div>
-<p>The panelset uses custom CSS properties to make it easier to change the styles of the panel tabs. The default values are shown in the CSS code below. You can copy the whole CSS block to your slides and modify the values to customize the style to fit your presentation.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1"></a><span class="in">```{css echo=FALSE}</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="in">.panelset {</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="in">  --panel-tab-color: currentColor;</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="in">  --panel-tab-color-active: currentColor;</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="in">  --panel-tab-color-hover: currentColor;</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="in">  --panel-tabs-border-bottom: #ddd;</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a><span class="in">  --panel-tab-inactive-opacity: 0.5;</span></span>
-<span id="cb17-8"><a href="#cb17-8"></a><span class="in">  --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;</span></span>
-<span id="cb17-9"><a href="#cb17-9"></a><span class="in">}</span></span>
-<span id="cb17-10"><a href="#cb17-10"></a><span class="in">```</span></span></code></pre></div>
-<h2 id="logo">💌 Logo</h2>
-<h4 id="logo-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/logo">Logo Demo</a></h4>
-<p><code>use_logo()</code> adds a logo to all of your slides. You can make the logo a clickable link and choose where on the slide it is placed. You can also set which types of slides will not get the logo by default.</p>
-<p>To add a logo to your xaringan presentation, add the following code chunk to your slides’ R Markdown file.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1"></a><span class="in">```{r xaringan-logo, echo=FALSE}</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="in">xaringanExtra::use_logo(</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="in">  image_url = &quot;https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png&quot;</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="in">)</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="in">```</span></span></code></pre></div>
-<p>See the documentation for <code>?use_logo</code> for more options regarding sizing and positioning. You can also make the logo a link using <code>link_url</code>.</p>
-<h2 id="tachyons">🏗 Tachyons</h2>
-<h4 id="tachyons-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/tachyons">Tachyons Demo</a></h4>
-<p><a href="http://tachyons.io/">Tachyons</a> is a collection of CSS utility classes that works beautifully with <a href="https://slides.yihuie.name/xaringan">xaringan</a> presentations and the <a href="http://remarkjs.com/">remarkjs</a> class syntax.</p>
-<p>To use tachyons in your slides, add the following code chunk to your slides’ R Markdown.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1"></a><span class="in">```{r xaringan-tachyons, echo=FALSE}</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="in">xaringanExtra::use_tachyons()</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="in">```</span></span></code></pre></div>
-<p>Tachyons provides small, single-purpose CSS classes that are easily composed to achieve larger functionality and styles. In the <a href="https://github.com/gnab/remark/wiki/Markdown#content-classes">remarkjs content classes syntax</a>, you can compose classes by chaining them together. For example, the following markdown produces a box with a washed green background (<code>.bg-washed-green</code>) and a dark green border (<code>.b--dark-green</code>) on all sides (<code>.ba</code>) with line width 2 (<code>.bw2</code>) and border radius (<code>.br3</code>). The box has a shadow (<code>.shadow-5</code>) and medium-large horizontal padding (<code>.ph4</code>) with a large top margin (<code>.mt5</code>).</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1"></a>.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[</span>
-<span id="cb20-2"><a href="#cb20-2"></a>The only way to write good code is to write tons of bad code first. </span>
-<span id="cb20-3"><a href="#cb20-3"></a>Feeling shame about bad code stops you from getting to good code</span>
-<span id="cb20-4"><a href="#cb20-4"></a></span>
-<span id="cb20-5"><a href="#cb20-5"></a>.tr[</span>
-<span id="cb20-6"><a href="#cb20-6"></a>— Hadley Wickham</span>
-<span id="cb20-7"><a href="#cb20-7"></a>]]</span></code></pre></div>
-<p><img src="figures/tachyons.png" /></p>
-<p>Tachyons provides hundreds of CSS classes that are abbreviated and terse, so it takes some time to learn. In addition to the <a href="http://tachyons.io/">tachyons documentation</a>, the <a href="https://roperzh.github.io/tachyons-cheatsheet/">Tachyons Cheatsheet</a> is an excellent and easy to use reference.</p>
-<h2 id="webcam">🤳 Webcam</h2>
-<h4 id="webcam-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/webcam">Webcam Demo</a></h4>
-<p>Add a live video of your webcam into your slides (in your own browser only). Useful when you are presenting via video conference to include your video, or when you are recording a class or lecture.</p>
-<p>To add <strong>webcam</strong> to your xaringan presentation, add the following code chunk to your slides’ R Markdown file.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="in">xaringanExtra::use_webcam()</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="in">```</span></span></code></pre></div>
-<p>Inside your slides, press <strong>w</strong> to turn the webcam on and off, or press <strong>Shift</strong> + <strong>W</strong> to move the video to the next corner. You can also drag and drop the video within the browser window.</p>
-<p>The webcam extension is based on the original <a href="https://yihui.org/en/2017/12/html5-camera/">webcam implementation</a> by Yihui Xie, author of <a href="https://slides.yihuie.name/xaringan">xaringan</a>.</p>
-<h2 id="fit-to-screen">📐 Fit to Screen</h2>
-<h4 id="fit-to-screen-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/fit-screen">Fit to Screen Demo</a></h4>
-<p>xaringan/remark slides scale at a consistent ratio when the browser window is resized. In other words, if the slide ratio is <code>4:3</code>, then remark scales the slides and positions them in the browser window so that they maintain the aspect ratio.</p>
-<p>In certain situations, like when showing slides in split screen next to another window like RStudio, this causes the slides to become rather small. Alternatively, it’s a great way to be able to adapt your slides to the aspect ratio of the projector or television screen when you don’t know the ratio ahead of time.</p>
-<p>This extension adds a short cut key — <kbd>Alt</kbd>/<kbd>Option</kbd>+ <kbd>F</kbd> — that fits the slides to the screen and ignores the slide ratio. (Currently, it only turns on; reload your slides to return to normal.)</p>
-<p><img src="figures/fit-screen.gif" /></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="in">```{r xaringan-fit-screen, echo=FALSE}</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="in">xaringanExtra::use_fit_screen()</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="in">```</span></span></code></pre></div>
-
-</main>
-
-
+	<style>
+		.cover.show, .cover.show h1 > .anchor span {
+			color: white;
+		}
+		.cover.show h1 {
+			font-size: 10vw;
+		}
+	</style>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+    	repo: 'gadenbuie/xaringanExtra',
+    	coverpage: 'cover.md',
+    	maxLevel: 2
+    }
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+  <script>
+    (function setCoverBg(i) {
+    	let el = document.querySelector('.cover.show')
+    	if (!el || !el.style.background || i >= 0) {
+    		if (el && el.style.background) {
+    			setTimeout(() => setCoverBg(-1), 500);
+    			return;
+    		}
+    		if (i < 20) setTimeout(() => setCoverBg(++i), 100);
+    	} else {
+    		el.style.backgroundImage = 'linear-gradient(45deg, rgba(58, 58, 197, 0.5) 0%,' +
+    		' rgba(58, 58, 197, 0.5) 16.667%,rgba(94, 66, 189, 0.5) 16.667%, ' +
+    		'rgba(94, 66, 189, 0.5) 33.334%,rgba(130, 74, 181, 0.5) 33.334%,' +
+    		'rgba(130, 74, 181, 0.5) 50.001%,rgba(167, 82, 173, 0.5) 50.001%,' +
+    		'rgba(167, 82, 173, 0.5) 66.668%,rgba(203, 90, 165, 0.5) 66.668%,' +
+    		'rgba(203, 90, 165, 0.5) 83.335%,rgba(239, 98, 157, 0.5) 83.335%,' +
+    		'rgba(239, 98, 157, 0.5) 100.002%),linear-gradient(135deg,' +
+    		'rgb(124, 22, 73) 0%, rgb(124, 22, 73) 16.667%,rgb(149, 30, 78) 16.667%,' +
+    		'rgb(149, 30, 78) 33.334%,rgb(174, 38, 83) 33.334%,' +
+    		'rgb(174, 38, 83) 50.001%,rgb(200, 45, 88) 50.001%,' +
+    		'rgb(200, 45, 88) 66.668%,rgb(225, 53, 93) 66.668%,' +
+    		'rgb(225, 53, 93) 83.335%,rgb(250, 61, 98) 83.335%,' +
+    		'rgb(250, 61, 98) 100.002%)';
+    	}
+    })(0)
+    </script>
 </body>
 </html>
