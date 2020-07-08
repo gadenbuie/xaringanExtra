@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>logo .gray[for xaringan]</title>
     <meta charset="utf-8" />
     <meta name="author" content="Garrick Aden-Buie" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/robot-fonts.css" rel="stylesheet" />
     <link href="libs/remark-css/robot.css" rel="stylesheet" />
-    <link href="libs/xaringanExtra-logo/logo.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-logo/logo.js"></script>
   </head>
   <body>
@@ -31,6 +31,19 @@ xaringanExtra::use_logo(
   position = xaringanExtra::css_position(top = "1em", right = "1em")
 )
 ```
+
+<style type="text/css">
+.xaringan-extra-logo {
+  width: 110px;
+  height: 128px;
+  z-index: 0;
+  background-image: url('https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top:1em;right:1em;
+}
+</style>
 
 &lt;style type="text/css"&gt;
 .gray { color: #999; }
@@ -183,9 +196,25 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
-
-<script>
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
 (function() {
   var links = document.getElementsByTagName('a');
   for (var i = 0; i < links.length; i++) {
@@ -193,8 +222,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
       links[i].target = '_blank';
     }
   }
-})();
-</script>
+})();</script>
 
 <script>
 slideshow._releaseMath = function(el) {

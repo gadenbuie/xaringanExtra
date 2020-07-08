@@ -7,3 +7,5 @@
 ^package-lock\.json$
 ^package\.json$
 ^_tmp$
+^tests/manual$
+^README\.Rmd$

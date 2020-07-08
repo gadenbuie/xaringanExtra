@@ -10,7 +10,7 @@
 #' - Add tabbed panels to slides with [use_panelset()]
 #' - Add a logo to all of your slides with [use_logo()]
 #' - Use the Tachyons CSS utility toolkit: [use_tachyons()]
-#' - Create fancy poster-style text blocks with [text_poster()]
+#' - Add a live video feed to you slides with [use_webcam()]
 #' - Fit your slides to fill the browser window: [use_fit_screen()]
 #'
 #' @keywords internal
@@ -19,14 +19,13 @@
 #' Use xaringanExtra Extensions
 #'
 #' Load multiple \pkg{xaringanExtra} extensions at once. All extensions can be
-#' loaded with this function, except for [text_poster()] which is more easily
-#' called directly as needed.
+#' loaded with this function.
 #'
 #' @return An `htmltools::tagList()` with the [htmltools::htmlDependency()]s
 #'   for the requested extensions.
 #' @param include Character vector of extensions to include. One or more of
 #'   `"tile_view"`, `"editable"`, `"slide_tone"`, `"animate_css"`, `"panelset"`
-#'   `"tachyons"`, `"fit_screen"`.
+#'   `"tachyons"`, `"fit_screen"`, `"webcam"`.
 #' @export
 use_xaringan_extra <- function(
   include = c("tile_view", "animate_css", "tachyons", "panelset")) {
@@ -37,7 +36,8 @@ use_xaringan_extra <- function(
     "slide_tone",
     "fit_screen",
     "panelset",
-    "editable"
+    "editable",
+    "webcam"
   )
   include <- match.arg(include, opts, TRUE)
   includes <- function(x) x %in% include
@@ -48,7 +48,8 @@ use_xaringan_extra <- function(
     if (includes("slide_tone")) html_dependency_slide_tone(),
     if (includes("fit_screen")) html_dependency_fit_screen(),
     if (includes("panelset")) html_dependency_panelset(),
-    if (includes("editable")) html_dependency_editable()
+    if (includes("editable")) html_dependency_editable(),
+    if (includes("webcam")) html_dependency_webcam()
   )
 }
 

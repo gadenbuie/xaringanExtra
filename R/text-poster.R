@@ -1,7 +1,8 @@
-#' Text Poster
+#' Text Poster (Deprecated)
 #'
-#' Text poster typesets text to fit within a rectangular bounding box, with the
-#' text on each line scaled to fit the horizontal space.
+#' DEPRECATED: Text poster has been deprecated and will be removed in a future
+#' release. Text poster typesets text to fit within a rectangular bounding box,
+#' with the text on each line scaled to fit the horizontal space.
 #'
 #' @return The `text_poster()` function returns HTML with the following
 #'   structure:
@@ -35,7 +36,8 @@
 #'   `text_poster()` to create a block of poster text. Include line breaks in
 #'   the text string to split the text block.
 #'
-#'   ```{r poster-text, echo=FALSE}
+#'   ````markdown
+#'   ```{r poster-text, echo=FALSE}`r ''`
 #'   xaringanExtra::text_poster(
 #'     "There are no
 #'     routine statistical
@@ -67,6 +69,10 @@ text_poster <- function(
   class = NULL,
   ...
 ) {
+  warning(
+    "text_poster() is deprecated and will eventually be removed from xaringanExtra",
+    immediate. = TRUE
+  )
   css_unit <- function(key, value = NULL, validate = TRUE) {
     if (is.null(value)) {
       return("")
@@ -107,6 +113,10 @@ text_poster <- function(
 #'   need to call this function.
 #' @export
 use_text_poster <- function() {
+  warning(
+    "use_text_poster() is deprecated and will eventually be removed from xaringanExtra",
+    immediate. = TRUE
+  )
   htmltools::tagList(
     html_dependency_text_poster()
   )

@@ -2,7 +2,7 @@ devtools::document()
 devtools::install(dependencies = FALSE)
 
 
-rmarkdown_v_expected <- package_version("2.0.7")
+rmarkdown_v_expected <- package_version("2.1")
 rmarkdown_v <- packageVersion("rmarkdown")
 if (rmarkdown_v != rmarkdown_v_expected) {
 	message("The last version of rmarkdown used was ", rmarkdown_v_expected,
@@ -11,8 +11,8 @@ if (rmarkdown_v != rmarkdown_v_expected) {
 
 docs <- file.path(
 	"docs",
-	c("slide-tone", "tile-view", "animate-css", "tachyons", "text-poster",
-		"panelset", "editable", "logo")
+	c("slide-tone", "tile-view", "animate-css", "tachyons",
+		"panelset", "editable", "logo", "webcam")
 )
 
 for (doc in docs) {
@@ -26,8 +26,21 @@ for (doc in docs) {
 	rmarkdown::render(file.path(doc, "index.Rmd"), quiet = TRUE)
 }
 
+message("Rendering README")
+rmarkdown::render("README.Rmd", quiet = TRUE)
+
 message("Rendering docs/index.html from README.md")
-rmarkdown::render("README.md", output_format = cleanrmd::html_document_clean(theme = "vanilla"), output_file = "docs/index.html")
+rmarkdown::render(
+	"README.Rmd",
+	output_format = cleanrmd::html_document_clean(
+		theme = "new.css",
+		self_contained = FALSE
+	),
+	output_file = "docs/index.html",
+	quiet = TRUE
+)
+fs::dir_create("docs")
+fs::dir_copy("man/figures", "docs", overwrite = TRUE)
 x <- readLines("docs/index.html")
 x <- gsub("docs/", "", x, fixed = TRUE)
 x <- gsub("#-", "#", x, fixed = TRUE)

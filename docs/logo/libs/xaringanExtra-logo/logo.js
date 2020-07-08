@@ -10,6 +10,5 @@ function addLogo() {
     	.forEach(el => el.innerHTML += '<a href="http://slides.yihui.name/xaringan" class="xaringan-extra-logo"></a>')
   }
 }
-
 document.addEventListener('DOMContentLoaded', addLogo)
 })()
