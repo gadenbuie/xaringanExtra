@@ -1,0 +1,13 @@
+To add **webcam** to your xaringan presentation,
+add the following code chunk to your slides' R Markdown file.
+
+````markdown
+```{r}`r ''`
+xaringanExtra::use_webcam()
+```
+````
+
+Inside your slides, 
+press **w** to turn the webcam on and off,
+or press **Shift** + **W** to move the video to the next corner.
+You can also drag and drop the video within the browser window.

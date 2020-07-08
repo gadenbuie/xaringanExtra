@@ -1,0 +1,193 @@
+---
+title: "webcam<br>.gray[for xaringan]"
+pagetitle: "webcam | xaringanExtra"
+subtitle: ".big[&#x1F933;]"
+author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
+date: 'xaringanExtra'
+output:
+  xaringan::moon_reader:
+    css: [robot-fonts, robot]
+    lib_dir: libs
+    nature:
+      highlightStyle: atom-one-light
+---
+
+class: middle
+
+```{r xaringan-webcam, include = FALSE}
+xaringanExtra::use_webcam(300, 300 / 4 * 3)
+```
+
+## Enable .red[webcam]
+
+--
+
+Enable only the **webcam** extension...
+
+````markdown
+```{r xaringan-webcam, include = FALSE}`r ''`
+xaringanExtra::use_webcam()
+```
+````
+
+--
+
+...or enable a few extensions at once
+
+````markdown
+```{r xaringanExtra, include = FALSE}`r ''`
+xaringanExtra::use_xaringan_extra(c("tileview", "webcam"))
+```
+````
+
+--
+
+Then press .key[w] to turn on the **webcam** — go ahead and try it!
+
+```{css, echo=FALSE}
+.gray { color: #999; }
+.big { font-size: 200%; }
+.red { color: red; }
+.mt-big { margin-top: 6em; }
+.wide-slide {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.key {
+color:#000;
+margin:0 5px;
+padding:1px 5px;
+font-family:courier new;
+font-size:1.2em;
+border:1px #fff;
+-webkit-border-radius:3px;
+   -moz-border-radius:3px;
+        border-radius:3px;
+background:-webkit-gradient(
+  linear,
+  left top,
+  right top,
+  color-stop(0%, #fff),
+  color-stop(25%, #fff)
+/* White Keyboard Key Style by Showeblogin */);
+background:-o-linear-gradient(left, #fff 0%, #fff 25%);
+background:-moz-linear-gradient(left, #fff 0%, #fff 25%);
+background:-webkit-linear-gradient(left, #fff 0%, #fff 25%);
+background:-ms-linear-gradient(left, #fff 0%, #fff 25%);
+background:linear-gradient(left, #fff 0%, #fff 25%);
+-webkit-box-shadow:1px 0 1px 0 #999, 0 2px 0 2px lightGray, 0 2px 0 3px #666;
+   -moz-box-shadow:1px 0 1px 0 #999, 0 2px 0 2px lightGray, 0 2px 0 3px #666;
+        box-shadow:1px 0 1px 0 #999, 0 2px 0 2px lightGray, 0 2px 0 3px #666;
+}
+```
+
+---
+class: left middle wide-slide
+
+## Move the Video Around
+
+Click and drag to move the video around.
+
+--
+
+.right.mt-big[
+## Cycle Through the Screen Corners
+
+Press .key[Shift] + .key[W] to move the video to the next corner.
+
+.big[&#x2197;&#xFE0F; &#x2198;&#xFE0F; &#x2199;&#xFE0F; &#x2196;&#xFE0F;]
+]
+
+---
+background-image: url('yihui.jpg')
+background-size: cover
+
+```{css echo=FALSE}
+#arrow path {
+  fill: white;
+}
+
+#arrow {
+  transform: rotateY(180deg) scale(0.5);
+  position: absolute;
+  top: -30px;
+  right: 210px;
+}
+
+.the-real-hero {
+	color: white;
+	font-size: 2.5em;
+	position: absolute;
+	top: 230px;
+	right: 50px;
+}
+```
+
+<div class="the-real-hero">the real hero</div>
+
+<svg version="1.1" id="arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="370.353px" height="370.353px" viewBox="0 0 370.353 370.353" style="enable-background:new 0 0 370.353 370.353;"
+	 xml:space="preserve">
+<g>
+	<path d="M368.432,166.578c-23.256-19.584-42.84-42.84-63.648-64.872c-11.016-11.628-28.151-34.884-46.512-36.108
+		c-1.224-1.836-3.06-3.06-7.344-2.448c-2.448,0.612-4.284,2.448-4.896,4.896c-3.672,14.076-3.06,28.764-3.06,43.452
+		c-53.856-7.344-116.893,19.584-159.732,48.348C36.115,191.057-0.605,243.078,0.007,301.217c0,2.448,1.836,3.672,3.672,4.284
+		c1.836,1.836,4.284,2.448,6.732,1.224c70.992-50.184,145.044-94.247,235.009-78.947h0.611c-5.508,17.748-6.119,37.943-6.119,56.304
+		c0,5.508,4.896,7.344,8.567,6.732c1.836,2.447,6.12,4.283,9.18,1.224c40.393-33.66,84.456-71.604,111.385-117.503
+		C370.88,172.698,370.88,168.414,368.432,166.578z M348.235,183.102c-10.403,15.3-23.868,28.764-37.332,42.228
+		c-18.359,18.36-39.168,34.272-56.916,53.244c0-16.524-0.611-33.048,0.612-50.185c0-1.836-0.612-3.06-1.836-3.672
+		c1.836-3.672,1.224-8.567-3.672-9.792c-88.741-18.972-170.749,23.256-239.292,77.112c9.18-53.856,41.004-94.248,86.904-124.848
+		s93.637-36.72,146.269-42.84v0.612c-0.612,4.896,7.344,5.508,8.568,1.224c0-1.224,0.611-1.836,0.611-3.06
+		c3.672-1.836,4.896-6.732,1.836-8.568c1.836-9.792,2.448-19.584,3.672-29.376c0-1.836,0.612-4.896,1.225-7.956
+		c7.956,10.404,21.42,19.584,30.6,28.764c17.748,18.36,34.272,37.944,52.632,56.304
+		C351.907,170.862,356.191,170.862,348.235,183.102z"/>
+</g>
+</svg>
+
+---
+class: center middle
+
+.yihui-title[
+Embed a Live Video of Yourself Through Your Camera in HTML5 Slides
+]
+
+.yihui-subtitle[
+with a xaringan example
+]
+
+.yihui-author[
+Yihui Xi / 2017-12-07
+]
+
+.link[
+<https://yihui.org/en/2017/12/html5-camera/>
+]
+
+```{css echo=FALSE}
+.yihui-title {
+  font-family: serif;
+  font-size: 44px;
+}
+
+.yihui-subtitle {
+  font-family: serif;
+  color: #666;
+}
+
+.yihui-author {
+  font-family: serif;
+  margin-top: 3em;
+  padding-bottom: 1.5em;
+  border: ;
+  border-bottom: 1px solid #888;
+  margin-bottom: 2.5em;
+}
+```
+
+---
+layout: false
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)

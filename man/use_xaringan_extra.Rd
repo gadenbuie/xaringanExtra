@@ -11,7 +11,7 @@ use_xaringan_extra(
 \arguments{
 \item{include}{Character vector of extensions to include. One or more of
 \code{"tile_view"}, \code{"editable"}, \code{"slide_tone"}, \code{"animate_css"}, \code{"panelset"}
-\code{"tachyons"}, \code{"fit_screen"}.}
+\code{"tachyons"}, \code{"fit_screen"}, \code{"webcam"}.}
 }
 \value{
 An \code{htmltools::tagList()} with the \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}s
