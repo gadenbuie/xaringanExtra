@@ -26,6 +26,9 @@ for (doc in docs) {
 	rmarkdown::render(file.path(doc, "index.Rmd"), quiet = TRUE)
 }
 
+message("Rendering README")
+rmarkdown::render("README.Rmd", quiet = TRUE)
+
 message("Rendering docs/index.html from README.md")
 rmarkdown::render(
 	"README.Rmd",

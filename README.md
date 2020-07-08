@@ -18,7 +18,6 @@ xaringanExtra
   - Add a logo to all of your slides with [logo](#-logo)
   - Use the [Tachyons CSS utility toolkit](#-tachyons)
   - Add a live video feed of your [webcam](#-webcam)
-  - Create fancy [poster-style text blocks](#-text-poster)
   - Fit your slides to [fill the browser window](#-fit-to-screen)
 
 Each item can be enabled separately, or load everything at once with a
@@ -343,6 +342,8 @@ excellent and easy to use reference.
 
 ## 🤳 Webcam
 
+#### 📺 [Webcam Demo](https://gadenbuie.github.io/xaringanExtra/webcam)
+
 Add a live video of your webcam into your slides (in your own browser
 only). Useful when you are presenting via video conference to include
 your video, or when you are recording a class or lecture.
@@ -363,35 +364,6 @@ drag and drop the video within the browser window.
 The webcam extension is based on the original [webcam
 implementation](https://yihui.org/en/2017/12/html5-camera/) by Yihui
 Xie, author of [xaringan](https://slides.yihuie.name/xaringan).
-
-## 🔠 Text Poster
-
-#### 📺 [Text Poster Demo](https://gadenbuie.github.io/xaringanExtra/text-poster)
-
-*Text poster* typesets text to fit within a rectangular bounding box,
-with the text on each line scaled to fit the horizontal space. Built
-using [text-poster.js](https://github.com/IMAGINARY/text-poster#readme).
-
-![](man/figures/text-poster.png)
-
-```` markdown
----
-class: center middle
-
-<!--html_preserve--><div class="text-poster" style="width:100%;height:100%;padding:1em;">
-<div class="text-poster__text" data-text="There are no &#10;  routine statistical&#10;  questions, only questionable &#10;  statistical routines."></div>
-</div><!--/html_preserve-->
-
-.footnote.pull-right[— Sir David Cox]
-
-```{css echo=FALSE}
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300');
-
-.text-poster {
-    font-family: 'Merriweather', serif;
-}
-```
-````
 
 ## 📐 Fit to Screen
 
