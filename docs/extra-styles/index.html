@@ -1,107 +1,70 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>editable .gray[for xaringan]</title>
+    <title>extra styles .gray[for xaringan]</title>
     <meta charset="utf-8" />
     <meta name="author" content="Garrick Aden-Buie" />
     <link href="libs/remark-css/robot-fonts.css" rel="stylesheet" />
     <link href="libs/remark-css/robot.css" rel="stylesheet" />
-    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
-    <script src="libs/tile-view/tile-view.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xaringanExtra-editable-demo-1","expires":14}</script>
-    <script src="libs/himalaya/himalaya.js"></script>
-    <script src="libs/js-cookie/js.cookie.js"></script>
-    <link href="libs/editable/editable.css" rel="stylesheet" />
-    <script src="libs/editable/editable.js"></script>
+    <link href="libs/xaringanExtra-extra-styles_extra-styles-docs/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# editable<br>.gray[for xaringan]
-## .big[📝]
+# extra styles<br>.gray[for xaringan]
+## .big[😎]
 ### <a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>
 ### xaringanExtra
 
 ---
 
 
+class: middle
 
 
-&lt;style type="text/css"&gt;
-.gray { color: #999; }
-.big { font-size: 200%; }
-.red { color: #d22; }
-&lt;/style&gt;
-
-## What do you think of .can-edit.red[xaringan]?
-
-.pull-left[
-### &amp;#x1F917; Things I like
-
-.can-edit.key-likes[
-- pro
-]
-]
-
-.pull-right[
-### &amp;#x1F620; Things I don't like
-
-.can-edit.key-dislikes[
-- con
-]
-]
-
----
-
-## How it works
-
-Use **editable** from [xaringanExtra](https://github.com/gadenbuie/xaringanExtra).
 
 ````markdown
-```{r xaringan-editable, echo=FALSE}
-xaringanExtra::use_editable()
+```{r xaringan-extra-styles}
+# These are the defaults
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #&lt;&lt;
+  mute_unhighlighted_code = TRUE  #&lt;&lt;
+)
 ```
 ````
 
-Wrap editable things in the `.can-edit[ ]` class.
+--
 
-```markdown
-## What do you think of .can-edit.red[xaringan]?
-```
+Hover over a line in the chunk above &amp;#x261D;&amp;#xFE0F;
 
-Make edits persist across sessions by including a `.key-NAME` class.
+--
 
-```markdown
-## What do you think of .can-edit.red.key-Package[xaringan]?
+.right[or enjoy the muted elegance of the chunk below.]
+
+
+```r
+# These are the defaults
+xaringanExtra::use_extra_styles(
+* hover_code_line = TRUE,
+* mute_unhighlighted_code = TRUE
+)
 ```
 
 ---
-
-## A few more details
-
-The `expires` argument of `use_editable()` sets how long edited values are stored.
-
-Stored values are tied to each render of the document,
-so newer versions of a document won't use the values from previous versions.
-
-Once your slides are "in production", 
-and the editable fields and names won't change much,
-use the `id` argument of `use_editable()`
-to persist values across document versions.
-
----
-
+layout: false
 class: center middle
 
 &lt;img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" /&gt;
 
 ### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script>var slideshow = remark.create();
+<script>var slideshow = remark.create({
+"highlightLines": true
+});
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
@@ -166,7 +129,24 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
       links[i].target = '_blank';
     }
   }
-})();</script>
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 slideshow._releaseMath = function(el) {

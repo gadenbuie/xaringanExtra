@@ -1,0 +1,22 @@
+/* Line Hover Indicator */
+.remark-code-line:hover {
+  font-weight: bold;
+  opacity: 1 !important;
+}
+
+.remark-code-line:hover:before {
+  content: "\25B6";
+  color: #6d7e8a;
+  position: absolute;
+  transform: translateX(-1.2em);
+  animation: hover 0.66s alternate 8 cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+@keyframes hover {
+  0% {
+    transform: translateX(-1.2em);
+  }
+  100% {
+    transform: translateX(-0.8em);
+  }
+}

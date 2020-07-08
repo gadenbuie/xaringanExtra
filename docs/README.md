@@ -18,6 +18,7 @@
   - Use the [Tachyons CSS utility toolkit](#tachyons)
   - Add a live video feed of your [webcam](#webcam)
   - Fit your slides to [fill the browser window](#fit-to-screen)
+  - Add [extra CSS styles](#extra-styles)
 
 Each item can be enabled separately, or load everything at once with a
 single call.
@@ -391,3 +392,27 @@ normal.)
 xaringanExtra::use_fit_screen()
 ```
 ````
+
+## 😎 Extra Styles :id=extra-styles
+
+<iframe src="./extra-styles/index.html" title="Extra Styles Demo" width=100% height=400px loading=lazy></iframe>
+
+I’ve collected a few CSS extras that I like to include in my slides,
+that I’ve bundled up into the `use_extra_styles()` function.
+
+```` markdown
+```{r xaringan-extra-styles}
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+````
+
+  - `hover_code_line` adds a little floating triangle next to the
+    hovered line in a code chunk
+
+  - `mute_unhighlighted_code` modifies the xaringan/remarkjs line
+    highlighting to mute the lines that *aren’t highlighted*.
+
+![](figures/extra-styles-hover.gif)

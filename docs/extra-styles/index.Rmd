@@ -1,0 +1,59 @@
+---
+title: "extra styles<br>.gray[for xaringan]"
+subtitle: ".big[&#x1F60E;]"
+author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
+date: 'xaringanExtra'
+output:
+  xaringan::moon_reader:
+    css: [robot-fonts, robot]
+    lib_dir: libs
+    nature:
+      highlightLines: true
+---
+
+class: middle
+
+```{r xaringan-extra-styles, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+
+# These are the defaults
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,
+  mute_unhighlighted_code = TRUE,
+  bundle_id = "extra-styles-docs"
+)
+```
+
+````markdown
+```{r xaringan-extra-styles}`r ''`
+# These are the defaults
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+````
+
+--
+
+Hover over a line in the chunk above &#x261D;&#xFE0F;
+
+--
+
+.right[or enjoy the muted elegance of the chunk below.]
+
+```{r}
+# These are the defaults
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,        #<<
+  mute_unhighlighted_code = TRUE #<<
+)
+```
+
+---
+layout: false
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
