@@ -23,7 +23,6 @@ always_allow_html: true
 - Add a logo to all of your slides with [logo](#-logo)
 - Use the [Tachyons CSS utility toolkit](#-tachyons)
 - Add a live video feed of your [webcam](#-webcam)
-- Create fancy [poster-style text blocks](#-text-poster)
 - Fit your slides to [fill the browser window](#-fit-to-screen)
 
 Each item can be enabled separately, 
@@ -376,38 +375,6 @@ or when you are recording a class or lecture.
 The webcam extension is based on the original
 [webcam implementation](https://yihui.org/en/2017/12/html5-camera/) by
 Yihui Xie, author of [xaringan].
-
-## &#x1F520; Text Poster
-
-#### &#x1F4FA; [Text Poster Demo](https://gadenbuie.github.io/xaringanExtra/text-poster)
-
-_Text poster_ typesets text to fit within a rectangular bounding box, 
-with the text on each line scaled to fit the horizontal space.
-Built using [text-poster.js][text-poster].
-
-![](man/figures/text-poster.png)
-
-````markdown
----
-class: center middle
-
-`r xaringanExtra::text_poster(
-  "There are no 
-  routine statistical
-  questions, only questionable 
-  statistical routines."
-)`
-
-.footnote.pull-right[— Sir David Cox]
-
-```{css echo=FALSE}`r ''`
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300');
-
-.text-poster {
-	font-family: 'Merriweather', serif;
-}
-```
-````
 
 ## &#x1F4D0; Fit to Screen
 

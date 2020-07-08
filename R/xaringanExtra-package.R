@@ -11,7 +11,6 @@
 #' - Add a logo to all of your slides with [use_logo()]
 #' - Use the Tachyons CSS utility toolkit: [use_tachyons()]
 #' - Add a live video feed to you slides with [use_webcam()]
-#' - Create fancy poster-style text blocks with [text_poster()]
 #' - Fit your slides to fill the browser window: [use_fit_screen()]
 #'
 #' @keywords internal
@@ -20,8 +19,7 @@
 #' Use xaringanExtra Extensions
 #'
 #' Load multiple \pkg{xaringanExtra} extensions at once. All extensions can be
-#' loaded with this function, except for [text_poster()] which is more easily
-#' called directly as needed.
+#' loaded with this function.
 #'
 #' @return An `htmltools::tagList()` with the [htmltools::htmlDependency()]s
 #'   for the requested extensions.

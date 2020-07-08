@@ -19,7 +19,6 @@
 \item Add a logo to all of your slides with \code{\link[=use_logo]{use_logo()}}
 \item Use the Tachyons CSS utility toolkit: \code{\link[=use_tachyons]{use_tachyons()}}
 \item Add a live video feed to you slides with \code{\link[=use_webcam]{use_webcam()}}
-\item Create fancy poster-style text blocks with \code{\link[=text_poster]{text_poster()}}
 \item Fit your slides to fill the browser window: \code{\link[=use_fit_screen]{use_fit_screen()}}
 }
 }

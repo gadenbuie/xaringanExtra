@@ -78,9 +78,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
   <script src="index_files/header-attrs/header-attrs.js"></script>
   <link href="index_files/cleanrmd/new.css" rel="stylesheet" />
-  <link href="index_files/text-poster/text-poster.css" rel="stylesheet" />
-  <script src="index_files/text-poster/text-poster.js"></script>
-  <script src="index_files/text-poster/text-poster-init.js"></script>
 </head>
 <body>
 <style type="text/css" charset="utf-8">
@@ -121,7 +118,6 @@ img {
 <li>Add a logo to all of your slides with <a href="#logo">logo</a></li>
 <li>Use the <a href="#tachyons">Tachyons CSS utility toolkit</a></li>
 <li>Add a live video feed of your <a href="#webcam">webcam</a></li>
-<li>Create fancy <a href="#text-poster">poster-style text blocks</a></li>
 <li>Fit your slides to <a href="#fit-to-screen">fill the browser window</a></li>
 </ul>
 <p>Each item can be enabled separately, or load everything at once with a single call.</p>
@@ -271,35 +267,15 @@ img {
 <span id="cb21-3"><a href="#cb21-3"></a><span class="in">```</span></span></code></pre></div>
 <p>Inside your slides, press <strong>w</strong> to turn the webcam on and off, or press <strong>Shift</strong> + <strong>W</strong> to move the video to the next corner. You can also drag and drop the video within the browser window.</p>
 <p>The webcam extension is based on the original <a href="https://yihui.org/en/2017/12/html5-camera/">webcam implementation</a> by Yihui Xie, author of <a href="https://slides.yihuie.name/xaringan">xaringan</a>.</p>
-<h2 id="text-poster">🔠 Text Poster</h2>
-<h4 id="text-poster-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/text-poster">Text Poster Demo</a></h4>
-<p><em>Text poster</em> typesets text to fit within a rectangular bounding box, with the text on each line scaled to fit the horizontal space. Built using <a href="https://github.com/IMAGINARY/text-poster#readme">text-poster.js</a>.</p>
-<p><img src="/Users/garrick/Repos/xaringanExtra/man/figures/text-poster.png" /></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">---</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="an">class:</span><span class="co"> center middle</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="co"><div class="text-poster" style="width:100%;height:100%;padding:1em;">
-<div class="text-poster__text" data-text="There are no &#10;  routine statistical&#10;  questions, only questionable &#10;  statistical routines."></div>
-</div></span></span>
-<span id="cb22-5"><a href="#cb22-5"></a></span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="co">.footnote.pull-right[— Sir David Cox]</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a></span>
-<span id="cb22-8"><a href="#cb22-8"></a><span class="co">```{css echo=FALSE}</span></span>
-<span id="cb22-9"><a href="#cb22-9"></a><span class="co">@import url(&#39;https://fonts.googleapis.com/css?family=Merriweather:300&#39;);</span></span>
-<span id="cb22-10"><a href="#cb22-10"></a></span>
-<span id="cb22-11"><a href="#cb22-11"></a><span class="co">.text-poster {</span></span>
-<span id="cb22-12"><a href="#cb22-12"></a><span class="co">    font-family: &#39;Merriweather&#39;, serif;</span></span>
-<span id="cb22-13"><a href="#cb22-13"></a><span class="co">}</span></span>
-<span id="cb22-14"><a href="#cb22-14"></a><span class="co">```</span></span></code></pre></div>
 <h2 id="fit-to-screen">📐 Fit to Screen</h2>
 <h4 id="fit-to-screen-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/fit-screen">Fit to Screen Demo</a></h4>
 <p>xaringan/remark slides scale at a consistent ratio when the browser window is resized. In other words, if the slide ratio is <code>4:3</code>, then remark scales the slides and positions them in the browser window so that they maintain the aspect ratio.</p>
 <p>In certain situations, like when showing slides in split screen next to another window like RStudio, this causes the slides to become rather small. Alternatively, it’s a great way to be able to adapt your slides to the aspect ratio of the projector or television screen when you don’t know the ratio ahead of time.</p>
 <p>This extension adds a short cut key — <kbd>Alt</kbd>/<kbd>Option</kbd>+ <kbd>F</kbd> — that fits the slides to the screen and ignores the slide ratio. (Currently, it only turns on; reload your slides to return to normal.)</p>
 <p><img src="/Users/garrick/Repos/xaringanExtra/man/figures/fit-screen.gif" /></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1"></a><span class="in">```{r xaringan-fit-screen, echo=FALSE}</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="in">xaringanExtra::use_fit_screen()</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="in">```{r xaringan-fit-screen, echo=FALSE}</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="in">xaringanExtra::use_fit_screen()</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="in">```</span></span></code></pre></div>
 
 </main>
 

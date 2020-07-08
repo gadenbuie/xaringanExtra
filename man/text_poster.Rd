@@ -4,7 +4,7 @@
 \alias{text_poster}
 \alias{use_text_poster}
 \alias{html_dependency_text_poster}
-\title{Text Poster}
+\title{Text Poster (Deprecated)}
 \usage{
 text_poster(
   text,
@@ -56,8 +56,9 @@ Once rendered, the final output will have the following structure:\if{html}{\out
 }\if{html}{\out{</div>}}
 }
 \description{
-Text poster typesets text to fit within a rectangular bounding box, with the
-text on each line scaled to fit the horizontal space.
+DEPRECATED: Text poster has been deprecated and will be removed in a future
+release. Text poster typesets text to fit within a rectangular bounding box,
+with the text on each line scaled to fit the horizontal space.
 }
 \section{Functions}{
 \itemize{
@@ -74,10 +75,15 @@ need to call this function.
 \section{Usage}{
  To add text-poster to your xaringan presentation, use
 \code{text_poster()} to create a block of poster text. Include line breaks in
-the text string to split the text block. <!--html_preserve--><div class="text-poster" style="width:100\%;height:100\%;padding:1em;">
-<div class="text-poster__text" data-text="There are no&#10;  routine statistical&#10;  questions, only questionable&#10;  statistical routines."></div>
-</div><!--/html_preserve-->
-  ````
+the text string to split the text block.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r poster-text, echo=FALSE\}`r ''`
+xaringanExtra::text_poster(
+  "There are no
+  routine statistical
+  questions, only questionable
+  statistical routines."
+)
+```
+}\if{html}{\out{</div>}}
 }
 
 \references{

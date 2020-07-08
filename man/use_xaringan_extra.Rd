@@ -19,6 +19,5 @@ for the requested extensions.
 }
 \description{
 Load multiple \pkg{xaringanExtra} extensions at once. All extensions can be
-loaded with this function, except for \code{\link[=text_poster]{text_poster()}} which is more easily
-called directly as needed.
+loaded with this function.
 }
