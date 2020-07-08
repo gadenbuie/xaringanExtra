@@ -46,7 +46,7 @@ Tile view gives you a way to quickly jump between slides. Just press
 slideshow and the tile view appears. Click on a slide to jump to the
 slide, or press <kbd>O</kbd> to exit tile view.
 
-![](man/figures/tile-view.png)
+![](figures/tile-view.png)
 
 To add tile view to your xaringan presentation, add the following code
 chunk to your slides’ R Markdown file.
@@ -70,7 +70,7 @@ Editable gives you a way to write directly inside your slides, updating
 your content live. Make any element of your slides editable by using the
 `.can-edit[...]` class.
 
-![](man/figures/editable.gif)
+![](figures/editable.gif)
 
 Make your slides editable with the following code chunk.
 
@@ -213,7 +213,7 @@ xaringanExtra::use_panelset()
 ```
 ````
 
-![](man/figures/panelset.gif)
+![](figures/panelset.gif)
 
 Then, create a `.panelset[...]` that contains `.panels[]`. Each
 `.panel[]` should have a `.panel-name[]` and content (everything that
@@ -331,7 +331,7 @@ Feeling shame about bad code stops you from getting to good code
 ]]
 ```
 
-![](man/figures/tachyons.png)
+![](figures/tachyons.png)
 
 Tachyons provides hundreds of CSS classes that are abbreviated and
 terse, so it takes some time to learn. In addition to the [tachyons
@@ -384,7 +384,7 @@ This extension adds a short cut key — <kbd>Alt</kbd>/<kbd>Option</kbd>+
 ratio. (Currently, it only turns on; reload your slides to return to
 normal.)
 
-![](man/figures/fit-screen.gif)
+![](figures/fit-screen.gif)
 
 ```` markdown
 ```{r xaringan-fit-screen, echo=FALSE}
