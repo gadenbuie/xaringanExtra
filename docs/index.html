@@ -77,7 +77,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </style>
 
   <script src="index_files/header-attrs/header-attrs.js"></script>
-  <link href="index_files/cleanrmd/new.css" rel="stylesheet" />
+  <link href="index_files/cleanrmd/vanilla.css" rel="stylesheet" />
 </head>
 <body>
 <style type="text/css" charset="utf-8">
@@ -107,6 +107,13 @@ img {
 
 <!-- badges: start -->
 <!-- badges: end -->
+<style type="text/css">
+@media only screen and (max-width: 1000px) {
+  main {
+    margin: 0 1em;
+  }
+}
+</style>
 <!-- Links -->
 <p><code>xaringanExtra</code> is a playground of enhancements and extensions for <a href="https://slides.yihuie.name/xaringan">xaringan</a> slides.</p>
 <ul>
@@ -131,7 +138,7 @@ img {
 <h2 id="tile-view">🗺 Tile View</h2>
 <h4 id="tile-view-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/tile-view">Tile View Demo</a></h4>
 <p>Tile view gives you a way to quickly jump between slides. Just press <kbd>O</kbd> (the letter <strong>O</strong> for <strong>O</strong>verview) at any point in your slideshow and the tile view appears. Click on a slide to jump to the slide, or press <kbd>O</kbd> to exit tile view.</p>
-<p><img src="/Users/garrick/Repos/xaringanExtra/man/figures/tile-view.png" /></p>
+<p><img src="figures/tile-view.png" /></p>
 <p>To add tile view to your xaringan presentation, add the following code chunk to your slides’ R Markdown file.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="in">```{r xaringan-tile-view, echo=FALSE}</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="in">xaringanExtra::use_tile_view()</span></span>
@@ -140,7 +147,7 @@ img {
 <h2 id="editable">📝 Editable</h2>
 <h4 id="editable-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/editable">Editable Demo</a></h4>
 <p>Editable gives you a way to write directly inside your slides, updating your content live. Make any element of your slides editable by using the <code>.can-edit[...]</code> class.</p>
-<p><img src="/Users/garrick/Repos/xaringanExtra/man/figures/editable.gif" /></p>
+<p><img src="figures/editable.gif" /></p>
 <p>Make your slides editable with the following code chunk.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="in">```{r xaringan-editable, echo=FALSE}</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="in">xaringanExtra::use_editable(expires = 1)</span></span>
@@ -197,7 +204,7 @@ img {
 <div class="sourceCode" id="cb13"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="in">```{r xaringan-panelset, echo=FALSE}</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="in">xaringanExtra::use_panelset()</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="in">```</span></span></code></pre></div>
-<p><img src="/Users/garrick/Repos/xaringanExtra/man/figures/panelset.gif" /></p>
+<p><img src="figures/panelset.gif" /></p>
 <p>Then, create a <code>.panelset[...]</code> that contains <code>.panels[]</code>. Each <code>.panel[]</code> should have a <code>.panel-name[]</code> and content (everything that isn’t the panel’s name).</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a>.panel<span class="co">[</span><span class="ot">.panel-name[NAME</span><span class="co">]</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>...content...</span>
@@ -213,7 +220,7 @@ img {
 <span id="cb15-8"><a href="#cb15-8"></a></span>
 <span id="cb15-9"><a href="#cb15-9"></a>.panel<span class="co">[</span><span class="ot">.panel-name[Plot</span><span class="co">]</span></span>
 <span id="cb15-10"><a href="#cb15-10"></a></span>
-<span id="cb15-11"><a href="#cb15-11"></a><span class="al">![](index_files/figure-html5/panel-chunk-1.png)</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="al">![](/Users/garrick/Repos/xaringanExtra/index_files/figure-html5/panel-chunk-1.png)</span></span>
 <span id="cb15-12"><a href="#cb15-12"></a>]</span>
 <span id="cb15-13"><a href="#cb15-13"></a>]</span></code></pre></div>
 <p>To customize the appearance of your panels, you can use <code>style_panelset()</code> called directly in an R chunk in your slides.</p>
@@ -256,7 +263,7 @@ img {
 <span id="cb20-5"><a href="#cb20-5"></a>.tr[</span>
 <span id="cb20-6"><a href="#cb20-6"></a>— Hadley Wickham</span>
 <span id="cb20-7"><a href="#cb20-7"></a>]]</span></code></pre></div>
-<p><img src="/Users/garrick/Repos/xaringanExtra/man/figures/tachyons.png" /></p>
+<p><img src="figures/tachyons.png" /></p>
 <p>Tachyons provides hundreds of CSS classes that are abbreviated and terse, so it takes some time to learn. In addition to the <a href="http://tachyons.io/">tachyons documentation</a>, the <a href="https://roperzh.github.io/tachyons-cheatsheet/">Tachyons Cheatsheet</a> is an excellent and easy to use reference.</p>
 <h2 id="webcam">🤳 Webcam</h2>
 <h4 id="webcam-demo">📺 <a href="https://gadenbuie.github.io/xaringanExtra/webcam">Webcam Demo</a></h4>
@@ -272,7 +279,7 @@ img {
 <p>xaringan/remark slides scale at a consistent ratio when the browser window is resized. In other words, if the slide ratio is <code>4:3</code>, then remark scales the slides and positions them in the browser window so that they maintain the aspect ratio.</p>
 <p>In certain situations, like when showing slides in split screen next to another window like RStudio, this causes the slides to become rather small. Alternatively, it’s a great way to be able to adapt your slides to the aspect ratio of the projector or television screen when you don’t know the ratio ahead of time.</p>
 <p>This extension adds a short cut key — <kbd>Alt</kbd>/<kbd>Option</kbd>+ <kbd>F</kbd> — that fits the slides to the screen and ignores the slide ratio. (Currently, it only turns on; reload your slides to return to normal.)</p>
-<p><img src="/Users/garrick/Repos/xaringanExtra/man/figures/fit-screen.gif" /></p>
+<p><img src="figures/fit-screen.gif" /></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="in">```{r xaringan-fit-screen, echo=FALSE}</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="in">xaringanExtra::use_fit_screen()</span></span>
 <span id="cb22-3"><a href="#cb22-3"></a><span class="in">```</span></span></code></pre></div>

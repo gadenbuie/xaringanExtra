@@ -1,7 +1,6 @@
 devtools::document()
 devtools::install(dependencies = FALSE)
 
-
 rmarkdown_v_expected <- package_version("2.1")
 rmarkdown_v <- packageVersion("rmarkdown")
 if (rmarkdown_v != rmarkdown_v_expected) {
@@ -30,18 +29,21 @@ message("Rendering README")
 rmarkdown::render("README.Rmd", quiet = TRUE)
 
 message("Rendering docs/index.html from README.md")
+if (fs::dir_exists("docs/index_files")) fs::dir_delete("docs/index_files")
+if (fs::dir_exists("docs/figures")) fs::dir_delete("docs/figures")
 rmarkdown::render(
 	"README.Rmd",
 	output_format = cleanrmd::html_document_clean(
-		theme = "new.css",
+		theme = "vanilla",
 		self_contained = FALSE
 	),
-	output_file = "docs/index.html",
+	output_dir = "docs",
+	output_file = "index.html",
 	quiet = TRUE
 )
-fs::dir_create("docs")
-fs::dir_copy("man/figures", "docs", overwrite = TRUE)
+fs::dir_copy("man/figures", "docs/figures", overwrite = TRUE)
 x <- readLines("docs/index.html")
+x <- gsub(paste0(getwd(), "/man/"), "", x, fixed = TRUE)
 x <- gsub("docs/", "", x, fixed = TRUE)
 x <- gsub("#-", "#", x, fixed = TRUE)
 x <- gsub("#animatecss", "#animate.css", x, fixed = TRUE)

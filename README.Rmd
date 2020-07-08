@@ -7,6 +7,15 @@ always_allow_html: true
 <!-- badges: start -->
 <!-- badges: end -->
 
+```{css echo=FALSE, eval=knitr::is_html_output()}
+@media only screen and (max-width: 1000px) {
+  main {
+    margin: 0 1em;
+  }
+}
+```
+
+
 <!-- Links -->
 [xaringan]: https://slides.yihuie.name/xaringan
 [remarkjs]: http://remarkjs.com/
