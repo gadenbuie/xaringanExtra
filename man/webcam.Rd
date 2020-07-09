@@ -11,7 +11,8 @@ use_webcam(width = 200, height = 200, margin = "1em")
 html_dependency_webcam(width = 200, height = 200, margin = "1em")
 }
 \arguments{
-\item{width, height}{Width and height of the video pane in CSS units.}
+\item{width, height}{Width and height of the video pane in absolute CSS units,
+i.e. as \code{200} or \code{"200px"}.}
 
 \item{margin}{Margin around the video pane in CSS units.}
 }

@@ -13,7 +13,8 @@
 NULL
 
 #' @describeIn webcam Add the webcam extension to your slides
-#' @param width,height Width and height of the video pane in CSS units.
+#' @param width,height Width and height of the video pane in absolute CSS units,
+#'   i.e. as `200` or `"200px"`.
 #' @param margin Margin around the video pane in CSS units.
 #' @export
 use_webcam <- function(width = 200, height = 200, margin = "1em") {
@@ -26,8 +27,8 @@ use_webcam <- function(width = 200, height = 200, margin = "1em") {
 #'   dependencies. Most users will want to use `use_webcam()`.
 #' @export
 html_dependency_webcam <- function(width = 200, height = 200, margin = "1em") {
-	width  <- htmltools::validateCssUnit(width)
-	height <- htmltools::validateCssUnit(height)
+	width  <- validateAbsoluteCssUnit(width)
+	height <- validateAbsoluteCssUnit(height)
 	margin <- htmltools::validateCssUnit(margin)
 	opts <- sprintf('{"width":"%s","height":"%s","margin":"%s"}', width, height, margin)
 	opts <- sprintf(
@@ -43,4 +44,17 @@ html_dependency_webcam <- function(width = 200, height = 200, margin = "1em") {
 	  head = opts,
 	  all_files = FALSE
 	)
+}
+
+validateAbsoluteCssUnit <- function(x) {
+	var <- deparse(substitute(x))
+	x <- htmltools::validateCssUnit(x)
+	if (!grepl("px$", x)) {
+		stop(
+			var, " must be expressed in absolute integer ",
+			"or pixel units.",
+			call. = FALSE
+		)
+	}
+	sub("px$", "", x)
 }
