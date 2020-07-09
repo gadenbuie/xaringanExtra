@@ -24,6 +24,11 @@ xaringanExtra::use_extra_styles(
 )
 ```
 
+```{css, echo=FALSE}
+.gray { color: #999; }
+.big { font-size: 200%; }
+```
+
 ````markdown
 ```{r xaringan-extra-styles}`r ''`
 # These are the defaults
