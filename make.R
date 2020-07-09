@@ -11,7 +11,7 @@ if (rmarkdown_v != rmarkdown_v_expected) {
 docs <- file.path(
 	"docs",
 	c("slide-tone", "tile-view", "animate-css", "tachyons",
-		"panelset", "editable", "logo", "webcam")
+		"panelset", "editable", "logo", "webcam", "extra-styles")
 )
 
 for (doc in docs) {
@@ -48,7 +48,10 @@ headers <- paste0(headers, " :id=", headers_slug)
 x[idx_headers] <- headers
 x <- sub(
 	"^#### 📺 \\[(.+?)\\]\\(.+gadenbuie.github.io/xaringanExtra/(.+?)\\)\\s*$",
-	'<iframe src="./\\2/index.html" title="\\1" width=100% height=400px loading=lazy></iframe>',
+	paste0(
+		'<iframe src="./\\2/index.html" title="\\1" width=100% height=400px loading=lazy></iframe>\n',
+		'<p align="right"><a href="./\\2" target="_blank">\\1<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>'
+	),
 	x
 )
 writeLines(x, "docs/README.md")

@@ -9,3 +9,4 @@
 ^_tmp$
 ^tests/manual$
 ^README\.Rmd$
+^README\.html$

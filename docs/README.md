@@ -41,6 +41,7 @@ devtools::install_github("gadenbuie/xaringanExtra")
 ## 🗺 Tile View :id=tile-view
 
 <iframe src="./tile-view/index.html" title="Tile View Demo" width=100% height=400px loading=lazy></iframe>
+<p align="right"><a href="./tile-view" target="_blank">Tile View Demo<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>
 
 Tile view gives you a way to quickly jump between slides. Just press
 <kbd>O</kbd> (the letter **O** for **O**verview) at any point in your
@@ -66,6 +67,7 @@ by [Stephen Hesperus](https://github.com/StephenHesperus).
 ## 📝 Editable :id=editable
 
 <iframe src="./editable/index.html" title="Editable Demo" width=100% height=400px loading=lazy></iframe>
+<p align="right"><a href="./editable" target="_blank">Editable Demo<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>
 
 Editable gives you a way to write directly inside your slides, updating
 your content live. Make any element of your slides editable by using the
@@ -118,6 +120,7 @@ or to use placeholder text.
 ## 🔊 Slide Tone :id=slide-tone
 
 <iframe src="./slide-tone/index.html" title="Slide Tone Demo" width=100% height=400px loading=lazy></iframe>
+<p align="right"><a href="./slide-tone" target="_blank">Slide Tone Demo<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>
 
 Slide tone plays a subtle sound when you change slides. It was
 [requested by a blind R
@@ -142,6 +145,7 @@ xaringanExtra::use_slide_tone()
 ## 📽 Animate.css :id=animate-css
 
 <iframe src="./animate-css/index.html" title="Animate.css Demo" width=100% height=400px loading=lazy></iframe>
+<p align="right"><a href="./animate-css" target="_blank">Animate.css Demo<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>
 
 [Animate.css](http://daneden.github.io/animate.css) is a popular
 collection of CSS animations. It contains
@@ -200,6 +204,7 @@ slide in and slide out animations, you need to also include
 ## 🗂 Panelset :id=panelset
 
 <iframe src="./panelset/index.html" title="Panelset Demo" width=100% height=400px loading=lazy></iframe>
+<p align="right"><a href="./panelset" target="_blank">Panelset Demo<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>
 
 Panelset adds accessible tabbed panels — just like R Markdown’s
 `.tabset` panels — to your xaringan slides. You can activate a panel by
@@ -274,6 +279,7 @@ values to customize the style to fit your presentation.
 ## 💌 Logo :id=logo
 
 <iframe src="./logo/index.html" title="Logo Demo" width=100% height=400px loading=lazy></iframe>
+<p align="right"><a href="./logo" target="_blank">Logo Demo<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>
 
 `use_logo()` adds a logo to all of your slides. You can make the logo a
 clickable link and choose where on the slide it is placed. You can also
@@ -296,6 +302,7 @@ and positioning. You can also make the logo a link using `link_url`.
 ## 🏗 Tachyons :id=tachyons
 
 <iframe src="./tachyons/index.html" title="Tachyons Demo" width=100% height=400px loading=lazy></iframe>
+<p align="right"><a href="./tachyons" target="_blank">Tachyons Demo<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>
 
 [Tachyons](http://tachyons.io/) is a collection of CSS utility classes
 that works beautifully with
@@ -343,6 +350,7 @@ excellent and easy to use reference.
 ## 🤳 Webcam :id=webcam
 
 <iframe src="./webcam/index.html" title="Webcam Demo" width=100% height=400px loading=lazy></iframe>
+<p align="right"><a href="./webcam" target="_blank">Webcam Demo<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>
 
 Add a live video of your webcam into your slides (in your own browser
 only). Useful when you are presenting via video conference to include
@@ -368,6 +376,7 @@ Xie, author of [xaringan](https://slides.yihuie.name/xaringan).
 ## 📐 Fit to Screen :id=fit-to screen
 
 <iframe src="./fit-screen/index.html" title="Fit to Screen Demo" width=100% height=400px loading=lazy></iframe>
+<p align="right"><a href="./fit-screen" target="_blank">Fit to Screen Demo<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>
 
 xaringan/remark slides scale at a consistent ratio when the browser
 window is resized. In other words, if the slide ratio is `4:3`, then
@@ -396,6 +405,7 @@ xaringanExtra::use_fit_screen()
 ## 😎 Extra Styles :id=extra-styles
 
 <iframe src="./extra-styles/index.html" title="Extra Styles Demo" width=100% height=400px loading=lazy></iframe>
+<p align="right"><a href="./extra-styles" target="_blank">Extra Styles Demo<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;fill:currentColor;height:1em;width:1em;top:0.18em;position:relative;" xml:space="preserve"><g id="Icons" style="opacity:0.75;"><g id="external"><polygon id="box" style="fill-rule:evenodd;clip-rule:evenodd;" points="2,2 5,2 5,3 3,3 3,9 9,9 9,7 10,7 10,10 2,10   "/><polygon id="arrow_13_" style="fill-rule:evenodd;clip-rule:evenodd;" points="6.211,2 10,2 10,5.789 8.579,4.368 6.447,6.5    5.5,5.553 7.632,3.421   "/></g></g><g id="Guides" style="display:none;"></g></svg></a></p>
 
 I’ve collected a few CSS extras that I like to include in my slides,
 that I’ve bundled up into the `use_extra_styles()` function.

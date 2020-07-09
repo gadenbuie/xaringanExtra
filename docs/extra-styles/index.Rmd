@@ -48,7 +48,7 @@ Hover over a line in the chunk above &#x261D;&#xFE0F;
 
 .right[or enjoy the muted elegance of the chunk below.]
 
-```{r}
+```{r, eval=FALSE}
 # These are the defaults
 xaringanExtra::use_extra_styles(
   hover_code_line = TRUE,        #<<
