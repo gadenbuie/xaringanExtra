@@ -1,6 +1,6 @@
 ---
 title: "webcam<br>.gray[for xaringan]"
-pagetitle: "webcam | xaringanExtra"
+pagetitle: "&#x1F933; webcam | xaringanExtra"
 subtitle: ".big[&#x1F933;]"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra'

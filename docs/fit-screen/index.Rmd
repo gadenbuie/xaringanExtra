@@ -1,5 +1,6 @@
 ---
 title: "xaringan<br/>fit slides to screen"
+pagetitle: "&#x1F4D0; fit-screen | xaringanExtra"
 subtitle: "&#x1F4D0;"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra'

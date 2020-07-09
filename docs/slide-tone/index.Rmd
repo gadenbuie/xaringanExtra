@@ -1,5 +1,6 @@
 ---
 title: "xaringan<br/>slide-change sounds<br/>using tone.js"
+pagetitle: "&#x1F50A; slide-tone | xaringanExtra"
 subtitle: "&#x1F50A;"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra'

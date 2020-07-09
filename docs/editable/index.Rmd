@@ -1,5 +1,6 @@
 ---
 title: "editable<br>.gray[for xaringan]"
+pagetitle: "&#x1F4DD; editable | xaringanExtra"
 subtitle: ".big[&#x1F4DD;]"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra'

@@ -1,6 +1,7 @@
 ---
-title: "xaringan<br/>panelset"
-subtitle: " &#x1F5C2;"
+title: "panelset<br>for xaringan"
+pagetitle: "&#x1F5C2; panelset | xaringanExtra"
+subtitle: "&#x1F5C2;"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra'
 output:

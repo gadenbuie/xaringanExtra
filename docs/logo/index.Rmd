@@ -1,5 +1,6 @@
 ---
 title: "logo<br>.gray[for xaringan]"
+pagetitle: "&#x1F48C; logo | xaringanExtra"
 subtitle: ".big[&#x1F48C;]"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra'

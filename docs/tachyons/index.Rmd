@@ -1,5 +1,6 @@
 ---
-title: "tachyons"
+title: "tachyons<br>.gray[for xaringan]"
+pagetitle: "&#x1F3D7; tachyons | xaringanExtra"
 subtitle: "&#x1F3D7;"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra<br>`use_tachyons()`'
@@ -13,7 +14,7 @@ output:
       countIncrementalSlides: false
 ---
 
-class: center middle
+class: left middle
 
 ```{r xaringan-tachyons, echo=FALSE}
 xaringanExtra::use_tachyons()
@@ -70,22 +71,8 @@ class: center middle
 
 
 ```{css echo=FALSE}
-/* Fancy Giant Letters */
-.remark-slide-content h1 {
-  margin: 0;
-  background: -webkit-linear-gradient(#0cbaba, #01baef);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-a {
-  color: #01baef;
-}
-a:hover {
-  color: #0cbaba;
-}
-.remark-slide .title-slide h3 {
-  color: #8d9597;
-}
+.gray { color: #999; }
+.big { font-size: 200%; }
 .huge-not-tachyons {
   font-size: 200%;
 }

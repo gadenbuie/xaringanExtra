@@ -1,5 +1,6 @@
 ---
 title: "Animated Presentation Ninja"
+pagetitle: "&#x1F4FD; Animate.css | xaringanExtra"
 subtitle: "&#x1F4FD;"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra<br>`use_animate_css()`'

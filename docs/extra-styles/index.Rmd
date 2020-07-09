@@ -1,5 +1,6 @@
 ---
 title: "extra styles<br>.gray[for xaringan]"
+pagetitle: "&#x1F60E; extra styles | xaringanExtra"
 subtitle: ".big[&#x1F60E;]"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra'
