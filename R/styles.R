@@ -63,7 +63,7 @@ html_dependency_extra_styles <- function(
 
 	htmltools::htmlDependency(
 	  name = name,
-	  version = packageVersion("xaringanExtra"),
+	  version = utils::packageVersion("xaringanExtra"),
 	  src = dirname(css_file),
 	  stylesheet = basename(css_file),
 	  all_files = FALSE
