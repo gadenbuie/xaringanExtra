@@ -77,7 +77,7 @@
           panelHeaderItem.tabIndex = 0
 
           const panelHeaderLink = document.createElement('a')
-          panelHeaderLink.href = '#'
+          panelHeaderLink.href = '#' + res.id + '_' + p.id // #panelsetid_panelid
           panelHeaderLink.setAttribute('onclick', 'return false;')
           panelHeaderLink.tabIndex = -1 // list item is tabable, not link
           if (idx === 0) panelHeaderLink.setAttribute('aria-selected', true)
