@@ -26,6 +26,7 @@
   -webkit-box-align: center;
           align-items: center;
   border-bottom: 2px solid var(--panel-tabs-border-bottom);
+  padding: 0;
 }
 
 .panel-tabs * {
@@ -48,6 +49,12 @@
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
   color: var(--panel-tab-color);
+  list-style: none;
+}
+
+.panel-tab > a {
+  color: currentColor;
+  text-decoration: none;
 }
 
 .panel-tab:hover {
