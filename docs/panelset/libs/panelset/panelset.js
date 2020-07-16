@@ -75,9 +75,10 @@
           thisPanelIsActive = panelSelected ? panelSelected === p.id : idx === 0
           panelHeaderItem.classList.toggle('panel-tab-active', thisPanelIsActive)
           panelHeaderItem.tabIndex = 0
+          panelHeaderItem.id = res.id + '_' + p.id // #panelsetid_panelid
 
           const panelHeaderLink = document.createElement('a')
-          panelHeaderLink.href = '#'
+          panelHeaderLink.href = '?' + res.id + '=' + p.id + '#' + panelHeaderItem.id
           panelHeaderLink.setAttribute('onclick', 'return false;')
           panelHeaderLink.tabIndex = -1 // list item is tabable, not link
           if (idx === 0) panelHeaderLink.setAttribute('aria-selected', true)
