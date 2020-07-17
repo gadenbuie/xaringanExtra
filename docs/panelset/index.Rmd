@@ -80,7 +80,18 @@ Wrap everything in `.panelset[...]` and create a new panel with
 
 ## Customize appearance 
 
-...with custom CSS properties! 
+
+```{r echo=FALSE}
+xaringanExtra::style_panelset(
+  panel_tab_color_active = "#0051BA",
+  panel_tab_color_hover = "#d22",
+  panel_tab_font_family = "Roboto"
+)
+```
+
+.panelset[
+.panel[.panel-name[style_panelset()]
+
 You can use `style_panelset()`
 
 ````markdown
@@ -92,16 +103,11 @@ xaringanExtra::style_panelset(
 )
 ```
 ````
+]
 
-```{r echo=FALSE}
-xaringanExtra::style_panelset(
-  panel_tab_color_active = "#0051BA",
-  panel_tab_color_hover = "#d22",
-  panel_tab_font_family = "Roboto"
-)
-```
+.panel[.panel-name[CSS Custom Properties]
 
-or CSS directly (all custom CSS variables are shown below)
+Or use CSS directly...
 
 ````markdown
 ```{css echo=FALSE}`r ''`
@@ -115,6 +121,14 @@ or CSS directly (all custom CSS variables are shown below)
 }
 ```
 ````
+
+The arguments of `style_panelset()` are all the CSS custom properties,
+in _snake case_.
+For example, `panel_tab_color` in `style_panelset()` corresponds to the
+CSS custom property `--panel-tab-color`.
+]
+]
+
 
 ---
 class: center middle

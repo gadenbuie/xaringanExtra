@@ -1,3 +1,12 @@
+# xaringanExtra 0.0.18.9000
+
+* Increased specificity of CSS rules for the panelset.
+
+* Added `--panel-tab-background-color` with additional `-active` and `-hover`
+  custom properties to style the background color of tabs. Similarly, two
+  CSS variables for border color were added: `--panel-tab-border-color-active`
+  and `--panel-tab-border-color-hover`.
+
 # xaringanExtra 0.0.18 (2020-07-16)
 
 * Improved accessibility of panelset so that it now works with touch devices.

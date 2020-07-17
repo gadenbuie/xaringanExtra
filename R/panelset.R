@@ -39,7 +39,12 @@
 #'     --panel-tab-color: currentColor;
 #'     --panel-tab-color-active: currentColor;
 #'     --panel-tab-color-hover: currentColor;
+#'     --panel-tab-background-color: unset;
+#'     --panel-tab-background-color-active: unset;
+#'     --panel-tab-background-color-hover: unset;
 #'     --panel-tabs-border-bottom: #ddd;
+#'     --panel-tab-border-color-active: currentColor;
+#'     --panel-tab-border-color-hover: currentColor;
 #'     --panel-tab-inactive-opacity: 0.5;
 #'     --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 #'   }
@@ -78,11 +83,22 @@ use_panelset <- function() {
 #'   default is `0.5`.
 #' @param panel_tab_font_family The font family to be used for the panel tabs
 #'   text. Default is a monospace system font stack.
+#' @param panel_tab_background_color,panel_tab_background_color_active,panel_tab_background-color_hover
+#'   Background colors for panel tabs; in-active tabs, active tab, hovered tab.
+#'   The default values are all `unset`.
+#' @param panel_tab_border_color_active,panel_tab_border_color_hover The color
+#'   of the top border of a tab when it is active or the color of the bottom
+#'   border of a tab when it is hovered or focused. Defaults are `currentColor`.
 #' @export
 style_panelset <- function(
   panel_tab_color = NULL,
   panel_tab_color_active = NULL,
   panel_tab_color_hover = NULL,
+  panel_tab_background_color = NULL,
+  panel_tab_background_color_active = NULL,
+  panel_tab_background_color_hover = NULL,
+  panel_tab_border_color_active = NULL,
+  panel_tab_border_color_hover = NULL,
   panel_tabs_border_bottom = NULL,
   panel_tab_inactive_opacity = NULL,
   panel_tab_font_family = NULL

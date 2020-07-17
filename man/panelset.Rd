@@ -13,6 +13,11 @@ style_panelset(
   panel_tab_color = NULL,
   panel_tab_color_active = NULL,
   panel_tab_color_hover = NULL,
+  panel_tab_background_color = NULL,
+  panel_tab_background_color_active = NULL,
+  panel_tab_background_color_hover = NULL,
+  panel_tab_border_color_active = NULL,
+  panel_tab_border_color_hover = NULL,
   panel_tabs_border_bottom = NULL,
   panel_tab_inactive_opacity = NULL,
   panel_tab_font_family = NULL
@@ -29,6 +34,13 @@ panel tab. Default is \code{currentColor}}
 
 \item{panel_tab_color_hover}{The text color of a hovered panel tab. Default
 is \code{currentColor}.}
+
+\item{panel_tab_background_color, panel_tab_background_color_active, panel_tab_background-color_hover}{Background colors for panel tabs; in-active tabs, active tab, hovered tab.
+The default values are all \code{unset}.}
+
+\item{panel_tab_border_color_active, panel_tab_border_color_hover}{The color
+of the top border of a tab when it is active or the color of the bottom
+border of a tab when it is hovered or focused. Defaults are \code{currentColor}.}
 
 \item{panel_tabs_border_bottom}{The border color between the tabs and
 content. Default is \verb{#ddd}.}
@@ -89,7 +101,12 @@ presentation.\if{html}{\out{<div class="markdown">}}\preformatted{```\{css echo=
   --panel-tab-color: currentColor;
   --panel-tab-color-active: currentColor;
   --panel-tab-color-hover: currentColor;
+  --panel-tab-background-color: unset;
+  --panel-tab-background-color-active: unset;
+  --panel-tab-background-color-hover: unset;
   --panel-tabs-border-bottom: #ddd;
+  --panel-tab-border-color-active: currentColor;
+  --panel-tab-border-color-hover: currentColor;
   --panel-tab-inactive-opacity: 0.5;
   --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 \}
