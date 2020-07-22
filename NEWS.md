@@ -1,4 +1,4 @@
-# xaringanExtra 0.0.18.9000
+# xaringanExtra 0.0.19 (2020-07-22)
 
 * Increased specificity of CSS rules for the panelset.
 
@@ -6,6 +6,12 @@
   custom properties to style the background color of tabs. Similarly, two
   CSS variables for border color were added: `--panel-tab-border-color-active`
   and `--panel-tab-border-color-hover`.
+
+* Updated Tachyons to 4.12.0 (#27)
+
+* Added **clipboard** extra with `use_clipboard()`. Adds a "Copy Code" button
+  to code chunks (`<pre><code>...</code></pre>`) and works in both xaringan
+  slides and R Markdown documents (thanks @mattwrkentin #20, #36).
 
 # xaringanExtra 0.0.18 (2020-07-16)
 
