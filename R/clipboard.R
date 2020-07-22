@@ -16,23 +16,23 @@ NULL
 #' @param minified Should the minified clipboardjs dependency be used?
 #' @export
 use_clipboard <- function(
-	button_text = "Copy Code",
-	success_text = "Copied!",
-	error_text = "Press Ctrl+C to Copy",
-	minified = TRUE
+  button_text = "Copy Code",
+  success_text = "Copied!",
+  error_text = "Press Ctrl+C to Copy",
+  minified = TRUE
 ) {
-	htmltools::tagList(
-		html_dependency_clipboardjs(minified),
-		html_dependency_clipboard(),
-		htmltools::tags$script(
-			type = "application/json",
-			id = "xaringanextra-clipboard-options",
-			jsonlite::toJSON(
-				list(button = button_text, success = success_text, error = error_text),
-				auto_unbox = TRUE
-			)
-		)
-	)
+  htmltools::tagList(
+    html_dependency_clipboardjs(minified),
+    html_dependency_clipboard(),
+    htmltools::tags$script(
+      type = "application/json",
+      id = "xaringanextra-clipboard-options",
+      jsonlite::toJSON(
+        list(button = button_text, success = success_text, error = error_text),
+        auto_unbox = TRUE
+      )
+    )
+  )
 }
 
 #' @describeIn clipboard Returns an [htmltools::htmlDependency()] with the
@@ -40,18 +40,18 @@ use_clipboard <- function(
 #' @references https://clipboardjs.com/
 #' @export
 html_dependency_clipboardjs <- function(minified = TRUE) {
-	v_clipboard <- "2.0.6"
-	htmltools::htmlDependency(
-		name = "clipboard",
-		version = v_clipboard,
-		package = "xaringanExtra",
-		src = c(
-			file = "jslib/clipboard",
-			href = "https://unpkg.com/clipboard@2/dist/"
-		),
-		script = paste0("clipboard", if (minified) ".min", ".js"),
-		all_files = FALSE
-	)
+  v_clipboard <- "2.0.6"
+  htmltools::htmlDependency(
+    name = "clipboard",
+    version = v_clipboard,
+    package = "xaringanExtra",
+    src = c(
+      file = "jslib/clipboard",
+      href = "https://unpkg.com/clipboard@2/dist/"
+    ),
+    script = paste0("clipboard", if (minified) ".min", ".js"),
+    all_files = FALSE
+  )
 }
 
 #' @describeIn clipboard Returns an [htmltools::htmlDependency()] with the
@@ -59,13 +59,13 @@ html_dependency_clipboardjs <- function(minified = TRUE) {
 #'   users will want to use `use_clipboard()` instead.
 #' @export
 html_dependency_clipboard <- function() {
-	htmltools::htmlDependency(
-	  name = "xaringanExtra-clipboard",
-	  version = utils::packageVersion("xaringanExtra"),
-	  package = "xaringanExtra",
-	  src = "clipboard",
-	  script = "xaringanExtra-clipboard.js",
-	  stylesheet = "xaringanExtra-clipboard.css",
-	  all_files = FALSE
-	)
+  htmltools::htmlDependency(
+    name = "xaringanExtra-clipboard",
+    version = utils::packageVersion("xaringanExtra"),
+    package = "xaringanExtra",
+    src = "clipboard",
+    script = "xaringanExtra-clipboard.js",
+    stylesheet = "xaringanExtra-clipboard.css",
+    all_files = FALSE
+  )
 }
