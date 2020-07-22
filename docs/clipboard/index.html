@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>✂️ clipboard | xaringanExtra</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Garrick Aden-Buie" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/robot-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/robot.css" rel="stylesheet" />
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# clipboard<br>for xaringan
+## ✂️
+### <a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>
+### xaringanExtra
+
+---
+
+
+<script type="application/json" id="xaringanextra-clipboard-options">{"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"}</script>
+
+## Clip Code Chunks
+
+Here's some R code in the middle of your presentation.
+Let your audience (or yourself) copy the code with a single click.
+
+Hover over the chunk below to reveal the "Copy Code" button.
+
+
+```r
+library(ggplot2)
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = FALSE) +
+  theme_bw()
+```
+
+.footnote[&amp;#x1F4F1; *It even works for slides viewed on phones!*]
+
+---
+
+## Use clipboard
+
+To add the clipboard button to all of the code chunks in your slides,
+add this chunk to your slides
+
+````markdown
+```{r xaringanExtra-clipboard, echo=FALSE}
+xaringanExtra::use_clipboard()
+```
+````
+
+Practice copying and pasting the above chunk into your slide code here.
+
+&lt;p&gt;
+&lt;textarea placeholder="Copy the chunk above and paste it here!" rows=10&gt;---
+title: My Awesome Slides
+output: xaringan::moon_reader
+&amp;#xfeff;---
+&amp;#xfeff;
+&lt;/textarea&gt;
+&lt;/p&gt;
+
+&lt;style type="text/css"&gt;
+textarea {
+  resize: none;
+  font-size: 1em;
+  font-style: monospace;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+  border: 1px solid #aaa;
+}
+&lt;/style&gt;
+
+---
+
+## Customize Button Text
+
+You can customize the **`button_text`**, or the text shown on **success** or **error**.
+
+````markdown
+```{r xaringanExtra-clipboard, echo=FALSE}
+xaringanExtra::use_clipboard(
+  button_text = "Haga clic para copiar",
+  success_text = "Copiado",
+  error_text = "Pulse Ctrl + C para copiar"
+)
+```
+````
+
+--
+
+&amp;#x1F4A1; **Hint:** These values accept HTML, the sky's the limit!
+
+````markdown
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "&lt;i class=\"fa fa-clipboard\"&gt;&lt;/i&gt;"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+````
+
+This example replaces the copy button text with the &lt;a href="https://fontawesome.com/icons/clipboard?style=regular"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="far" data-icon="clipboard" class="svg-inline--fa fa-clipboard fa-w-12" role="img" viewBox="0 0 384 512" height="1em" style="margin: 0 4px;"&gt;&lt;path fill="currentColor" d="M336 64h-80c0-35.3-28.7-64-64-64s-64 28.7-64 64H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM192 40c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24zm144 418c0 3.3-2.7 6-6 6H54c-3.3 0-6-2.7-6-6V118c0-3.3 2.7-6 6-6h42v36c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-36h42c3.3 0 6 2.7 6 6z"/&gt;&lt;/svg&gt; FontAwesome icon&lt;/a&gt;.
+
+---
+class: center middle
+
+## Oh, and it works in&lt;br/&gt;R Markdown and [blogdown](https://bookdown.org/yihui/blogdown/), too!
+
+---
+class: center middle
+
+&lt;img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" alt="GitHub Octocat Logo" /&gt;
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "atom-one-light"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

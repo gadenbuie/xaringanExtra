@@ -11,7 +11,7 @@ if (rmarkdown_v != rmarkdown_v_expected) {
 docs <- file.path(
 	"docs",
 	c("slide-tone", "tile-view", "animate-css", "tachyons",
-		"panelset", "editable", "logo", "webcam", "extra-styles")
+		"panelset", "editable", "logo", "webcam", "extra-styles", "clipboard")
 )
 
 for (doc in docs) {
