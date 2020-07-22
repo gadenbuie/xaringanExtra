@@ -188,6 +188,6 @@ Yihui Xi / 2017-12-07
 layout: false
 class: center middle
 
-<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" />
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" alt="GitHub Octocat Logo" />
 
 ### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
