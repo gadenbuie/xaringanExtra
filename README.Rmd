@@ -32,6 +32,7 @@ always_allow_html: true
 - Add a logo to all of your slides with [logo](#-logo)
 - Use the [Tachyons CSS utility toolkit](#-tachyons)
 - Add a live video feed of your [webcam](#-webcam)
+- Add one-click code copying with [clipboard](#-clipboard)
 - Fit your slides to [fill the browser window](#-fit-to-screen)
 - Add [extra CSS styles](#-extra-styles)
 
@@ -385,6 +386,15 @@ or when you are recording a class or lecture.
 The webcam extension is based on the original
 [webcam implementation](https://yihui.org/en/2017/12/html5-camera/) by
 Yihui Xie, author of [xaringan].
+
+## &#x2702;&#xFE0F; Clipboard
+
+#### &#x1F4FA; [Clipboard Demo](https://gadenbuie.github.io/xaringanExtra/clipboard)
+
+Add a "Copy Code" button for one-click code chunk copying.
+
+```{r child="man/fragments/clipboard-details.Rmd"}
+```
 
 ## &#x1F4D0; Fit to Screen
 

@@ -6,11 +6,12 @@
   "scripts": {
     "lint": "standard inst/*/*.js",
     "lint:fix": "standard --fix inst/*/*.js",
-    "copy": "npm run copy:tone && npm run copy:himalaya && npm run copy:js-cookie && npm run copy:tachyons",
+    "copy": "npm run copy:tone && npm run copy:himalaya && npm run copy:js-cookie && npm run copy:tachyons && npm run copy:clipboard",
     "copy:tone": "cpy 'node_modules/tone/build/Tone.js' inst/jslib/tone/",
     "copy:himalaya": "cpy 'node_modules/himalaya/docs/dist/himalaya.js*' inst/jslib/himalaya/",
     "copy:js-cookie": "cpy 'node_modules/js-cookie/src/js.cookie.js' inst/jslib/js-cookie/",
     "copy:tachyons": "cpy 'node_modules/tachyons/css/*.css' inst/jslib/tachyons",
+    "copy:clipboard": "cpy 'node_modules/clipboard/dist/*.js' inst/jslib/clipboard",
     "build": "npm run copy && npm run lint:fix"
   },
   "repository": {
@@ -36,6 +37,7 @@
     "standard": "^14.3.4"
   },
   "dependencies": {
+    "clipboard": "^2.0.6",
     "himalaya": "^1.1.0",
     "js-cookie": "^2.2.1",
     "tachyons": "^4.12.0",

@@ -49,6 +49,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Collate: 
     'animate.R'
+    'clipboard.R'
     'editable.R'
     'fit-screen.R'
     'panelset.R'

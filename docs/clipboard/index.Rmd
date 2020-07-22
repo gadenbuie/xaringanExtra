@@ -1,0 +1,119 @@
+---
+title: "clipboard<br>for xaringan"
+pagetitle: "&#x2702;&#xFE0F; clipboard | xaringanExtra"
+subtitle: "&#x2702;&#xFE0F;"
+author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
+date: 'xaringanExtra'
+output:
+  xaringan::moon_reader:
+    css: [robot-fonts, robot]
+    lib_dir: libs
+    nature:
+      highlightStyle: 'atom-one-light'
+---
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+xaringanExtra::use_clipboard()
+```
+
+## Clip Code Chunks
+
+Here's some R code in the middle of your presentation.
+Let your audience (or yourself) copy the code with a single click.
+
+Hover over the chunk below to reveal the "Copy Code" button.
+
+```{r oplot, eval=FALSE}
+library(ggplot2)
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = FALSE) +
+  theme_bw()
+```
+
+.footnote[&#x26A0;&#xFE0F; &#x1F4F1; *Doesn't work great on slides viewed on phones, sorry*]
+
+---
+
+## Use clipboard
+
+To add the clipboard button to all of the code chunks in your slides,
+add this chunk to your slides
+
+````markdown
+```{r xaringanExtra-clipboard, echo=FALSE}`r ''`
+xaringanExtra::use_clipboard()
+```
+````
+
+Practice copying and pasting the above chunk into your slide code here.
+
+<p>
+<textarea placeholder="Copy the chunk above and paste it here!" rows=10>---
+title: My Awesome Slides
+output: xaringan::moon_reader
+&#xfeff;---
+&#xfeff;
+</textarea>
+</p>
+
+```{css echo=FALSE}
+textarea {
+  resize: none;
+  font-size: 1em;
+  font-style: monospace;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+  border: 1px solid #aaa;
+}
+```
+
+---
+
+## Customize Button Text
+
+You can customize the **`button_text`**, or the text shown on **success** or **error**.
+
+````markdown
+```{r xaringanExtra-clipboard, echo=FALSE}`r ''`
+xaringanExtra::use_clipboard(
+  button_text = "Haga clic para copiar",
+  success_text = "Copiado",
+  error_text = "Pulse Ctrl + C para copiar"
+)
+```
+````
+
+--
+
+&#x1F4A1; **Hint:** These values accept HTML, the sky's the limit!
+
+````markdown
+```{r xaringanExtra-clipboard, echo=FALSE}`r ''`
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+````
+
+This example replaces the copy button text with the <a href="https://fontawesome.com/icons/clipboard?style=regular"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="far" data-icon="clipboard" class="svg-inline--fa fa-clipboard fa-w-12" role="img" viewBox="0 0 384 512" height="1em" style="margin: 0 4px;"><path fill="currentColor" d="M336 64h-80c0-35.3-28.7-64-64-64s-64 28.7-64 64H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM192 40c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24zm144 418c0 3.3-2.7 6-6 6H54c-3.3 0-6-2.7-6-6V118c0-3.3 2.7-6 6-6h42v36c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-36h42c3.3 0 6 2.7 6 6z"/></svg> FontAwesome icon</a>.
+
+---
+class: center middle
+
+## Oh, and it works in<br/>R Markdown and [blogdown](https://bookdown.org/yihui/blogdown/), too!
+
+---
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" alt="GitHub Octocat Logo" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
+
