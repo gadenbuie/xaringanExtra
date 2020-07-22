@@ -20,13 +20,7 @@
     [...document.querySelectorAll('.panel-name')]
       .map(el => el.textContent.trim())
 
-    const panelIds = {};
-
-    const randId = () => {
-      // https://gist.github.com/6174/6062387
-      return Math.random().toString(36).substring(2, 8) +
-    Math.random().toString(36).substring(2, 8)
-    }
+    const panelIds = {}
 
     const uniquePanelId = (name) => {
       name = encodeURIComponent(name.toLowerCase().replace(/[\s]/g, '-'))
@@ -61,7 +55,7 @@
       const res = document.createElement('div')
       res.className = 'panelset'
       res.id = 'panelset' + (idx > 0 ? idx : '')
-      let panelSelected = getCurrentPanelFromUrl(res.id)
+      const panelSelected = getCurrentPanelFromUrl(res.id)
 
       // create header row
       const headerRow = document.createElement('ul')
@@ -72,7 +66,7 @@
           const panelHeaderItem = document.createElement('li')
           panelHeaderItem.className = 'panel-tab'
           panelHeaderItem.setAttribute('role', 'presentation')
-          thisPanelIsActive = panelSelected ? panelSelected === p.id : idx === 0
+          const thisPanelIsActive = panelSelected ? panelSelected === p.id : idx === 0
           panelHeaderItem.classList.toggle('panel-tab-active', thisPanelIsActive)
           panelHeaderItem.tabIndex = 0
           panelHeaderItem.id = res.id + '_' + p.id // #panelsetid_panelid
@@ -97,7 +91,7 @@
           const panelContent = document.createElement('section')
           panelContent.className = 'panel'
           panelContent.setAttribute('role', 'tabpanel')
-          thisPanelIsActive = panelSelected ? panelSelected === p.id : idx === 0
+          const thisPanelIsActive = panelSelected ? panelSelected === p.id : idx === 0
           panelContent.classList.toggle('panel-active', thisPanelIsActive)
           panelContent.id = p.id
           panelContent.setAttribute('aria-labelledby', p.id)
@@ -117,9 +111,9 @@
         params.delete(panelset)
       }
       params = params.toString() ? ('?' + params.toString()) : ''
-      const {pathname, hash} = window.location
+      const { pathname, hash } = window.location
       const uri = pathname + params + hash
-      history.replaceState(uri, '', uri)
+      window.history.replaceState(uri, '', uri)
     }
 
     const togglePanel = (clicked) => {
@@ -164,7 +158,7 @@
 
     const initPanelSet = (panelset, idx) => {
       const panels = Array.from(panelset.querySelectorAll('.panel'))
-      if (!panels.length) return;
+      if (!panels.length) return
 
       const contents = panels.map(processPanelItem)
       const newPanelSet = reflowPanelSet(contents, idx)
@@ -174,12 +168,12 @@
       // click and touch events
       const panelTabs = newPanelSet.querySelector('.panel-tabs');
       ['click', 'touchend'].forEach(eventType => {
-        panelTabs.addEventListener(eventType, function(ev) {
+        panelTabs.addEventListener(eventType, function (ev) {
           togglePanel(ev.target)
           ev.stopPropagation()
         })
       })
-      panelTabs.addEventListener('touchmove', function(ev) {
+      panelTabs.addEventListener('touchmove', function (ev) {
         ev.preventDefault()
       })
 
@@ -187,7 +181,7 @@
       newPanelSet
         .querySelector('.panel-tabs')
         .addEventListener('keydown', (ev) => {
-          let self = ev.currentTarget.querySelector('.panel-tab-active')
+          const self = ev.currentTarget.querySelector('.panel-tab-active')
           if (ev.code === 'Space' || ev.code === 'Enter') {
             togglePanel(ev.target)
             ev.stopPropagation()
@@ -209,13 +203,10 @@
     Array.from(document.querySelectorAll('.panelset')).map(initPanelSet)
 
     if (typeof slideshow !== 'undefined') {
-      const panelSetIds = Array.from(document.querySelectorAll('.panelset'))
-        .map(ps => ps.id)
-
       const getVisibleActivePanelInfo = () => {
         const slidePanels = document.querySelectorAll('.remark-visible .panel-tab-active')
 
-        if (!slidePanels.length) return null;
+        if (!slidePanels.length) return null
 
         return slidePanels.map(panel => {
           return {
@@ -242,7 +233,7 @@
           // only first panel gets focus
           slidePanels[0].panel.focus()
           // but still update the url to reflect all active panels
-          slidePanels.forEach(({panelId, panelSetId}) => updateUrl(panelSetId, panelId))
+          slidePanels.forEach(({ panelId, panelSetId }) => updateUrl(panelSetId, panelId))
         }
       })
     }
