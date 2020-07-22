@@ -7,10 +7,10 @@
     "lint": "standard inst/*/*.js",
     "lint:fix": "standard --fix inst/*/*.js",
     "copy": "npm run copy:tone && npm run copy:himalaya && npm run copy:js-cookie && npm run copy:tachyons",
-    "copy:tone": "cpy 'node_modules/tone/build/Tone.js' inst/libs/tone/",
-    "copy:himalaya": "cpy 'node_modules/himalaya/docs/dist/himalaya.js*' inst/libs/himalaya/",
-    "copy:js-cookie": "cpy 'node_modules/js-cookie/src/js.cookie.js' inst/libs/js-cookie/",
-    "copy:tachyons": "cpy 'node_modules/tachyons/css/*.css' inst/libs/tachyons",
+    "copy:tone": "cpy 'node_modules/tone/build/Tone.js' inst/jslib/tone/",
+    "copy:himalaya": "cpy 'node_modules/himalaya/docs/dist/himalaya.js*' inst/jslib/himalaya/",
+    "copy:js-cookie": "cpy 'node_modules/js-cookie/src/js.cookie.js' inst/jslib/js-cookie/",
+    "copy:tachyons": "cpy 'node_modules/tachyons/css/*.css' inst/jslib/tachyons",
     "build": "npm run copy && npm run lint:fix"
   },
   "repository": {
@@ -28,17 +28,17 @@
     "ignore": [
       "inst/slide-tone/tone.js",
       "inst/text-poster/text-poster.js",
-      "inst/libs/*"
+      "inst/jslib/*"
     ]
   },
   "devDependencies": {
-    "cpy-cli": "^3.1.0",
-    "standard": "^14.3.3"
+    "cpy-cli": "^3.1.1",
+    "standard": "^14.3.4"
   },
   "dependencies": {
     "himalaya": "^1.1.0",
     "js-cookie": "^2.2.1",
-    "tachyons": "^4.11.1",
-    "tone": "^13.8.25"
+    "tachyons": "^4.12.0",
+    "tone": "^13.8.34"
   }
 }

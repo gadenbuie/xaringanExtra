@@ -52,10 +52,11 @@ use_tachyons <- function(minified = TRUE) {
 #'   view dependencies. Most users will want to use `use_tachyons()`.
 #' @export
 html_dependency_tachyons <- function(minified = TRUE) {
+  tachyons_version <- "4.12.0"
   if (minified) {
     htmltools::htmlDependency(
       name = "tachyons",
-      version = "4.11.1",
+      version = tachyons_version,
       package = "xaringanExtra",
       src = "jslib/tachyons",
       stylesheet = "tachyons.min.css",
@@ -64,7 +65,7 @@ html_dependency_tachyons <- function(minified = TRUE) {
   } else {
     htmltools::htmlDependency(
       name = "tachyons",
-      version = "4.11.1",
+      version = tachyons_version,
       package = "xaringanExtra",
       src = "jslib/tachyons",
       stylesheet = "tachyons.css",
