@@ -65,10 +65,13 @@
     // block remark click/touch slide change event listeners
     if (isRemarkSlideshow) {
       // document.querySelector('.remark-slides-area').addEventListener('click', stopClipboardEvent)
-      document.querySelector('.remark-slides-area').addEventListener('touchend', function (ev) {
-        if (ev.target.querySelector('xaringanextra-clipboard-button')) {
-          ev.stopPropagation()
-        }
+      ['touchstart', 'touchend', 'touchmove'].forEach(function (evType) {
+        document.querySelector('.remark-slides-area').addEventListener(evType, function (ev) {
+          if (!ev.target.closest('pre')) return
+          if (ev.target.closest('pre').querySelector('.xaringanextra-clipboard-button')) {
+            ev.stopPropagation()
+          }
+        })
       })
     }
   })

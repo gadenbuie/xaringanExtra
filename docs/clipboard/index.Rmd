@@ -34,7 +34,7 @@ ggplot(Orange) +
   theme_bw()
 ```
 
-.footnote[&#x26A0;&#xFE0F; &#x1F4F1; *Doesn't work great on slides viewed on phones, sorry*]
+.footnote[&#x1F4F1; *It even works for slides viewed on phones!*]
 
 ---
 
