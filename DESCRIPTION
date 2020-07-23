@@ -1,6 +1,6 @@
 Package: xaringanExtra
 Title: Extras And Extensions for Xaringan Slides
-Version: 0.0.19
+Version: 0.0.20
 Authors@R: 
     c(person(given = "Garrick",
              family = "Aden-Buie",
