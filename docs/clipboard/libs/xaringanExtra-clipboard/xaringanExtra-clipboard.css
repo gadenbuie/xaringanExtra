@@ -17,7 +17,7 @@
 	opacity: 1;
 }
 
-pre:hover .xaringanextra-clipboard-button {
+:hover > .xaringanextra-clipboard-button {
 	display: block;
 	transform: translateY(0);
 }

@@ -13,24 +13,41 @@ NULL
 #' @param button_text,success_text,error_text Text (or HTML) shown in the copy
 #'   button by default (_button_), on copy _success_, or in the event of an
 #'   _error_.
+#' @param selector The CSS selector used to identify the elements that will
+#'   receive the copy code button. If `NULL`, the extension will automatically
+#'   choose the selector for \pkg{xaringan} slides or general R Markdown.
+#'
+#'   The CSS selector should identify the parent container that holds the
+#'   content to be copied. The copy button will be added as the last element
+#'   in this container, and then the text of every element inside the container
+#'   identified by the selector, minus the copy button text, is copied to the
+#'   clipboard.
 #' @param minified Should the minified clipboardjs dependency be used?
 #' @export
 use_clipboard <- function(
   button_text = "Copy Code",
   success_text = "Copied!",
   error_text = "Press Ctrl+C to Copy",
+  selector = NULL,
   minified = TRUE
 ) {
+  opts <- list(button = button_text, success = success_text, error = error_text)
+  selector <- if (!is.null(selector)) sprintf("'%s'", selector) else "null"
+
   htmltools::tagList(
     html_dependency_clipboardjs(minified),
     html_dependency_clipboard(),
-    htmltools::tags$script(
-      type = "application/json",
-      id = "xaringanextra-clipboard-options",
-      jsonlite::toJSON(
-        list(button = button_text, success = success_text, error = error_text),
-        auto_unbox = TRUE
-      )
+    htmltools::htmlDependency(
+      name = uuid::UUIDgenerate(), # random name ensures each call ends up in <head>
+      version = "9.9.9",
+      package = "xaringanExtra",
+      src = "",
+      head = sprintf(
+        "<script>window.xaringanExtraClipboard(%s, %s)</script>",
+        selector,
+        jsonlite::toJSON(opts, auto_unbox = TRUE)
+      ),
+      all_files = FALSE
     )
   )
 }

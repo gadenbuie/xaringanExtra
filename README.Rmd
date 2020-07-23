@@ -391,10 +391,19 @@ Yihui Xie, author of [xaringan].
 
 #### &#x1F4FA; [Clipboard Demo](https://gadenbuie.github.io/xaringanExtra/clipboard)
 
+[clipboardjs]: https://clipboardjs.com/
+
 Add a "Copy Code" button for one-click code chunk copying.
 
 ```{r child="man/fragments/clipboard-details.Rmd"}
 ```
+
+clipboard works in xaringan slides, R Markdown documents, blogdown sites, and Shiny apps!
+
+**Related projects:** For related R packages that provide copy support via [clipboard.js][clipboardjs] see
+
+- [RLesur/klippy: Copy to Clipboard Buttons for RMarkdown HTML Documents](https://github.com/RLesur/klippy)
+- [sbihorel/rclipboard: clipboard.js for R/Shiny Applications](https://github.com/sbihorel/rclipboard)
 
 ## &#x1F4D0; Fit to Screen
 

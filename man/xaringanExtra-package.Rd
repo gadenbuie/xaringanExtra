@@ -42,6 +42,7 @@ Other contributors:
   \item  Klaus Hartl, Fagner Brack, GitHub Contributors (js-cookie) [contributor]
   \item  Chris Andrejewski (himalaya) [contributor]
   \item Eric Londaits (text-poster.js) [contributor]
+  \item Zeno Rocha (clipboard.js) [contributor]
 }
 
 }

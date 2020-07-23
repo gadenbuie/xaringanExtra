@@ -1,6 +1,7 @@
-/* global slideshow */
-(function (window, document) {
+/* global slideshow,window,document */
+window.xaringanExtraClipboard = function (selector, text) {
   if (!window.ClipboardJS.isSupported()) return
+  if (!window.xaringanExtraClipboards) window.xaringanExtraClipboards = {}
 
   const ready = function (fn) {
     /* MIT License Copyright (c) 2016 Nuclei */
@@ -19,52 +20,69 @@
   }
 
   ready(function () {
-    const btnTxt = JSON.parse(document.getElementById('xaringanextra-clipboard-options').textContent)
-    const template = '<button class="xaringanextra-clipboard-button" ' +
-       `type="button" aria-label="Copy code to clipboard">${btnTxt.button}</button>`
+    const {
+      button: buttonText = 'Copy Code',
+      success: successText = 'Copied!',
+      error: errorText = 'Press Ctrl+C to Copy'
+    } = text
 
-    let codeSelector = 'pre code:first-child'
+    const template = '<button class="xaringanextra-clipboard-button" ' +
+       `type="button" aria-label="Copy code to clipboard">${buttonText}</button>`
 
     const isRemarkSlideshow = typeof slideshow !== 'undefined' &&
       Object.prototype.hasOwnProperty.call(slideshow, 'getSlides')
 
-    if (isRemarkSlideshow) {
-      codeSelector = '.remark-slides-area ' + codeSelector
+    let siblingSelector = selector || 'pre'
+    if (!selector && isRemarkSlideshow) {
+      siblingSelector = '.remark-slides-area ' + siblingSelector
     }
 
-    document.querySelectorAll(codeSelector).forEach(el => {
-      el = el.parentNode
-      el.style.position = 'relative'
+    // insert <button>s
+    document.querySelectorAll(siblingSelector).forEach(el => {
+      if ([/^$/, 'inherit', 'unset', 'revert', 'static'].some(p => el.style.position.match(p))) {
+        el.style.position = 'relative'
+      }
       el.insertAdjacentHTML('beforeend', template)
 
       // match button text color to code color
-      const codeStyle = window.getComputedStyle(el.querySelector('code'))
-      el.querySelector('button').style.color = codeStyle.getPropertyValue('color')
+      const currentColor = window.getComputedStyle(el.children[0]).getPropertyValue('color')
+      el.querySelector('button.xaringanextra-clipboard-button').style.color = currentColor
     })
 
-    document.clipboard = new window.ClipboardJS('.xaringanextra-clipboard-button', {
-      target: function (trigger) {
-        return trigger.parentNode.querySelector('code')
-      },
+    // initialize cliboardjs
+    const clipboard = new window.ClipboardJS(siblingSelector + ' .xaringanextra-clipboard-button', {
       text: function (trigger) {
-        return trigger.parentNode.querySelector('code').innerText
+        // temporarily remove the button text
+        // so that it isn't included in the text that's copied
+        const btnLabel = trigger.innerHTML
+        trigger.innerHTML = ''
+        // snapshot text of copy button's parent element
+        const text = trigger.parentElement.innerText
+        // restore the button's inner HTML
+        trigger.innerHTML = btnLabel
+        return text
       }
     })
 
-    document.clipboard.on('success', function (ev) {
-      ev.trigger.innerHTML = btnTxt.success
-      setTimeout(function () { ev.trigger.innerHTML = btnTxt.button }, 2500)
+    // show success text for 2.5 seconds on success
+    clipboard.on('success', function (ev) {
+      ev.trigger.innerHTML = successText
+      ev.trigger.style.display = 'block'
+      setTimeout(function () {
+        ev.trigger.innerHTML = buttonText
+        ev.trigger.style.display = ''
+      }, 2500)
       ev.clearSelection()
     })
 
-    document.clipboard.on('error', function (ev) {
-      ev.trigger.innerHTML = btnTxt.error
-      setTimeout(function () { ev.trigger.innerHTML = btnTxt.button }, 2500)
+    // show error text for 2.5 seconds on error
+    clipboard.on('error', function (ev) {
+      ev.trigger.innerHTML = errorText
+      setTimeout(function () { ev.trigger.innerHTML = buttonText }, 2500)
     })
 
     // block remark click/touch slide change event listeners
     if (isRemarkSlideshow) {
-      // document.querySelector('.remark-slides-area').addEventListener('click', stopClipboardEvent)
       ['touchstart', 'touchend', 'touchmove'].forEach(function (evType) {
         document.querySelector('.remark-slides-area').addEventListener(evType, function (ev) {
           if (!ev.target.closest('pre')) return
@@ -74,5 +92,7 @@
         })
       })
     }
+
+    window.xaringanExtraClipboards[siblingSelector] = clipboard
   })
-})(window, document)
+}

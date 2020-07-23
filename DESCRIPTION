@@ -26,13 +26,18 @@ Authors@R:
       person(given = "Eric",
              family = "Londaits",
              role = "ctb",
-             comment = "text-poster.js"))
+             comment = "text-poster.js"),
+      person(given = "Zeno",
+             family = "Rocha",
+             role = "ctb",
+             comment = "clipboard.js"))
 Description: Extras and extensions for xaringan slides. Nagivate
     your slides with tile view. Make your slides editable, live! Announce
     slide changes with subtle tones. Animate slide transitions with
-    animate.css. Add tabbed panels to slides with panelset. Use the
-    Tachyons CSS utility toolkit.  Create fancy poster-style text blocks.
-    Fit your slides to fill the browser window.
+    animate.css. Add tabbed panels to slides with panelset. Include
+    yourself in your slides with webcam. Add a "copy" button to your code
+    chunk with clipboard. Use the Tachyons CSS utility toolkit. Fit your
+    slides to fill the browser window.
 License: MIT + file LICENSE
 URL: https://github.com/gadenbuie/xaringanExtra
 BugReports: https://github.com/gadenbuie/xaringanExtra/issues
@@ -41,8 +46,8 @@ Imports:
     utils,
     uuid
 Suggests: 
-    xaringan,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    xaringan
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
