@@ -1,7 +1,7 @@
 ---
 title: "clipboard<br>for xaringan"
-pagetitle: "&#x2702;&#xFE0F; clipboard | xaringanExtra"
-subtitle: "&#x2702;&#xFE0F;"
+pagetitle: "&#x1F4CB; clipboard | xaringanExtra"
+subtitle: "&#x1F4CB;"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra'
 output:

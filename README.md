@@ -367,7 +367,7 @@ The webcam extension is based on the original [webcam
 implementation](https://yihui.org/en/2017/12/html5-camera/) by Yihui
 Xie, author of [xaringan](https://slides.yihuie.name/xaringan).
 
-## ✂️ Clipboard
+## 📋 Clipboard
 
 #### 📺 [Clipboard Demo](https://gadenbuie.github.io/xaringanExtra/clipboard)
 
