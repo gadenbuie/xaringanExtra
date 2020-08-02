@@ -44,7 +44,7 @@ NULL
 #' @export
 use_tachyons <- function(minified = TRUE) {
   htmltools::tagList(
-    html_dependency_tachyons()
+    html_dependency_tachyons(minified)
   )
 }
 
@@ -53,23 +53,12 @@ use_tachyons <- function(minified = TRUE) {
 #' @export
 html_dependency_tachyons <- function(minified = TRUE) {
   tachyons_version <- "4.12.0"
-  if (minified) {
-    htmltools::htmlDependency(
-      name = "tachyons",
-      version = tachyons_version,
-      package = "xaringanExtra",
-      src = "jslib/tachyons",
-      stylesheet = "tachyons.min.css",
-      all_files = FALSE
-    )
-  } else {
-    htmltools::htmlDependency(
-      name = "tachyons",
-      version = tachyons_version,
-      package = "xaringanExtra",
-      src = "jslib/tachyons",
-      stylesheet = "tachyons.css",
-      all_files = FALSE
-    )
-  }
+  htmltools::htmlDependency(
+    name = "tachyons",
+    version = tachyons_version,
+    package = "xaringanExtra",
+    src = "jslib/tachyons",
+    stylesheet = paste0("tachyons", if (minified) ".min", ".css"),
+    all_files = FALSE
+  )
 }
