@@ -3,11 +3,16 @@
 ## Breaking Changes
 
 * The CSS variables for panelset have been renamed and the arguments of
-  `style_panelset()` haven been updated for ease of use. Unfortunately, this
+  `style_panelset_tabs()` haven been updated for ease of use. Unfortunately, this
   change is not backwards compatible; using the previous argument names will
   result in an informative warning without throwing an error. The panelset
   also does a better job of handling many tabs, which are now wrapped into
   multiple lines of tabs. (thanks @realauggieheschmeyer, #37, #38, #39).
+  
+* In conjunction with the item above, the `style_panelset()` has been renamed
+  `style_panelset_tabs()`. This more clearly describes the part of the panelset
+  that is styled, and it helps clarify the meaning of the more concise function
+  argument names.
 
 # xaringanExtra 0.0.19 (2020-07-22)
 
