@@ -139,7 +139,7 @@ customize the style to fit your presentation.\if{html}{\out{<div class="markdown
 
 \section{Usage in R Markdown}{
 Panelset works in all R Markdown HTML outputs like HTML reports and
-\link{blogdown} webpages!
+\href{https://bookdown.org/yihui/blogdown/}{blogdown} webpages!
 
 Panelset may require a little bit more work than \code{rmarkdown}’s
 \href{https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html}{tabset}

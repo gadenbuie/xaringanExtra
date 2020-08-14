@@ -4,10 +4,8 @@ if (!exists("INCLUDE_CHILD_HEADER") || isTRUE(INCLUDE_CHILD_HEADER)) {
 }
 ```
 
-[blogdown]: https://bookdown.org/yihui/blogdown/
-
 Panelset works in all R Markdown HTML outputs
-like HTML reports and [blogdown] webpages!
+like HTML reports and [blogdown](https://bookdown.org/yihui/blogdown/) webpages!
 
 Panelset may require a little bit more work than 
 `rmarkdown`'s [tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html) feature,
