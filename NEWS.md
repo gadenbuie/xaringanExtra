@@ -1,4 +1,4 @@
-# xaringanExtra 0.0.19.9000
+# xaringanExtra 0.1.0 (2020-0814)
 
 ## Breaking Changes
 
