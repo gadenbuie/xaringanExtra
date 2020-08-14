@@ -272,6 +272,11 @@ Here's the example used in the demo slides.
 
 ### Use in R Markdown
 
+[rmarkdown::html_document()]: https://rmarkdown.rstudio.com/docs/reference/html_document.html
+
+
+[Example R Markdown output with panelset](https://gadenbuie.github.io/xaringanExtra/panelset/rmarkdown.html)
+
 ```{r child="man/fragments/panelset_other-rmd.Rmd"}
 ```
 

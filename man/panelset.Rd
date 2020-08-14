@@ -133,19 +133,46 @@ customize the style to fit your presentation.\if{html}{\out{<div class="markdown
 }
 
 \section{Usage in R Markdown}{
-Panelset works in all R Markdown HTML outputs. They require a little bit
-more work than \code{rmarkdown}’s
+Panelset works in all R Markdown HTML outputs like HTML reports and
+\link{blogdown} webpages!
+
+Panelset may require a little bit more work than \code{rmarkdown}’s
 \href{https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html}{tabset}
 feature, but the trade-off is that it works in a wider range of document
-types; generally as long as the output is HTML panelset should work.
+types; generally, as long as the output is HTML, panelset should work.
 
 Another advantage of panelset is that it enables deeplinking: the
 currently shown tab is encoded in the URL automatically, allowing users
 to link to open tabs. Users can also right click on a panel’s tab and
 select \emph{Copy Link} to link directly to a specific panel’s tab, which
-will appear in view when visting the copied link.
+will appear in view when visiting the copied link.
 
-Use this format to set up panelset in R Markdown with pandoc’s \href{https://pandoc.org/MANUAL.html#extension-fenced_divs}{fenced divs}.\if{html}{\out{<div class="markdown">}}\preformatted{::::: \{.panelset\}
+With standard R Markdown,
+i.e. \code{\link[rmarkdown:html_document]{rmarkdown::html_document()}}, you
+can use the following template.\if{html}{\out{<div class="markdown">}}\preformatted{::::: \{.panelset\}
+
+## Tab One \{.panel\}
+
+Amet enim aptent molestie vulputate pharetra
+vulputate primis et vivamus semper.
+
+## Tab Two \{.panel\}
+
+### Sub heading one
+
+Sit etiam malesuada arcu fusce ullamcorper
+interdum proin tincidunt curabitur felis?
+
+## Tab Three \{.panel\}
+
+Adipiscing mauris egestas vitae pretium 
+ad dignissim dictumst platea!
+
+:::::
+}\if{html}{\out{</div>}}
+
+In other, less-standard R Markdown HTML formats, you can use pandoc’s
+\href{https://pandoc.org/MANUAL.html#extension-fenced_divs}{fenced divs}.\if{html}{\out{<div class="markdown">}}\preformatted{::::: \{.panelset\}
 
 ::: \{.panel\}
 [First Tab]\{.panel-name\}

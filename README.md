@@ -248,20 +248,52 @@ Here’s the example used in the demo slides.
 
 ### Use in R Markdown
 
-Panelset works in all R Markdown HTML outputs. They require a little bit
-more work than `rmarkdown`’s
+[Example R Markdown output with
+panelset](https://gadenbuie.github.io/xaringanExtra/panelset/rmarkdown.html)
+
+Panelset works in all R Markdown HTML outputs like HTML reports and
+[blogdown](https://bookdown.org/yihui/blogdown/) webpages\!
+
+Panelset may require a little bit more work than `rmarkdown`’s
 [tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html)
 feature, but the trade-off is that it works in a wider range of document
-types; generally as long as the output is HTML panelset should work.
+types; generally, as long as the output is HTML, panelset should work.
 
 Another advantage of panelset is that it enables deeplinking: the
 currently shown tab is encoded in the URL automatically, allowing users
 to link to open tabs. Users can also right click on a panel’s tab and
 select *Copy Link* to link directly to a specific panel’s tab, which
-will appear in view when visting the copied link.
+will appear in view when visiting the copied link.
 
-Use this format to set up panelset in R Markdown with pandoc’s [fenced
-divs](https://pandoc.org/MANUAL.html#extension-fenced_divs).
+With standard R Markdown,
+i.e. [rmarkdown::html\_document()](https://rmarkdown.rstudio.com/docs/reference/html_document.html),
+you can use the following template.
+
+``` markdown
+::::: {.panelset}
+
+## Tab One {.panel}
+
+Amet enim aptent molestie vulputate pharetra
+vulputate primis et vivamus semper.
+
+## Tab Two {.panel}
+
+### Sub heading one
+
+Sit etiam malesuada arcu fusce ullamcorper
+interdum proin tincidunt curabitur felis?
+
+## Tab Three {.panel}
+
+Adipiscing mauris egestas vitae pretium 
+ad dignissim dictumst platea!
+
+:::::
+```
+
+In other, less-standard R Markdown HTML formats, you can use pandoc’s
+[fenced divs](https://pandoc.org/MANUAL.html#extension-fenced_divs).
 
 ``` markdown
 ::::: {.panelset}

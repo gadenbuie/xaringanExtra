@@ -126,6 +126,16 @@ See `?style_panelset()` for the complete list of CSS properties.
 ]
 ]
 
+---
+class: center middle
+
+[blogdown]: https://bookdown.org/yihui/blogdown/
+
+## It also works in R Markdown and [blogdown]!
+
+Check out [the R Markdown panelset demo](rmarkdown.html)
+to see _panelset_ in action!
+
 
 ---
 class: center middle

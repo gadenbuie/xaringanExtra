@@ -25,6 +25,9 @@ for (doc in docs) {
 	rmarkdown::render(file.path(doc, "index.Rmd"), quiet = TRUE)
 }
 
+message("Rendering panelset/rmarkdown example")
+rmarkdown::render(file.path("docs", "panelset", "rmarkdown.Rmd"), quiet = TRUE)
+
 message("Rendering README")
 rmarkdown::render("README.Rmd", quiet = TRUE)
 
