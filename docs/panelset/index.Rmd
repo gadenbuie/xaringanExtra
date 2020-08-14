@@ -82,7 +82,7 @@ Wrap everything in `.panelset[...]` and create a new panel with
 
 
 ```{r echo=FALSE}
-xaringanExtra::style_panelset(
+xaringanExtra::style_panelset_tabs(
   active_foreground = "#0051BA",
   hover_foreground = "#d22",
   font_family = "Roboto"
@@ -90,13 +90,13 @@ xaringanExtra::style_panelset(
 ```
 
 .panelset[
-.panel[.panel-name[style_panelset()]
+.panel[.panel-name[style_panelset_tabs()]
 
-You can use `style_panelset()`
+You can use `style_panelset_tabs()`
 
 ````markdown
 ```{r echo=FALSE}`r ''`
-xaringanExtra::style_panelset(
+xaringanExtra::style_panelset_tabs(
   active_foreground = "#0051BA",
   hover_foreground = "#d22",
   font_family = "Roboto"
@@ -122,7 +122,7 @@ Or use CSS directly...
 ```
 ````
 
-See `?style_panelset()` for the complete list of CSS properties.
+See `?style_panelset_tabs()` for the complete list of CSS properties.
 ]
 ]
 

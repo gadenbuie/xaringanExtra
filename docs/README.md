@@ -339,11 +339,11 @@ Alternatively, you can also use raw HTML.
 ### Customize Panelset Appearnce
 
 To customize the appearance of your panels, you can use
-`style_panelset()` called directly in an R chunk in your slides.
+`style_panelset_tabs()` called directly in an R chunk in your slides.
 
 ```` markdown
 ```{r echo=FALSE}
-style_panelset(foreground = "honeydew", background = "seagreen")
+style_panelset_tabs(foreground = "honeydew", background = "seagreen")
 ```
 ````
 
@@ -353,9 +353,9 @@ change your tab colors or to use solid colored tabs, you’ll likely want
 to set `inactive_opacity = 1` in `style_panelset()` (or the
 corresponding `--panel-tab-inactive-opacity` CSS variable).
 
-Behind the scenes, `style_panelset()` updates the values of [custom CSS
-properties](https://developer.mozilla.org/en-US/Web/CSS/--*) that
-define the panelset appearance. If you’d rather work with CSS, the
+Behind the scenes, `style_panelset_tabs()` updates the values of [custom
+CSS properties](https://developer.mozilla.org/en-US/Web/CSS/--*)
+that define the panelset appearance. If you’d rather work with CSS, the
 default values of these properties are shown in the CSS code below. You
 can copy the whole CSS block to your slides and modify the values to
 customize the style to fit your presentation.

@@ -3,13 +3,14 @@
 \name{panelset}
 \alias{panelset}
 \alias{use_panelset}
+\alias{style_panelset_tabs}
 \alias{style_panelset}
 \alias{html_dependency_panelset}
 \title{Panelset}
 \usage{
 use_panelset()
 
-style_panelset(
+style_panelset_tabs(
   foreground = NULL,
   background = NULL,
   ...,
@@ -24,6 +25,8 @@ style_panelset(
   font_family = NULL,
   selector = ".panelset"
 )
+
+style_panelset(...)
 
 html_dependency_panelset()
 }
@@ -68,8 +71,10 @@ A panelset designed for showing off code, but useful for anything really.
 \itemize{
 \item \code{use_panelset}: Adds panelset to your xaringan slides.
 
-\item \code{style_panelset}: Style the panelset. Returns an \pkg{htmltools} \verb{<style>}
+\item \code{style_panelset_tabs}: Style the panelset. Returns an \pkg{htmltools} \verb{<style>}
 tag.
+
+\item \code{style_panelset}: Deprecated, renamed \code{style_panelset_tabs()}.
 
 \item \code{html_dependency_panelset}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
 view dependencies. Most users will want to use \code{use_panelset()}.
@@ -99,8 +104,8 @@ Take a look at the R code in that other panel.
 
 \section{Style Panelset}{
 To customize the appearance of your panels, you can use
-\code{style_panelset()} called directly in an R chunk in your slides.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r echo=FALSE\}
-style_panelset(foreground = "honeydew", background = "seagreen")
+\code{style_panelset_tabs()} called directly in an R chunk in your slides.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r echo=FALSE\}
+style_panelset_tabs(foreground = "honeydew", background = "seagreen")
 ```
 }\if{html}{\out{</div>}}
 
@@ -110,8 +115,8 @@ change your tab colors or to use solid colored tabs, you’ll likely want
 to set \code{inactive_opacity = 1} in \code{style_panelset()} (or the
 corresponding \code{--panel-tab-inactive-opacity} CSS variable).
 
-Behind the scenes, \code{style_panelset()} updates the values of \href{https://developer.mozilla.org/en-US/docs/Web/CSS/--*}{custom CSS properties} that
-define the panelset appearance. If you’d rather work with CSS, the
+Behind the scenes, \code{style_panelset_tabs()} updates the values of \href{https://developer.mozilla.org/en-US/docs/Web/CSS/--*}{custom CSS properties}
+that define the panelset appearance. If you’d rather work with CSS, the
 default values of these properties are shown in the CSS code below. You
 can copy the whole CSS block to your slides and modify the values to
 customize the style to fit your presentation.\if{html}{\out{<div class="markdown">}}\preformatted{```\{css echo=FALSE\}

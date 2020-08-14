@@ -65,7 +65,7 @@ use_panelset <- function() {
 #'   styled. In most cases, you can use the default selector and style all
 #'   panelsets on the page.
 #' @export
-style_panelset <- function(
+style_panelset_tabs <- function(
   foreground = NULL,
   background = NULL,
   ...,
@@ -104,6 +104,13 @@ style_panelset <- function(
   }
   style <- paste0("<style>", selector, "{", style, "}</style>")
   htmltools::HTML(style)
+}
+
+#' @describeIn panelset Deprecated, renamed `style_panelset_tabs()`.
+#' @export
+style_panelset <- function(...) {
+  .Deprecated("style_panelset_tabs")
+  style_panelset_tabs(...)
 }
 
 panelset_match_vars <- function(x = NULL) {

@@ -10,7 +10,7 @@ output:
 
 ```{r}
 xaringanExtra::use_panelset()
-xaringanExtra::style_panelset(font_family = "inherit")
+xaringanExtra::style_panelset_tabs(font_family = "inherit")
 ```
 
 ## Panels in R Markdown!

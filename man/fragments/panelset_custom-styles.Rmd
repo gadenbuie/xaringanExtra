@@ -5,12 +5,12 @@ if (!exists("INCLUDE_CHILD_HEADER") || isTRUE(INCLUDE_CHILD_HEADER)) {
 ```
 
 To customize the appearance of your panels,
-you can use `style_panelset()` 
+you can use `style_panelset_tabs()` 
 called directly in an R chunk in your slides.
 
 ````markdown
 ```{r echo=FALSE}`r ''`
-style_panelset(foreground = "honeydew", background = "seagreen")
+style_panelset_tabs(foreground = "honeydew", background = "seagreen")
 ```
 ````
 
@@ -22,7 +22,7 @@ you'll likely want to set `inactive_opacity = 1` in `style_panelset()`
 (or the corresponding `--panel-tab-inactive-opacity` CSS variable).
 
 Behind the scenes, 
-`style_panelset()` updates the values of
+`style_panelset_tabs()` updates the values of
 [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
 that define the panelset appearance.
 If you'd rather work with CSS,
