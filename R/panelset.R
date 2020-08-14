@@ -71,58 +71,85 @@ use_panelset <- function() {
 
 #' @describeIn panelset Style the panelset. Returns an \pkg{htmltools} `<style>`
 #'   tag.
-#' @param panel_tab_color The text color of a non-active panel tab, default is
+#' @param foreground The text color of a non-active panel tab, default is
 #'   `currentColor`.
-#' @param panel_tab_color_active The text color of an active, as in selected,
-#'   panel tab. Default is `currentColor`
-#' @param panel_tab_color_hover The text color of a hovered panel tab. Default
-#'   is `currentColor`.
-#' @param panel_tabs_border_bottom The border color between the tabs and
-#'   content. Default is `#ddd`.
-#' @param panel_tab_inactive_opacity The opacity of inactive panel tabs,
-#'   default is `0.5`.
-#' @param panel_tab_font_family The font family to be used for the panel tabs
-#'   text. Default is a monospace system font stack.
-#' @param panel_tab_background_color,panel_tab_background_color_active,panel_tab_background-color_hover
-#'   Background colors for panel tabs; in-active tabs, active tab, hovered tab.
-#'   The default values are all `unset`.
-#' @param panel_tab_border_color_active,panel_tab_border_color_hover The color
-#'   of the top border of a tab when it is active or the color of the bottom
-#'   border of a tab when it is hovered or focused. Defaults are `currentColor`.
+#' @param active_foreground The text color of an active, as in selected, panel
+#'   tab. Default is `currentColor`.
+#' @param hover_foreground The text color of a hovered panel tab. Default is
+#'   `currentColor`.
+#' @param tabs_border_bottom The border color between the tabs and content.
+#'   Default is `#ddd`.
+#' @param inactive_opacity The opacity of inactive panel tabs, default is `0.5`.
+#' @param font_family The font family to be used for the panel tabs text.
+#'   Default is a monospace system font stack.
+#' @param background,active_background,hover_background Background colors for
+#'   panel tabs; in-active tabs, active tab, hovered tab. The default values are
+#'   all `unset`.
+#' @param active_border_color,hover_border_color The color of the top border of
+#'   a tab when it is active or the color of the bottom border of a tab when it
+#'   is hovered or focused. Defaults are `currentColor`.
+#' @param selector The CSS selector used to choose which panelset is being
+#'   styled. In most cases, you can use the default selector and style all
+#'   panelsets on the page.
 #' @export
 style_panelset <- function(
-  panel_tab_color = NULL,
-  panel_tab_color_active = NULL,
-  panel_tab_color_hover = NULL,
-  panel_tab_background_color = NULL,
-  panel_tab_background_color_active = NULL,
-  panel_tab_background_color_hover = NULL,
-  panel_tab_border_color_active = NULL,
-  panel_tab_border_color_hover = NULL,
-  panel_tabs_border_bottom = NULL,
-  panel_tab_inactive_opacity = NULL,
-  panel_tab_font_family = NULL
+  foreground = NULL,
+  background = NULL,
+  ...,
+  active_foreground = NULL,
+  active_background = NULL,
+  active_border_color = NULL,
+  hover_background = NULL,
+  hover_foreground = NULL,
+  hover_border_color = NULL,
+  tabs_border_bottom = NULL,
+  inactive_opacity = NULL,
+  font_family = NULL,
+  selector = ".panelset"
 ) {
-  args <- lapply(names(formals()), function(x) get(x))
-  names(args) <- names(formals())
-  args <- args[vapply(args, function(x) !is.null(x), TRUE)]
-  if (!length(args)) {
-    return(invisible())
-  }
-  style <- ""
-  for (arg in names(args)) {
-    style <- paste0(
-      style,
-      if (style != "") "\n",
-      "  --",
-      gsub("_", "-", arg),
-      ": ",
-      args[arg],
-      ";"
+  if (length(list(...))) {
+    warning(
+      "The arguments to `syle_panelset()` changed in xaringanExtra 0.1.0. ",
+      "Please refer to the documentation to update your slides.",
+      immediate. = TRUE
     )
   }
-  style <- paste(".panelset {", style, "}", sep = "\n")
-  htmltools::tags$style(htmltools::HTML(style))
+
+  fn_args <- setdiff(names(formals()), c("...", "selector"))
+  names(fn_args) <- fn_args
+  args <- lapply(fn_args, function(x) get(x))
+  args <- args[vapply(args, function(x) !is.null(x), TRUE)]
+  if (!length(args)) {
+    return(invisible(NULL))
+  }
+
+  names(args) <- panelset_match_vars(names(args))
+
+  style <- ""
+  for (var in names(args)) {
+    style <- paste0(style, var, ": ", args[var], ";")
+  }
+  style <- paste0("<style>", selector, "{", style, "}</style>")
+  htmltools::HTML(style)
+}
+
+panelset_match_vars <- function(x = NULL) {
+  vars <-  c(
+    foreground          = "--panel-tab-foreground",
+    background          = "--panel-tab-background",
+    active_foreground   = "--panel-tab-active-foreground",
+    active_background   = "--panel-tab-active-background",
+    active_border_color = "--panel-tab-active-border-color",
+    hover_background    = "--panel-tab-hover-background",
+    hover_foreground    = "--panel-tab-hover-foreground",
+    hover_border_color  = "--panel-tab-hover-border-color",
+    tabs_border_bottom  = "--panel-tabs_border-bottom",
+    inactive_opacity    = "--panel-tab-inactive-opacity",
+    font_family         = "--panel-tab-font-family"
+  )
+
+  if (is.null(x)) return(vars)
+  vars[x]
 }
 
 #' @describeIn panelset Returns an [htmltools::htmlDependency()] with the tile
