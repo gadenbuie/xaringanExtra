@@ -1,0 +1,49 @@
+```{r echo=FALSE, results="asis"}
+if (!exists("INCLUDE_CHILD_HEADER") || isTRUE(INCLUDE_CHILD_HEADER)) {
+	cat("# Style Panelset")
+}
+```
+
+To customize the appearance of your panels,
+you can use `style_panelset_tabs()` 
+called directly in an R chunk in your slides.
+
+````markdown
+```{r echo=FALSE}`r ''`
+style_panelset_tabs(foreground = "honeydew", background = "seagreen")
+```
+````
+
+The panelset uses opacity to soften the in-active tabs
+to increase the chances that the tabs will work with your slide theme.
+If you decide to change your tab colors
+or to use solid colored tabs,
+you'll likely want to set `inactive_opacity = 1` in `style_panelset()`
+(or the corresponding `--panel-tab-inactive-opacity` CSS variable).
+
+Behind the scenes, 
+`style_panelset_tabs()` updates the values of
+[custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
+that define the panelset appearance.
+If you'd rather work with CSS,
+the default values of these properties are shown in the CSS code below.
+You can copy the whole CSS block to your slides 
+and modify the values to customize the style to fit your presentation.
+
+````markdown
+```{css echo=FALSE}`r ''`
+.panelset {
+   --panel-tab-foreground: currentColor;
+   --panel-tab-background: unset;
+   --panel-tab-active-foreground: currentColor;
+   --panel-tab-active-background: unset;
+   --panel-tab-active-border-color: currentColor;
+   --panel-tab-hover-foreground: currentColor;
+   --panel-tab-hover-background: unset;
+   --panel-tab-hover-border-color: currentColor;
+   --panel-tab-inactive-opacity: 0.5;
+   --panel-tabs-border-bottom: #ddd;
+   --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+}
+```
+````

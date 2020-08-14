@@ -1,0 +1,173 @@
+---
+title: Panelset in R Markdown
+subtitle: 'xaringanExtra `r packageVersion("xaringanExtra")`'
+author: https://pkg.garrickadenbuie.com/xaringanExtra
+output:
+  rmarkdown::html_document: default
+  # rmarkdown::html_document:
+    # pandoc_args: ["--to", "html5"]
+---
+
+```{r}
+xaringanExtra::use_panelset()
+xaringanExtra::style_panelset_tabs(font_family = "inherit")
+```
+
+## Panels in R Markdown!
+
+Similar to R Markdown's [tabset feature](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html) but it works just about anywhere that R Markdown generates HTML.
+
+:::::::::: {.panelset}
+
+### Tab One {.panel}
+
+Sit duis varius cursus auctor sed primis dictum justo diam senectus tellus? Facilisi turpis etiam facilisis mi class ullamcorper curae donec tempus? Felis habitasse id mus placerat blandit nec feugiat litora ridiculus sociis? Nostra varius morbi metus per mollis!
+
+Ipsum natoque mattis posuere malesuada et. Etiam urna ac parturient penatibus magnis nunc taciti hac vestibulum tortor lobortis phasellus inceptos. Nullam mauris eleifend sem orci sodales nunc etiam nostra conubia fermentum. Mi metus commodo ullamcorper nostra est nunc aliquet curabitur.
+
+
+### Tab Two {.panel}
+
+#### Sub Heading One
+
+Consectetur tortor torquent nisl ante diam risus diam. Gravida purus sociis pulvinar elementum tellus ultrices suscipit! Ad turpis augue mattis netus fusce vulputate posuere fames sed cum. Auctor dignissim felis maecenas mauris aenean mauris primis cursus sollicitudin pulvinar donec.
+
+#### Sub Heading Two
+
+Ipsum eu commodo senectus nam risus penatibus nisi in morbi non? Congue dictum primis hendrerit pretium odio cubilia proin diam pretium posuere. Mauris aliquet quis eleifend mollis cursus convallis pharetra accumsan porttitor leo mattis. Dictum euismod praesent egestas non facilisi.
+
+### Tab Three {.panel}
+
+Lorem cubilia phasellus enim himenaeos morbi conubia duis nec pretium cubilia pharetra mus sociosqu primis.
+
+Elit euismod volutpat penatibus quisque phasellus viverra!
+
+### Standard Rmd {.panel}
+
+This set up works for _standard R Markdown only_.
+In other words: HTML4 output with section divs (current `rmarkdown` default).
+
+```markdown
+::: {.panelset}
+
+## Tab One {.panel}
+
+content...
+
+## Tab Two {.panel}
+
+### Sub heading one
+
+content...
+
+## Tab Three {.panel}
+
+content...
+
+:::
+```
+
+Note that you have to add the `{.panel}` class attribute to headings and that sub headings must be lower than the tab panel heading.
+Note the sub heading above is a level-3 heading under a level-2 tab panel.
+
+::::::::::
+
+
+## More Panels
+
+::::: {.panelset}
+
+::: {.panel}
+
+[Tab A]{.panel-name}
+
+Sit mi magnis conubia posuere vestibulum suscipit nunc! Quisque nam senectus semper purus ad faucibus aenean dis volutpat nulla. Luctus cras auctor donec nisl nec cursus enim feugiat turpis. Potenti bibendum elementum fringilla quam class leo aliquet suscipit natoque!
+
+:::
+
+::: {.panel}
+
+[Tab B]{.panel-name}
+
+### Sub heading B1
+
+Ipsum fermentum volutpat potenti fermentum eros aptent ornare phasellus eros dignissim accumsan! Suscipit aptent orci felis sodales facilisi taciti mus velit lobortis turpis vitae erat ultrices auctor. Primis praesent habitasse quis litora curae orci ante mi imperdiet montes enim et? Dui feugiat mi etiam semper nec donec tempus semper?
+
+### Sub heading B2
+
+Amet sociis ac ad himenaeos felis porttitor quis dui dapibus! Auctor interdum dui senectus morbi lobortis pharetra eleifend. Commodo posuere erat laoreet platea ligula a praesent urna congue tempor dignissim porta vestibulum.
+
+:::
+
+::: {.panel}
+
+[Tab C]{.panel-name}
+
+Ipsum nascetur duis senectus praesent at mauris vehicula ligula primis auctor. Dignissim imperdiet dapibus sagittis condimentum aliquam tortor. Ac sapien malesuada dictumst eros per lacinia hendrerit hendrerit facilisis ornare class. Tellus nisi molestie per potenti ac justo orci aliquet sem elementum.
+
+:::
+
+::: {.panel}
+
+[Non-Standard Rmd]{.panel-name}
+
+```markdown
+::::: {.panelset}
+
+::: {.panel}
+
+[Tab A]{.panel-name}
+
+Sit mi magnis conubia posuere...
+
+:::
+
+::: {.panel}
+
+[Tab B]{.panel-name}
+
+### Sub heading one
+
+Ipsum fermentum volutpat potenti...
+
+:::
+
+::: {.panel}
+
+[Tab C]{.panel-name}
+
+Ipsum nascetur duis senectus praesent...
+
+:::
+```
+
+:::
+
+::: {.panel}
+
+[HTML]{.panel-name}
+
+Worst case scenario: if none of the other formats work,
+you can fall back to raw HTML.
+
+```html
+<div class="panelset">
+  <div class="panel">
+    <div class="panel-name">First Tab</div>
+    <!-- Panel content -->
+    <p>Lorem ipsum, etc, etc</p>
+  </div>
+  <div class="panel">
+    <div class="panel-name">Second Tab</div>
+    <!-- Panel content -->
+    <p>Lorem ipsum, etc, etc</p>
+  </div>
+</div>
+```
+
+:::
+
+:::::
+
+
+

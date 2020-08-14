@@ -7,6 +7,10 @@ always_allow_html: true
 <!-- badges: start -->
 <!-- badges: end -->
 
+```{r include=FALSE}
+INCLUDE_CHILD_HEADER <- FALSE
+```
+
 ```{css echo=FALSE, eval=knitr::is_html_output()}
 @media only screen and (max-width: 1000px) {
   main {
@@ -266,35 +270,20 @@ Here's the example used in the demo slides.
 ]
 ````
 
-To customize the appearance of your panels,
-you can use `style_panelset()` 
-called directly in an R chunk in your slides.
+### Use in R Markdown
 
-````markdown
-```{r echo=FALSE}`r ''`
-style_panelset(panel_tab_color_active = "red")
+[rmarkdown::html_document()]: https://rmarkdown.rstudio.com/docs/reference/html_document.html
+
+
+[Example R Markdown output with panelset](https://gadenbuie.github.io/xaringanExtra/panelset/rmarkdown.html)
+
+```{r child="man/fragments/panelset_other-rmd.Rmd"}
 ```
-````
 
-The panelset uses custom CSS properties to make
-it easier to change the styles of the panel tabs.
-The default values are shown in the CSS code below. 
-You can copy the whole CSS block to your slides and 
-modify the values to customize the style to fit your presentation.
+### Customize Panelset Appearnce
 
-````markdown
-```{css echo=FALSE}`r ''`
-.panelset {
-  --panel-tab-color: currentColor;
-  --panel-tab-color-active: currentColor;
-  --panel-tab-color-hover: currentColor;
-  --panel-tabs-border-bottom: #ddd;
-  --panel-tab-inactive-opacity: 0.5;
-  --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-}
+```{r child="man/fragments/panelset_custom-styles.Rmd"}
 ```
-````
-
 
 ## &#x1F48C; Logo
 

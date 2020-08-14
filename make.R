@@ -25,6 +25,9 @@ for (doc in docs) {
 	rmarkdown::render(file.path(doc, "index.Rmd"), quiet = TRUE)
 }
 
+message("Rendering panelset/rmarkdown example")
+rmarkdown::render(file.path("docs", "panelset", "rmarkdown.Rmd"), quiet = TRUE)
+
 message("Rendering README")
 rmarkdown::render("README.Rmd", quiet = TRUE)
 
@@ -32,6 +35,8 @@ message("Rendering docs/README.md from README.md")
 
 if (fs::dir_exists("docs/figures")) fs::dir_delete("docs/figures")
 fs::dir_copy("man/figures", "docs/figures", overwrite = TRUE)
+
+fs::file_copy("NEWs.md", "docs/NEWS.md", overwrite = TRUE)
 
 fs::file_copy("README.md", "docs/README.md", overwrite = TRUE)
 x <- readLines("docs/README.md")

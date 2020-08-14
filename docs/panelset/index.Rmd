@@ -82,24 +82,24 @@ Wrap everything in `.panelset[...]` and create a new panel with
 
 
 ```{r echo=FALSE}
-xaringanExtra::style_panelset(
-  panel_tab_color_active = "#0051BA",
-  panel_tab_color_hover = "#d22",
-  panel_tab_font_family = "Roboto"
+xaringanExtra::style_panelset_tabs(
+  active_foreground = "#0051BA",
+  hover_foreground = "#d22",
+  font_family = "Roboto"
 )
 ```
 
 .panelset[
-.panel[.panel-name[style_panelset()]
+.panel[.panel-name[style_panelset_tabs()]
 
-You can use `style_panelset()`
+You can use `style_panelset_tabs()`
 
 ````markdown
 ```{r echo=FALSE}`r ''`
-xaringanExtra::style_panelset(
-  panel_tab_color_active = "#0051BA",
-  panel_tab_color_hover = "#d22",
-  panel_tabs_font_family = "Roboto"
+xaringanExtra::style_panelset_tabs(
+  active_foreground = "#0051BA",
+  hover_foreground = "#d22",
+  font_family = "Roboto"
 )
 ```
 ````
@@ -112,9 +112,9 @@ Or use CSS directly...
 ````markdown
 ```{css echo=FALSE}`r ''`
 .panelset {
-  --panel-tab-color: currentColor;
-  --panel-tab-color-active: #0051BA;
-  --panel-tab-color-hover: #d22;
+  --panel-tab-foreground: currentColor;
+  --panel-tab-active-foreground: #0051BA;
+  --panel-tab-hover-foreground: #d22;
   --panel-tabs-border-bottom: #ddd;
   --panel-tab-inactive-opacity: 0.5;
   --panel-tab-font-family: Roboto, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;\
@@ -122,12 +122,19 @@ Or use CSS directly...
 ```
 ````
 
-The arguments of `style_panelset()` are all the CSS custom properties,
-in _snake case_.
-For example, `panel_tab_color` in `style_panelset()` corresponds to the
-CSS custom property `--panel-tab-color`.
+See `?style_panelset_tabs()` for the complete list of CSS properties.
 ]
 ]
+
+---
+class: center middle
+
+[blogdown]: https://bookdown.org/yihui/blogdown/
+
+## It also works in R Markdown and [blogdown]!
+
+Check out [the R Markdown panelset demo](rmarkdown.html)
+to see _panelset_ in action!
 
 
 ---

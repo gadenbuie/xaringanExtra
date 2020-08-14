@@ -32,17 +32,44 @@
       return name
     }
 
-    const processPanelItem = (item) => {
-      const nameDiv = item.querySelector('.panel-name')
+    const identifyPanelName = (item) => {
       let name = 'Panel'
-      if (nameDiv) {
-        name = nameDiv.textContent.trim()
-        if (nameDiv.tagName === 'SPAN' && nameDiv.parentNode.tagName === 'P') {
-          item.removeChild(nameDiv.parentNode)
-        } else {
-          item.removeChild(nameDiv)
-        }
+
+      // In R Markdown when header-attrs.js is present, we may have found a
+      // section header but the class attributes won't be duplicated on the <hX> tag
+      if (
+        (item.tagName === 'SECTION' || item.classList.contains('section')) &&
+        /^H[1-6]/.test(item.children[0].tagName)
+      ) {
+        name = item.children[0].textContent
+        item.classList.remove('panel-name')
+        item.removeChild(item.children[0])
+        return name
       }
+
+      const nameDiv = item.querySelector('.panel-name')
+      if (!nameDiv) return name
+
+      // In remarkjs the .panel-name span might be in a paragraph tag
+      // and if the <p> is empty, we'll remove it
+      if (
+        nameDiv.tagName === 'SPAN' &&
+        nameDiv.parentNode.tagName === 'P' &&
+        nameDiv.textContent === nameDiv.parentNode.textContent
+      ) {
+        name = nameDiv.textContent
+        item.removeChild(nameDiv.parentNode)
+        return name
+      }
+
+      // If none of the above, remove the nameDiv and return the name
+      name = nameDiv.textContent
+      nameDiv.parentNode.removeChild(nameDiv)
+      return name
+    }
+
+    const processPanelItem = (item) => {
+      const name = identifyPanelName(item)
       return { name, content: item.children, id: uniquePanelId(name) }
     }
 
