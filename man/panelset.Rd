@@ -38,6 +38,8 @@ html_dependency_panelset()
 panel tabs; in-active tabs, active tab, hovered tab. The default values are
 all \code{unset}.}
 
+\item{...}{Ignored or passed from \code{style_panelset()} to \code{style_panelset_tabs()}.}
+
 \item{active_foreground}{The text color of an active, as in selected, panel
 tab. Default is \code{currentColor}.}
 

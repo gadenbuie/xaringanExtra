@@ -107,6 +107,7 @@ style_panelset_tabs <- function(
 }
 
 #' @describeIn panelset Deprecated, renamed `style_panelset_tabs()`.
+#' @param ... Ignored or passed from `style_panelset()` to `style_panelset_tabs()`.
 #' @export
 style_panelset <- function(...) {
   .Deprecated("style_panelset_tabs")
