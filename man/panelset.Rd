@@ -10,46 +10,52 @@
 use_panelset()
 
 style_panelset(
-  panel_tab_color = NULL,
-  panel_tab_color_active = NULL,
-  panel_tab_color_hover = NULL,
-  panel_tab_background_color = NULL,
-  panel_tab_background_color_active = NULL,
-  panel_tab_background_color_hover = NULL,
-  panel_tab_border_color_active = NULL,
-  panel_tab_border_color_hover = NULL,
-  panel_tabs_border_bottom = NULL,
-  panel_tab_inactive_opacity = NULL,
-  panel_tab_font_family = NULL
+  foreground = NULL,
+  background = NULL,
+  ...,
+  active_foreground = NULL,
+  active_background = NULL,
+  active_border_color = NULL,
+  hover_background = NULL,
+  hover_foreground = NULL,
+  hover_border_color = NULL,
+  tabs_border_bottom = NULL,
+  inactive_opacity = NULL,
+  font_family = NULL,
+  selector = ".panelset"
 )
 
 html_dependency_panelset()
 }
 \arguments{
-\item{panel_tab_color}{The text color of a non-active panel tab, default is
+\item{foreground}{The text color of a non-active panel tab, default is
 \code{currentColor}.}
 
-\item{panel_tab_color_active}{The text color of an active, as in selected,
-panel tab. Default is \code{currentColor}}
+\item{background, active_background, hover_background}{Background colors for
+panel tabs; in-active tabs, active tab, hovered tab. The default values are
+all \code{unset}.}
 
-\item{panel_tab_color_hover}{The text color of a hovered panel tab. Default
-is \code{currentColor}.}
+\item{active_foreground}{The text color of an active, as in selected, panel
+tab. Default is \code{currentColor}.}
 
-\item{panel_tab_background_color, panel_tab_background_color_active, panel_tab_background-color_hover}{Background colors for panel tabs; in-active tabs, active tab, hovered tab.
-The default values are all \code{unset}.}
+\item{active_border_color, hover_border_color}{The color of the top border of
+a tab when it is active or the color of the bottom border of a tab when it
+is hovered or focused. Defaults are \code{currentColor}.}
 
-\item{panel_tab_border_color_active, panel_tab_border_color_hover}{The color
-of the top border of a tab when it is active or the color of the bottom
-border of a tab when it is hovered or focused. Defaults are \code{currentColor}.}
+\item{hover_foreground}{The text color of a hovered panel tab. Default is
+\code{currentColor}.}
 
-\item{panel_tabs_border_bottom}{The border color between the tabs and
-content. Default is \verb{#ddd}.}
+\item{tabs_border_bottom}{The border color between the tabs and content.
+Default is \verb{#ddd}.}
 
-\item{panel_tab_inactive_opacity}{The opacity of inactive panel tabs,
-default is \code{0.5}.}
+\item{inactive_opacity}{The opacity of inactive panel tabs, default is \code{0.5}.}
 
-\item{panel_tab_font_family}{The font family to be used for the panel tabs
-text. Default is a monospace system font stack.}
+\item{font_family}{The font family to be used for the panel tabs text.
+Default is a monospace system font stack.}
+
+\item{selector}{The CSS selector used to choose which panelset is being
+styled. In most cases, you can use the default selector and style all
+panelsets on the page.}
 }
 \value{
 An \code{htmltools::tagList()} with the panelset dependencies, or an
@@ -91,31 +97,85 @@ Take a look at the R code in that other panel.
 }\if{html}{\out{</div>}}
 }
 
-\section{Customizing styles}{
- The panelset uses custom CSS properties to make
-it easier to change the styles of the panel tabs. The default values are
-shown in the CSS code below. You can copy the whole CSS block to your
-slides and modify the values to customize the style to fit your
-presentation.\if{html}{\out{<div class="markdown">}}\preformatted{```\{css echo=FALSE\}
-.panelset \{
-  --panel-tab-color: currentColor;
-  --panel-tab-color-active: currentColor;
-  --panel-tab-color-hover: currentColor;
-  --panel-tab-background-color: unset;
-  --panel-tab-background-color-active: unset;
-  --panel-tab-background-color-hover: unset;
-  --panel-tabs-border-bottom: #ddd;
-  --panel-tab-border-color-active: currentColor;
-  --panel-tab-border-color-hover: currentColor;
-  --panel-tab-inactive-opacity: 0.5;
-  --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-\}
+\section{Style Panelset}{
+To customize the appearance of your panels, you can use
+\code{style_panelset()} called directly in an R chunk in your slides.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r echo=FALSE\}
+style_panelset(foreground = "honeydew", background = "seagreen")
 ```
 }\if{html}{\out{</div>}}
 
-Or use \code{\link[=style_panelset]{style_panelset()}}:\if{html}{\out{<div class="markdown">}}\preformatted{```\{r echo=FALSE\}
-style_panelset(panel_tab_color_active = "red")
+The panelset uses opacity to soften the in-active tabs to increase the
+chances that the tabs will work with your slide theme. If you decide to
+change your tab colors or to use solid colored tabs, you’ll likely want
+to set \code{inactive_opacity = 1} in \code{style_panelset()} (or the
+corresponding \code{--panel-tab-inactive-opacity} CSS variable).
+
+Behind the scenes, \code{style_panelset()} updates the values of \href{https://developer.mozilla.org/en-US/docs/Web/CSS/--*}{custom CSS properties} that
+define the panelset appearance. If you’d rather work with CSS, the
+default values of these properties are shown in the CSS code below. You
+can copy the whole CSS block to your slides and modify the values to
+customize the style to fit your presentation.\if{html}{\out{<div class="markdown">}}\preformatted{```\{css echo=FALSE\}
+.panelset \{
+   --panel-tab-foreground: currentColor;
+   --panel-tab-background: unset;
+   --panel-tab-active-foreground: currentColor;
+   --panel-tab-active-background: unset;
+   --panel-tab-active-border-color: currentColor;
+   --panel-tab-hover-foreground: currentColor;
+   --panel-tab-hover-background: unset;
+   --panel-tab-hover-border-color: currentColor;
+   --panel-tab-inactive-opacity: 0.5;
+   --panel-tabs-border-bottom: #ddd;
+   --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+\}
 ```
+}\if{html}{\out{</div>}}
+}
+
+\section{Usage in R Markdown}{
+Panelset works in all R Markdown HTML outputs. They require a little bit
+more work than \code{rmarkdown}’s
+\href{https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html}{tabset}
+feature, but the trade-off is that it works in a wider range of document
+types; generally as long as the output is HTML panelset should work.
+
+Another advantage of panelset is that it enables deeplinking: the
+currently shown tab is encoded in the URL automatically, allowing users
+to link to open tabs. Users can also right click on a panel’s tab and
+select \emph{Copy Link} to link directly to a specific panel’s tab, which
+will appear in view when visting the copied link.
+
+Use this format to set up panelset in R Markdown with pandoc’s \href{https://pandoc.org/MANUAL.html#extension-fenced_divs}{fenced divs}.\if{html}{\out{<div class="markdown">}}\preformatted{::::: \{.panelset\}
+
+::: \{.panel\}
+[First Tab]\{.panel-name\}
+
+Lorem sed non habitasse nulla donec egestas magna
+enim posuere fames ante diam!
+:::
+
+::: \{.panel\}
+[Second Tab]\{.panel-name\}
+
+Consectetur ligula taciti neque scelerisque gravida
+class pharetra netus lobortis quisque mollis iaculis.
+:::
+
+:::::
+}\if{html}{\out{</div>}}
+
+Alternatively, you can also use raw HTML.\if{html}{\out{<div class="html">}}\preformatted{<div class="panelset">
+  <div class="panel">
+    <div class="panel-name">First Tab</div>
+    <!-- Panel content -->
+    <p>Lorem ipsum, etc, etc</p>
+  </div>
+  <div class="panel">
+    <div class="panel-name">Second Tab</div>
+    <!-- Panel content -->
+    <p>Lorem ipsum, etc, etc</p>
+  </div>
+</div>
 }\if{html}{\out{</div>}}
 }
 

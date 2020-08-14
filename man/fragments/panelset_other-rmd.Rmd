@@ -1,0 +1,57 @@
+```{r echo=FALSE, results="asis"}
+if (!exists("INCLUDE_CHILD_HEADER") || isTRUE(INCLUDE_CHILD_HEADER)) {
+	cat("# Usage in R Markdown")
+}
+```
+
+Panelset works in all R Markdown HTML outputs.
+They require a little bit more work than 
+`rmarkdown`'s [tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html) feature,
+but the trade-off is that it works in a wider range of document types;
+generally as long as the output is HTML panelset should work.
+
+Another advantage of panelset is that it enables deeplinking:
+the currently shown tab is encoded in the URL automatically,
+allowing users to link to open tabs.
+Users can also right click on a panel's tab
+and select _Copy Link_ to link directly to a specific panel's tab,
+which will appear in view when visting the copied link.
+
+Use this format to set up panelset in R Markdown with pandoc's [fenced divs](https://pandoc.org/MANUAL.html#extension-fenced_divs).
+
+````markdown
+::::: {.panelset}
+
+::: {.panel}
+[First Tab]{.panel-name}
+
+Lorem sed non habitasse nulla donec egestas magna
+enim posuere fames ante diam!
+:::
+
+::: {.panel}
+[Second Tab]{.panel-name}
+
+Consectetur ligula taciti neque scelerisque gravida
+class pharetra netus lobortis quisque mollis iaculis.
+:::
+
+:::::
+````
+
+Alternatively, you can also use raw HTML.
+
+````html
+<div class="panelset">
+  <div class="panel">
+    <div class="panel-name">First Tab</div>
+    <!-- Panel content -->
+    <p>Lorem ipsum, etc, etc</p>
+  </div>
+  <div class="panel">
+    <div class="panel-name">Second Tab</div>
+    <!-- Panel content -->
+    <p>Lorem ipsum, etc, etc</p>
+  </div>
+</div>
+````

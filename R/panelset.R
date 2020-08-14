@@ -27,37 +27,10 @@
 #'   ]
 #'   ````
 #'
-#' @section Customizing styles: The panelset uses custom CSS properties to make
-#'   it easier to change the styles of the panel tabs. The default values are
-#'   shown in the CSS code below. You can copy the whole CSS block to your
-#'   slides and modify the values to customize the style to fit your
-#'   presentation.
+#' @includeRmd man/fragments/panelset_custom-styles.Rmd
 #'
-#'   ````markdown
-#'   ```{css echo=FALSE}
-#'   .panelset {
-#'     --panel-tab-color: currentColor;
-#'     --panel-tab-color-active: currentColor;
-#'     --panel-tab-color-hover: currentColor;
-#'     --panel-tab-background-color: unset;
-#'     --panel-tab-background-color-active: unset;
-#'     --panel-tab-background-color-hover: unset;
-#'     --panel-tabs-border-bottom: #ddd;
-#'     --panel-tab-border-color-active: currentColor;
-#'     --panel-tab-border-color-hover: currentColor;
-#'     --panel-tab-inactive-opacity: 0.5;
-#'     --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-#'   }
-#'   ```
-#'   ````
+#' @includeRmd man/fragments/panelset_other-rmd.Rmd
 #'
-#'   Or use [style_panelset()]:
-#'
-#'   ````markdown
-#'   ```{r echo=FALSE}
-#'   style_panelset(panel_tab_color_active = "red")
-#'   ```
-#'   ````
 #' @name panelset
 NULL
 
