@@ -246,29 +246,98 @@ Here’s the example used in the demo slides.
 ]
 ````
 
+### Use in R Markdown
+
+Panelset works in all R Markdown HTML outputs. They require a little bit
+more work than `rmarkdown`’s
+[tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html)
+feature, but the trade-off is that it works in a wider range of document
+types; generally as long as the output is HTML panelset should work.
+
+Another advantage of panelset is that it enables deeplinking: the
+currently shown tab is encoded in the URL automatically, allowing users
+to link to open tabs. Users can also right click on a panel’s tab and
+select *Copy Link* to link directly to a specific panel’s tab, which
+will appear in view when visting the copied link.
+
+Use this format to set up panelset in R Markdown with pandoc’s [fenced
+divs](https://pandoc.org/MANUAL.html#extension-fenced_divs).
+
+``` markdown
+::::: {.panelset}
+
+::: {.panel}
+[First Tab]{.panel-name}
+
+Lorem sed non habitasse nulla donec egestas magna
+enim posuere fames ante diam!
+:::
+
+::: {.panel}
+[Second Tab]{.panel-name}
+
+Consectetur ligula taciti neque scelerisque gravida
+class pharetra netus lobortis quisque mollis iaculis.
+:::
+
+:::::
+```
+
+Alternatively, you can also use raw HTML.
+
+``` html
+<div class="panelset">
+  <div class="panel">
+    <div class="panel-name">First Tab</div>
+    <!-- Panel content -->
+    <p>Lorem ipsum, etc, etc</p>
+  </div>
+  <div class="panel">
+    <div class="panel-name">Second Tab</div>
+    <!-- Panel content -->
+    <p>Lorem ipsum, etc, etc</p>
+  </div>
+</div>
+```
+
+### Customize Panelset Appearnce
+
 To customize the appearance of your panels, you can use
 `style_panelset()` called directly in an R chunk in your slides.
 
 ```` markdown
 ```{r echo=FALSE}
-style_panelset(panel_tab_color_active = "red")
+style_panelset(foreground = "honeydew", background = "seagreen")
 ```
 ````
 
-The panelset uses custom CSS properties to make it easier to change the
-styles of the panel tabs. The default values are shown in the CSS code
-below. You can copy the whole CSS block to your slides and modify the
-values to customize the style to fit your presentation.
+The panelset uses opacity to soften the in-active tabs to increase the
+chances that the tabs will work with your slide theme. If you decide to
+change your tab colors or to use solid colored tabs, you’ll likely want
+to set `inactive_opacity = 1` in `style_panelset()` (or the
+corresponding `--panel-tab-inactive-opacity` CSS variable).
+
+Behind the scenes, `style_panelset()` updates the values of [custom CSS
+properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) that
+define the panelset appearance. If you’d rather work with CSS, the
+default values of these properties are shown in the CSS code below. You
+can copy the whole CSS block to your slides and modify the values to
+customize the style to fit your presentation.
 
 ```` markdown
 ```{css echo=FALSE}
 .panelset {
-  --panel-tab-color: currentColor;
-  --panel-tab-color-active: currentColor;
-  --panel-tab-color-hover: currentColor;
-  --panel-tabs-border-bottom: #ddd;
-  --panel-tab-inactive-opacity: 0.5;
-  --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+   --panel-tab-foreground: currentColor;
+   --panel-tab-background: unset;
+   --panel-tab-active-foreground: currentColor;
+   --panel-tab-active-background: unset;
+   --panel-tab-active-border-color: currentColor;
+   --panel-tab-hover-foreground: currentColor;
+   --panel-tab-hover-background: unset;
+   --panel-tab-hover-border-color: currentColor;
+   --panel-tab-inactive-opacity: 0.5;
+   --panel-tabs-border-bottom: #ddd;
+   --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 ```
 ````
