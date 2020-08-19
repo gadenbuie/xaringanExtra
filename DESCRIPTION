@@ -59,6 +59,7 @@ Collate:
     'editable.R'
     'fit-screen.R'
     'panelset.R'
+    'share_again.R'
     'slide-tone.R'
     'styles.R'
     'tachyons.R'
