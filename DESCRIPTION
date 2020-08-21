@@ -30,7 +30,15 @@ Authors@R:
       person(given = "Zeno",
              family = "Rocha",
              role = "ctb",
-             comment = "clipboard.js"))
+             comment = "clipboard.js"),
+      person(given = "Nikita", 
+             family = "Karamov",
+             role = "ctb",
+             comment = "shareon.js"),
+      person(given = "Ross", 
+             family = "Zurowski", 
+             role = "ctb",
+             comment = "fitvids.js"))
 Description: Extras and extensions for xaringan slides. Nagivate
     your slides with tile view. Make your slides editable, live! Announce
     slide changes with subtle tones. Animate slide transitions with

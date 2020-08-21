@@ -5,6 +5,7 @@
 #'
 #' - Add an overview of your presentation with [use_tile_view()]
 #' - Make your slide content editable with [use_editable()]
+#' - Share your slides in style with [use_share_again()]
 #' - Announce slide changes with a subtle tone: [use_slide_tone()]
 #' - Animate slide transitions with [use_animate_css()]
 #' - Add tabbed panels to slides with [use_panelset()]
@@ -25,11 +26,13 @@
 #' @return An `htmltools::tagList()` with the [htmltools::htmlDependency()]s
 #'   for the requested extensions.
 #' @param include Character vector of extensions to include. One or more of
-#'   `"tile_view"`, `"editable"`, `"slide_tone"`, `"animate_css"`, `"panelset"`
-#'   `"tachyons"`, `"fit_screen"`, `"webcam"`, `"clipboard"`.
+#'   `"tile_view"`, `"editable"`, `"share_again"`, `"slide_tone"`,
+#'   `"animate_css"`, `"panelset"` `"tachyons"`, `"fit_screen"`, `"webcam"`,
+#'   `"clipboard"`.
 #' @export
 use_xaringan_extra <- function(
-  include = c("tile_view", "animate_css", "tachyons", "panelset")) {
+  include = c("tile_view", "animate_css", "tachyons", "panelset", "share_again")
+) {
   opts <- c(
     "tile_view",
     "animate_css",
@@ -39,7 +42,8 @@ use_xaringan_extra <- function(
     "panelset",
     "editable",
     "webcam",
-    "clipboard"
+    "clipboard",
+    "share_again"
   )
   include <- match.arg(include, opts, TRUE)
   includes <- function(x) x %in% include
@@ -52,7 +56,8 @@ use_xaringan_extra <- function(
     if (includes("panelset")) html_dependency_panelset(),
     if (includes("editable")) html_dependency_editable(),
     if (includes("webcam")) html_dependency_webcam(),
-    if (includes("clipboard")) use_clipboard()
+    if (includes("clipboard")) use_clipboard(),
+    if (includes("share_again")) use_share_again()
   )
 }
 

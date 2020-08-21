@@ -1,0 +1,152 @@
+---
+title: "share again<br>.gray[for xaringan]"
+pagetitle: "&#x1F4FC; share again for xaringan"
+subtitle: "&#x1F4FC;"
+author: "<a href='https://pkg.garrickadenbuie.com/xaringanExtra'>xaringanExtra<a>"
+date: 'Embeded xaringan slides with a .purple[share bar]'
+output:
+  xaringan::moon_reader:
+    css: [robot-fonts, robot]
+    lib_dir: libs
+    nature:
+      highlightStyle: 'atom-one-light'
+---
+
+class: center
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{css, echo=FALSE}
+.gray { color: #999; }
+.big { font-size: 200%; }
+.purple { color: #A53B87; }
+.green { color: #42B983; }
+```
+
+```{r echo=FALSE}
+xaringanExtra::use_clipboard()
+xaringanExtra::use_share_again()
+```
+
+## Meet .green[share again]
+
+```{r echo=FALSE}
+xaringanExtra::embed_xaringan("share-again.html", "4:3", max_width = "66%")
+```
+
+---
+class: center
+background-image: url('img/meet-share-again-2.jpg')
+background-size: cover
+
+## .green[Navigate] through the slides
+
+```{r echo=FALSE}
+xaringanExtra::embed_xaringan("share-again.html", "4:3", max_width = "66%")
+```
+
+---
+class: center
+background-image: url('img/meet-share-again-3.jpg')
+background-size: cover
+
+## Slide .green[title] filled automatically
+
+```{r echo=FALSE}
+xaringanExtra::embed_xaringan("share-again.html", "4:3", max_width = "66%")
+```
+
+---
+class: center
+background-image: url('img/meet-share-again-4.jpg')
+background-size: cover
+
+## Go .green[fullscreen]
+
+```{r echo=FALSE}
+xaringanExtra::embed_xaringan("share-again.html", "4:3", max_width = "66%")
+```
+
+---
+class: center
+background-image: url('img/meet-share-again-5.jpg')
+background-size: cover
+
+## .green[Share] your slides .green[again]
+
+```{r echo=FALSE}
+xaringanExtra::embed_xaringan("share-again.html", "4:3", max_width = "66%")
+```
+
+---
+
+## Share your slides in 3 easy steps
+
+1. Add `use_share_again()` to your slides
+    
+    `````markdown
+    ```{r share-again, echo=FALSE}`r ''`
+    xaringanExtra::use_share_again()
+    ```
+    ````
+--
+
+1. Style your share bar and choose social media sites
+
+    ````markdown
+    ```{r style-share-again, echo=FALSE}`r ''`
+    xaringanExtra::style_share_again(
+      share_buttons = c("twitter", "linkedin", "pocket")
+    )
+    ```
+    ````
+--
+
+1. Embed your slides in [blogdown](https://bookdown.org/yihui/blogdown/) or R Markdown websites
+
+    ````markdown
+    ```{r embed-xaringan, echo=FALSE}`r ''`
+    xaringanExtra::embed_xaringan(url = "share-again.html", ratio = "4:3")
+    ```
+    ````
+    
+    <span class="gray">*Works with <span style="text-decoration: underline">any</span> xaringan presentation, _share again_ not required</span>
+
+---
+
+## You might also like .purple[metathis]
+
+For great looking share cards on social media, too,
+combine with [metathis](https://pkg.garrickadenbuie.com/metathis).
+
+```{r metathis}
+library(metathis)
+
+meta() %>%
+  meta_general(
+    description = "Embed xaringan slides in R Markdown websites with style",
+  ) %>% 
+  meta_name("github-repo" = "gadenbuie/xaringanExtra") %>% 
+  meta_social(
+    title = "Share Again for xaringan",
+    url = "https://pkg.garrickadenbuie.com/xaringanExtra",
+    image = paste0(
+      "https://pkg.garrickadenbuie.com/xaringanExtra/",
+      "share-again/social-card.png"
+    ),
+    og_type = "website",
+    og_author = "Garrick Aden-Buie",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@grrrck"
+  )
+```
+
+---
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" alt="GitHub Octocat Logo" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
+
