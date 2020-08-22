@@ -57,6 +57,9 @@ fs::dir_copy("man/figures", "docs/figures", overwrite = TRUE)
 
 fs::file_copy("NEWs.md", "docs/NEWS.md", overwrite = TRUE)
 
+
+# Manually process README into documentation site -------------------------
+
 fs::file_copy("README.md", "docs/README.md", overwrite = TRUE)
 x <- readLines("docs/README.md")
 x <- c("## xaringanExtra", x[-1:-2])
@@ -66,10 +69,15 @@ x <- gsub("#-", "#", x, fixed = TRUE)
 x <- gsub("#animatecss", "#animate.css", x, fixed = TRUE)
 idx_headers <- grep("^(## [^[:graph:]]+ (.+))", x, perl = TRUE)
 headers <- x[idx_headers]
-headers_slug <- sub("^## [^[:graph:]]+ ", "", headers, perl = TRUE)
-headers_slug <- sub("[^[:alnum:]]", "-", tolower(headers_slug), perl = TRUE)
-headers <- paste0(headers, " :id=", headers_slug)
-x[idx_headers] <- headers
+headers_emoji_names <- sub("^## ", "", headers, perl = TRUE)
+header_names <- sub("^[^[:graph:]]+ ", "", headers_emoji_names, perl = TRUE)
+header_slugs <- gsub("[^[:alnum:]]", "-", tolower(header_names), perl = TRUE)
+
+for (header_slug in header_slugs) {
+  x <- gsub(paste0("#", header_slug), paste0("/", header_slug), x, fixed = TRUE)
+}
+x <- gsub("(#animate.css)", "(/animate-css)", x, fixed = TRUE)
+
 x <- sub(
   "^#### 📺 \\[(.+?)\\]\\(.+gadenbuie.github.io/xaringanExtra/(.+?)\\)\\s*$",
   paste0(
@@ -78,5 +86,37 @@ x <- sub(
   ),
   x
 )
+
 x <- sub("./share-again/share-again.html/index.html", "./share-again/share-again.html", x, fixed = TRUE)
-writeLines(x, "docs/README.md")
+
+sidebar <- c(
+  "* [xaringanExtra](README.md#xaringanextra)",
+  "* [Installation](README.md#installation)"
+)
+
+for (i in seq_along(idx_headers)) {
+  if (i == 1) {
+    message("Writing docs/README.md")
+    writeLines(x[1:(idx_headers[i]-1)], "docs/README.md")
+  }
+
+  title <- headers_emoji_names[i]
+  slug <- header_slugs[i]
+  sidebar <- c(
+    sidebar,
+    sprintf("* [%s](%s.md)", title, slug)
+  )
+
+  section_end <- if (i == length(idx_headers)) {
+    length(x)
+  } else {
+    idx_headers[i + 1] - 1
+  }
+
+  section_file <- fs::path("docs", slug, ext = "md")
+  message("Writing ", section_file)
+  writeLines(x[idx_headers[i]:section_end], section_file)
+}
+
+message("Writing docs/sidebar.md")
+writeLines(sidebar, "docs/_sidebar.md")

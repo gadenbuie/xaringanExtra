@@ -37,7 +37,8 @@
     window.$docsify = {
       repo: 'gadenbuie/xaringanExtra',
       coverpage: 'cover.md',
-      maxLevel: 2
+      maxLevel: 2,
+      loadSidebar: true
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
@@ -61,12 +62,20 @@
           'rgb(200, 45, 88) 66.668%,rgb(225, 53, 93) 66.668%,' +
           'rgb(225, 53, 93) 83.335%,rgb(250, 61, 98) 83.335%,' +
           'rgb(250, 61, 98) 100.002%)';
-        fitvids('.shareagain', {players: 'iframe'});
+      });
+    }
+
+    function fitVids(hook, vm) {
+      hook.afterEach(function(html, next) {
+        console.log("fitting videos?")
+        setTimeout(() => fitvids('.shareagain', {players: 'iframe'}), 500);
+        next(html);
       });
     }
 
     // Add to plugin array
     $docsify.plugins = [].concat(restyleBackground, $docsify.plugins);
+    $docsify.plugins = [].concat(fitVids, $docsify.plugins);
     </script>
     <style>html, body, .sidebar ul li a {font-size: 18px;}pre::after{0.8rem;}.docsify-copy-code-button{font-size:0.8rem}</style>
 </body>
