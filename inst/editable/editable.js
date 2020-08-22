@@ -35,7 +35,7 @@
       const key = getKey(el)
       if (!key) return
       stored[key] = html2json(el)
-      Cookies.set(docId.id, JSON.stringify(stored), { expires: docId.expires })
+      Cookies.set(docId.id, JSON.stringify(stored), { expires: docId.expires, sameSite: 'None', secure: true })
     }
 
     function updateElement (el) {
@@ -64,12 +64,16 @@
 
     editables.forEach(el => {
       el.setAttribute('contenteditable', true)
+      el.setAttribute('autocomplete', 'off')
+      el.setAttribute('autocorrect', 'off')
+      el.setAttribute('spellcheck', false)
       updateElement(el)
     })
 
     editables.forEach(function (el) {
       el.addEventListener('focus', function () {
-        console.log('[editable] blocking shortcuts')
+        if (window.editable.debug) console.log('[editable] blocking shortcuts')
+        el.addEventListener('keyup', blockEvents)
         el.addEventListener('keydown', blockEvents)
         el.addEventListener('keypress', blockEvents)
       })
@@ -77,12 +81,13 @@
         el.willStore = true
       })
       el.addEventListener('blur', function () {
-        console.log('[editable] unblocking shortcuts')
+        if (window.editable.debug) console.log('[editable] unblocking shortcuts')
+        el.removeEventListener('keyup', blockEvents)
         el.removeEventListener('keydown', blockEvents)
         el.removeEventListener('keypress', blockEvents)
         if (el.willStore) {
           el.willStore = false
-          console.log('[editable] storing update html')
+          if (window.editable.debug) console.log('[editable] storing update html')
           storeElement(el)
         }
       })

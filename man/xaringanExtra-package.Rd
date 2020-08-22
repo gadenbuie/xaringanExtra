@@ -13,6 +13,7 @@
 \itemize{
 \item Add an overview of your presentation with \code{\link[=use_tile_view]{use_tile_view()}}
 \item Make your slide content editable with \code{\link[=use_editable]{use_editable()}}
+\item Share your slides in style with \code{\link[=use_share_again]{use_share_again()}}
 \item Announce slide changes with a subtle tone: \code{\link[=use_slide_tone]{use_slide_tone()}}
 \item Animate slide transitions with \code{\link[=use_animate_css]{use_animate_css()}}
 \item Add tabbed panels to slides with \code{\link[=use_panelset]{use_panelset()}}
@@ -43,6 +44,8 @@ Other contributors:
   \item  Chris Andrejewski (himalaya) [contributor]
   \item Eric Londaits (text-poster.js) [contributor]
   \item Zeno Rocha (clipboard.js) [contributor]
+  \item Nikita Karamov (shareon.js) [contributor]
+  \item Ross Zurowski (fitvids.js) [contributor]
 }
 
 }

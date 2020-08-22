@@ -8,10 +8,11 @@ xaringanExtra
 <!-- Links -->
 
 `xaringanExtra` is a playground of enhancements and extensions for
-[xaringan](https://slides.yihuie.name/xaringan) slides.
+[xaringan](https://slides.yihuie.org/xaringan) slides.
 
   - Add an overview of your presentation with [tile view](#-tile-view)
   - Make your slides [editable](#-editable)
+  - Share your slides in style with [share again](#-share-again)
   - Announce slide changes with a [subtle tone](#-slide-tone)
   - Animate slide transitions with [animate.css](#-animatecss)
   - Add tabbed panels to slides with [panelset](#-panelset)
@@ -116,6 +117,55 @@ or to use placeholder text.
 - thing two
 ]
 ```
+
+## 📼 Share Again
+
+#### 📺 [Share Again](https://gadenbuie.github.io/xaringanExtra/share-again/share-again.html)
+
+Share your slides in style with *share again*\! It adds a share bar to
+your slides that only shows up when they’re embedded in another page.
+The bar adds easy slide navigation, quick access to full screen views,
+and a share menu for one-click (or tap\!) sharing on social media sites.
+
+![Share Bar Features](man/figures/meet-share-again.jpg)
+
+Add share again to your slides in three easy steps.
+
+1.  Add `use_share_again()` to your slides
+    
+    ```` markdown
+    ```{r share-again, echo=FALSE}
+    xaringanExtra::use_share_again()
+    ```
+    ````
+
+2.  Style your share bar and choose social media sites
+    
+    ```` markdown
+    ```{r style-share-again, echo=FALSE}
+    xaringanExtra::style_share_again(
+      share_buttons = c("twitter", "linkedin", "pocket")
+    )
+    ```
+    ````
+
+3.  Embed your slides in
+    [blogdown](https://bookdown.org/yihui/blogdown/) or R Markdown
+    websites
+    
+    ```` markdown
+    ```{r embed-xaringan, echo=FALSE}
+    xaringanExtra::embed_xaringan(url = "share-again.html", ratio = "4:3")
+    ```
+    ````
+    
+    `embed_xaringan()` works with
+    <span style="text-decoration: underline">any</span> xaringan
+    presentation, *share again* not required\!
+    
+    Here’s what your [slides will look
+    like](https://gadenbuie.github.io/xaringanExtra/share-again/) in an
+    R Markdown HTML document.
 
 ## 🔊 Slide Tone
 
@@ -394,7 +444,9 @@ xaringanExtra::use_logo(
 ````
 
 See the documentation for `?use_logo` for more options regarding sizing
-and positioning. You can also make the logo a link using `link_url`.
+and positioning. You can also make the logo a link using `link_url` and
+you can hide the logo for a particular slide by using the `hide_logo`
+slide class.
 
 ## 🏗 Tachyons
 
@@ -402,7 +454,7 @@ and positioning. You can also make the logo a link using `link_url`.
 
 [Tachyons](http://tachyons.io/) is a collection of CSS utility classes
 that works beautifully with
-[xaringan](https://slides.yihuie.name/xaringan) presentations and the
+[xaringan](https://slides.yihuie.org/xaringan) presentations and the
 [remarkjs](http://remarkjs.com/) class syntax.
 
 To use tachyons in your slides, add the following code chunk to your
@@ -466,7 +518,7 @@ drag and drop the video within the browser window.
 
 The webcam extension is based on the original [webcam
 implementation](https://yihui.org/en/2017/12/html5-camera/) by Yihui
-Xie, author of [xaringan](https://slides.yihuie.name/xaringan).
+Xie, author of [xaringan](https://slides.yihuie.org/xaringan).
 
 ## 📋 Clipboard
 

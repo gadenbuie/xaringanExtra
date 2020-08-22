@@ -1,0 +1,24 @@
+---
+title: "Share Again"
+pagetitle: "&#x1F4FC; share again | xaringanExtra"
+author: xaringanExtra
+date: '`r utils::packageVersion("xaringanExtra")`'
+output: rmarkdown::html_document
+---
+
+# Have you seen my xaringan slides?
+
+```{r}
+xaringanExtra::embed_xaringan("share-again.html", "4:3")
+```
+
+# These are the default slides
+
+```{r}
+xaringanExtra::embed_xaringan(
+  url = "https://slides.yihui.org/xaringan",
+  ratio = "4:3",
+  max_width = 600
+)
+```
+
