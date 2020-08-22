@@ -62,21 +62,21 @@
 
     navbar.innerHTML += `<ul class="slideInUp">
     <li class="shareagain-buttons">
-      <button type="button" class="shareagain-button" id="shareagain-slide-prev">${icons.left}</button>
-      <button type="button" class="shareagain-button" id="shareagain-slide-next">${icons.right}</button>
+      <button type="button" class="shareagain-button" id="shareagain-slide-prev" title="Next Slide">${icons.left}</button>
+      <button type="button" class="shareagain-button" id="shareagain-slide-next" title="Previous Slide">${icons.right}</button>
     </li>
     <li class="shareagain-title" title="${getAuthor()}${window.document.title}">${getShortTitle()}</li>
     <li class="shareagain-buttons">
-      <button type="button" class="shareagain-button" id="shareagain-fullscreen">${icons.fullScreen}</button>
-      <button type="button" class="shareagain-button" id="shareagain-share">${icons.share}</button>
+      <button type="button" class="shareagain-button" id="shareagain-fullscreen" title="Viwe in Full Screen">${icons.fullScreen}</button>
+      <button type="button" class="shareagain-button" id="shareagain-share" title="Share">${icons.share}</button>
       <div class="shareon">
         <button class="link" href="${document.URL}" title="Copy Direct Link" data-clipboard-text="${document.URL}"></button>
-        <a class="twitter"></a>
-        <a class="facebook"></a>
-        <a class="linkedin"></a>
-        <a class="pinterest"></a>
-        <a class="pocket"></a>
-        <a class="reddit"></a>
+        <a class="twitter" title="Share on Twitter"></a>
+        <a class="facebook" title="Share on Facebook"></a>
+        <a class="linkedin" title="Share on Linkedin"></a>
+        <a class="pinterest" title="Share on Pinterest"></a>
+        <a class="pocket" title="Save to Pocket"></a>
+        <a class="reddit" title="Share on Reddit"></a>
       </div>
     </li>
     </ul>`
