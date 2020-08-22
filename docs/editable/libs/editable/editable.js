@@ -35,7 +35,7 @@
       const key = getKey(el)
       if (!key) return
       stored[key] = html2json(el)
-      Cookies.set(docId.id, JSON.stringify(stored), { expires: docId.expires })
+      Cookies.set(docId.id, JSON.stringify(stored), { expires: docId.expires, sameSite: 'None', secure: true })
     }
 
     function updateElement (el) {
