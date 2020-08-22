@@ -8,6 +8,8 @@ your slides that only shows up when they’re embedded in another page.
 The bar adds easy slide navigation, quick access to full screen views,
 and a share menu for one-click (or tap\!) sharing on social media sites.
 
+![Share Bar Features](figures/meet-share-again.jpg)
+
 Add share again to your slides in three easy steps.
 
 1.  Add `use_share_again()` to your slides
