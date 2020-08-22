@@ -1,5 +1,16 @@
 # test_that()
 
+expect_str_detect <- function(string, pattern, fixed = TRUE, negate = FALSE) {
+  if (!is.character(string)) {
+    string <- format(string)
+  }
+  if (negate) {
+    expect_false(grepl(!!pattern, string, fixed = fixed))
+  } else {
+    expect_true(grepl(!!pattern, string, fixed = fixed))
+  }
+}
+
 describe("use_share_again()", {
   it("returns an htmltools tag list with shareagain dependency", {
     x <- use_share_again()
@@ -15,10 +26,11 @@ describe("use_share_again()", {
 
 describe("embed_xaringan()", {
   it("returns an htmltools tag list", {
-    x <- embed_xaringan("demo-slides.html")
+    x <- embed_xaringan("demo-slides.html", max_width = "400px")
     expect_s3_class(x, "shiny.tag.list")
     expect_equal(x[[1]]$name, "div")
     expect_equal(x[[1]]$attribs$class, "shareagain")
+    expect_str_detect(x[[1]]$attribs$style, "max-width:400px")
     expect_equal(x[[1]]$children[[1]]$name, "iframe")
     expect_equal(x[[1]]$children[[1]]$attribs$src, "demo-slides.html")
     expect_equal(x[[1]]$children[[1]]$attribs$width, 1600)
@@ -61,22 +73,15 @@ describe("parse_ratio", {
   })
 })
 
-expect_str_detect <- function(string, pattern, fixed = TRUE, negate = FALSE) {
-  if (!is.character(string)) {
-    string <- format(string)
-  }
-  if (negate) {
-    expect_false(grepl(!!pattern, string, fixed = fixed))
-  } else {
-    expect_true(grepl(!!pattern, string, fixed = fixed))
-  }
-}
-
 describe("style_share_again()", {
   it("returns an htmltools style tag", {
     x <- style_share_again()
     expect_s3_class(x, "shiny.tag")
     expect_equal(x$name, "style")
+  })
+
+  it("returns nothing if all NULL", {
+    expect_null(style_share_again(NULL, NULL, NULL))
   })
 
   it("updates shareagain css color variables", {
