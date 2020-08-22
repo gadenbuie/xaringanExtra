@@ -1,4 +1,23 @@
-# xaringanExtra 0.1.0 (2020-0814)
+# xaringanExtra 0.2.0 (2020-082-22)
+
+## New Features
+
+- Added a new extension for sharing your slides called _share again_. It adds a
+  "share bar" to the bottom of your slides when embedded in an `<iframe`> in
+  another page. Another function `embed_xaringan()` is provided to embed slides
+  in blogdown and R Markdown HTML sites in a responsive container.
+  
+## Updates and Changes
+
+* Various updates do `use_logo()` documentation. The class to hide the logo is
+  `.hide_logo` and the logo CSS and JavaScript are embedded directly for
+  xaringan >= 0.16 (thanks @chainsawriot, #22, #24, #25, #30)
+  
+* Updated cookie settings when storing editable fields (#42)
+
+* Disabled spell check and auto complete in editable areas (#16)
+
+# xaringanExtra 0.1.0 (2020-08-14)
 
 ## Breaking Changes
 
