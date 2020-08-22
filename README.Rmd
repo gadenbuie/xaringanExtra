@@ -21,7 +21,7 @@ INCLUDE_CHILD_HEADER <- FALSE
 
 
 <!-- Links -->
-[xaringan]: https://slides.yihuie.name/xaringan
+[xaringan]: https://slides.yihuie.org/xaringan
 [remarkjs]: http://remarkjs.com/
 [animate.css]: http://daneden.github.io/animate.css
 [text-poster]: https://github.com/IMAGINARY/text-poster#readme

@@ -8,7 +8,7 @@ xaringanExtra
 <!-- Links -->
 
 `xaringanExtra` is a playground of enhancements and extensions for
-[xaringan](https://slides.yihuie.name/xaringan) slides.
+[xaringan](https://slides.yihuie.org/xaringan) slides.
 
   - Add an overview of your presentation with [tile view](#-tile-view)
   - Make your slides [editable](#-editable)
@@ -450,7 +450,7 @@ and positioning. You can also make the logo a link using `link_url`.
 
 [Tachyons](http://tachyons.io/) is a collection of CSS utility classes
 that works beautifully with
-[xaringan](https://slides.yihuie.name/xaringan) presentations and the
+[xaringan](https://slides.yihuie.org/xaringan) presentations and the
 [remarkjs](http://remarkjs.com/) class syntax.
 
 To use tachyons in your slides, add the following code chunk to your
@@ -514,7 +514,7 @@ drag and drop the video within the browser window.
 
 The webcam extension is based on the original [webcam
 implementation](https://yihui.org/en/2017/12/html5-camera/) by Yihui
-Xie, author of [xaringan](https://slides.yihuie.name/xaringan).
+Xie, author of [xaringan](https://slides.yihuie.org/xaringan).
 
 ## 📋 Clipboard
 
