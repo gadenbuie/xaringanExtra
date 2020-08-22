@@ -67,7 +67,6 @@
 
     function fitVids(hook, vm) {
       hook.afterEach(function(html, next) {
-        console.log("fitting videos?")
         setTimeout(() => fitvids('.shareagain', {players: 'iframe'}), 500);
         next(html);
       });
