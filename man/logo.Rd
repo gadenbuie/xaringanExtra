@@ -35,13 +35,13 @@ a full URL or the path to the image relative to your slides file.}
 \item{link_url}{Optional. If provided, your logo becomes a clickable link.}
 
 \item{exclude_class}{The slide classes that should not receive the logo. By
-default, the title slide, inverse slides and slides with the \code{hide-logo}
+default, the title slide, inverse slides and slides with the \code{hide_logo}
 class are excluded.}
 
 \item{inline}{In \code{\link[=html_dependency_logo]{html_dependency_logo()}}, should the JS and CSS code to
 create the logo be returned inline (inside the rendered slides) or in
-separate CSS and JS documents attacheds as an html dependency? The default
-is to use inline for \pkg{xaringan} version 0.17 or later.}
+separate CSS and JS documents attached as an html dependency? The default
+is to use inline for \pkg{xaringan} version 0.16 or later.}
 }
 \value{
 An \code{htmltools::tagList()} with the Add Logo dependencies, or an
@@ -70,6 +70,8 @@ xaringanExtra::use_logo(
 }\if{html}{\out{</div>}}
 
 See the documentation for \code{?use_logo} for more options regarding sizing
-and positioning. You can also make the logo a link using \code{link_url}.
+and positioning. You can also make the logo a link using \code{link_url} and
+you can hide the logo for a particular slide by using the \code{hide_logo}
+slide class.
 }
 

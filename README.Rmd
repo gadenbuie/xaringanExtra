@@ -351,7 +351,9 @@ xaringanExtra::use_logo(
 ````
 
 See the documentation for `?use_logo` for more options regarding sizing
-and positioning. You can also make the logo a link using `link_url`.
+and positioning. You can also make the logo a link using `link_url` and
+you can hide the logo for a particular slide by using the `hide_logo`
+slide class.
 
 
 ## &#x1F3D7; Tachyons

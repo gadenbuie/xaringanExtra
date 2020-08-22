@@ -7,7 +7,6 @@
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/robot-fonts.css" rel="stylesheet" />
     <link href="libs/remark-css/robot.css" rel="stylesheet" />
-    <script src="libs/xaringanExtra-logo/logo.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -37,13 +36,28 @@ xaringanExtra::use_logo(
   width: 110px;
   height: 128px;
   z-index: 0;
-  background-image: url('https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png');
+  background-image: url(https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png);
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
   top:1em;right:1em;
 }
 </style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(el => { el.innerHTML += '<a href="http://slides.yihui.name/xaringan" class="xaringan-extra-logo"></a>' })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
 
 &lt;style type="text/css"&gt;
 .gray { color: #999; }

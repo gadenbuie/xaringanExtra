@@ -18,7 +18,9 @@
 #'   ````
 #'
 #'   See the documentation for `?use_logo` for more options regarding sizing
-#'   and positioning. You can also make the logo a link using `link_url`.
+#'   and positioning. You can also make the logo a link using `link_url` and
+#'   you can hide the logo for a particular slide by using the `hide_logo`
+#'   slide class.
 #'
 #' @name logo
 NULL
@@ -30,7 +32,7 @@ NULL
 #'   [css_position()] to specify.
 #' @param link_url Optional. If provided, your logo becomes a clickable link.
 #' @param exclude_class The slide classes that should not receive the logo. By
-#'   default, the title slide, inverse slides and slides with the `hide-logo`
+#'   default, the title slide, inverse slides and slides with the `hide_logo`
 #'   class are excluded.
 #' @param width Width in CSS units of the logo
 #' @param height Height in CSS units of the logo
@@ -44,13 +46,13 @@ use_logo <- function(
   exclude_class = c("title-slide", "inverse", "hide_logo")
 ) {
 	htmltools::tagList(
-		html_dependency_logo(link_url, exclude_class),
 		htmltools::tags$style(
 			type = "text/css",
 			htmltools::HTML(
 				logo_css(image_url, width, height, position)
 			)
-		)
+		),
+		html_dependency_logo(link_url, exclude_class)
 	)
 }
 
@@ -97,20 +99,20 @@ is_css_position <- function(x) {
 #'   view dependencies. Most users will want to use `use_logo()`.
 #' @param inline In [html_dependency_logo()], should the JS and CSS code to
 #'   create the logo be returned inline (inside the rendered slides) or in
-#'   separate CSS and JS documents attacheds as an html dependency? The default
-#'   is to use inline for \pkg{xaringan} version 0.17 or later.
+#'   separate CSS and JS documents attached as an html dependency? The default
+#'   is to use inline for \pkg{xaringan} version 0.16 or later.
 #' @export
 html_dependency_logo <- function(
 	link_url = NULL,
   exclude_class = c("title-slide", "inverse", "hide_logo"),
 	inline = NULL
 ) {
-	inline <- inline %||% xaringan_version("0.17")
+	inline <- inline %||% xaringan_version("0.16")
 
 	logo_code_js <- logo_js(link_url, exclude_class)
 
 	ret <- if (inline) {
-		htmltools::tags$script(htmltools::HTML(logo_code_js))
+		htmltools::HTML(paste0("<script>", logo_code_js, "</script>"))
 	} else {
 		tmpdir <- tempfile("xaringanExtra-add-logo_")
 		js <- file.path(tmpdir, "logo.js")
@@ -144,7 +146,7 @@ logo_css <- function(url, width, height, position) {
   width: %s;
   height: %s;
   z-index: 0;
-  background-image: url('%s');
+  background-image: url(%s);
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -171,19 +173,20 @@ logo_js <- function(link_url, exclude_class = c("title-slide", "inverse", "hide_
     exclude_class <- ""
   }
 
-  sprintf("
-(function() {
-let tries = 0
-function addLogo() {
-  if (typeof slideshow === 'undefined') {
-    ++tries < 10 ? setTimeout(addLogo, 100) : null
-    return
-  } else {
-  	document.querySelectorAll('.remark-slide-content%s')
-    	.forEach(el => el.innerHTML += '%s')
+  sprintf("(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content%s')
+        .forEach(el => { el.innerHTML += '%s' })
+    }
   }
-}
-document.addEventListener('DOMContentLoaded', addLogo)
-})()
-", exclude_class, element)
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()",
+    exclude_class, element)
 }
