@@ -131,8 +131,11 @@ Add share again to your slides in three easy steps.
 
 1.  Add `use_share_again()` to your slides
     
-    \`` markdown ```{r share-again, echo=FALSE}
-    xaringanExtra::use_share_again() ``` `
+    ```` markdown
+    ```{r share-again, echo=FALSE}
+    xaringanExtra::use_share_again()
+    ```
+    ````
 
 2.  Style your share bar and choose social media sites
     
