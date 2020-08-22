@@ -10,3 +10,6 @@
 ^tests/manual$
 ^README\.Rmd$
 ^README\.html$
+^\.ccache$
+^\.github$
+^tic\.R$
