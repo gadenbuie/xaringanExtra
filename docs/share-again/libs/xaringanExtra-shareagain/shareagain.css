@@ -166,7 +166,7 @@
   color: var(--shareagain-foreground);
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-gap: 1em;
+  grid-gap: 5px;
   justify-items: center;
   align-items: center;
   font-family: sans-serif;
@@ -209,7 +209,7 @@
 }
 
 .shareagain-title {
-  font-size: 1.5em;
+  font-size: 24px;
   text-align: center;
   max-height: 100%;
   overflow: hidden;
@@ -251,6 +251,9 @@
   }
   .shareagain-buttons .shareagain-button {
     width: 50px;
+  }
+  .shareagain-title {
+    font-size: 16px;
   }
 }
 @media screen and (max-width: 400px) {
