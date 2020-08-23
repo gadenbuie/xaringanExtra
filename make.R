@@ -91,7 +91,8 @@ x <- sub("./share-again/share-again.html/index.html", "./share-again/share-again
 
 sidebar <- c(
   "* [xaringanExtra](README.md#xaringanextra)",
-  "* [Installation](README.md#installation)"
+  "* [Installation](README.md#installation)",
+  "---"
 )
 
 for (i in seq_along(idx_headers)) {
@@ -118,5 +119,6 @@ for (i in seq_along(idx_headers)) {
   writeLines(x[idx_headers[i]:section_end], section_file)
 }
 
+sidebar <- c(sidebar, "---", "* [Changelog](NEWS.md)")
 message("Writing docs/sidebar.md")
 writeLines(sidebar, "docs/_sidebar.md")
