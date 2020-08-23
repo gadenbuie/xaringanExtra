@@ -67,7 +67,7 @@
     </li>
     <li class="shareagain-title" title="${getAuthor()}${window.document.title}">${getShortTitle()}</li>
     <li class="shareagain-buttons">
-      <button type="button" class="shareagain-button" id="shareagain-fullscreen" title="Viwe in Full Screen">${icons.fullScreen}</button>
+      <button type="button" class="shareagain-button" id="shareagain-fullscreen" title="View in Full Screen">${icons.fullScreen}</button>
       <button type="button" class="shareagain-button" id="shareagain-share" title="Share">${icons.share}</button>
       <div class="shareon">
         <button class="link" href="${document.URL}" title="Copy Direct Link" data-clipboard-text="${document.URL}"></button>
