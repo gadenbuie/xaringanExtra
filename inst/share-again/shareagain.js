@@ -37,10 +37,12 @@
     }
 
     function getAuthor () {
-      let author = document.head.querySelector('meta[name="author"]').content
+      let author = document.head.querySelector('meta[name="author"]')
 
-      if (author.length > 0) {
-        author = author + ' — '
+      if (author) {
+        author = author.content + ' — '
+      } else {
+        author = ''
       }
       return author
     }
