@@ -9,8 +9,8 @@
 use_share_again()
 
 style_share_again(
-  foreground = "rgba(0,0,0,0.5)",
-  background = "rbg(255, 255, 255)",
+  foreground = "rgb(255, 255, 255)",
+  background = "rgba(0, 0, 0, 0.5)",
   share_buttons = c("all", "none", "twitter", "facebook", "linkedin", "pinterest",
     "pocket", "reddit")
 )
