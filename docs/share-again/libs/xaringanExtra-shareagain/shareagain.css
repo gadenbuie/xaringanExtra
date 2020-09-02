@@ -186,7 +186,7 @@
   width: 66px;
   border: none;
   padding: 15px;
-  color: white;
+  color: var(--shareagain-foreground);
   background: transparent;
 }
 

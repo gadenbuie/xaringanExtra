@@ -1,4 +1,15 @@
-# xaringanExtra 0.2.0 (2020-082-22)
+# xaringanExtra 0.2.2 (2020-09-02)
+
+- Fixed several issues with `style_share_again()`: fixed default arguments,
+  the buttons now correctly inherit the foreground color, and slides without an
+  author or title are handled correctly (thanks @mattwarkentin, #48).
+
+# xaringanExtra 0.2.1 (2020-08-23)
+
+- Use absolute units for share bar sizes and fix a typo in share bar hover text
+  (thanks @apreshill, #44)
+
+# xaringanExtra 0.2.0 (2020-08-22)
 
 ## New Features
 
