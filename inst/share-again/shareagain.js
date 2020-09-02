@@ -56,7 +56,7 @@
     };
 
     function getShortTitle () {
-      return truncate(window.document.title, 50)
+      return truncate(window.document.title || '', 50)
     }
 
     const navbar = document.createElement('nav')
@@ -67,7 +67,7 @@
       <button type="button" class="shareagain-button" id="shareagain-slide-prev" title="Next Slide">${icons.left}</button>
       <button type="button" class="shareagain-button" id="shareagain-slide-next" title="Previous Slide">${icons.right}</button>
     </li>
-    <li class="shareagain-title" title="${getAuthor()}${window.document.title}">${getShortTitle()}</li>
+    <li class="shareagain-title" title="${getAuthor()}${window.document.title || ''}">${getShortTitle()}</li>
     <li class="shareagain-buttons">
       <button type="button" class="shareagain-button" id="shareagain-fullscreen" title="View in Full Screen">${icons.fullScreen}</button>
       <button type="button" class="shareagain-button" id="shareagain-share" title="Share">${icons.share}</button>
