@@ -39,8 +39,8 @@ use_share_again <- function() {
 #'
 #' @export
 style_share_again <- function(
-  foreground = "rgba(0,0,0,0.5)",
-  background = "rbg(255, 255, 255)",
+  foreground = "rgb(255, 255, 255)",
+  background = "rgba(0, 0, 0, 0.5)",
   share_buttons = c("all", "none", "twitter", "facebook", "linkedin", "pinterest", "pocket", "reddit")
 ) {
   social_sites <- share_button_social_options()
