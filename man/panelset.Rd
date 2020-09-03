@@ -157,7 +157,7 @@ will appear in view when visiting the copied link.
 
 With standard R Markdown,
 i.e. \code{\link[rmarkdown:html_document]{rmarkdown::html_document()}}, you
-can use the following template.\if{html}{\out{<div class="markdown">}}\preformatted{# Panelset In R Markdown! P.panelset\}
+can use the following template.\if{html}{\out{<div class="markdown">}}\preformatted{# Panelset In R Markdown! \{.panelset\}
 
 ## Tab One
 
@@ -176,11 +176,9 @@ interdum proin tincidunt curabitur felis?
 Adipiscing mauris egestas vitae pretium 
 ad dignissim dictumst platea!
 
-# Antoher section
+# Another section
 
 This content won't appear in a panel.
-
-:::::
 }\if{html}{\out{</div>}}
 
 In other, less-standard R Markdown HTML formats, you can use pandoc’s

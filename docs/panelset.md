@@ -18,7 +18,7 @@ xaringanExtra::use_panelset()
 
 ![](figures/panelset.gif)
 
-Then, create a `.panelset[...]` that contains `.panels[]`. Each
+Then, create a `.panelset[...]` that contains `.panel[]`s. Each
 `.panel[]` should have a `.panel-name[]` and content (everything that
 isn’t the panel’s name).
 
@@ -71,7 +71,7 @@ i.e. [rmarkdown::html\_document()](https://rmarkdown.rstudio.com/reference/html
 you can use the following template.
 
 ``` markdown
-# Panelset In R Markdown! P.panelset}
+# Panelset In R Markdown! {.panelset}
 
 ## Tab One
 
@@ -90,11 +90,9 @@ interdum proin tincidunt curabitur felis?
 Adipiscing mauris egestas vitae pretium 
 ad dignissim dictumst platea!
 
-# Antoher section
+# Another section
 
 This content won't appear in a panel.
-
-:::::
 ```
 
 In other, less-standard R Markdown HTML formats, you can use pandoc’s

@@ -290,7 +290,7 @@ xaringanExtra::use_panelset()
 
 ![](man/figures/panelset.gif)
 
-Then, create a `.panelset[...]` that contains `.panels[]`.
+Then, create a `.panelset[...]` that contains `.panel[]`s.
 Each `.panel[]` should have a `.panel-name[]` and content 
 (everything that isn't the panel's name).
 
