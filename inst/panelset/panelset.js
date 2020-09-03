@@ -210,7 +210,22 @@
     }
 
     const initPanelSet = (panelset, idx) => {
-      const panels = Array.from(panelset.querySelectorAll('.panel'))
+      let panels = Array.from(panelset.querySelectorAll('.panel'))
+      if (!panels.length && panelset.matches(".section[class*='level']")) {
+        // we're in tabset-alike R Markdown
+        let panelsetLevel = [...panelset.classList]
+          .filter(s => s.match(/^level/))[0]
+          .replace('level', '')
+
+        // move first <hX> element out of div.panelset
+        const panelHeading = panelset.querySelector('h' + panelsetLevel)
+        panelset.parentElement.insertBefore(panelHeading, panelset)
+
+        // panels are all .sections with .level<panelsetLevel + 1>
+        const panelLevel = +panelsetLevel + 1
+        panels = Array.from(panelset.querySelectorAll(`.section.level${panelLevel}`))
+      }
+
       if (!panels.length) return
 
       const contents = panels.map(processPanelItem).filter(o => o !== null)
