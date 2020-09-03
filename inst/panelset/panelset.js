@@ -38,7 +38,7 @@
       // If the item doesn't have a parent element, then we've already processed
       // it, probably because we're in an Rmd, and it's been removed from the DOM
       if (!item.parentElement) {
-        return;
+        return
       }
 
       // In R Markdown when header-attrs.js is present, we may have found a
@@ -211,15 +211,17 @@
 
     const initPanelSet = (panelset, idx) => {
       let panels = Array.from(panelset.querySelectorAll('.panel'))
-      if (!panels.length && panelset.matches(".section[class*='level']")) {
+      if (!panels.length && panelset.matches('.section[class*="level"]')) {
         // we're in tabset-alike R Markdown
-        let panelsetLevel = [...panelset.classList]
+        const panelsetLevel = [...panelset.classList]
           .filter(s => s.match(/^level/))[0]
           .replace('level', '')
 
-        // move first <hX> element out of div.panelset
-        const panelHeading = panelset.querySelector('h' + panelsetLevel)
-        panelset.parentElement.insertBefore(panelHeading, panelset)
+        // move children that aren't inside a section up above the panelset
+        Array.from(panelset.children).forEach(function (el) {
+          if (el.matches('div.section[class*="level"]')) return
+          panelset.parentElement.insertBefore(el, panelset)
+        })
 
         // panels are all .sections with .level<panelsetLevel + 1>
         const panelLevel = +panelsetLevel + 1
