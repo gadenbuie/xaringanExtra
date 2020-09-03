@@ -35,6 +35,12 @@
     const identifyPanelName = (item) => {
       let name = 'Panel'
 
+      // If the item doesn't have a parent element, then we've already processed
+      // it, probably because we're in an Rmd, and it's been removed from the DOM
+      if (!item.parentElement) {
+        return;
+      }
+
       // In R Markdown when header-attrs.js is present, we may have found a
       // section header but the class attributes won't be duplicated on the <hX> tag
       if (
@@ -70,6 +76,9 @@
 
     const processPanelItem = (item) => {
       const name = identifyPanelName(item)
+      if (!name) {
+        return null
+      }
       return { name, content: item.children, id: uniquePanelId(name) }
     }
 
@@ -204,7 +213,7 @@
       const panels = Array.from(panelset.querySelectorAll('.panel'))
       if (!panels.length) return
 
-      const contents = panels.map(processPanelItem)
+      const contents = panels.map(processPanelItem).filter(o => o !== null)
       const newPanelSet = reflowPanelSet(contents, idx)
       panelset.parentNode.insertBefore(newPanelSet, panelset)
       panelset.parentNode.removeChild(panelset)
