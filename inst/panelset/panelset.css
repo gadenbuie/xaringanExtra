@@ -68,6 +68,10 @@
   text-decoration: none;
 }
 
+.panelset .panel-tabs .panel-tab > a:focus {
+  outline: none;
+}
+
 .panelset .panel-tabs .panel-tab:hover {
   border-bottom-color: var(--panel-tab-hover-border-color);
   color: var(--panel-tab-hover-foreground);
