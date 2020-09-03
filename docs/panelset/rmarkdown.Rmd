@@ -4,6 +4,7 @@ subtitle: 'xaringanExtra `r packageVersion("xaringanExtra")`'
 author: https://pkg.garrickadenbuie.com/xaringanExtra
 output:
   rmarkdown::html_document: default
+    # self_contained: false
   # rmarkdown::html_document:
     # pandoc_args: ["--to", "html5"]
 ---
@@ -13,20 +14,25 @@ xaringanExtra::use_panelset()
 xaringanExtra::style_panelset_tabs(font_family = "inherit")
 ```
 
-## Panels in R Markdown!
+## Panels in R Markdown! {.panelset}
 
 Similar to R Markdown's [tabset feature](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html) but it works just about anywhere that R Markdown generates HTML.
 
-:::::::::: {.panelset}
+It has fewer options, but it's accessible and linkable!
+Once the panelset has focus, you can move between tabs with the arrow keys,
+or use the <kbd>Tab</kbd> key to "hover" over a panelset before opening.
+The page's URL changes to reflect the current panel selection,
+so you can share a link and know that the recipient's page
+will open to the correct tab.
 
-### Tab One {.panel}
+### Tab One
 
 Sit duis varius cursus auctor sed primis dictum justo diam senectus tellus? Facilisi turpis etiam facilisis mi class ullamcorper curae donec tempus? Felis habitasse id mus placerat blandit nec feugiat litora ridiculus sociis? Nostra varius morbi metus per mollis!
 
 Ipsum natoque mattis posuere malesuada et. Etiam urna ac parturient penatibus magnis nunc taciti hac vestibulum tortor lobortis phasellus inceptos. Nullam mauris eleifend sem orci sodales nunc etiam nostra conubia fermentum. Mi metus commodo ullamcorper nostra est nunc aliquet curabitur.
 
 
-### Tab Two {.panel}
+### Tab Two
 
 #### Sub Heading One
 
@@ -36,41 +42,37 @@ Consectetur tortor torquent nisl ante diam risus diam. Gravida purus sociis pulv
 
 Ipsum eu commodo senectus nam risus penatibus nisi in morbi non? Congue dictum primis hendrerit pretium odio cubilia proin diam pretium posuere. Mauris aliquet quis eleifend mollis cursus convallis pharetra accumsan porttitor leo mattis. Dictum euismod praesent egestas non facilisi.
 
-### Tab Three {.panel}
+### Tab Three
 
 Lorem cubilia phasellus enim himenaeos morbi conubia duis nec pretium cubilia pharetra mus sociosqu primis.
 
 Elit euismod volutpat penatibus quisque phasellus viverra!
 
-### Standard Rmd {.panel}
+### Tabset/Panelset
 
-This set up works for _standard R Markdown only_.
-In other words: HTML4 output with section divs (current `rmarkdown` default).
+This works a lot like `.tabset`,
+just add the `{.panelset}` class to a parent header and all sub headings
+one level below become tabs!
 
 ```markdown
-::: {.panelset}
+## Panels in R Markdown! {.panelset}
 
-## Tab One {.panel}
-
-content...
-
-## Tab Two {.panel}
-
-### Sub heading one
+### Tab One
 
 content...
 
-## Tab Three {.panel}
+### Tab Two
+
+#### Sub heading one
 
 content...
 
-:::
+### Tab Three
+
+content...
 ```
 
-Note that you have to add the `{.panel}` class attribute to headings and that sub headings must be lower than the tab panel heading.
-Note the sub heading above is a level-3 heading under a level-2 tab panel.
-
-::::::::::
+Note that nested panelsets __aren't supported__ (yet!).
 
 
 ## More Panels
@@ -168,6 +170,4 @@ you can fall back to raw HTML.
 :::
 
 :::::
-
-
 

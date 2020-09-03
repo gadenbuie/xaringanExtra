@@ -54,10 +54,11 @@ panelset](https://gadenbuie.github.io/xaringanExtra/panelset/rmarkdown.html)
 Panelset works in all R Markdown HTML outputs like HTML reports and
 [blogdown](https://bookdown.org/yihui/blogdown/) webpages\!
 
-Panelset may require a little bit more work than `rmarkdown`’s
+Panelset works in the same way as `rmarkdown`’s
 [tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html)
-feature, but the trade-off is that it works in a wider range of document
-types; generally, as long as the output is HTML, panelset should work.
+feature, albeit with fewer style options, but the trade-off is that it
+works in a wider range of document types; generally, as long as the
+output is HTML, panelset should work.
 
 Another advantage of panelset is that it enables deeplinking: the
 currently shown tab is encoded in the URL automatically, allowing users
@@ -70,24 +71,28 @@ i.e. [rmarkdown::html\_document()](https://rmarkdown.rstudio.com/reference/html
 you can use the following template.
 
 ``` markdown
-::::: {.panelset}
+# Panelset In R Markdown! P.panelset}
 
-## Tab One {.panel}
+## Tab One
 
 Amet enim aptent molestie vulputate pharetra
 vulputate primis et vivamus semper.
 
-## Tab Two {.panel}
+## Tab Two
 
 ### Sub heading one
 
 Sit etiam malesuada arcu fusce ullamcorper
 interdum proin tincidunt curabitur felis?
 
-## Tab Three {.panel}
+## Tab Three
 
 Adipiscing mauris egestas vitae pretium 
 ad dignissim dictumst platea!
+
+# Antoher section
+
+This content won't appear in a panel.
 
 :::::
 ```
