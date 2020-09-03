@@ -351,6 +351,12 @@ display: block;
     const identifyPanelName = (item) => {
       let name = 'Panel'
 
+      // If the item doesn't have a parent element, then we've already processed
+      // it, probably because we're in an Rmd, and it's been removed from the DOM
+      if (!item.parentElement) {
+        return
+      }
+
       // In R Markdown when header-attrs.js is present, we may have found a
       // section header but the class attributes won't be duplicated on the <hX> tag
       if (
@@ -386,6 +392,9 @@ display: block;
 
     const processPanelItem = (item) => {
       const name = identifyPanelName(item)
+      if (!name) {
+        return null
+      }
       return { name, content: item.children, id: uniquePanelId(name) }
     }
 
@@ -448,13 +457,27 @@ display: block;
       return res
     }
 
-    const updateUrl = (panelset, panel) => {
-      let params = new URLSearchParams(window.location.search)
+    /*
+     * Update selected panel for panelset or delete panelset from query string
+     *
+     * @param panelset Panelset ID to update in the search params
+     * @param panel Panel ID of selected panel in panelset, or null to delete from search params
+     * @param params Current params object, or params from window.location.search
+     */
+    function updateSearchParams (panelset, panel, params = new URLSearchParams(window.location.search)) {
       if (panel) {
         params.set(panelset, panel)
       } else {
         params.delete(panelset)
       }
+      return params
+    }
+
+    /*
+     * Update the URL to match params
+     */
+    const updateUrl = (params) => {
+      if (typeof params === 'undefined') return
       params = params.toString() ? ('?' + params.toString()) : ''
       const { pathname, hash } = window.location
       const uri = pathname + params + hash
@@ -498,14 +521,32 @@ display: block;
       clicked.setAttribute('aria-selected', true)
 
       // update query string
-      updateUrl(panelClicked, panelTabClicked)
+      const params = updateSearchParams(panelClicked, panelTabClicked)
+      updateUrl(params)
     }
 
     const initPanelSet = (panelset, idx) => {
-      const panels = Array.from(panelset.querySelectorAll('.panel'))
+      let panels = Array.from(panelset.querySelectorAll('.panel'))
+      if (!panels.length && panelset.matches('.section[class*="level"]')) {
+        // we're in tabset-alike R Markdown
+        const panelsetLevel = [...panelset.classList]
+          .filter(s => s.match(/^level/))[0]
+          .replace('level', '')
+
+        // move children that aren't inside a section up above the panelset
+        Array.from(panelset.children).forEach(function (el) {
+          if (el.matches('div.section[class*="level"]')) return
+          panelset.parentElement.insertBefore(el, panelset)
+        })
+
+        // panels are all .sections with .level<panelsetLevel + 1>
+        const panelLevel = +panelsetLevel + 1
+        panels = Array.from(panelset.querySelectorAll(`.section.level${panelLevel}`))
+      }
+
       if (!panels.length) return
 
-      const contents = panels.map(processPanelItem)
+      const contents = panels.map(processPanelItem).filter(o => o !== null)
       const newPanelSet = reflowPanelSet(contents, idx)
       panelset.parentNode.insertBefore(newPanelSet, panelset)
       panelset.parentNode.removeChild(panelset)
@@ -567,8 +608,12 @@ display: block;
         document.activeElement.blur()
 
         // clear search query for panelsets in current slide
-        document.querySelectorAll('.remark-visible .panelset')
-          .forEach(ps => updateUrl(ps.id, null))
+        const params = [...document.querySelectorAll('.remark-visible .panelset')]
+          .reduce(function (params, panelset) {
+            return updateSearchParams(panelset.id, null, params)
+          }, new URLSearchParams(window.location.search))
+
+        updateUrl(params)
       })
 
       slideshow.on('afterShowSlide', slide => {
@@ -578,7 +623,13 @@ display: block;
           // only first panel gets focus
           slidePanels[0].panel.focus()
           // but still update the url to reflect all active panels
-          slidePanels.forEach(({ panelId, panelSetId }) => updateUrl(panelSetId, panelId))
+          const params = slidePanels.reduce(
+            function (params, { panelId, panelSetId }) {
+              return updateSearchParams(panelSetId, panelId, params)
+            },
+            new URLSearchParams(window.location.search)
+          )
+          updateUrl(params)
         }
       })
     }
@@ -740,7 +791,7 @@ summary {
 
 
 <h1 class="title toc-ignore">Panelset in R Markdown</h1>
-<h3 class="subtitle">xaringanExtra 0.2.2</h3>
+<h3 class="subtitle">xaringanExtra 0.2.3</h3>
 <h4 class="author"><a href="https://pkg.garrickadenbuie.com/xaringanExtra" class="uri">https://pkg.garrickadenbuie.com/xaringanExtra</a></h4>
 
 </div>
@@ -749,17 +800,17 @@ summary {
 <pre class="r"><code>xaringanExtra::use_panelset()</code></pre>
 <pre class="r"><code>xaringanExtra::style_panelset_tabs(font_family = &quot;inherit&quot;)</code></pre>
 <style>.panelset{--panel-tab-font-family: inherit;}</style>
-<div id="panels-in-r-markdown" class="section level2">
-<h2>Panels in R Markdown!</h2>
+<div id="panels-in-r-markdown" class="section level2 panelset">
+<h2 class="panelset">Panels in R Markdown!</h2>
 <p>Similar to R Markdown’s <a href="https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html">tabset feature</a> but it works just about anywhere that R Markdown generates HTML.</p>
-<div class="panelset">
-<div id="tab-one" class="section level3 panel">
-<h3 class="panel">Tab One</h3>
+<p>It has fewer options, but it’s accessible and linkable! Once the panelset has focus, you can move between tabs with the arrow keys, or use the <kbd>Tab</kbd> key to “hover” over a panelset before opening. The page’s URL changes to reflect the current panel selection, so you can share a link and know that the recipient’s page will open to the correct tab.</p>
+<div id="tab-one" class="section level3">
+<h3>Tab One</h3>
 <p>Sit duis varius cursus auctor sed primis dictum justo diam senectus tellus? Facilisi turpis etiam facilisis mi class ullamcorper curae donec tempus? Felis habitasse id mus placerat blandit nec feugiat litora ridiculus sociis? Nostra varius morbi metus per mollis!</p>
 <p>Ipsum natoque mattis posuere malesuada et. Etiam urna ac parturient penatibus magnis nunc taciti hac vestibulum tortor lobortis phasellus inceptos. Nullam mauris eleifend sem orci sodales nunc etiam nostra conubia fermentum. Mi metus commodo ullamcorper nostra est nunc aliquet curabitur.</p>
 </div>
-<div id="tab-two" class="section level3 panel">
-<h3 class="panel">Tab Two</h3>
+<div id="tab-two" class="section level3">
+<h3>Tab Two</h3>
 <div id="sub-heading-one" class="section level4">
 <h4>Sub Heading One</h4>
 <p>Consectetur tortor torquent nisl ante diam risus diam. Gravida purus sociis pulvinar elementum tellus ultrices suscipit! Ad turpis augue mattis netus fusce vulputate posuere fames sed cum. Auctor dignissim felis maecenas mauris aenean mauris primis cursus sollicitudin pulvinar donec.</p>
@@ -769,33 +820,30 @@ summary {
 <p>Ipsum eu commodo senectus nam risus penatibus nisi in morbi non? Congue dictum primis hendrerit pretium odio cubilia proin diam pretium posuere. Mauris aliquet quis eleifend mollis cursus convallis pharetra accumsan porttitor leo mattis. Dictum euismod praesent egestas non facilisi.</p>
 </div>
 </div>
-<div id="tab-three" class="section level3 panel">
-<h3 class="panel">Tab Three</h3>
+<div id="tab-three" class="section level3">
+<h3>Tab Three</h3>
 <p>Lorem cubilia phasellus enim himenaeos morbi conubia duis nec pretium cubilia pharetra mus sociosqu primis.</p>
 <p>Elit euismod volutpat penatibus quisque phasellus viverra!</p>
 </div>
-<div id="standard-rmd" class="section level3 panel">
-<h3 class="panel">Standard Rmd</h3>
-<p>This set up works for <em>standard R Markdown only</em>. In other words: HTML4 output with section divs (current <code>rmarkdown</code> default).</p>
-<pre class="markdown"><code>::: {.panelset}
+<div id="tabsetpanelset" class="section level3">
+<h3>Tabset/Panelset</h3>
+<p>This works a lot like <code>.tabset</code>, just add the <code>{.panelset}</code> class to a parent header and all sub headings one level below become tabs!</p>
+<pre class="markdown"><code>## Panels in R Markdown! {.panelset}
 
-## Tab One {.panel}
-
-content...
-
-## Tab Two {.panel}
-
-### Sub heading one
+### Tab One
 
 content...
 
-## Tab Three {.panel}
+### Tab Two
+
+#### Sub heading one
 
 content...
 
-:::</code></pre>
-<p>Note that you have to add the <code>{.panel}</code> class attribute to headings and that sub headings must be lower than the tab panel heading. Note the sub heading above is a level-3 heading under a level-2 tab panel.</p>
-</div>
+### Tab Three
+
+content...</code></pre>
+<p>Note that nested panelsets <strong>aren’t supported</strong> (yet!).</p>
 </div>
 </div>
 <div id="more-panels" class="section level2">
