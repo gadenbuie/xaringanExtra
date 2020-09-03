@@ -144,7 +144,7 @@
       })
     })
 
-    navbar.addEventListener('touchend', function(ev) {
+    navbar.addEventListener('touchend', function (ev) {
       ev.preventDefault()
       ev.stopPropagation()
     })
