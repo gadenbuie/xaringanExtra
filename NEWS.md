@@ -1,3 +1,17 @@
+# xaringanExtra 0.2.3 (2020-09-03)
+
+## New Features
+
+- **Panelset** now works with the same markdown formatting as R Markdown's
+  `.tabset` feature in R Markdown documents! See
+  [the panelset documentation](https://pkg.garrickadenbuie.com/xaringanExtra/#/panelset)
+  for more information and examples (#41).
+
+## Bug Fixes
+
+- Fixed an issue with URL updating and **panelset** that caused security warnings
+  in Safari and led to temporarily broken slide navigation (thanks @jvcasillas, #50)
+
 # xaringanExtra 0.2.2 (2020-09-02)
 
 - Fixed several issues with `style_share_again()`: fixed default arguments,
