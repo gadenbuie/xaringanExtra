@@ -1,6 +1,8 @@
 /* global slideshow,Peer,Cookies */
 class BroadcastSlides {
-  constructor () {
+  constructor (expires = 4 / 24) {
+    this.expires = expires
+
     this.params = new URLSearchParams(window.location.search)
 
     // This is the Peer ID for the current slide viewer
@@ -93,11 +95,11 @@ class BroadcastSlides {
   }
 
   storeBroadcastShareId () {
-    Cookies.set('broadcastShareId', this.broadcastShareId, { expires: 1, sameSite: 'None', secure: true })
+    Cookies.set('broadcastShareId', this.broadcastShareId, { expires: this.expires, sameSite: 'None', secure: true })
   }
 
-  clearCookies () {
-    Cookies.remove('broadcast')
+  static clearCookies () {
+    Cookies.remove('broadcastShareId')
   }
 
   createBroadcastButton () {
