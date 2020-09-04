@@ -45,7 +45,7 @@ use_logo <- function(
   link_url = NULL,
   exclude_class = c("title-slide", "inverse", "hide_logo")
 ) {
-	htmltools::tagList(
+	htmltools::div(
 		htmltools::tags$style(
 			type = "text/css",
 			htmltools::HTML(
@@ -141,16 +141,15 @@ logo_css <- function(url, width, height, position) {
   })
   width <- htmltools::validateCssUnit(width)
   height <- htmltools::validateCssUnit(height)
-  sprintf("
-.xaringan-extra-logo {
-  width: %s;
-  height: %s;
-  z-index: 0;
-  background-image: url(%s);
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  %s%s%s%s
+  sprintf(".xaringan-extra-logo {
+width: %s;
+height: %s;
+z-index: 0;
+background-image: url(%s);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+%s%s%s%s
 }
 ", width, height, url, p$top, p$right, p$bottom, p$left)
 }
