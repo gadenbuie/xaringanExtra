@@ -1,4 +1,4 @@
-/* global slideshow,Peer,Cookies */
+/* global slideshow,Peer,Cookies,toast */
 class BroadcastSlides {
   constructor (expires = 4 / 24) {
     this.expires = expires
@@ -40,6 +40,7 @@ class BroadcastSlides {
     this.peer.on('open', function (id) {
       console.log(`peerjs connected with id ${id}`)
       self.isLive = true
+      toast.success('Broadcast Started!')
 
       self.broadcastShareId = id
       self.storeBroadcastShareId()
@@ -50,6 +51,12 @@ class BroadcastSlides {
       const uri = pathname + '?' + self.params.toString() + hash
       window.history.replaceState(uri, '', uri)
       self.createBroadcastLink()
+    })
+    this.peer.on('error', function (err) {
+      console.log(err)
+      toast.error('Broadcasting failed')
+      self.removeBroadCastButton()
+      self.createBroadcastButton()
     })
     this.peer.on('connection', function (conn) {
       console.log(`New peer connected with id ${conn.peer}`)
@@ -70,6 +77,7 @@ class BroadcastSlides {
   startFollowing () {
     this.connectPeerjs()
     const self = this
+    let needsNotified = true
     this.peer.on('open', function (id) {
       console.log(`peerjs connected with id ${id}`)
       self.isLive = true
@@ -81,7 +89,24 @@ class BroadcastSlides {
       conn.on('open', function () {
         conn.on('data', function (data) {
           // console.log(data)
+          if (needsNotified) {
+            needsNotified = false
+            toast.success("You're following the broadcast!")
+          }
           slideshow.gotoSlide(data.index + 1)
+        })
+      })
+
+      conn.on('error', function (err) {
+        console.log(err)
+        toast.error('Unable to connect to broadcast')
+      })
+
+      conn.on('close', function () {
+        toast.warning({
+          message: 'Broadcast ended or signal was lost. Click to reload slides.',
+          timeout: -1,
+          onclick: function () { window.location.reload() }
         })
       })
     })
@@ -115,6 +140,8 @@ class BroadcastSlides {
     const self = this
 
     btn.addEventListener('click', function () {
+      btn.innerText = 'Connecting...'
+      btn.setAttribute('disabled', true)
       self.startSharing()
     })
   }

@@ -6,5 +6,9 @@
 }
 
 .remark-toolbar-broadcast-link {
-	margin-left: 4px;
+  margin-left: 4px;
+}
+
+.t-wrap {
+  z-index: 9999;
 }
