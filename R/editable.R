@@ -81,14 +81,7 @@ html_dependency_editable <- function(expires = 14, id = NULL) {
       script = "himalaya.js",
       all_files = TRUE
     ),
-    htmltools::htmlDependency(
-      name = "js-cookie",
-      version = "3.0.0",
-      package = "xaringanExtra",
-      src = "jslib/js-cookie",
-      script = "js.cookie.js",
-      all_files = FALSE
-    ),
+    html_dependency_jscookie(),
     htmltools::htmlDependency(
       name = "editable",
       version = utils::packageVersion("xaringanExtra"),
@@ -98,6 +91,17 @@ html_dependency_editable <- function(expires = 14, id = NULL) {
       stylesheet = "editable.css",
       all_files = FALSE
     )
+  )
+}
+
+html_dependency_jscookie <- function() {
+  htmltools::htmlDependency(
+    name = "js-cookie",
+    version = "3.0.0",
+    package = "xaringanExtra",
+    src = "jslib/js-cookie",
+    script = "js.cookie.js",
+    all_files = FALSE
   )
 }
 
