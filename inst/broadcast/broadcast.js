@@ -10,6 +10,13 @@ class BroadcastSlides {
     // This is the Peer ID of the slides we want to follow
     this.broadcastFollowId = this.params.get('broadcast')
 
+    if (this.broadcastFollowId === "1") {
+      // Reset broadcast ID if ?broadcast=1
+      BroadcastSlides.clearCookies()
+      this.broadcastShareId = null
+      this.broadcastFollowId = null
+    }
+
     this.isLive = false
     // sharing will go live immediately, start sharing or following
     const goLive = !(this.broadcastFollowId === null || this.broadcastFollowId === '')
@@ -20,8 +27,8 @@ class BroadcastSlides {
     this.connections = 0
     this.broadcastLink = null
 
-    if (this.params.get('broadcast') === null) {
-      // slides loaded without ?broadcast flag
+    if (this.broadcastFollowId === null) {
+      // slides loaded with  ?broadcast=1 or out ?broadcast flag
       this.createBroadcastButton()
     }
 
@@ -61,7 +68,11 @@ class BroadcastSlides {
     this.peer.on('connection', function (conn) {
       console.log(`New peer connected with id ${conn.peer}`)
 
-      self.connections = self.connections + 1
+      self.updateWatchers(1)
+
+      conn.on('close', function () {
+        self.updateWatchers(-1)
+      })
 
       slideshow.on('showSlide', function (slide) {
       // console.log(`sending slide change to ${slide.getSlideIndex()}`)
@@ -162,6 +173,14 @@ class BroadcastSlides {
     const elTimer = document.querySelector('.remark-toolbar-timer')
     this.removeBroadCastButton()
     elTimer.parentElement.insertBefore(link, elTimer)
+    elTimer.parentElement.innerHTML += '(<span id="broadcast-watchers">0</span> watching)'
+  }
+
+  updateWatchers (n) {
+    this.connections = this.connections + n
+    const el = document.getElementById('broadcast-watchers')
+    if (!el) return
+    el.innerText = this.connections
   }
 }
 
