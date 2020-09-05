@@ -155,11 +155,8 @@ position: absolute;
 }
 
 logo_js <- function(link_url, exclude_class = c("title-slide", "inverse", "hide_logo")) {
-  element <- if (!is.null(link_url)) {
-    sprintf('<a href="%s" class="xaringan-extra-logo"></a>', link_url)
-  } else {
-    '<div class="xaringan-extra-logo"></div>'
-  }
+  element <- if (!is.null(link_url)) 'a' else 'div'
+  link <- if (!is.null(link_url)) sprintf("'%s'", link_url) else "null"
 
   if (!is.null(exclude_class) && length(exclude_class)) {
     for (i in seq_along(exclude_class)) {
@@ -182,10 +179,15 @@ logo_js <- function(link_url, exclude_class = c("title-slide", "inverse", "hide_
       }
     } else {
       document.querySelectorAll('.remark-slide-content%s')
-        .forEach(el => { el.innerHTML += '%s' })
+        .forEach(function (slide) {
+          const logo = document.createElement('%s')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = %s
+          slide.appendChild(logo)
+        })
     }
   }
   document.addEventListener('DOMContentLoaded', addLogo)
 })()",
-    exclude_class, element)
+    exclude_class, element, link)
 }
