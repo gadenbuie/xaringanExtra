@@ -10,7 +10,7 @@ class BroadcastSlides {
     // This is the Peer ID of the slides we want to follow
     this.broadcastFollowId = this.params.get('broadcast')
 
-    if (this.broadcastFollowId === "1") {
+    if (this.broadcastFollowId === '1') {
       // Reset broadcast ID if ?broadcast=1
       BroadcastSlides.clearCookies()
       this.broadcastShareId = null
@@ -60,8 +60,7 @@ class BroadcastSlides {
       self.createBroadcastLink()
     })
     this.peer.on('error', function (err) {
-      console.log(err)
-      toast.error('Broadcasting failed')
+      self.signalPeerError(err)
       self.removeBroadCastButton()
       self.createBroadcastButton()
     })
@@ -109,8 +108,7 @@ class BroadcastSlides {
       })
 
       conn.on('error', function (err) {
-        console.log(err)
-        toast.error('Unable to connect to broadcast')
+        self.signalPeerError(err, 'Unable to connect to broadcast')
       })
 
       conn.on('close', function () {
@@ -121,6 +119,27 @@ class BroadcastSlides {
         })
       })
     })
+  }
+
+  signalPeerError (err, defaultMessage) {
+    console.log(err)
+    switch (err.type) {
+      case 'browser-incompatible':
+        toast.error('Broadcasting does not work with your browser')
+        break
+
+      case 'server-error':
+      case 'network':
+        toast.error('Cannot connect with PeerJS server')
+        break
+
+      case 'peer-unavailable':
+        toast.error('Incorrect or expired broadcast link')
+        break
+
+      default:
+        toast.error(defaultMessage || 'Broadcasting failed')
+    }
   }
 
   /*
