@@ -19,7 +19,7 @@ NULL
 #' @export
 use_webcam <- function(width = 200, height = 200, margin = "1em") {
 	htmltools::tagList(
-		html_dependency_webcam(width, height)
+		html_dependency_webcam(width, height, margin)
 	)
 }
 
