@@ -5,12 +5,13 @@
 \title{Use xaringanExtra Extensions}
 \usage{
 use_xaringan_extra(
-  include = c("tile_view", "animate_css", "tachyons", "panelset", "share_again")
+  include = c("tile_view", "animate_css", "tachyons", "panelset", "broadcast",
+    "share_again")
 )
 }
 \arguments{
 \item{include}{Character vector of extensions to include. One or more of
-\code{"tile_view"}, \code{"editable"}, \code{"share_again"}, \code{"slide_tone"},
+\code{"tile_view"}, \code{"editable"}, \code{"share_again"}, \code{"broadcast"}, \code{"slide_tone"},
 \code{"animate_css"}, \code{"panelset"} \code{"tachyons"}, \code{"fit_screen"}, \code{"webcam"},
 \code{"clipboard"}.}
 }

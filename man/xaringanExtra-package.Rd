@@ -14,6 +14,7 @@
 \item Add an overview of your presentation with \code{\link[=use_tile_view]{use_tile_view()}}
 \item Make your slide content editable with \code{\link[=use_editable]{use_editable()}}
 \item Share your slides in style with \code{\link[=use_share_again]{use_share_again()}}
+\item Broadcast your slides in real time to viewers with \code{\link[=use_broadcast]{use_broadcast()}}
 \item Announce slide changes with a subtle tone: \code{\link[=use_slide_tone]{use_slide_tone()}}
 \item Animate slide transitions with \code{\link[=use_animate_css]{use_animate_css()}}
 \item Add tabbed panels to slides with \code{\link[=use_panelset]{use_panelset()}}
@@ -46,6 +47,8 @@ Other contributors:
   \item Zeno Rocha (clipboard.js) [contributor]
   \item Nikita Karamov (shareon.js) [contributor]
   \item Ross Zurowski (fitvids.js) [contributor]
+  \item  Michelle Bu and Eric Zhang (peerjs) [contributor]
+  \item Kiril Vatev (tiny.toast.) [contributor]
 }
 
 }

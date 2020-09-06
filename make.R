@@ -25,6 +25,7 @@ docs <- file.path(
     "webcam",
     "extra-styles",
     "clipboard",
+    "broadcast",
     "share-again"
   )
 )
