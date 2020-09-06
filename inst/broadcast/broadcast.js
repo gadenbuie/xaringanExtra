@@ -23,6 +23,7 @@ class BroadcastSlides {
 
     // we're the broadcaster (or could broadcast)
     this.isBroadcaster = this.broadcastShareId === this.broadcastFollowId || !(goLive)
+    document.body.classList.add('broadcast__' + (this.isBroadcaster ? 'broadcaster' : 'follower'))
 
     this.connections = 0
     this.broadcastLink = null
@@ -47,6 +48,7 @@ class BroadcastSlides {
     this.peer.on('open', function (id) {
       console.log(`peerjs connected with id ${id}`)
       self.isLive = true
+      document.body.classList.add('broadcast__is-live')
       toast.success('Broadcast Started!')
 
       self.broadcastShareId = id
@@ -59,8 +61,15 @@ class BroadcastSlides {
       window.history.replaceState(uri, '', uri)
       self.createBroadcastLink()
     })
+    this.peer.on('disconnected', function () {
+      document.body.classList.remove('broadcast__is-live')
+    })
     this.peer.on('error', function (err) {
       self.signalPeerError(err)
+      if (err.type === 'unavailable-id' || err.type === 'invalid-id') {
+        BroadcastSlides.clearCookies()
+        self.broadcastShareId = null
+      }
       self.removeBroadCastButton()
       self.createBroadcastButton()
     })
@@ -91,6 +100,7 @@ class BroadcastSlides {
     this.peer.on('open', function (id) {
       console.log(`peerjs connected with id ${id}`)
       self.isLive = true
+      document.body.classList.add('broadcast__is-live')
 
       // listen for slide changes
       console.log(`peerjs connecting to ${self.broadcastFollowId}`)
@@ -119,6 +129,12 @@ class BroadcastSlides {
         })
       })
     })
+
+    this.peer.on('disconnected', function () {
+      document.body.classList.remove('broadcast__is-live')
+    })
+
+    this.peer.on('error', self.signalPeerError)
   }
 
   signalPeerError (err, defaultMessage) {
@@ -133,8 +149,10 @@ class BroadcastSlides {
         toast.error('Cannot connect with PeerJS server')
         break
 
+      case 'invalid-id':
+      case 'unavailable-id':
       case 'peer-unavailable':
-        toast.error('Incorrect or expired broadcast link')
+        toast.error('Expired or incorrect broadcast link')
         break
 
       default:
