@@ -124,7 +124,7 @@ panelset_match_vars <- function(x = NULL) {
     hover_background    = "--panel-tab-hover-background",
     hover_foreground    = "--panel-tab-hover-foreground",
     hover_border_color  = "--panel-tab-hover-border-color",
-    tabs_border_bottom  = "--panel-tabs_border-bottom",
+    tabs_border_bottom  = "--panel-tabs-border-bottom",
     inactive_opacity    = "--panel-tab-inactive-opacity",
     font_family         = "--panel-tab-font-family"
   )
