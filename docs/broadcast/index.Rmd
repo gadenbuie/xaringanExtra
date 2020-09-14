@@ -1,0 +1,117 @@
+---
+title: "broadcast<br>for xaringan"
+pagetitle: "&#x1F4E1; broadcast | xaringanExtra"
+subtitle: "&#x1F4E1;"
+author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
+date: 'xaringanExtra'
+output:
+  xaringan::moon_reader:
+    css: [robot-fonts, robot]
+    lib_dir: libs
+---
+
+class: center middle
+layout: true
+
+```{r slide-tone, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+
+xaringanExtra::use_broadcast()
+```
+
+---
+
+# A
+
+.broadcast-info[
+Press <kbd>P</kbd> to go to presenter view
+]
+
+```{css echo=FALSE}
+.broadcast-info {
+  display: none;
+  position: relative;
+  text-align: center;
+  top: -3em;
+}
+.broadcast__broadcaster .broadcast-info {
+  display: block;
+}
+```
+
+???
+
+**Broadcast** lets others follow along!
+
+1. Click the broadcast button above
+
+2. Right click on _Broadcast Link_
+
+3. Share the link with others
+
+If something goes wrong, reload your slides to restart the broadcast.
+Followers will be prompted to reload their slides, too.
+
+The link expires about after 4 hours after its last use.
+
+Broadcasting uses [PeerJS](https://peerjs.com)
+to facilitate a link between your viewers' browsers
+and your browser.
+PeerJS uses _PeerServer_ to set up the connection,
+but no data about your slides is sent through a third party server.
+
+In fact, **broadcast** only shares your current slide number with your viewers!
+
+
+```{r results='asis', echo = FALSE}
+# Create 26 place-holder slides with giant letters
+
+glue::glue("
+
+---
+
+# {LETTERS[-1]}
+
+"
+)
+```
+
+---
+layout: false
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" alt="GitHub Octocat Logo" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
+
+
+```{css echo=FALSE}
+/* Fancy Giant Letters */
+.remark-slide-content h1 {
+  margin: 0;
+  background: -webkit-linear-gradient(160deg, rgb(245, 177, 77), rgb(237, 53, 115));
+  background: linear-gradient(160deg, rgb(245, 177, 77),rgb(237, 53, 115));
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 30em;
+  line-height: 1;
+  text-shadow: 1px 4px 6px rgba(255,255,255,0.15);
+}
+a {
+  color: rgb(237, 53, 115);
+}
+a:hover {
+  color: rgb(245, 177, 77);
+  color: #1D8EAD;
+}
+.remark-slide .title-slide h3 {
+  color: #aaa;
+}
+.remark-slide .title-slide, .remark-slide .title-slide h2, .remark-slide .title-slide h3 {
+  background-color: #061B21;
+}
+```

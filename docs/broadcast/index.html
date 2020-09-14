@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>📡 broadcast | xaringanExtra</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Garrick Aden-Buie" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/robot-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/robot.css" rel="stylesheet" />
+    <script src="libs/js-cookie/js.cookie.js"></script>
+    <script src="libs/peerjs/peerjs.min.js"></script>
+    <script src="libs/tiny.toast/toast.min.js"></script>
+    <link href="libs/xaringanExtra-broadcast/broadcast.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-broadcast/broadcast.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# broadcast<br>for xaringan
+## 📡
+### <a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>
+### xaringanExtra
+
+---
+
+
+class: center middle
+layout: true
+
+
+
+---
+
+# A
+
+.broadcast-info[
+Press &lt;kbd&gt;P&lt;/kbd&gt; to go to presenter view
+]
+
+&lt;style type="text/css"&gt;
+.broadcast-info {
+  display: none;
+  position: relative;
+  text-align: center;
+  top: -3em;
+}
+.broadcast__broadcaster .broadcast-info {
+  display: block;
+}
+&lt;/style&gt;
+
+???
+
+**Broadcast** lets others follow along!
+
+1. Click the broadcast button above
+
+2. Right click on _Broadcast Link_
+
+3. Share the link with others
+
+If something goes wrong, reload your slides to restart the broadcast.
+Followers will be prompted to reload their slides, too.
+
+The link expires about after 4 hours after its last use.
+
+Broadcasting uses [PeerJS](https://peerjs.com)
+to facilitate a link between your viewers' browsers
+and your browser.
+PeerJS uses _PeerServer_ to set up the connection,
+but no data about your slides is sent through a third party server.
+
+In fact, **broadcast** only shares your current slide number with your viewers!
+
+
+
+---
+
+# B
+
+
+---
+
+# C
+
+
+---
+
+# D
+
+
+---
+
+# E
+
+
+---
+
+# F
+
+
+---
+
+# G
+
+
+---
+
+# H
+
+
+---
+
+# I
+
+
+---
+
+# J
+
+
+---
+
+# K
+
+
+---
+
+# L
+
+
+---
+
+# M
+
+
+---
+
+# N
+
+
+---
+
+# O
+
+
+---
+
+# P
+
+
+---
+
+# Q
+
+
+---
+
+# R
+
+
+---
+
+# S
+
+
+---
+
+# T
+
+
+---
+
+# U
+
+
+---
+
+# V
+
+
+---
+
+# W
+
+
+---
+
+# X
+
+
+---
+
+# Y
+
+
+---
+
+# Z
+
+---
+layout: false
+class: center middle
+
+&lt;img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" alt="GitHub Octocat Logo" /&gt;
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
+
+
+&lt;style type="text/css"&gt;
+/* Fancy Giant Letters */
+.remark-slide-content h1 {
+  margin: 0;
+  background: -webkit-linear-gradient(160deg, rgb(245, 177, 77), rgb(237, 53, 115));
+  background: linear-gradient(160deg, rgb(245, 177, 77),rgb(237, 53, 115));
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 30em;
+  line-height: 1;
+  text-shadow: 1px 4px 6px rgba(255,255,255,0.15);
+}
+a {
+  color: rgb(237, 53, 115);
+}
+a:hover {
+  color: rgb(245, 177, 77);
+  color: #1D8EAD;
+}
+.remark-slide .title-slide h3 {
+  color: #aaa;
+}
+.remark-slide .title-slide, .remark-slide .title-slide h2, .remark-slide .title-slide h3 {
+  background-color: #061B21;
+}
+&lt;/style&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
