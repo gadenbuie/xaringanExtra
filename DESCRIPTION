@@ -1,6 +1,6 @@
 Package: xaringanExtra
 Title: Extras And Extensions for Xaringan Slides
-Version: 0.2.3
+Version: 0.2.3.9000
 Authors@R: 
     c(person(given = "Garrick",
              family = "Aden-Buie",
@@ -31,12 +31,12 @@ Authors@R:
              family = "Rocha",
              role = "ctb",
              comment = "clipboard.js"),
-      person(given = "Nikita", 
+      person(given = "Nikita",
              family = "Karamov",
              role = "ctb",
              comment = "shareon.js"),
-      person(given = "Ross", 
-             family = "Zurowski", 
+      person(given = "Ross",
+             family = "Zurowski",
              role = "ctb",
              comment = "fitvids.js"))
 Description: Extras and extensions for xaringan slides. Nagivate
@@ -52,9 +52,11 @@ BugReports: https://github.com/gadenbuie/xaringanExtra/issues
 Imports: 
     htmltools,
     jsonlite,
+    knitr,
     utils,
     uuid
 Suggests: 
+    rmarkdown,
     testthat (>= 2.1.0),
     xaringan
 Encoding: UTF-8

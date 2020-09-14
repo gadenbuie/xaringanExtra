@@ -177,3 +177,64 @@ customize the style to fit your presentation.
 ```
 ````
 
+### Panelset knitr Chunks
+
+A common use-case for **panelset** is to show the code and its output in
+separate tabs. For example, you might want to first show the code to
+create a plot in the first tab, with the plot itself in a second tab. On
+slides where space is constrained, this approach can be useful.
+
+To help facilitate this process, **panelset** provides a `panelset`
+chunk option. When set to `TRUE`, the code is included in a panel tab
+named *Code* and the output is included in a panel tab named *Output*.
+
+```` markdown
+```{r panelset = TRUE}
+list(
+  normal = rnorm(10),
+  uniform = runif(10),
+  cauchy = rcauchy(10)
+)
+```
+````
+
+You can also set `panelset` to a named vector, where the `source` item
+is the tab name for the source code and the `output` item is the tab
+name for the code output.
+
+```` markdown
+```{r panelset = c(source = "ggplot2", output = "Plot")}
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = FALSE) +
+  theme_bw()
+```
+````
+
+Note that when your code contains multiple expressions and outputs, you
+may also want to set the `results = "hold"` chunk option. Currently,
+knitr chunks default to `results = "markup"` and each code expression
+and output pair will generate a pair of tabs.
+
+```` markdown
+```{r panelset = TRUE, results="hold"}
+print("Oak is strong and also gives shade.")
+print("The lake sparkled in the red hot sun.")
+```
+````
+
+Finally, panelset chunks also work in R Markdown documents, but they
+must be encapsulated in `<div class="panelset">` and `</div>`:
+
+```` markdown
+<div class="panelset">
+
+```{r panelset = TRUE}
+print("Oak is strong and also gives shade.")
+```
+
+</div>
+````
+

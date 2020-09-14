@@ -31,16 +31,16 @@ xaringanExtra::use_logo(
 )
 ```
 
-<style type="text/css">
-.xaringan-extra-logo {
-  width: 110px;
-  height: 128px;
-  z-index: 0;
-  background-image: url(https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  top:1em;right:1em;
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
 }
 </style>
 <script>(function () {
@@ -53,11 +53,17 @@ xaringanExtra::use_logo(
       }
     } else {
       document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
-        .forEach(el => { el.innerHTML += '<a href="http://slides.yihui.name/xaringan" class="xaringan-extra-logo"></a>' })
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'http://slides.yihui.name/xaringan'
+          slide.appendChild(logo)
+        })
     }
   }
   document.addEventListener('DOMContentLoaded', addLogo)
 })()</script>
+</div>
 
 &lt;style type="text/css"&gt;
 .gray { color: #999; }

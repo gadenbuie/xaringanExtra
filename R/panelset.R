@@ -31,12 +31,18 @@
 #'
 #' @includeRmd man/fragments/panelset_other-rmd.Rmd
 #'
+#' @includeRmd man/fragments/panelset_chunks.Rmd
+#'
 #' @name panelset
 NULL
 
 #' @describeIn panelset Adds panelset to your xaringan slides.
+#' @param in_xaringan Set to `TRUE` if rendering in xaringan slides or `FALSE`
+#'   if using panelset elsewhere. This determines the style of knitr hook that
+#'   is registered to enable the `panelset` chunk option.
 #' @export
-use_panelset <- function() {
+use_panelset <- function(in_xaringan = NULL) {
+  register_panelset_knitr_hooks(in_xaringan)
   htmltools::tagList(
     html_dependency_panelset()
   )
@@ -98,6 +104,11 @@ style_panelset_tabs <- function(
 
   names(args) <- panelset_match_vars(names(args))
 
+  if ("--panel-tab-font-family" %in% names(args) &&
+      identical(args["--panel-tab-font-family"], "monospace")) {
+   args["--panel-tab-font-family"] <- "Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace"
+  }
+
   style <- ""
   for (var in names(args)) {
     style <- paste0(style, var, ": ", args[var], ";")
@@ -144,5 +155,128 @@ html_dependency_panelset <- function() {
     src = "panelset",
     script = "panelset.js",
     stylesheet = "panelset.css"
+  )
+}
+
+
+register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
+  if (!knitr::is_html_output()) {
+    return()
+  }
+
+  hook_source_original <- knitr::knit_hooks$get("source")
+  hook_output_original <- knitr::knit_hooks$get("output")
+
+  in_xaringan <- output_is_xaringan(in_xaringan)
+
+  knitr::knit_hooks$set(source = function(x, options) {
+    if (is.null(options$panelset) || identical(options$panelset, FALSE)) {
+      return(hook_source_original(x, options))
+    }
+
+    panel_names <- panelset_source_opts(options$panelset)
+
+    # TODO: check that result was set by user, if not assume 'hold' as default
+    if (identical(options$results, "hold")) {
+      x <- paste(x, collapse = "\n")
+    }
+
+    if (isTRUE(in_xaringan)) {
+      panelset_chunk_before_xaringan(x, panel_names)
+    } else {
+      panelset_chunk_before_html(x, panel_names)
+    }
+  })
+
+  knitr::knit_hooks$set(panelset = function(before, options, ...) {
+    if (before) return()
+    if (isTRUE(in_xaringan)) "\n\n]" else "\n\n</div>"
+  })
+}
+
+panelset_source_opts <- function(opt) {
+  if (is.null(opt)) {
+    return(NULL)
+  }
+
+  default <- c(source = "Code", output = "Output")
+  opt <- unlist(opt)
+  if (isTRUE(opt) || length(opt) < 1 || !is.character(opt)) {
+    return(default)
+  }
+
+  if (!is.null(names(opt))) {
+    opt <- opt[intersect(names(default), names(opt))]
+  }
+
+  if (length(opt) > 2) {
+    warning("`panelset` chunk option expects at most two values")
+    opt <- opt[1:2]
+  }
+
+  if (is.null(names(opt))) {
+    names(opt) <- names(default)[seq_along(opt)]
+  }
+
+  if (!length(opt) == 2) {
+    opt <- c(
+      opt[intersect(names(default), names(opt))],
+      default[setdiff(names(default), names(opt))]
+    )
+  }
+
+  opt[names(default)]
+}
+
+panelset_chunk_before_xaringan <- function(x, panel_names) {
+  paste(
+    sprintf(".panel[.panel-name[%s]", panel_names["source"]),
+    "",
+    "```r",
+    x,
+    "```",
+    "\n]\n",
+    sprintf(".panel[.panel-name[%s]", panel_names["output"]),
+    "\n",
+    sep = "\n"
+  )
+}
+
+panelset_chunk_before_html <- function(x, panel_names) {
+  paste(
+    '<div class="panel">',
+    sprintf('<div class="panel-name">%s</div>', panel_names["source"]),
+    "",
+    "```r",
+    x,
+    "```",
+    "\n</div>\n",
+    '<div class="panel">',
+    sprintf('<div class="panel-name">%s</div>', panel_names["output"]),
+    "\n",
+    sep = "\n"
+  )
+}
+
+output_is_xaringan <- function(in_xaringan) {
+  if (isTRUE(in_xaringan)) return(TRUE)
+
+  # This will probably work in most cases but I'm not sure how else to be
+  # certain that the document currently being rendered is xaringan slides...
+  has_xaringan_page_opt() && is_moon_reader_output()
+}
+
+has_xaringan_page_opt <- function() {
+  !is.null(getOption("xaringan.page_number.offset", NULL))
+}
+
+is_moon_reader_output <- function() {
+  if (!requireNamespace("rmarkdown", quietly = TRUE)) {
+    # Not sure how we'd get here but just in case, skip this check
+    return(TRUE)
+  }
+  grepl(
+    "moon_reader",
+    rmarkdown::all_output_formats(knitr::current_input())
   )
 }
