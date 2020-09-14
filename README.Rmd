@@ -333,6 +333,11 @@ Here's the example used in the demo slides.
 ```{r child="man/fragments/panelset_custom-styles.Rmd"}
 ```
 
+### Panelset knitr Chunks
+
+```{r child="man/fragments/panelset_chunks.Rmd"}
+```
+
 ## &#x1F48C; Logo
 
 #### &#x1F4FA; [Logo Demo](https://gadenbuie.github.io/xaringanExtra/logo)

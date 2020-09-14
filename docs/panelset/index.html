@@ -36,7 +36,7 @@ ggplot(Orange) +
   aes(x = age, y = circumference, colour = Tree) +
   geom_point() +
   geom_line() +
-  guides(colour = FALSE) +
+  guides(colour = "none") +
   theme_bw()
 ```
 ]
@@ -55,6 +55,89 @@ Oops, I forgot to give this panel a name &amp;#x1F937;&amp;#x200D;&amp;#x2642;&a
 
 ]
 ]
+
+---
+
+### Panelset Chunks
+
+You can use the `panelset` chunk option to create two panels from a code chunk:
+the "Code" and "Output".
+
+.panelset[
+
+.panel[.panel-name[Chunk 1]
+
+````markdown
+```{r panelset = TRUE, results = "hold"}
+# Set panelset = TRUE to create "Code" and "Output" tabs
+# Use results = "hold" when chunk contains multiple expressions
+print("Oak is strong and also gives shade.")
+print("The lake sparkled in the red hot sun.")
+```
+````
+
+]
+
+.panel[.panel-name[Code]
+
+```r
+# Set panelset = TRUE to create "Code" and "Output" tabs
+# Use results = "hold" when chunk contains multiple expressions
+print("Oak is strong and also gives shade.")
+print("The lake sparkled in the red hot sun.")
+```
+
+]
+
+.panel[.panel-name[Output]
+
+```
+## [1] "Oak is strong and also gives shade."
+## [1] "The lake sparkled in the red hot sun."
+```
+
+
+
+]
+
+.panel[.panel-name[Chunk 2]
+
+Use a named vector in `panelset` to set the `source` and `output` panel tab names.
+
+````markdown
+```{r panelset = c(source = "ggplot2", output = "Plot")}
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+```
+````
+
+]
+
+.panel[.panel-name[ggplot2]
+
+```r
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+```
+
+]
+
+.panel[.panel-name[Plot]
+
+![](index_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
+]
+
+]
+
 
 ---
 

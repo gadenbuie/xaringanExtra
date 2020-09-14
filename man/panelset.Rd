@@ -8,7 +8,7 @@
 \alias{html_dependency_panelset}
 \title{Panelset}
 \usage{
-use_panelset()
+use_panelset(in_xaringan = NULL)
 
 style_panelset_tabs(
   foreground = NULL,
@@ -31,6 +31,10 @@ style_panelset(...)
 html_dependency_panelset()
 }
 \arguments{
+\item{in_xaringan}{Set to \code{TRUE} if rendering in xaringan slides or \code{FALSE}
+if using panelset elsewhere. This determines the style of knitr hook that
+is registered to enable the \code{panelset} chunk option.}
+
 \item{foreground}{The text color of a non-active panel tab, default is
 \code{currentColor}.}
 
@@ -212,6 +216,55 @@ Alternatively, you can also use raw HTML.\if{html}{\out{<div class="html">}}\pre
     <!-- Panel content -->
     <p>Lorem ipsum, etc, etc</p>
   </div>
+</div>
+}\if{html}{\out{</div>}}
+}
+
+\section{Panelset knitr Chunks}{
+A common use-case for \strong{panelset} is to show the code and its output in
+separate tabs. For example, you might want to first show the code to
+create a plot in the first tab, with the plot itself in a second tab. On
+slides where space is constrained, this approach can be useful.
+
+To help facilitate this process, \strong{panelset} provides a \code{panelset}
+chunk option. When set to \code{TRUE}, the code is included in a panel tab
+named \emph{Code} and the output is included in a panel tab named \emph{Output}.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r panelset = TRUE\}
+list(
+  normal = rnorm(10),
+  uniform = runif(10),
+  cauchy = rcauchy(10)
+)
+```
+}\if{html}{\out{</div>}}
+
+You can also set \code{panelset} to a named vector, where the \code{source} item
+is the tab name for the source code and the \code{output} item is the tab
+name for the code output.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r panelset = c(source = "ggplot2", output = "Plot")\}
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = FALSE) +
+  theme_bw()
+```
+}\if{html}{\out{</div>}}
+
+Note that when your code contains multiple expressions and outputs, you
+may also want to set the \code{results = "hold"} chunk option. Currently,
+knitr chunks default to \code{results = "markup"} and each code expression
+and output pair will generate a pair of tabs.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r panelset = TRUE, results="hold"\}
+print("Oak is strong and also gives shade.")
+print("The lake sparkled in the red hot sun.")
+```
+}\if{html}{\out{</div>}}
+
+Finally, panelset chunks also work in R Markdown documents, but they
+must be encapsulated in \verb{<div class="panelset">} and \verb{</div>}:\if{html}{\out{<div class="markdown">}}\preformatted{<div class="panelset">
+
+```\{r panelset = TRUE\}
+print("Oak is strong and also gives shade.")
+```
+
 </div>
 }\if{html}{\out{</div>}}
 }
