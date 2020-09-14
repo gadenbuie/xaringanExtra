@@ -11,6 +11,7 @@ An \code{htmltools::tagList()} with the HTML dependencies required for
 \strong{broadcast}.
 }
 \description{
+\href{https://www.tidyverse.org/lifecycle/#experimental}{Experimental}!
 \strong{Broadcast} lets others follow along, in real time! Built with
 \href{https://peerjs.com}{PeerJS}, \strong{broadcast} give you a unique URL to share
 with your viewers. Then, when they load your slides, their slides will
