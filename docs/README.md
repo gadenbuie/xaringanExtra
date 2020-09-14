@@ -20,6 +20,8 @@
   - Add an overview of your presentation with [tile view](/tile-view)
   - Make your slides [editable](/editable)
   - Share your slides in style with [share again](/share-again)
+  - Broadcast your slides in real time to viewers with
+    [broadcast](/broadcast)
   - Announce slide changes with a [subtle tone](/slide-tone)
   - Animate slide transitions with [animate.css](/animate-css)
   - Add tabbed panels to slides with [panelset](/panelset)

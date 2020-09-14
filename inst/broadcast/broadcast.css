@@ -1,0 +1,14 @@
+.remark-toolbar-link.remark-toolbar-broadcast {
+  margin-left: 4px;
+  background: white;
+  padding: 7px 5px 5px 5px;
+  line-height: 1;
+}
+
+.remark-toolbar-broadcast-link {
+  margin-left: 4px;
+}
+
+.t-wrap {
+  z-index: 9999;
+}

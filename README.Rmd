@@ -9,6 +9,7 @@ always_allow_html: true
 
 ```{r include=FALSE}
 INCLUDE_CHILD_HEADER <- FALSE
+IN_README <- TRUE
 ```
 
 ```{css echo=FALSE, eval=knitr::is_html_output()}
@@ -31,6 +32,7 @@ INCLUDE_CHILD_HEADER <- FALSE
 - Add an overview of your presentation with [tile view](#-tile-view)
 - Make your slides [editable](#-editable)
 - Share your slides in style with [share again](#-share-again)
+- Broadcast your slides in real time to viewers with [broadcast](#-broadcast)
 - Announce slide changes with a [subtle tone](#-slide-tone)
 - Animate slide transitions with [animate.css](#-animatecss)
 - Add tabbed panels to slides with [panelset](#-panelset)
@@ -187,6 +189,18 @@ Add share again to your slides in three easy steps.
     Here's what your [slides will look like](https://gadenbuie.github.io/xaringanExtra/share-again/)
     in an R Markdown HTML document.
 
+## &#x1F4E1; Broadcast
+
+#### &#x1F4FA; [Broadcast Demo](https://gadenbuie.github.io/xaringanExtra/broadcast)
+
+**Broadcast** lets others follow along, in real time! 
+Built with [PeerJS](https://peerjs.com), 
+**broadcast** give you a unique URL to share with your viewers. 
+Then, when they load your slides, 
+their slides will automatically follow you as you present!
+
+```{r child="man/fragments/broadcast-details.Rmd"}
+```
 
 ## &#x1F50A; Slide Tone
 
