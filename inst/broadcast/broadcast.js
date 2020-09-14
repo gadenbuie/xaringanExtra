@@ -210,7 +210,14 @@ class BroadcastSlides {
     const elTimer = document.querySelector('.remark-toolbar-timer')
     this.removeBroadCastButton()
     elTimer.parentElement.insertBefore(link, elTimer)
-    elTimer.parentElement.innerHTML += '(<span id="broadcast-watchers">0</span> watching)'
+    this.createWatchersSpan()
+  }
+
+  createWatchersSpan () {
+    const elTimer = document.querySelector('.remark-toolbar-timer')
+    const watchers = document.createElement('span')
+    watchers.innerHTML = '(<span id="broadcast-watchers">0</span> watching)'
+    elTimer.parentElement.appendChild(watchers)
   }
 
   updateWatchers (n) {
