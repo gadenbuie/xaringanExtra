@@ -1,3 +1,11 @@
+# xaringanExtra 0.2.3.9000
+
+- Added **panelset chunks** that output code chunks source and results in 
+  separate panel tabs (#59)
+  
+- Added **broadcast**, a new experimental extension that allows viewers to follow the
+  presenter's slides in their own browsers (thanks @spcanelon, #51, #58)
+
 # xaringanExtra 0.2.3 (2020-09-03)
 
 ## New Features

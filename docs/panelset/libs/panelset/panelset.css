@@ -13,7 +13,7 @@
   --panel-tab-active-border-color: currentColor;
   --panel-tab-hover-border-color: currentColor;
   --panel-tab-inactive-opacity: 0.5;
-  --panel-tab-font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+  --panel-tab-font-family: inherit;
 }
 
 .panelset * {
@@ -66,10 +66,18 @@
 .panelset .panel-tabs .panel-tab > a {
   color: currentColor;
   text-decoration: none;
+  border: none;
 }
 
 .panelset .panel-tabs .panel-tab > a:focus {
   outline: none;
+  text-decoration: none;
+  border: none;
+}
+
+.panelset .panel-tabs .panel-tab > a:hover {
+  text-decoration: none;
+  border: none;
 }
 
 .panelset .panel-tabs .panel-tab:hover {
