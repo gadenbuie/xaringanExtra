@@ -66,10 +66,18 @@
 .panelset .panel-tabs .panel-tab > a {
   color: currentColor;
   text-decoration: none;
+  border: none;
 }
 
 .panelset .panel-tabs .panel-tab > a:focus {
   outline: none;
+  text-decoration: none;
+  border: none;
+}
+
+.panelset .panel-tabs .panel-tab > a:hover {
+  text-decoration: none;
+  border: none;
 }
 
 .panelset .panel-tabs .panel-tab:hover {
