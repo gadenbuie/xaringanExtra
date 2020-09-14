@@ -266,6 +266,10 @@ has_xaringan_page_opt <- function() {
 }
 
 is_moon_reader_output <- function() {
+  if (!requireNamespace("rmarkdown", quietly = TRUE)) {
+    # Not sure how we'd get here but just in case, skip this check
+    return(TRUE)
+  }
   grepl(
     "moon_reader",
     rmarkdown::all_output_formats(knitr::current_input())
