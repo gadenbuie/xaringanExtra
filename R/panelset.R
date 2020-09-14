@@ -104,6 +104,11 @@ style_panelset_tabs <- function(
 
   names(args) <- panelset_match_vars(names(args))
 
+  if ("--panel-tab-font-family" %in% names(args) &&
+      identical(args["--panel-tab-font-family"], "monospace")) {
+   args["--panel-tab-font-family"] <- "Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace"
+  }
+
   style <- ""
   for (var in names(args)) {
     style <- paste0(style, var, ": ", args[var], ";")
