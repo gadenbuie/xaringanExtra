@@ -57,3 +57,6 @@ Feeling shame about bad code stops you from getting to good code
 \href{http://tachyons.io/}{tachyons},
 \href{https://roperzh.github.io/tachyons-cheatsheet/}{Tachyons Cheat Sheet}
 }
+\seealso{
+style_tachyons
+}

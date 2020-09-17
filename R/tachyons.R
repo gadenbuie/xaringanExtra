@@ -36,6 +36,7 @@
 #'
 #' @references [tachyons](http://tachyons.io/),
 #'   [Tachyons Cheat Sheet](https://roperzh.github.io/tachyons-cheatsheet/)
+#' @seealso style_tachyons
 #' @name tachyons
 NULL
 
@@ -62,3 +63,64 @@ html_dependency_tachyons <- function(minified = TRUE) {
     all_files = FALSE
   )
 }
+
+
+list_tachyons_vars <- function() {
+  tc <- system.file("jslib/tachyons/tachyons.css", package = "xaringanExtra")
+  tc <- readLines(tc)
+  tc <- gsub(";", "&;", tc)
+  tc <- unlist(strsplit(tc, ";"))
+  m <- regexec("--([[:graph:]]+): ([^;]+)&$", tc)
+  m <- regmatches(tc, m)
+  m <- m[vapply(m, length, integer(1)) > 0]
+  m <- do.call(rbind, m)[,2:3]
+  vars <- as.list(m[, 2])
+  names(vars) <- m[, 1]
+  vars
+}
+
+args_tachyons_vars <- function() {
+  vars <- lapply(list_tachyons_vars(), function(...) NULL)
+  names(vars) <- gsub("-", "_", names(vars))
+  vars
+}
+
+params_tachyons_vars <- function() {
+  vars <- unlist(list_tachyons_vars())
+  paste0(
+    "\\item{",
+    gsub("-", "_", names(vars)),
+    "}{\\code{--",
+    names(vars),
+    "}, default is \\code{",
+    vars,
+    "}}",
+    collapse = "\n"
+  )
+}
+
+#' Style Tachyons
+#'
+#' Creates a `<style>` tag to set CSS variables used by Tachyons.
+#'
+#' @evalRd paste("\\arguments{", params_tachyons_vars(), "}", collapse = "\n")
+#'
+#' @seealso tachyons
+#' @export
+style_tachyons <- function() {
+  vars <- as.list(match.call())[-1]
+  if (!length(vars)) {
+    return()
+  }
+
+  css <- vector("character", length(vars))
+  for (i in seq_along(vars)) {
+    css_var <- gsub("_", "-", names(vars[i]))
+    css[i] <- sprintf("--%s: %s;", css_var, vars[i])
+  }
+  htmltools::tags$style(
+    sprintf(":root { %s }", paste(css, collapse = " "))
+  )
+}
+
+formals(style_tachyons) <- args_tachyons_vars()
