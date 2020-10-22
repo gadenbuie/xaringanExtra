@@ -5,6 +5,10 @@
   
 - Added **broadcast**, a new experimental extension that allows viewers to follow the
   presenter's slides in their own browsers (thanks @spcanelon, #51, #58)
+  
+- Changing a panelset tab now emits a window resize event, in hopes that any
+  HTMLWidgets contained in the panel will resize to fit the panel container
+  (thanks @mfherman #64)
 
 # xaringanExtra 0.2.3 (2020-09-03)
 
