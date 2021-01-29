@@ -1,0 +1,25 @@
+.canvas-container:hover {
+  cursor: crosshair;
+}
+
+.color-chooser {
+  cursor: pointer;
+  position: absolute;
+  right: 25px;
+  top: 35px;
+  width: 30px;
+  z-index: 101;
+}
+
+.stroke-slider {
+  cursor: pointer;
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* WebKit */
+  width: 10px;
+  height: 75px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 101;
+  color: brown;
+}
