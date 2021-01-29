@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return height
   }
 
-  const createCanvas = function() {
+  const createCanvas = function(colEl, strokeEl) {
     cWidth = getSlideWidth()
     cHeight = getSlideHeight()
 
@@ -45,19 +45,16 @@ document.addEventListener("DOMContentLoaded", function() {
       height: cHeight
       });
 
-    const drawingColorEl = document.querySelector(".color-chooser")
-    const strokeEl = document.querySelector(".stroke-slider")
-
     canvas.freeDrawingBrush.width  = strokeEl.value
-    canvas.freeDrawingBrush.color = drawingColorEl.value
+    canvas.freeDrawingBrush.color = colEl.value
     canvas.wrapperEl.style.width = "100%"
     canvas.wrapperEl.style.height = "100%"
     canvas.wrapperEl.style.zIndex = 100
     canvas.wrapperEl.style.position = "absolute"
     canvas.wrapperEl.style.left = 0
     canvas.wrapperEl.style.top = 0
-    drawingColorEl.onchange = function() {{
-      canvas.freeDrawingBrush.color = drawingColorEl.value;
+    colEl.onchange = function() {{
+      canvas.freeDrawingBrush.color = colEl.value;
     }};
     strokeEl.onchange = function() {{
       canvas.freeDrawingBrush.width = strokeEl.value;
@@ -112,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
       toAddCanvas.appendChild(strokeInput)
 
       // Draw canvas
-      const canvas = createCanvas()
+      const canvas = createCanvas(colourInput, strokeInput)
       toAddCanvas.appendChild(canvas.wrapperEl)
     }
   }
