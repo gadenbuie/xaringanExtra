@@ -125,10 +125,12 @@ window.xaringanExtraCanvas = function (opts) {
     }
 
     // Add canvas to every slide on load
+    i = 0
     const slides = document.getElementsByClassName("remark-slide-content")
     slides.forEach(slide => {
       const canvas = createCanvas(i)
       slide.appendChild(canvas)
+      i += 1
     })
 
     // Create toolbox, button div, color picker div
