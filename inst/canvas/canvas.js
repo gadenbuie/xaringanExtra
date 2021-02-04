@@ -33,14 +33,14 @@ window.xaringanExtraCanvas = function (opts) {
       const cX = ev.type=="mousemove" ? ev.clientX : ev.touches[0].clientX
       const cY = ev.type=="mousemove" ? ev.clientY : ev.touches[0].clientY
 
-      const currX = cX - offsetLeft
-      const currY = cY - offsetTop
+      const currX = Math.round(cX - offsetLeft)
+      const currY = Math.round(cY - offsetTop)
 
       if (mouseDown) {
-        ctx.moveTo(startX, startY);
-        ctx.lineTo(currX, currY);
-        ctx.lineJoin = ctx.lineCap = 'round';
-        ctx.stroke();
+        ctx.moveTo(startX, startY)
+        ctx.lineTo(currX, currY)
+        ctx.lineJoin = ctx.lineCap = 'round'
+        ctx.stroke()
         startX = currX
         startY = currY
       }
@@ -56,12 +56,13 @@ window.xaringanExtraCanvas = function (opts) {
         ctx.globalCompositeOperation = 'destination-out';
         ctx.lineWidth = defaultEraserSize;
       }
-      ctx.beginPath();
+      ctx.beginPath()
+      ctx.translate(0.5, 0.5) // anti-aliasing recommendation
       
       const sX = ev.type=="mousedown" ? ev.clientX : ev.touches[0].clientX
       const sY = ev.type=="mousedown" ? ev.clientY : ev.touches[0].clientY
-      startX = sX - offsetLeft
-      startY = sY - offsetTop
+      startX = Math.round(sX - offsetLeft)
+      startY = Math.round(sY - offsetTop)
       mouseDown = true
     }
 
@@ -267,7 +268,7 @@ window.xaringanExtraCanvas = function (opts) {
       return colorPicker
     }
     const colorPicker = makeColorPicker(defaultPenColor)
-    colorPicker.addEventListener("change", function() {
+    colorPicker.addEventListener("input", function() {
       strokeColor = colorPicker.value
     })
     ;["click", "touchend"].forEach(gesture => {
