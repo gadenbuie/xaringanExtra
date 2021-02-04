@@ -72,7 +72,7 @@ Collate:
     'broadcast.R'
     'clipboard.R'
     'editable.R'
-    'fabric.R'
+    'canvas.R'
     'fit-screen.R'
     'panelset.R'
     'share_again.R'

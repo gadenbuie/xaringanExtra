@@ -1,0 +1,26 @@
+.tool-box {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.tool-btn {
+  width: 40px;
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+.start-hidden {
+  visibility: hidden;
+}
+
+.col-wrapper {
+  cursor: pointer;
+  position: flex;
+  text-align: center;
+  margin-top: 4px;
+}
+
+#color-picker {
+  width: 40px;
+}
