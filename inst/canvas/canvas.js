@@ -135,14 +135,14 @@ window.xaringanExtraCanvas = function (opts) {
 
     // Create toolbox, button div, color picker div
     const toolBox = document.createElement("div")
-    toolBox.classList.add("tool-box")
+    toolBox.id = "tool-box"
     toolBox.style.zIndex = 101 // need to set here to manipulate via JS
 
     const btnWrapper = document.createElement("div")
-    btnWrapper.classList.add("btn-wrapper")
+    btnWrapper.id = "btn-wrapper"
 
     const colWrapper = document.createElement("div")
-    colWrapper.classList.add("col-wrapper")
+    colWrapper.id = "col-wrapper"
 
     // Button constructor
     const createButton = function(id, cls, icon, color) {
@@ -349,12 +349,24 @@ window.xaringanExtraCanvas = function (opts) {
     // Update offsets on window resize
     window.addEventListener("resize", setOffsets)
 
+    // Check if toolbox is already on slide
+    const isToolboxOnSlide = function() {
+      const visible = getVisibleSlideContentDiv()
+      const isOnSlide = visible.querySelector("#tool-box")
+      return isOnSlide
+    }
+
     // Hide/show toolbox
     const launchKey = 68 // "d" used to toggle toolbox viz
     document.addEventListener('keydown', ev => {
+      if (isToolboxOnSlide() === null) {
+        addToolboxToSlide()
+        return
+      }
+
       if (ev.keyCode === launchKey) {
         const visible = getVisibleSlide()
-        const tBox = visible.querySelector(".tool-box")
+        const tBox = visible.querySelector("#tool-box")
         tBox.style.zIndex = -1 * tBox.style.zIndex
       }
     })
