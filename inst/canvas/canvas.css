@@ -1,3 +1,17 @@
+.canvas-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.drawing-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #tool-box {
   position: absolute;
   top: 10px;

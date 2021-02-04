@@ -108,29 +108,30 @@ window.xaringanExtraCanvas = function (opts) {
         }
       }
 
-    // Canvas constructor
+    // Canvas/canvas container constructor
     const createCanvas = function(id) {
       const slideSize = getVisibleSlideSize()
+
+      const canvasDiv = document.createElement("div")
+      canvasDiv.classList.add("canvas-container")
+      canvasDiv.style.zIndex = -100
+
       const canvas = document.createElement("canvas")
       canvas.setAttribute("id", "canvas" + id)
       canvas.setAttribute("class", "drawing-canvas")
       canvas.setAttribute("width", slideSize[0])
       canvas.setAttribute("height", slideSize[1])
-      canvas.style.cssText = `
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -100;
-      `
-      return canvas
+
+      canvasDiv.appendChild(canvas)
+      return canvasDiv
     }
 
     // Add canvas to every slide on load
     i = 0
     const slides = document.getElementsByClassName("remark-slide-content")
     slides.forEach(slide => {
-      const canvas = createCanvas(i)
-      slide.appendChild(canvas)
+      const canvasDiv = createCanvas(i)
+      slide.appendChild(canvasDiv)
       i += 1
     })
 
@@ -322,14 +323,16 @@ window.xaringanExtraCanvas = function (opts) {
     // Pull canvas to front of stack
     const pullCanvasFront = function() {
       const canvas = getVisibleSlideCanvas()
-      canvas.style.zIndex = 100
+      const canvasDiv = canvas.parentElement
+      canvasDiv.style.zIndex = 100
       canvas.style.cursor = "crosshair"
     }
 
     // Push canvas to back of stack
     const pushCanvasBack = function() {
       const canvas = getVisibleSlideCanvas()
-      canvas.style.zIndex = -100
+      const canvasDiv = canvas.parentElement
+      canvasDiv.style.zIndex = -100
       canvas.style.cursor = "auto"
     }
 
@@ -347,8 +350,16 @@ window.xaringanExtraCanvas = function (opts) {
     }
     setOffsets()
 
-    // Update offsets on window resize
-    window.addEventListener("resize", setOffsets)
+    // Update canvas/offsets on window resize
+    window.addEventListener("resize", ev => {
+      const canvasDivs = document.getElementsByClassName(".canvas-container")
+      canvasDivs.forEach(div => {
+        const canvas = div.querySelector(".drawing-canvas")
+        canvas.width = div.clientWidth
+        canvas.height = div.clientHeight
+      })
+      setOffsets()
+    })
 
     // Check if toolbox is already on slide
     const isToolboxOnSlide = function() {
