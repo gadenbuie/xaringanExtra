@@ -45,7 +45,7 @@ window.xaringanExtraCanvas = function (opts) {
         startY = currY
       }
     }
-  
+
     // Initialize line/opts
     const initLine = function(ev) {
       if (drawMode) {
@@ -58,7 +58,7 @@ window.xaringanExtraCanvas = function (opts) {
       }
       ctx.beginPath()
       ctx.translate(0.5, 0.5) // anti-aliasing recommendation
-      
+
       const sX = ev.type=="mousedown" ? ev.clientX : ev.touches[0].clientX
       const sY = ev.type=="mousedown" ? ev.clientY : ev.touches[0].clientY
       startX = Math.round(sX - offsetLeft)
@@ -71,7 +71,7 @@ window.xaringanExtraCanvas = function (opts) {
       mouseDown = false
       ev.stopPropagation()
     }
-    
+
     // Get visible slide
     const getVisibleSlide = function() {
       const visible = document.querySelector(".remark-visible")
@@ -105,6 +105,7 @@ window.xaringanExtraCanvas = function (opts) {
     const dblClickSwitch = function(ev) {
       if (ev.detail === 2) {
           drawMode = !drawMode
+          visibleCanvasSetDrawMode()
         }
       }
 
@@ -112,23 +113,18 @@ window.xaringanExtraCanvas = function (opts) {
     const createCanvas = function(id) {
       const slideSize = getVisibleSlideSize()
 
-      const canvasDiv = document.createElement("div")
-      canvasDiv.classList.add("canvas-container")
-      canvasDiv.style.zIndex = -100
-
       const canvas = document.createElement("canvas")
       canvas.setAttribute("id", "canvas" + id)
       canvas.setAttribute("class", "drawing-canvas")
       canvas.setAttribute("width", slideSize[0])
       canvas.setAttribute("height", slideSize[1])
 
-      canvasDiv.appendChild(canvas)
-      return canvasDiv
+      return canvas
     }
 
     // Add canvas to every slide on load
     i = 0
-    const slides = document.getElementsByClassName("remark-slide-content")
+    const slides = document.getElementsByClassName("remark-slide-container")
     slides.forEach(slide => {
       const canvasDiv = createCanvas(i)
       slide.appendChild(canvasDiv)
@@ -162,6 +158,10 @@ window.xaringanExtraCanvas = function (opts) {
     const doneBtn = createButton("doneBtn", "start-visible", "far fa-check-circle", "#22B14C")
     const exitBtn = createButton("exitBtn", "start-visible", "far fa-times-circle", "#FF6962")
 
+    function visibleCanvasSetDrawMode() {
+      getVisibleSlideCanvas().classList.toggle('drawing', drawMode)
+    }
+
     // Draw button functionality - Desktop
     drawBtn.addEventListener("click", ev => {
       showHiddenBtns()
@@ -169,9 +169,10 @@ window.xaringanExtraCanvas = function (opts) {
       drawMode = true
       cnv = getVisibleSlideCanvas()
       ctx = cnv.getContext("2d")
+      visibleCanvasSetDrawMode()
 
       cnv.addEventListener("click", dblClickSwitch)
-      
+
       cnv.addEventListener("mousedown", initLine)
       cnv.addEventListener("mousemove", drawLine)
       cnv.addEventListener("mouseup", stopDraw)
@@ -189,7 +190,8 @@ window.xaringanExtraCanvas = function (opts) {
       drawMode = true
       cnv = getVisibleSlideCanvas()
       ctx = cnv.getContext("2d")
-      
+      visibleCanvasSetDrawMode()
+
       cnv.addEventListener("touchstart", initLine)
       cnv.addEventListener("touchmove", drawLine)
 
@@ -204,6 +206,7 @@ window.xaringanExtraCanvas = function (opts) {
       eraseBtn.addEventListener(gesture, ev => {
         ev.stopPropagation()
         drawMode = false
+        visibleCanvasSetDrawMode()
       })
     })
 
@@ -323,17 +326,13 @@ window.xaringanExtraCanvas = function (opts) {
     // Pull canvas to front of stack
     const pullCanvasFront = function() {
       const canvas = getVisibleSlideCanvas()
-      const canvasDiv = canvas.parentElement
-      canvasDiv.style.zIndex = 100
-      canvas.style.cursor = "crosshair"
+      canvas.classList.add('active')
     }
 
     // Push canvas to back of stack
     const pushCanvasBack = function() {
       const canvas = getVisibleSlideCanvas()
-      const canvasDiv = canvas.parentElement
-      canvasDiv.style.zIndex = -100
-      canvas.style.cursor = "auto"
+      canvas.classList.remove('active')
     }
 
     // Clear entire canvas
@@ -348,18 +347,23 @@ window.xaringanExtraCanvas = function (opts) {
       offsetTop = bbox.top
       offsetLeft = bbox.left
     }
-    setOffsets()
 
-    // Update canvas/offsets on window resize
-    window.addEventListener("resize", ev => {
-      const canvasDivs = document.getElementsByClassName(".canvas-container")
-      canvasDivs.forEach(div => {
-        const canvas = div.querySelector(".drawing-canvas")
-        canvas.width = div.clientWidth
-        canvas.height = div.clientHeight
+    // Resize canvases on window resize
+    function resizeCanvases() {
+      const canvases = document.getElementsByClassName("drawing-canvas")
+      canvases.forEach(canvas => {
+        const scaler = document.querySelector('.remark-visible .remark-slide-scaler')
+        const scalerSize = scaler.getBoundingClientRect()
+        canvas.width = scalerSize.width
+        canvas.height = scalerSize.height
+        canvas.style.left = scalerSize.left + 'px'
       })
       setOffsets()
-    })
+    }
+
+    // Update canvas/offsets on window resize
+    resizeCanvases()
+    window.addEventListener("resize", resizeCanvases)
 
     // Check if toolbox is already on slide
     const isToolboxOnSlide = function() {
