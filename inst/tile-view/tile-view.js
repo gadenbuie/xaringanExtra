@@ -56,9 +56,7 @@
         // tileView is now hidden, go to current slide
         slideshow.gotoSlide(tileVars.currentSlideIdx + 1)
 
-        // remove scroll/mousewheel event blocking
-        tileView.removeEventListener('mousewheel', blockEvent)
-        tileView.removeEventListener('DOMMouseScroll', blockEvent)
+        slideshow.resume()
         slideshowResize()
       } else {
         // store current slide index prior to launching tile-view
@@ -81,9 +79,7 @@
           block: 'center'
         })
 
-        // block remarkjs from handling scroll events
-        tileView.addEventListener('mousewheel', blockEvent)
-        tileView.addEventListener('DOMMouseScroll', blockEvent)
+        slideshow.pause()
       }
     }
 
@@ -151,7 +147,6 @@
     }
 
     const tileVars = {}
-    const blockEvent = ev => ev.stopPropagation()
 
     document.addEventListener('keydown', ev => {
       if (ev.keyCode === launchKey) {
