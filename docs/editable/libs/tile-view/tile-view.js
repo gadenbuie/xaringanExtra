@@ -44,6 +44,10 @@
       el.style.display = el.style.display === 'none' ? '' : 'none'
     }
 
+    function slideshowResize() {
+      window.dispatchEvent(new Event('resize'))
+    }
+
     const toggleTileView = function () {
       toggleElement(tileView)
       toggleElement(remarkSlideShow)
@@ -55,8 +59,7 @@
         // remove scroll/mousewheel event blocking
         tileView.removeEventListener('mousewheel', blockEvent)
         tileView.removeEventListener('DOMMouseScroll', blockEvent)
-        console.log('removing blockScaling')
-        document.removeEventListener('keydown', blockScaling)
+        slideshowResize()
       } else {
         // store current slide index prior to launching tile-view
         tileVars.currentSlideIdx = slideshow.getCurrentSlideIndex()
@@ -81,8 +84,6 @@
         // block remarkjs from handling scroll events
         tileView.addEventListener('mousewheel', blockEvent)
         tileView.addEventListener('DOMMouseScroll', blockEvent)
-        console.log('adding blockScaling')
-        document.addEventListener('keydown', blockScaling)
       }
     }
 
@@ -151,14 +152,6 @@
 
     const tileVars = {}
     const blockEvent = ev => ev.stopPropagation()
-    const blockScaling = function (ev) {
-      if (ev.controlKey || ev.metaKey) {
-        if (ev.key === '=' || ev.key === '-') {
-          ev.preventDefault()
-          console.log('window scaling is not allowed inside the tile overview')
-        }
-      }
-    }
 
     document.addEventListener('keydown', ev => {
       if (ev.keyCode === launchKey) {

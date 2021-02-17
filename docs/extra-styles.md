@@ -15,10 +15,10 @@ xaringanExtra::use_extra_styles(
 ```
 ````
 
-  - `hover_code_line` adds a little floating triangle next to the
+-   `hover_code_line` adds a little floating triangle next to the
     hovered line in a code chunk
 
-  - `mute_unhighlighted_code` modifies the xaringan/remarkjs line
+-   `mute_unhighlighted_code` modifies the xaringan/remarkjs line
     highlighting to mute the lines that *aren’t highlighted*.
 
 ![](figures/extra-styles-hover.gif)

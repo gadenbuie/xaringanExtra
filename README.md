@@ -2,9 +2,7 @@ xaringanExtra
 ================
 
 <!-- badges: start -->
-
 <!-- badges: end -->
-
 <style type="text/css">
 @media only screen and (max-width: 1000px) {
   main {
@@ -12,26 +10,25 @@ xaringanExtra
   }
 }
 </style>
-
 <!-- Links -->
 
 `xaringanExtra` is a playground of enhancements and extensions for
 [xaringan](https://slides.yihuie.org/xaringan) slides.
 
-  - Add an overview of your presentation with [tile view](#-tile-view)
-  - Make your slides [editable](#-editable)
-  - Share your slides in style with [share again](#-share-again)
-  - Broadcast your slides in real time to viewers with
+-   Add an overview of your presentation with [tile view](#-tile-view)
+-   Make your slides [editable](#-editable)
+-   Share your slides in style with [share again](#-share-again)
+-   Broadcast your slides in real time to viewers with
     [broadcast](#-broadcast)
-  - Announce slide changes with a [subtle tone](#-slide-tone)
-  - Animate slide transitions with [animate.css](#-animatecss)
-  - Add tabbed panels to slides with [panelset](#-panelset)
-  - Add a logo to all of your slides with [logo](#-logo)
-  - Use the [Tachyons CSS utility toolkit](#-tachyons)
-  - Add a live video feed of your [webcam](#-webcam)
-  - Add one-click code copying with [clipboard](#-clipboard)
-  - Fit your slides to [fill the browser window](#-fit-to-screen)
-  - Add [extra CSS styles](#-extra-styles)
+-   Announce slide changes with a [subtle tone](#-slide-tone)
+-   Animate slide transitions with [animate.css](#-animatecss)
+-   Add tabbed panels to slides with [panelset](#-panelset)
+-   Add a logo to all of your slides with [logo](#-logo)
+-   Use the [Tachyons CSS utility toolkit](#-tachyons)
+-   Add a live video feed of your [webcam](#-webcam)
+-   Add one-click code copying with [clipboard](#-clipboard)
+-   Fit your slides to [fill the browser window](#-fit-to-screen)
+-   Add [extra CSS styles](#-extra-styles)
 
 Each item can be enabled separately, or load everything at once with a
 single call.
@@ -132,17 +129,17 @@ or to use placeholder text.
 
 #### 📺 [Share Again](https://gadenbuie.github.io/xaringanExtra/share-again/share-again.html)
 
-Share your slides in style with *share again*\! It adds a share bar to
+Share your slides in style with *share again*! It adds a share bar to
 your slides that only shows up when they’re embedded in another page.
 The bar adds easy slide navigation, quick access to full screen views,
-and a share menu for one-click (or tap\!) sharing on social media sites.
+and a share menu for one-click (or tap!) sharing on social media sites.
 
 ![](man/figures/meet-share-again.jpg)
 
 Add share again to your slides in three easy steps.
 
 1.  Add `use_share_again()` to your slides
-    
+
     ```` markdown
     ```{r share-again, echo=FALSE}
     xaringanExtra::use_share_again()
@@ -150,7 +147,7 @@ Add share again to your slides in three easy steps.
     ````
 
 2.  Style your share bar and choose social media sites
-    
+
     ```` markdown
     ```{r style-share-again, echo=FALSE}
     xaringanExtra::style_share_again(
@@ -162,17 +159,17 @@ Add share again to your slides in three easy steps.
 3.  Embed your slides in
     [blogdown](https://bookdown.org/yihui/blogdown/) or R Markdown
     websites
-    
+
     ```` markdown
     ```{r embed-xaringan, echo=FALSE}
     xaringanExtra::embed_xaringan(url = "share-again.html", ratio = "4:3")
     ```
     ````
-    
-    `embed_xaringan()` works with
-    <span style="text-decoration: underline">any</span> xaringan
-    presentation, *share again* not required\!
-    
+
+    `embed_xaringan()` works with <span
+    style="text-decoration: underline">any</span> xaringan presentation,
+    *share again* not required!
+
     Here’s what your [slides will look
     like](https://gadenbuie.github.io/xaringanExtra/share-again/) in an
     R Markdown HTML document.
@@ -181,10 +178,10 @@ Add share again to your slides in three easy steps.
 
 #### 📺 [Broadcast Demo](https://gadenbuie.github.io/xaringanExtra/broadcast)
 
-**Broadcast** lets others follow along, in real time\! Built with
+**Broadcast** lets others follow along, in real time! Built with
 [PeerJS](https://peerjs.com), **broadcast** give you a unique URL to
 share with your viewers. Then, when they load your slides, their slides
-will automatically follow you as you present\!
+will automatically follow you as you present!
 
 To equip your slides with broadcast capabilities, add the following
 chunk to your slides’ `.Rmd` file.
@@ -305,9 +302,9 @@ Use `use_animate_css()` to include the animate.css stylesheets in your
 slides. This function automatically modifies the CSS selector that
 enables the animation so that only the slides that are visible are
 animated. This drastically improves performance on large slide decks
-with many animations. For use in other HTML documents, set `xaringan =
-FALSE` to load the default `animate.css` file without this performance
-tweak.
+with many animations. For use in other HTML documents, set
+`xaringan = FALSE` to load the default `animate.css` file without this
+performance tweak.
 
 To use animate.css in your slides, add the following code chunk to your
 slides’ R Markdown.
@@ -401,7 +398,7 @@ Here’s the example used in the demo slides.
 panelset](https://gadenbuie.github.io/xaringanExtra/panelset/rmarkdown.html)
 
 Panelset works in all R Markdown HTML outputs like HTML reports and
-[blogdown](https://bookdown.org/yihui/blogdown/) webpages\!
+[blogdown](https://bookdown.org/yihui/blogdown/) webpages!
 
 Panelset works in the same way as `rmarkdown`’s
 [tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html)
@@ -722,14 +719,14 @@ htmltools::tagList(
 ````
 
 clipboard works in xaringan slides, R Markdown documents, blogdown
-sites, and Shiny apps\!
+sites, and Shiny apps!
 
 **Related projects:** For related R packages that provide copy support
 via [clipboard.js](https://clipboardjs.com/) see
 
-  - [RLesur/klippy: Copy to Clipboard Buttons for RMarkdown HTML
+-   [RLesur/klippy: Copy to Clipboard Buttons for RMarkdown HTML
     Documents](https://github.com/RLesur/klippy)
-  - [sbihorel/rclipboard: clipboard.js for R/Shiny
+-   [sbihorel/rclipboard: clipboard.js for R/Shiny
     Applications](https://github.com/sbihorel/rclipboard)
 
 ## 📐 Fit to Screen
@@ -776,10 +773,10 @@ xaringanExtra::use_extra_styles(
 ```
 ````
 
-  - `hover_code_line` adds a little floating triangle next to the
+-   `hover_code_line` adds a little floating triangle next to the
     hovered line in a code chunk
 
-  - `mute_unhighlighted_code` modifies the xaringan/remarkjs line
+-   `mute_unhighlighted_code` modifies the xaringan/remarkjs line
     highlighting to mute the lines that *aren’t highlighted*.
 
 ![](man/figures/extra-styles-hover.gif)
