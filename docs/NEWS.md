@@ -1,3 +1,7 @@
+# xaringanExtra 0.2.5 (2020-02-17)
+
+- Resizing the tiles in Tile View now works when using browser zoom in/out
+
 # xaringanExtra 0.2.4 (2020-10-21)
 
 - Added **panelset chunks** that output code chunks source and results in 
