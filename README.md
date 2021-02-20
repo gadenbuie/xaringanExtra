@@ -24,6 +24,8 @@ xaringanExtra
 -   Animate slide transitions with [animate.css](#-animatecss)
 -   Add tabbed panels to slides with [panelset](#-panelset)
 -   Add a logo to all of your slides with [logo](#-logo)
+-   Add a search box to search through your slides with
+    [search](#-search)
 -   Use the [Tachyons CSS utility toolkit](#-tachyons)
 -   Add a live video feed of your [webcam](#-webcam)
 -   Add one-click code copying with [clipboard](#-clipboard)
@@ -607,6 +609,144 @@ See the documentation for `?use_logo` for more options regarding sizing
 and positioning. You can also make the logo a link using `link_url` and
 you can hide the logo for a particular slide by using the `hide_logo`
 slide class.
+
+## 🔍 search
+
+#### 📺 [Search Demo](https://gadenbuie.github.io/xaringanExtra/search)
+
+Brings [remark.search](https://github.com/arestivo/remark.search) to
+xaringan slides! Call `use_search()` to add **search** to your slides
+and to choose your options.
+
+```` markdown
+```{r xaringanExtra-search, echo=FALSE}
+xaringanExtra::use_search(show_icon = TRUE)
+```
+````
+
+<table width="100%">
+<tr>
+<td>
+<code>position</code>
+</td>
+<td>
+Where to place the search box.
+</td>
+</tr>
+<tr>
+<td>
+<code>case\_sensitive</code>
+</td>
+<td>
+If <code>FALSE</code>, ignores case of search and text.
+</td>
+</tr>
+<tr>
+<td>
+<code>show\_icon</code>
+</td>
+<td>
+Show the icon to open or close the search?
+</td>
+</tr>
+<tr>
+<td>
+<code>auto\_search</code>
+</td>
+<td>
+Search on each keystroke (<code>TRUE</code>) or on enter
+(<code>FALSE</code>)?
+</td>
+</tr>
+</table>
+
+In your slides, press <kbd>Control</kbd> + <kbd>F</kbd> to start
+searching, or click on the search icon 🔍 if you set `show_icon = TRUE`.
+Press <kbd>Enter</kbd> to jump to the next match.
+
+To change the appearance of the **search** box, use `style_search()`:
+
+```` markdown
+```{r xaringanExtra-search-style, echo=FALSE}
+xaringanExtra::style_search(match_background = "pink")
+```
+````
+
+<table width="100%">
+<tr>
+<td>
+<code>icon\_fill</code>
+</td>
+<td>
+Color of search icon
+</td>
+</tr>
+<tr>
+<td>
+<code>input\_background</code>
+</td>
+<td>
+Color of search input box background
+</td>
+</tr>
+<tr>
+<td>
+<code>input\_foreground</code>
+</td>
+<td>
+Color of text in search input box
+</td>
+</tr>
+<tr>
+<td>
+<code>input\_border</code>
+</td>
+<td>
+Border style of search input box
+</td>
+</tr>
+<tr>
+<td>
+<code>match\_background</code>
+</td>
+<td>
+Color of match background (not current)
+</td>
+</tr>
+<tr>
+<td>
+<code>match\_foreground</code>
+</td>
+<td>
+Color of match text (not current)
+</td>
+</tr>
+<tr>
+<td>
+<code>match\_current\_background</code>
+</td>
+<td>
+Color of current match background
+</td>
+</tr>
+<tr>
+<td>
+<code>match\_current\_foreground</code>
+</td>
+<td>
+Color of current match text
+</td>
+</tr>
+<tr>
+<td>
+<code>selector</code>
+</td>
+<td>
+CSS selector specifying which search bar to update (for advanced or
+unusual uses only)
+</td>
+</tr>
+</table>
 
 ## 🏗 Tachyons
 
