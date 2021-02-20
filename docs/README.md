@@ -23,6 +23,8 @@
 -   Animate slide transitions with [animate.css](/animate-css)
 -   Add tabbed panels to slides with [panelset](/panelset)
 -   Add a logo to all of your slides with [logo](/logo)
+-   Add a search box to search through your slides with
+    [search](/search)
 -   Use the [Tachyons CSS utility toolkit](/tachyons)
 -   Add a live video feed of your [webcam](/webcam)
 -   Add one-click code copying with [clipboard](/clipboard)
