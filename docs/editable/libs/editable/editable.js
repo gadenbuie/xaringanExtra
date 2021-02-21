@@ -73,18 +73,14 @@
     editables.forEach(function (el) {
       el.addEventListener('focus', function () {
         if (window.editable.debug) console.log('[editable] blocking shortcuts')
-        el.addEventListener('keyup', blockEvents)
-        el.addEventListener('keydown', blockEvents)
-        el.addEventListener('keypress', blockEvents)
+        slideshow.pause()
       })
       el.addEventListener('input', function () {
         el.willStore = true
       })
       el.addEventListener('blur', function () {
         if (window.editable.debug) console.log('[editable] unblocking shortcuts')
-        el.removeEventListener('keyup', blockEvents)
-        el.removeEventListener('keydown', blockEvents)
-        el.removeEventListener('keypress', blockEvents)
+        slideshow.resume()
         if (el.willStore) {
           el.willStore = false
           if (window.editable.debug) console.log('[editable] storing update html')
