@@ -1,0 +1,58 @@
+:root {
+	--search-icon-fill: rgba(128, 128, 128, 0.5);
+	--search-input-background: rgb(204, 204, 204);
+	--search-input-foreground: black;
+	--search-input-border: 1px solid rgb(249, 38, 114);
+	--search-match-background: rgb(38, 220, 249);
+	--search-match-foreground: black;
+	--search-match-current-background: rgb(38, 249, 68);
+	--search-match-current-foreground: black;
+}
+
+div.search form {
+  display: inline-block;
+}
+
+div.search form input {
+  opacity: 0;
+
+  background-color: var(--search-input-background);
+  color: var(--search-input-foreground);
+
+  border: var(--search-input-border);
+  padding: 3px;
+  width: 10em;
+
+  transition: .2s;
+}
+
+div.search a {
+  opacity: 0;
+  padding: 0 0.5em;
+  transition: .2s;
+}
+
+div.search {
+  position: absolute;
+  top: 1em;
+}
+
+div.search #search-open svg {
+	vertical-align: bottom;
+	fill: var(--search-icon-fill);
+}
+
+div.search #search-next{
+  display: none;
+}
+
+span.match.current-match {
+  background-color: var(--search-match-current-background);
+  color: var(--search-match-current-foreground);
+}
+
+span.match {
+  padding: 1px;
+  background-color: var(--search-match-background);
+  color: var(--search-match-foreground);
+}
