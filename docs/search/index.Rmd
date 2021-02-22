@@ -23,6 +23,9 @@ xaringanExtra::style_search(input_background = "rgba(255,255,255,0.15)")
 ```{css echo=FALSE}
 .red { color: red; }
 .big { font-size: 3em; }
+.remark-code-line-highlighted {
+  background-color: #ffff88;
+}
 ```
 
 # Add .red[search] to your slides
