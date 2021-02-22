@@ -66,7 +66,7 @@ class RemarkSearch {
     });
 
     if (this.options.showIcon)
-      this.div.querySelector('#search-open').style.opacity = 1;
+      this.div.classList.add('search-icon-visible');
   }
 
   setUpKeyListener() {
@@ -130,22 +130,21 @@ class RemarkSearch {
 
     input.value = '';
     this.cleanSearch();
+    this.div.classList.add('search-input-visible');
 
-    input.style.opacity = 1;
     input.focus();
 
     if (!this.options.showIcon) {
-      let icon = this.div.querySelector('#search-open');
-      icon.style.opacity = 1;
+      this.updatePosition();
+      this.div.classList.add('search-icon-visible');
     }
   }
 
   toggleSearch() {
-    let input = this.div.querySelector('form input');
-    if (input.style.opacity == '' || parseInt(input.style.opacity) == '0') {
-      this.openSearch();
-    } else {
+    if (this.div.matches('.search-input-visible')) {
       this.closeSearch();
+    } else {
+      this.openSearch();
     }
   }
 
@@ -153,12 +152,11 @@ class RemarkSearch {
     let input = this.div.querySelector('form input');
 
     input.value = '';
-    input.style.opacity = '0';
     input.blur();
+    this.div.classList.remove('search-input-visible');
 
     if (!this.options.showIcon) {
-      let icon = this.div.querySelector('#search-open');
-      icon.style.opacity = 0;
+      this.div.classList.remove('search-icon-visible');
     }
 
     this.cleanSearch();
