@@ -79,7 +79,7 @@ window.xaringanExtraFabric = function (opts) {
       canvasDiv.classList.add('outer-canvas-container')
       canvasDiv.style.width = slideSize.width
       canvasDiv.style.height = slideSize.height
-      canvasDiv.style.top = slideSize.left + 'px'
+      canvasDiv.style.left = slideSize.left + 'px'
       canvasDiv.style.top = slideSize.top + 'px'
       ;['mousedown', 'touchstart'].forEach((gesture) => {
         canvasDiv.addEventListener(gesture, mousedown)
