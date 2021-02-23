@@ -1,0 +1,59 @@
+.outer-canvas-container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.drawing-canvas,
+.canvas-container,
+.outer-canvas-container {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.drawing-canvas.active {
+  pointer-events: all;
+  cursor: crosshair;
+}
+
+#tool-box {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  pointer-events: all;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.tool-btn {
+  width: 40px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.tool-btn > svg {
+  height: 10px;
+}
+
+#drawBtn > svg,
+#eraseBtn > svg {
+  fill: #cccccc;
+}
+
+#drawBtn > svg.active,
+#eraseBtn > svg.active {
+  fill: #000000;
+}
+
+#clearBtn > svg {
+  fill: #000000;
+}
+
+#col-wrapper {
+  cursor: pointer;
+  position: flex;
+  text-align: center;
+  margin-top: 4px;
+}
