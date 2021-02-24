@@ -624,41 +624,12 @@ xaringanExtra::use_search(show_icon = TRUE)
 ```
 ````
 
-<table width="100%">
-<tr>
-<td>
-<code>position</code>
-</td>
-<td>
-Where to place the search box.
-</td>
-</tr>
-<tr>
-<td>
-<code>case\_sensitive</code>
-</td>
-<td>
-If <code>FALSE</code>, ignores case of search and text.
-</td>
-</tr>
-<tr>
-<td>
-<code>show\_icon</code>
-</td>
-<td>
-Show the icon to open or close the search?
-</td>
-</tr>
-<tr>
-<td>
-<code>auto\_search</code>
-</td>
-<td>
-Search on each keystroke (<code>TRUE</code>) or on enter
-(<code>FALSE</code>)?
-</td>
-</tr>
-</table>
+|                  |                                                                                |
+|:-----------------|:-------------------------------------------------------------------------------|
+| `position`       | Where to place the search box.                                                 |
+| `case_sensitive` | If <code>FALSE</code>, ignores case of search and text.                        |
+| `show_icon`      | Show the icon to open or close the search?                                     |
+| `auto_search`    | Search on each keystroke (<code>TRUE</code>) or on enter (<code>FALSE</code>)? |
 
 In your slides, press <kbd>Control</kbd> + <kbd>F</kbd> to start
 searching, or click on the search icon 🔍 if you set `show_icon = TRUE`.
@@ -672,81 +643,17 @@ xaringanExtra::style_search(match_background = "pink")
 ```
 ````
 
-<table width="100%">
-<tr>
-<td>
-<code>icon\_fill</code>
-</td>
-<td>
-Color of search icon
-</td>
-</tr>
-<tr>
-<td>
-<code>input\_background</code>
-</td>
-<td>
-Color of search input box background
-</td>
-</tr>
-<tr>
-<td>
-<code>input\_foreground</code>
-</td>
-<td>
-Color of text in search input box
-</td>
-</tr>
-<tr>
-<td>
-<code>input\_border</code>
-</td>
-<td>
-Border style of search input box
-</td>
-</tr>
-<tr>
-<td>
-<code>match\_background</code>
-</td>
-<td>
-Color of match background (not current)
-</td>
-</tr>
-<tr>
-<td>
-<code>match\_foreground</code>
-</td>
-<td>
-Color of match text (not current)
-</td>
-</tr>
-<tr>
-<td>
-<code>match\_current\_background</code>
-</td>
-<td>
-Color of current match background
-</td>
-</tr>
-<tr>
-<td>
-<code>match\_current\_foreground</code>
-</td>
-<td>
-Color of current match text
-</td>
-</tr>
-<tr>
-<td>
-<code>selector</code>
-</td>
-<td>
-CSS selector specifying which search bar to update (for advanced or
-unusual uses only)
-</td>
-</tr>
-</table>
+|                            |                                                                                        |
+|:---------------------------|:---------------------------------------------------------------------------------------|
+| `icon_fill`                | Color of search icon                                                                   |
+| `input_background`         | Color of search input box background                                                   |
+| `input_foreground`         | Color of text in search input box                                                      |
+| `input_border`             | Border style of search input box                                                       |
+| `match_background`         | Color of match background (not current)                                                |
+| `match_foreground`         | Color of match text (not current)                                                      |
+| `match_current_background` | Color of current match background                                                      |
+| `match_current_foreground` | Color of current match text                                                            |
+| `selector`                 | CSS selector specifying which search bar to update (for advanced or unusual uses only) |
 
 ## 🏗 Tachyons
 
