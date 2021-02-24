@@ -13,7 +13,7 @@ xaringanExtra::use_search(show_icon = TRUE)
 ```
 ````
 
-|                  |                                                                                |
+| Parameter        | Description                                                                    |
 |:-----------------|:-------------------------------------------------------------------------------|
 | `position`       | Where to place the search box.                                                 |
 | `case_sensitive` | If <code>FALSE</code>, ignores case of search and text.                        |
@@ -32,7 +32,7 @@ xaringanExtra::style_search(match_background = "pink")
 ```
 ````
 
-|                            |                                                                                        |
+| Parameter                  | Description                                                                            |
 |:---------------------------|:---------------------------------------------------------------------------------------|
 | `icon_fill`                | Color of search icon                                                                   |
 | `input_background`         | Color of search input box background                                                   |
