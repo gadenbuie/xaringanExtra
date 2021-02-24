@@ -131,7 +131,7 @@ init_search <- function(
   )
 
   sprintf(
-    "<script>window.addEventListener('load', function() { RemarkSearch.create(%s) })</script>",
+    "<script>window.addEventListener('load', function() { window.xeSearch = new RemarkSearch(%s) })</script>",
     opts
   )
 }

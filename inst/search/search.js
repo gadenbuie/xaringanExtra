@@ -25,9 +25,10 @@ class RemarkSearch {
     area.insertBefore(this.div, area.firstchild);
 
     this.setUpKeyListener();
-    this.setUpPosition();
     this.setUpForm();
     this.setUpIcons();
+    // wait for element to exist because position might depend on its height
+    setTimeout(() => this.setUpPosition(), 10);
   }
 
   static create(options) {
