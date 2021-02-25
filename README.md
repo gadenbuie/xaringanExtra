@@ -3,13 +3,6 @@ xaringanExtra
 
 <!-- badges: start -->
 <!-- badges: end -->
-<style type="text/css">
-@media only screen and (max-width: 1000px) {
-  main {
-    margin: 0 1em;
-  }
-}
-</style>
 <!-- Links -->
 
 `xaringanExtra` is a playground of enhancements and extensions for

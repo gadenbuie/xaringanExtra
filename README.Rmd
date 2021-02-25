@@ -12,15 +12,6 @@ INCLUDE_CHILD_HEADER <- FALSE
 IN_README <- TRUE
 ```
 
-```{css echo=FALSE, eval=knitr::is_html_output()}
-@media only screen and (max-width: 1000px) {
-  main {
-    margin: 0 1em;
-  }
-}
-```
-
-
 <!-- Links -->
 [xaringan]: https://slides.yihuie.org/xaringan
 [remarkjs]: http://remarkjs.com/
