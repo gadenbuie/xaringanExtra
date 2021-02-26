@@ -1,0 +1,76 @@
+:root {
+  --button-active-color: #000000;
+  --button-inactive-color: #cccccc;
+}
+
+.xe-scribble.eraser-cursor {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.xe-scribble.eraser-cursor.hidden {
+  display: none;
+}
+
+.xe-scribble.outer-canvas-container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.xe-scribble.drawing-canvas,
+.xe-scribble.canvas-container,
+.xe-scribble.outer-canvas-container {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.xe-scribble.drawing-canvas.active {
+  pointer-events: all;
+}
+
+.xe-scribble#tool-box {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  pointer-events: all;
+  z-index: 101;
+}
+
+.xe-scribble.hidden {
+  visibility: hidden;
+}
+
+.xe-scribble.tool-btn {
+  width: 40px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.xe-scribble.tool-btn > svg {
+  height: 10px;
+}
+
+.xe-scribble#drawBtn > svg,
+.xe-scribble#eraseBtn > svg {
+  fill: var(--button-inactive-color);
+}
+
+.xe-scribble#drawBtn > svg.active,
+.xe-scribble#eraseBtn > svg.active {
+  fill: var(--button-active-color);
+}
+
+.xe-scribble#clearBtn > svg {
+  fill: var(--button-active-color);
+}
+
+.xe-scribble#col-wrapper {
+  position: flex;
+  text-align: center;
+  margin-top: 4px;
+}
