@@ -79,11 +79,7 @@ class RemarkSearch {
         return false;
       }
 
-      if (event.keyCode == 27) {
-        self.closeSearch();
-      }
-
-      if (event.key == "F3") {
+      if (event.key == "F3" || (event.ctrlKey && event.key.toLowerCase() == 'g')) {
         if (self.matches.length == 0) {
           return self.doSearch(event);
         } else {
@@ -92,6 +88,17 @@ class RemarkSearch {
           else
             return self.showMatch(event, 1);
         }
+      }
+    });
+
+    let input = this.div.querySelector('form input');
+    input.addEventListener('keydown', function(event) {
+      if (!event.ctrlKey) {
+        event.stopPropagation();
+      }
+
+      if (event.keyCode == 27) {
+        self.closeSearch();
       }
     });
   }

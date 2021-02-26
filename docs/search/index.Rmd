@@ -17,7 +17,8 @@ output:
 ```{r xaringanExtra-search, echo=FALSE}
 options(htmltools.dir.version = FALSE)
 xaringanExtra::use_search(show_icon = TRUE)
-xaringanExtra::style_search(input_background = "rgba(255,255,255,0.15)")
+xaringanExtra::use_tile_view()
+xaringanExtra::style_search(input_background = "rgba(255,255,255,0.50)")
 ```
 
 ```{css echo=FALSE}
