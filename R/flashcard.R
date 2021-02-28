@@ -11,7 +11,7 @@ flashcard <- function(front,back) {
 			name    = "flashcard"
 			, version = utils::packageVersion("xaringanExtra")
 			, package = "xaringanExtra"
-			, src     = "inst/flashcard"
+			, src     = "flashcard"
 			, stylesheet = "flashcard.css"
 		),
 
