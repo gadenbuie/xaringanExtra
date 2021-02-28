@@ -22,5 +22,6 @@ xaringanExtra::use_tile_view()
 Tile view is heavily inspired by (and is essentially a port to Vanilla
 JavaScript of) [a jQuery remarkjs
 hook](https://github.com/StephenHesperus/remark-hook/) by the same name
-by [Stephen Hesperus](https://github.com/StephenHesperus).
+by [Stephen
+Hesperus](https://github.com/StephenHesperus).
 

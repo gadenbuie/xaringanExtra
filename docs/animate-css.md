@@ -14,9 +14,9 @@ Use `use_animate_css()` to include the animate.css stylesheets in your
 slides. This function automatically modifies the CSS selector that
 enables the animation so that only the slides that are visible are
 animated. This drastically improves performance on large slide decks
-with many animations. For use in other HTML documents, set
-`xaringan = FALSE` to load the default `animate.css` file without this
-performance tweak.
+with many animations. For use in other HTML documents, set `xaringan =
+FALSE` to load the default `animate.css` file without this performance
+tweak.
 
 To use animate.css in your slides, add the following code chunk to your
 slides’ R Markdown.
@@ -55,5 +55,6 @@ xaringanExtra::use_animate_all("slide_left")
 Note: because `use_animate_all()` only imports the CSS required for the
 slide in and slide out animations, you need to also include
 `use_animate_css()` (see above) if you want to use other animations from
-`animate.css` in your slides.
+`animate.css` in your
+slides.
 

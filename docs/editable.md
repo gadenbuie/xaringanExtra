@@ -29,7 +29,8 @@ the slides are re-loaded in your browser. If you want to store the
 edited values and have them persist across browser sessions, give each
 editable field a `.key-<NAME>` class. Be sure to make each key unique
 and note that the key name must be a valid CSS class, i.e. it cannot
-contain spaces.
+contain
+spaces.
 
 ``` markdown
 ## .can-edit.key-firstSlideTitle[Change this title and then reload the page]

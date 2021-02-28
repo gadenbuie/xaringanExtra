@@ -159,9 +159,9 @@ to link to open tabs. Users can also right click on a panel’s tab and
 select \emph{Copy Link} to link directly to a specific panel’s tab, which
 will appear in view when visiting the copied link.
 
-With standard R Markdown,
-i.e. \code{\link[rmarkdown:html_document]{rmarkdown::html_document()}}, you
-can use the following template.\if{html}{\out{<div class="markdown">}}\preformatted{# Panelset In R Markdown! \{.panelset\}
+With standard R Markdown, i.e.
+\code{\link[rmarkdown:html_document]{rmarkdown::html_document()}}, you can
+use the following template.\if{html}{\out{<div class="markdown">}}\preformatted{# Panelset In R Markdown! \{.panelset\}
 
 ## Tab One
 
