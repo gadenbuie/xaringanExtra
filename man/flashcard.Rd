@@ -7,12 +7,10 @@
 flashcard(front, back)
 }
 \arguments{
-\item{front}{the HTML conent to put on the front of the card}
-
-\item{back}{the HTML conent to put on the back of the card}
+\item{front, back}{The HTML content to put on the front or back of the card}
 }
 \value{
-a div that on hover you can switch between front and back
+A \verb{<div>} that reveals content on \code{back} when hovering over \code{front}.
 }
 \description{
 Create a Flashcard Component

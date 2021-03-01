@@ -1,31 +1,34 @@
 #' Create a Flashcard Component
 #'
-#' @param front the HTML conent to put on the front of the card
-#' @param back the HTML conent to put on the back of the card
+#' @param front,back The HTML content to put on the front or back of the card
 #'
-#' @return a div that on hover you can switch between front and back
+#' @return A `<div>` that reveals content on `back` when hovering over `front`.
+#'
 #' @export
-flashcard <- function(front,back) {
-	htmltools::tagList(
-		htmltools::htmlDependency(
-			name    = "flashcard"
-			, version = utils::packageVersion("xaringanExtra")
-			, package = "xaringanExtra"
-			, src     = "flashcard"
-			, stylesheet = "flashcard.css"
-		),
-
-		htmltools::tags$div(
-			htmltools::tags$div(class="flashcard",
-        htmltools::tags$div(class="flashcard-inner",
-        	htmltools::tags$div(class="flashcard-front",
-        											front
-        											),
-        	htmltools::tags$div(class="flashcard-back",
-        											back,
-        											)
-							 				 )
-							 )
-		)
-	)
+flashcard <- function(front, back) {
+  htmltools::tagList(
+    htmltools::htmlDependency(
+      name = "flashcard",
+      version = "0.0.1",
+      package = "xaringanExtra",
+      src = "flashcard",
+      stylesheet = "flashcard.css"
+    ),
+    htmltools::tags$div(
+      htmltools::tags$div(
+        class = "flashcard",
+        htmltools::tags$div(
+          class = "flashcard-inner",
+          htmltools::tags$div(
+            class = "flashcard-front",
+            front
+          ),
+          htmltools::tags$div(
+            class = "flashcard-back",
+            back,
+          )
+        )
+      )
+    )
+  )
 }
