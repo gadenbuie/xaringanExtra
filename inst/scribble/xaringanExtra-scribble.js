@@ -18,13 +18,15 @@ class Scribble {
     // Fabric objects
     this.fabrics
     this.currFabric
+    this.pathCache = new Array()
+    this.undo = this.undo.bind(this)
+    this.redo = this.redo.bind(this)
 
     // State objects
     this.mouseDown = false
     this.drawMode = false
     this.eraseMode = false
     this.hideToolbox = false
-    this.isPaused = false
 
     this.eraserCursorMovement = this.eraserCursorMovement.bind(this)
     this.eraser_impl = this.eraser_impl.bind(this)
@@ -57,6 +59,7 @@ class Scribble {
     slideshow.on('afterShowSlide', (slide) => {
       this.currFabric = this.fabrics[slide.getSlideIndex()]
       this.addToolboxToSlide()
+      this.pathCache = new Array()
     })
     slideshow.on(
       'beforeHideSlide',
@@ -316,6 +319,9 @@ class Scribble {
       container.classList.add('active', 'draw')
     })
 
+    document.addEventListener('keydown', this.undo)
+    document.addEventListener('keydown', this.redo)
+
     document.removeEventListener('mousemove', this.eraserCursorMovement)
     document.removeEventListener('touchmove', this.eraserCursorMovement)
 
@@ -335,6 +341,9 @@ class Scribble {
     drawingCanvas.forEach((container) => {
       container.classList.remove('active', 'draw')
     })
+
+    document.removeEventListener('keydown', this.undo)
+    document.removeEventListener('keydown', this.redo)
 
     this.colorPicker.classList.add('hidden')
     this.drawBtn.querySelector('svg').classList.remove('active')
@@ -382,6 +391,9 @@ class Scribble {
     document.addEventListener('mousemove', this.eraserCursorMovement)
     document.addEventListener('touchmove', this.eraserCursorMovement)
 
+    document.addEventListener('keydown', this.undo)
+    document.addEventListener('keydown', this.redo)
+
     this.currFabric.isDrawingMode = true
     this.currFabric.freeDrawingBrush.width = this.tolerance
     this.currFabric.freeDrawingBrush.color = this.transparent
@@ -407,6 +419,9 @@ class Scribble {
 
     document.removeEventListener('mousemove', this.eraserCursorMovement)
     document.removeEventListener('touchmove', this.eraserCursorMovement)
+
+    document.removeEventListener('keydown', this.undo)
+    document.removeEventListener('keydown', this.redo)
 
     slideshow.resume()
     const drawingCanvas = this.getVisibleSlideCanvasContainers()
@@ -439,10 +454,13 @@ class Scribble {
         return toRemove
       })
 
-      let currFab = this.currFabric
+      let pathCache = this.pathCache
+      let currFabric = this.currFabric
+
       objs.map(function (item, index) {
         if (remove_or_not[index]) {
-          currFab.remove(item)
+          pathCache.push(item)
+          currFabric.remove(item)
         }
       })
     }
@@ -479,6 +497,30 @@ class Scribble {
     }
     this.eraserCursor.style.top = pY - this.tolerance + 'px'
     this.eraserCursor.style.left = pX - this.tolerance + 'px'
+  }
+
+  undo(ev) {
+    if (ev.keyCode === 37) {
+      this.removeTransparentEraserPaths()
+
+      if (this.currFabric._objects.length === 0) return
+
+      let removedPath = this.currFabric._objects.pop()
+      this.pathCache.push(removedPath)
+      this.currFabric.renderAll()
+    }
+  }
+
+  redo(ev) {
+    if (ev.keyCode === 39) {
+      this.removeTransparentEraserPaths()
+
+      if (this.pathCache.length === 0) return
+
+      let addedPath = this.pathCache.pop()
+      this.currFabric._objects.push(addedPath)
+      this.currFabric.renderAll()
+    }
   }
 }
 
