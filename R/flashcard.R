@@ -17,6 +17,7 @@ flashcard <- function(front, back) {
     htmltools::tags$div(
       htmltools::tags$div(
         class = "flashcard",
+        `tabindex` = "1",
         htmltools::tags$div(
           class = "flashcard-inner",
           htmltools::tags$div(
