@@ -59,6 +59,10 @@ fs::dir_copy("man/figures", "docs/figures", overwrite = TRUE)
 
 fs::file_copy("NEWs.md", "docs/NEWS.md", overwrite = TRUE)
 
+news <- readLines("docs/NEWS.md", warn = FALSE)
+news <- gsub("#(\\d+)", "[#\\1](https://github.com/gadenbuie/xaringanExtra/issues/\\1)", news)
+news <- gsub("@([[:alnum:]]+)", "[@\\1](https://github.com/\\1)", news)
+writeLines(news, "docs/NEWS.md")
 
 # Manually process README into documentation site -------------------------
 
