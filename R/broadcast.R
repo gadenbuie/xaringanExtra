@@ -25,7 +25,7 @@ use_broadcast <- function() {
 html_dependency_broadcast <- function() {
   htmltools::htmlDependency(
     name = "xaringanExtra-broadcast",
-    version = utils::packageVersion("xaringanExtra"),
+    version = "0.2.6",
     package = "xaringanExtra",
     src = "broadcast",
     script = "broadcast.js",

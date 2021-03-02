@@ -162,7 +162,7 @@ parse_ratio <- function(x) {
 html_dependency_shareagain <- function() {
   htmltools::htmlDependency(
     name = "xaringanExtra-shareagain",
-    version = utils::packageVersion("xaringanExtra"),
+    version = "0.2.6",
     package = "xaringanExtra",
     src = "share-again",
     script = "shareagain.js",

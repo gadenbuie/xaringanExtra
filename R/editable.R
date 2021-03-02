@@ -84,7 +84,7 @@ html_dependency_editable <- function(expires = 14, id = NULL) {
     html_dependency_jscookie(),
     htmltools::htmlDependency(
       name = "editable",
-      version = utils::packageVersion("xaringanExtra"),
+      version = "0.2.6",
       package = "xaringanExtra",
       src = "editable",
       script = "editable.js",
@@ -123,7 +123,7 @@ html_dependency_editable_id <- function(expires = NULL, id = NULL) {
   }
   htmltools::htmlDependency(
     name = "xaringanExtra-editable-id",
-    version = utils::packageVersion("xaringanExtra"),
+    version = "0.2.6",
     src = ".",
     head = format(htmltools::tags$script(
       type = "application/json",
