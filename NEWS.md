@@ -1,4 +1,14 @@
-# xaringanExtra 0.2.5 (2020-02-17)
+# xaringanExtra 0.2.6 (2021-03-02)
+
+- New addin: **search**! Easily search through the text in your slides.
+  (thanks @statnmap, #82)
+  
+- All extensions now use version numbers that are independent of the
+  xaringanExtra package version. This will reduce the number of copies of an
+  extension that are added to a blogdown site's dependencies by ensuring that
+  unrelated package updates don't change the extension version number.
+
+# xaringanExtra 0.2.5 (2021-02-17)
 
 - Resizing the tiles in Tile View now works when using browser zoom in/out
 
