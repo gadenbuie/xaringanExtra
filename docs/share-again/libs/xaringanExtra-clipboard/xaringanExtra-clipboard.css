@@ -1,0 +1,23 @@
+.xaringanextra-clipboard-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 0.8em;
+	padding: 0.5em;
+	display: none;
+	background-color: transparent;
+	border: none;
+	opacity: 0.5;
+	border-radius: 0;
+}
+
+.xaringanextra-clipboard-button:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+	border: none;
+	opacity: 1;
+}
+
+:hover > .xaringanextra-clipboard-button {
+	display: block;
+	transform: translateY(0);
+}
