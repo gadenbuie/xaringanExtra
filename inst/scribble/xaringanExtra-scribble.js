@@ -26,7 +26,7 @@ class Scribble {
     this.mouseDown = false
     this.drawMode = false
     this.eraseMode = false
-    this.hideToolbox = false
+    this.hideToolbox = true
 
     this.eraserCursorMovement = this.eraserCursorMovement.bind(this)
     this.eraser_impl = this.eraser_impl.bind(this)
@@ -34,8 +34,6 @@ class Scribble {
     // Toolbox objects
     this.launchKey = 83 // "S" used to toggle toolbox/state
     this.toolBox
-    this.btnWrapper
-    this.colWrapper
     this.drawBtn
     this.eraseBtn
     this.clearBtn
@@ -43,6 +41,7 @@ class Scribble {
     this.eraserCursor
 
     // Scribble initialization
+    this.setPenColorCSSVariables(this.currColor)
     this.addCanvasToAllSlides()
     this.addCanvasHelpText()
     this.assembleToolbox()
@@ -91,24 +90,32 @@ class Scribble {
   }
 
   getVisibleSlideOuterContainer() {
-    const outerDiv = this.getVisibleSlide().querySelector(
-      '.xe-scribble.outer-canvas-container',
+    return this.getVisibleSlide().querySelector(
+      '.xe-scribble',
     )
-    return outerDiv
   }
 
   getVisibleSlideCanvasContainers() {
-    const canvasDiv = this.getVisibleSlide().querySelectorAll(
-      '.xe-scribble.drawing-canvas',
+    return this.getVisibleSlide().querySelectorAll(
+      '.xe-scribble__canvas__drawing',
     )
-    return canvasDiv
+  }
+
+  setPenColorCSSVariables(color) {
+    const root = document.documentElement
+    root.style.setProperty('--xe-scribble--button-draw-active-bg', color)
+    root.style.setProperty(
+      '--xe-scribble--button-draw-active-fg',
+      this.pickContrastForegroundColor(color)
+    )
+    root.style.setProperty('--xe-scribble--pen-color', color)
   }
 
   createCanvas(id) {
     const slideSize = this.getVisibleSlideSize()
 
     const canvasDiv = document.createElement('div')
-    canvasDiv.classList.add('xe-scribble', 'outer-canvas-container')
+    canvasDiv.classList.add('xe-scribble')
     canvasDiv.style.width = slideSize.width
     canvasDiv.style.height = slideSize.height
     canvasDiv.style.left = slideSize.left + 'px'
@@ -122,7 +129,7 @@ class Scribble {
 
     const canvas = document.createElement('canvas')
     canvas.setAttribute('id', 'canvas' + id)
-    canvas.classList.add('xe-scribble', 'drawing-canvas')
+    canvas.classList.add('xe-scribble__canvas__drawing')
     canvas.setAttribute('width', slideSize.width)
     canvas.setAttribute('height', slideSize.height)
 
@@ -145,15 +152,15 @@ class Scribble {
     })
 
     // Convert <canvas> to fabric.Canvas
-    const allCanvases = document.querySelectorAll('.xe-scribble.drawing-canvas')
+    const allCanvases = document.querySelectorAll('.xe-scribble__canvas__drawing')
     this.fabrics = new Array()
     allCanvases.forEach((el, index) => {
       this.fabrics[index] = new fabric.Canvas(el.id, {
         isDrawingMode: false,
-        containerClass: 'xe-scribble canvas-container',
+        containerClass: 'xe-scribble__canvas',
       })
     })
-    this.currFabric = this.fabrics[0] // set to first slide to start
+    this.currFabric = this.fabrics[slideshow.getCurrentSlideIndex()]
   }
 
   resizeContent() {
@@ -163,7 +170,7 @@ class Scribble {
 
     // Resize canvas container
     const outerContainers = document.querySelectorAll(
-      '.xe-scribble.outer-canvas-container',
+      '.xe-scribble',
     )
     outerContainers.forEach((div) => {
       div.style.width = scalerSize.width + 'px'
@@ -186,8 +193,7 @@ class Scribble {
 
   createButton(id, name) {
     const btn = document.createElement('button')
-    btn.classList.add('xe-scribble', 'tool-btn')
-    btn.id = id
+    btn.classList.add('xe-scribble__button', 'xe-scribble__button__' + id)
     btn.innerHTML = this.svgs[name]
     return btn
   }
@@ -195,7 +201,7 @@ class Scribble {
   createColorPicker() {
     const colorPicker = document.createElement('input')
     colorPicker.setAttribute('id', 'colorPicker')
-    colorPicker.classList.add('xe-scribble', 'tool-btn', 'hidden')
+    colorPicker.classList.add('xe-scribble__button')
     colorPicker.setAttribute('type', 'color')
     colorPicker.setAttribute('value', this.currColor)
     return colorPicker
@@ -203,66 +209,94 @@ class Scribble {
 
   createToolbox() {
     this.toolBox = document.createElement('div')
-    this.toolBox.id = 'tool-box'
-    this.toolBox.classList.add('xe-scribble')
+    this.toolBox.classList = 'xe-scribble__tools'
+  }
 
-    this.btnWrapper = document.createElement('div')
-    this.btnWrapper.id = 'btn-wrapper'
-    this.btnWrapper.classList.add('xe-scribble')
-
-    this.colWrapper = document.createElement('div')
-    this.colWrapper.id = 'col-wrapper'
-    this.colWrapper.classList.add('xe-scribble')
+  pickContrastForegroundColor(color, light, dark, threshold) {
+    // https://stackoverflow.com/a/41491220/2022615
+    light = light || '#FFFFFF'
+    dark = dark || '#000000'
+    threshold = threshold || 145
+    color = (color.charAt(0) === '#') ? color.substring(1, 7) : color;
+    const r = parseInt(color.substring(0, 2), 16); // hexToR
+    const g = parseInt(color.substring(2, 4), 16); // hexToG
+    const b = parseInt(color.substring(4, 6), 16); // hexToB
+    const score = ((r * 0.299) + (g * 0.587) + (b * 0.114))
+    return  (score > threshold) ? dark : light;
   }
 
   assembleToolbox() {
     this.createToolbox()
 
     // Build draw, erase, clear buttons
-    this.drawBtn = this.createButton('drawBtn', 'draw')
-    this.eraseBtn = this.createButton('eraseBtn', 'eraser')
-    this.clearBtn = this.createButton('clearBtn', 'trash')
+    this.drawBtn = this.createButton('draw', 'draw')
+    this.eraseBtn = this.createButton('erase', 'eraser')
+    this.clearBtn = this.createButton('clear', 'trash')
 
     this.colorPicker = this.createColorPicker()
     this.colorPicker.addEventListener('input', () => {
       this.currColor = this.colorPicker.value
       this.currFabric.freeDrawingBrush.color = this.currColor
+      this.setPenColorCSSVariables(this.currColor)
     })
-    ;[this.drawBtn, this.eraseBtn, this.clearBtn].forEach((btn) => {
-      this.btnWrapper.appendChild(btn)
-    })
-    this.colWrapper.appendChild(this.colorPicker)
-    ;[this.btnWrapper, this.colWrapper].forEach((wrap) => {
-      this.toolBox.appendChild(wrap)
-    })
+
+    ;[this.drawBtn, this.eraseBtn, this.clearBtn, this.colorPicker]
+      .forEach((btn) => {
+        this.toolBox.appendChild(btn)
+      })
   }
 
   addToolboxToSlide() {
     const canvasDiv = this.getVisibleSlideOuterContainer()
     canvasDiv.appendChild(this.toolBox)
     if (this.hideToolbox) {
-      this.toolBox.classList.add('hidden')
+      this.toolBox.classList.add('minimized')
     }
   }
 
   addToggleToolbox() {
+    self = this
+
     document.addEventListener('keydown', (ev) => {
       if (ev.keyCode === this.launchKey) {
-        this.toolBox.classList.toggle('hidden')
-        this.hideToolbox = !this.hideToolbox
-
-        // Start draw mode when revealing toolbox
-        if (!this.hideToolbox & !this.drawMode) this.drawBtn.click()
-
-        if (this.hideToolbox) {
-          this.drawMode
-            ? this.drawBtn.click()
-            : this.eraseMode
-            ? this.eraseBtn.click()
-            : null
-        }
+        self.toggleToolbox()
       }
     })
+
+    this.toolBox.addEventListener('mouseleave', function(ev) {
+      if (self.drawMode | self.eraseMode) {
+        return;
+      }
+      self.minimizeTimeout = setTimeout(() => self.toggleToolbox(false), 2000)
+    })
+
+    this.toolBox.addEventListener('mouseenter', function(ev) {
+      if (self.minimizeTimeout) {
+        clearTimeout(self.minimizeTimeout)
+      }
+    })
+  }
+
+  toggleToolbox(show) {
+    const isMinimized = this.toolBox.matches('.minimized')
+    if (show && show === !isMinimized) return;
+
+    this.hideToolbox = !(show || isMinimized)
+    this.toolBox.classList.toggle('minimized')
+
+    if (this.hideToolbox) {
+      this.toolBox.classList.add('minimized')
+      this.drawMode
+        ? this.drawBtn.click()
+        : this.eraseMode
+        ? this.eraseBtn.click()
+        : null
+    } else {
+      this.toolBox.classList.remove('minimized')
+      clearTimeout(this.minimizeTimeout)
+      this.minimizeTimeout = null
+      if (!this.drawMode) this.drawBtn.click()
+    }
   }
 
   addCanvasHelpText() {
@@ -294,17 +328,23 @@ class Scribble {
   }
 
   addDrawing() {
+    self = this
     ;['click', 'touchend'].forEach((gesture) => {
       this.drawBtn.addEventListener(gesture, (ev) => {
         ev.preventDefault()
         ev.stopPropagation()
-        this.drawMode ? this.stopDrawing() : this.startDrawing()
+        if (self.drawMode) {
+          self.stopDrawing()
+        } else {
+          self.startDrawing()
+        }
       })
     })
   }
 
   startDrawing() {
     slideshow.pause()
+    this.toggleToolbox(true)
 
     this.drawMode = true
     this.eraseMode = false
@@ -327,8 +367,8 @@ class Scribble {
 
     this.colorPicker.classList.remove('hidden')
     this.eraserCursor.classList.add('hidden')
-    this.drawBtn.querySelector('svg').classList.add('active')
-    this.eraseBtn.querySelector('svg').classList.remove('active')
+    this.drawBtn.classList.add('active')
+    this.eraseBtn.classList.remove('active')
   }
 
   stopDrawing() {
@@ -346,8 +386,8 @@ class Scribble {
     document.removeEventListener('keydown', this.redo)
 
     this.colorPicker.classList.add('hidden')
-    this.drawBtn.querySelector('svg').classList.remove('active')
-    this.eraseBtn.querySelector('svg').classList.remove('active')
+    this.drawBtn.classList.remove('active')
+    this.eraseBtn.classList.remove('active')
   }
 
   addClearing() {
@@ -404,8 +444,8 @@ class Scribble {
       container.classList.add('active', 'erase')
     })
 
-    this.drawBtn.querySelector('svg').classList.remove('active')
-    this.eraseBtn.querySelector('svg').classList.add('active')
+    this.drawBtn.classList.remove('active')
+    this.eraseBtn.classList.add('active')
   }
 
   stopErasing() {
@@ -423,14 +463,15 @@ class Scribble {
     document.removeEventListener('keydown', this.undo)
     document.removeEventListener('keydown', this.redo)
 
-    slideshow.resume()
     const drawingCanvas = this.getVisibleSlideCanvasContainers()
     drawingCanvas.forEach((container) => {
       container.classList.remove('active', 'erase')
     })
 
-    this.drawBtn.querySelector('svg').classList.remove('active')
-    this.eraseBtn.querySelector('svg').classList.remove('active')
+    this.drawBtn.classList.remove('active')
+    this.eraseBtn.classList.remove('active')
+
+    slideshow.resume()
   }
 
   eraser_impl(ev) {
@@ -477,7 +518,7 @@ class Scribble {
   initEraserCursor() {
     const slideArea = document.querySelector('.remark-slides-area')
     this.eraserCursor = document.createElement('div')
-    this.eraserCursor.classList.add('xe-scribble', 'eraser-cursor', 'hidden')
+    this.eraserCursor.classList.add('xe-scribble__cursor__eraser','hidden')
     this.eraserCursor.style.width = this.eraserSize + 'px'
     this.eraserCursor.style.height = this.eraserSize + 'px'
     this.eraserCursor.style.backgroundColor = this.eraserColor
@@ -525,10 +566,13 @@ class Scribble {
 }
 
 Scribble.prototype.svgs = {
+  // https://phosphoricons.com/
   draw:
-    '<svg viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M92.68629,216H48a8,8,0,0,1-8-8V163.31371a8,8,0,0,1,2.34315-5.65686l120-120a8,8,0,0,1,11.3137,0l44.6863,44.6863a8,8,0,0,1,0,11.3137l-120,120A8,8,0,0,1,92.68629,216Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="136" y1="64" x2="192" y2="120" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="95.48882" y1="215.48882" x2="40.5088" y2="160.5088" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>',
   eraser:
-    '<svg viewBox="0 0 512 512"><path d="M497.941 273.941c18.745-18.745 18.745-49.137 0-67.882l-160-160c-18.745-18.745-49.136-18.746-67.883 0l-256 256c-18.745 18.745-18.745 49.137 0 67.882l96 96A48.004 48.004 0 0 0 144 480h356c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12H355.883l142.058-142.059zm-302.627-62.627l137.373 137.373L265.373 416H150.628l-80-80 124.686-124.686z"/></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="91.55018" y1="99.54921" x2="159.43243" y2="167.43146" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M216.00049,215.83348H72.07L34.98164,178.74517a16,16,0,0,1,0-22.62742L148.11873,42.98066a16,16,0,0,1,22.62741,0L216.001,88.2355a16,16,0,0,1,0,22.62742L111.03042,215.83347" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>',
   trash:
-    '<svg viewBox="0 0 448 512"><path d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z"/></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="215.99609" y1="56" x2="39.99609" y2="56.00005" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="104" y1="104" x2="104" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="152" y1="104" x2="152" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>',
+  color:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M36.67036,173.04838,60.85763,35.87558a8,8,0,0,1,9.26764-6.48928l55.14924,9.7243a8,8,0,0,1,6.48927,9.26765L107.453,186.25133a36.00022,36.00022,0,0,1-41.01188,29.317C46.4984,212.4439,33.16509,192.92775,36.67036,173.04838Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M118.28071,124.84457,191.244,98.2881a8,8,0,0,1,10.2537,4.78138l19.15313,52.62278a8,8,0,0,1-4.78138,10.25371l-131.557,47.88282" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M219.99977,162.53273v45.467a8,8,0,0,1-8,8h-140" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="72" cy="180" r="12"></circle></svg>'
 }

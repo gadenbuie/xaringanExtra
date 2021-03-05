@@ -1,9 +1,12 @@
 :root {
-  --button-active-color: #000000;
-  --button-inactive-color: #cccccc;
+  --xe-scribble--pen-color: #FF0000;
+  --xe-scribble--button-draw-active-bg: #FF0000;
+  --xe-scribble--button-draw-active-fg: #FFFFFF;
+  --xe-scribble--button-active-color: #000000;
+  --xe-scribble--button-inactive-color: #666666;
 }
 
-.xe-scribble.eraser-cursor {
+.xe-scribble__cursor__eraser {
   position: absolute;
   height: 10px;
   width: 10px;
@@ -12,65 +15,148 @@
   z-index: 5;
 }
 
-.xe-scribble.eraser-cursor.hidden {
+.xe-scribble__cursor__eraser.hidden {
   display: none;
 }
 
-.xe-scribble.outer-canvas-container {
+.xe-scribble {
   position: absolute;
   top: 0px;
   left: 0px;
 }
 
-.xe-scribble.drawing-canvas,
-.xe-scribble.canvas-container,
-.xe-scribble.outer-canvas-container {
+.xe-scribble__canvas__drawing,
+.xe-scribble__canvas,
+.xe-scribble {
   pointer-events: none;
   z-index: 1;
 }
 
-.xe-scribble.drawing-canvas.active {
+.xe-scribble__canvas__drawing.active {
   pointer-events: all;
 }
 
-.xe-scribble#tool-box {
+.xe-scribble__tools {
   position: absolute;
   top: 10px;
   right: 10px;
   pointer-events: all;
   z-index: 101;
+  width: 32px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  align-content: center;
+  justify-items: center;
+  grid-gap: 5px;
 }
 
-.xe-scribble.hidden {
-  visibility: hidden;
-}
-
-.xe-scribble.tool-btn {
-  width: 40px;
+.xe-scribble__button {
   cursor: pointer;
-  margin-left: 4px;
+  padding: 3px;
+  background: unset;
+  border: unset;
+  border-radius: 100%;
+  width: 100%;
+  height: calc(100% - 3px);
 }
 
-.xe-scribble.tool-btn > svg {
-  height: 10px;
+.xe-scribble__button {
+  opacity: 1;
+  transition: transform ease-out 100ms, opacity ease-out 80ms;
 }
 
-.xe-scribble#drawBtn > svg,
-.xe-scribble#eraseBtn > svg {
-  fill: var(--button-inactive-color);
+.xe-scribble__button:hover {
+  background-color: #eee;
+}
+.xe-scribble__button.active {
+  background-color: #4443;
 }
 
-.xe-scribble#drawBtn > svg.active,
-.xe-scribble#eraseBtn > svg.active {
-  fill: var(--button-active-color);
+.xe-scribble__tools.minimized > :nth-child(2) {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: ease-in 100ms, opacity ease-in 80ms;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.xe-scribble#clearBtn > svg {
-  fill: var(--button-active-color);
+.xe-scribble__tools.minimized > :nth-child(3) {
+  opacity: 0;
+  transform: translateY(-200%);
+  transition: ease-in 100ms, opacity ease-in 80ms;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.xe-scribble#col-wrapper {
-  position: flex;
-  text-align: center;
-  margin-top: 4px;
+.xe-scribble__tools.minimized > :nth-child(4) {
+  opacity: 0;
+  transform: translateY(-300%);
+  transition: ease-in 100ms, opacity ease-in 80ms;
+  z-index: 0;
+  pointer-events: none;
 }
+
+.xe-scribble__button > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.xe-scribble__button__draw,
+.xe-scribble__button__erase,
+.xe-scribble__button__clear {
+  color: var(--xe-scribble--button-inactive-color);
+}
+
+.xe-scribble__button__draw:hover,
+.xe-scribble__button__erase:hover,
+.xe-scribble__button__clear:hover {
+  color: var(--xe-scribble--button-active-color);
+}
+
+.xe-scribble__button__draw.active {
+  color: var(--xe-scribble--button-draw-active-fg);
+  background-color: var(--xe-scribble--button-draw-active-bg);
+}
+
+.xe-scribble__button__erase.active > svg,
+.xe-scribble__button__clear:hover > svg {
+  color: var(--xe-scribble--button-active-color);
+}
+
+#colorPicker {
+  border-radius: 100%;
+  height: 22px;
+  width: 22px;
+  margin: 0;
+}
+
+#colorPicker {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+#colorPicker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+#colorPicker::-webkit-color-swatch,
+#colorPicker::-moz-color-swatch{
+  border: none;
+  border-radius: 100%;
+}
+
+/* ---
+<div id="xe-scribble__tools">
+  <button class="xe-scribble__button xe-scribble__button__draw active"><svg></svg></button>
+  <button class="xe-scribble__button xe-scribble__button__erase"><svg></svg></button>
+  <button class="xe-scribble__button xe-scribble__button__clear"><svg></svg></button>
+  <input id="colorPicker" class="xe-scribble__button" type="color" value="rgba(0, 0, 0, 1)">
+</div>
+
+#f44336 #E91E63 #9C27B0 #673AB7  #3F51B5 #2196F3 #03A9F4 #00BCD4 #009688 #4CAF50 #8BC34A #CDDC39 #FFEB3B #FFC107 #FF9800 #FF5722 #795548 #9E9E9E #000000 #FFFFFF
+---*/

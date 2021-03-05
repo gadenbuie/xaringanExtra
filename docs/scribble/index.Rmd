@@ -30,7 +30,7 @@ options(htmltools.dir.version = FALSE)
 - To use this feature, all you need to do is add one line of code to your `xaringan` Rmd file
 
 ```{r}
-xaringanExtra::use_scribble()
+use_scribble(pen_color = "#FFFF00")
 ```
 
 - The `xaringanExtra::use_scribble()` function can accept arguments to configure the `pen_color`, `pen_size`, `eraser_color`, and `eraser_size`

@@ -28,7 +28,7 @@ NULL
 #' @describeIn scribble Adds `Scribble` to your xaringan slides.
 #' @export
 use_scribble <- function(
-	pen_color = "rgba(0, 0, 0, 1)",
+	pen_color = "#FF0000",
 	pen_size = 3,
 	eraser_color = "rgba(0, 0, 0, 0.6)",
 	eraser_size = 50
