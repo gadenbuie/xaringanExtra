@@ -47,14 +47,19 @@ use_scribble <- function(
 #' @describeIn scribble Returns an [htmltools::htmlDependency()] with the
 #'   `fabric.js` dependencies for use in xaringan and R Markdown documents.
 #'   Most users will want to use `use_scribble()` instead.
+#'
+#' @param minimized Use the minimized `fabric.js` dependency?
 #' @export
-html_dependency_fabricjs <- function() {
+html_dependency_fabricjs <- function(minimized = TRUE) {
 	htmltools::htmlDependency(
 		name = "fabric",
 		version = "4.3.1",
 		package = "xaringanExtra",
-		src = "scribble",
-		script = "fabric.min.js",
+		src = c(
+			file = "jslib/fabric",
+			href = "https://unpkg.com/fabric@4.3.1/dist"
+		),
+		script = if (minimized) "fabric.min.js" else "fabric.js",
 		all_files = FALSE
 	)
 }
