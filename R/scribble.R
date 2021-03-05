@@ -87,8 +87,8 @@ html_dependency_scribble <- function(
 		version = "0.0.1",
 		package = "xaringanExtra",
 		src = "scribble",
-		script = "xaringanExtra-scribble.js",
-		stylesheet = "xaringanExtra-scribble.css",
+		script = "scribble.js",
+		stylesheet = "scribble.css",
 		head = init_Scribble(pen_color, pen_size, eraser_color, eraser_size),
 		all_files = FALSE
 	)
