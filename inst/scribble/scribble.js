@@ -369,7 +369,6 @@ class Scribble {
     document.removeEventListener('mousemove', this.eraserCursorMovement)
     document.removeEventListener('touchmove', this.eraserCursorMovement)
 
-    this.colorPicker.classList.remove('hidden')
     this.eraserCursor.classList.add('hidden')
     this.drawBtn.classList.add('active')
     this.eraseBtn.classList.remove('active')
@@ -389,7 +388,6 @@ class Scribble {
     document.removeEventListener('keydown', this.undo)
     document.removeEventListener('keydown', this.redo)
 
-    this.colorPicker.classList.add('hidden')
     this.drawBtn.classList.remove('active')
     this.eraseBtn.classList.remove('active')
   }
