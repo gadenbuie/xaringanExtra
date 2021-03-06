@@ -244,6 +244,10 @@ class Scribble {
       .forEach((btn) => {
         this.toolBox.appendChild(btn)
       })
+
+    ;['click', 'touchend'].forEach((action) => {
+      this.toolBox.addEventListener(action, ev => ev.stopPropagation())
+    })
   }
 
   addToolboxToSlide() {
