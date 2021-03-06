@@ -38,7 +38,7 @@ use_fit_screen <- function() {
 html_dependency_fit_screen <- function() {
   htmltools::htmlDependency(
     name = "xaringanExtra_fit-screen",
-    version = utils::packageVersion("xaringanExtra"),
+    version = "0.2.6",
     package = "xaringanExtra",
     src = "fit-screen",
     script = "fit-screen.js",

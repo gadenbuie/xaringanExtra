@@ -1,6 +1,6 @@
 Package: xaringanExtra
 Title: Extras And Extensions for Xaringan Slides
-Version: 0.2.4
+Version: 0.2.6
 Authors@R: 
     c(person(given = "Garrick",
              family = "Aden-Buie",
@@ -51,6 +51,10 @@ Authors@R:
              family = "Vatev",
              role = "ctb",
              comment = "tiny.toast"),
+      person(given = "André",
+             family = "Restive",
+             role = "ctb",
+             comment = "remark.search"),
       person(family = "Printio (Juriy Zaytsev, Maxim Chernyak)",
              role = "ctb",
              comment = "fabric.js"
@@ -75,6 +79,7 @@ Suggests:
     rmarkdown,
     testthat (>= 2.1.0),
     xaringan
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -90,6 +95,7 @@ Collate:
     'share_again.R'
     'slide-tone.R'
     'styles.R'
+    'search.R'
     'tachyons.R'
     'text-poster.R'
     'tile-view.R'

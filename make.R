@@ -1,7 +1,7 @@
 devtools::document()
 devtools::install(dependencies = FALSE)
 
-rmarkdown_v_expected <- package_version("2.3")
+rmarkdown_v_expected <- package_version("2.6.6")
 rmarkdown_v <- packageVersion("rmarkdown")
 if (rmarkdown_v != rmarkdown_v_expected) {
   message(
@@ -22,6 +22,7 @@ docs <- file.path(
     "panelset",
     "editable",
     "logo",
+    "search",
     "webcam",
     "extra-styles",
     "clipboard",
@@ -58,6 +59,10 @@ fs::dir_copy("man/figures", "docs/figures", overwrite = TRUE)
 
 fs::file_copy("NEWs.md", "docs/NEWS.md", overwrite = TRUE)
 
+news <- readLines("docs/NEWS.md", warn = FALSE)
+news <- gsub("#(\\d+)", "[#\\1](https://github.com/gadenbuie/xaringanExtra/issues/\\1)", news)
+news <- gsub("@([[:alnum:]]+)", "[@\\1](https://github.com/\\1)", news)
+writeLines(news, "docs/NEWS.md")
 
 # Manually process README into documentation site -------------------------
 

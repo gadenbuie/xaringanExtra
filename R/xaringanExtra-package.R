@@ -11,6 +11,7 @@
 #' - Animate slide transitions with [use_animate_css()]
 #' - Add tabbed panels to slides with [use_panelset()]
 #' - Add a logo to all of your slides with [use_logo()]
+#' - Add a search box to search through your slides with [use_search()]
 #' - Use the Tachyons CSS utility toolkit: [use_tachyons()]
 #' - Add a live video feed to you slides with [use_webcam()]
 #' - Add one-click code copying with [use_clipboard()]
@@ -29,7 +30,7 @@
 #' @param include Character vector of extensions to include. One or more of
 #'   `"tile_view"`, `"editable"`, `"share_again"`, `"broadcast"`, `"slide_tone"`,
 #'   `"animate_css"`, `"panelset"` `"tachyons"`, `"fit_screen"`, `"webcam"`,
-#'   `"clipboard"`.
+#'   `"clipboard"`, `"search"`.
 #' @export
 use_xaringan_extra <- function(
   include = c(
@@ -47,7 +48,8 @@ use_xaringan_extra <- function(
     "webcam",
     "clipboard",
     "share_again",
-    "broadcast"
+    "broadcast",
+    "search"
   )
   include <- match.arg(include, opts, TRUE)
   includes <- function(x) x %in% include
@@ -62,7 +64,8 @@ use_xaringan_extra <- function(
     if (includes("webcam")) html_dependency_webcam(),
     if (includes("clipboard")) use_clipboard(),
     if (includes("share_again")) use_share_again(),
-    if (includes("broadcast")) use_broadcast()
+    if (includes("broadcast")) use_broadcast(),
+    if (includes("search")) use_search()
   )
 }
 

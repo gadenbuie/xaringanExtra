@@ -1,0 +1,74 @@
+:root {
+  --search-icon-fill: rgba(128, 128, 128, 0.5);
+  --search-input-background: rgb(204, 204, 204);
+  --search-input-foreground: black;
+  --search-match-background: rgba(255, 196, 136, 0.75);
+  --search-input-border: 1px solid rgb(249, 38, 114);
+  --search-match-foreground: black;
+  --search-match-current-background: rgba(255, 136, 255, 0.75);
+  --search-match-current-foreground: black;
+}
+
+div.search {
+  position: absolute;
+  top: 1em;
+}
+
+div.search form {
+  display: none;
+  animation: fadeIn 250ms ease-out 1;
+}
+
+div.search.search-input-visible form {
+  display: inline-block;
+}
+
+div.search form input {
+  background-color: var(--search-input-background);
+  color: var(--search-input-foreground);
+
+  border: var(--search-input-border);
+  padding: 3px;
+  width: 10em;
+}
+
+div.search a {
+  padding: 0 0.5em;
+}
+
+div.search #search-open {
+  cursor: pointer;
+  display: none;
+  animation: fadeIn 250ms ease-out 1;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
+div.search.search-icon-visible #search-open {
+  display: inline-block;
+}
+
+div.search #search-open svg {
+  fill: var(--search-icon-fill);
+  vertical-align: bottom;
+  margin-bottom: -4px;
+}
+
+div.search #search-next{
+  display: none;
+}
+
+span.match.current-match {
+  background-color: var(--search-match-current-background);
+  color: var(--search-match-current-foreground);
+}
+
+span.match {
+  padding: 1px;
+  background-color: var(--search-match-background);
+  color: var(--search-match-foreground);
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}

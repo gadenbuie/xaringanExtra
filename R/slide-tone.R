@@ -42,7 +42,7 @@ html_dependency_slide_tone <- function() {
     ),
     htmltools::htmlDependency(
       name = "slide-tone",
-      version = utils::packageVersion("xaringanExtra"),
+      version = "0.2.6",
       package = "xaringanExtra",
       src = "slide-tone",
       script = "slide-tone.js"

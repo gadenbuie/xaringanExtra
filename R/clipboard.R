@@ -78,7 +78,7 @@ html_dependency_clipboardjs <- function(minified = TRUE) {
 html_dependency_clipboard <- function() {
   htmltools::htmlDependency(
     name = "xaringanExtra-clipboard",
-    version = utils::packageVersion("xaringanExtra"),
+    version = "0.2.6",
     package = "xaringanExtra",
     src = "clipboard",
     script = "xaringanExtra-clipboard.js",

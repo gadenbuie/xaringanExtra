@@ -121,7 +121,7 @@ html_dependency_logo <- function(
 
 		htmltools::htmlDependency(
 			name = "xaringanExtra-logo",
-			version = utils::packageVersion("xaringanExtra"),
+			version = "0.2.6",
 			src = tmpdir,
 			script = "logo.js"
 		)

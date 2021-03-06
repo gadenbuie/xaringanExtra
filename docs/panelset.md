@@ -52,7 +52,7 @@ Here’s the example used in the demo slides.
 panelset](https://gadenbuie.github.io/xaringanExtra/panelset/rmarkdown.html)
 
 Panelset works in all R Markdown HTML outputs like HTML reports and
-[blogdown](https://bookdown.org/yihui/blogdown/) webpages\!
+[blogdown](https://bookdown.org/yihui/blogdown/) webpages!
 
 Panelset works in the same way as `rmarkdown`’s
 [tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html)

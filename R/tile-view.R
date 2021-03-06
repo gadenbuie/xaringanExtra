@@ -32,7 +32,7 @@ use_tile_view <- function() {
 html_dependency_tile_view <- function() {
   htmltools::htmlDependency(
     name = "tile-view",
-    version = utils::packageVersion("xaringanExtra"),
+    version = "0.2.6",
     package = "xaringanExtra",
     src = "tile-view",
     script = "tile-view.js",
