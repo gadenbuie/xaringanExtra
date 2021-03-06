@@ -11,8 +11,6 @@
 #'   canvas isn't cleared. You may save a permanent copy of the slides with the
 #'   markup by saving your presentation (e.g. using Chrome > File > Print).
 #'
-#' @return An `htmltools::tagList()` with the scribble dependencies, or an
-#'   [htmltools::htmlDependency()].
 #' @section Usage: To add `Scribble` to your `xaringan` presentation,
 #'   add the following code chunk to your slides' R Markdown file.
 #'
@@ -21,6 +19,13 @@
 #'   xaringanExtra::use_scribble()
 #'   ```
 #'   ````
+#' @param pen_color Initial pen color (default is `"#FF0000` (red)). May be any
+#'   valid CSS Hex, RGB, or HSL color.
+#' @param pen_size Pen size (default is 3).
+#' @param eraser_size Eraser size (default is `pen_size * 10`).
+#'
+#' @return An `htmltools::tagList()` with the scribble dependencies, or an
+#'   [htmltools::htmlDependency()].
 #'
 #' @name scribble
 NULL
@@ -30,15 +35,13 @@ NULL
 use_scribble <- function(
 	pen_color = "#FF0000",
 	pen_size = 3,
-	eraser_color = "rgba(0, 0, 0, 0.6)",
-	eraser_size = 50
+	eraser_size = pen_size * 10
 ) {
 	htmltools::tagList(
 		html_dependency_fabricjs(),
 		html_dependency_scribble(
 			pen_color,
 			pen_size,
-			eraser_color,
 			eraser_size
 		)
 	)
@@ -65,21 +68,13 @@ html_dependency_fabricjs <- function(minimized = TRUE) {
 }
 
 #' @describeIn scribble Returns an [htmltools::htmlDependency()] with the
-#'   `Scribble` dependencies for use in xaringan and R Markdown documents. Most
+#'   `scribble` dependencies for use in xaringan and R Markdown documents. Most
 #'   users will want to use `use_scribble()` instead.
-#'
-#' @param pen_color Pen color (default is "black").
-#'   Users may choose any valid CSS Hex, RGB, or HSL color.
-#' @param pen_size Pen size (default is 3).
-#' @param eraser_color Eraser color (default is "translucent black").
-#'   Users may choose any valid CSS Hex, RGB, or HSL color.
-#' @param eraser_size Eraser size (default is 50).
 #'
 #' @export
 html_dependency_scribble <- function(
 	pen_color,
 	pen_size,
-	eraser_color,
 	eraser_size
 ) {
 	htmltools::htmlDependency(
@@ -89,7 +84,7 @@ html_dependency_scribble <- function(
 		src = "scribble",
 		script = "scribble.js",
 		stylesheet = "scribble.css",
-		head = init_Scribble(pen_color, pen_size, eraser_color, eraser_size),
+		head = init_Scribble(pen_color, pen_size, eraser_size),
 		all_files = FALSE
 	)
 }
@@ -97,21 +92,24 @@ html_dependency_scribble <- function(
 init_Scribble <- function(
 	pen_color,
 	pen_size,
-	eraser_color,
 	eraser_size
 ) {
+	# Current we expect one color, we may lift this restriction in the future
+	stopifnot("single pen color" = length(pen_color) == 1)
 	stopifnot(is.numeric(pen_size))
 	stopifnot(is.numeric(eraser_size))
 	opts <- list(
 		pen_color = pen_color,
 		pen_size = jsonlite::unbox(pen_size),
-		eraser_color = jsonlite::unbox(eraser_color),
 		eraser_size = jsonlite::unbox(eraser_size)
 	)
 	opts <- jsonlite::toJSON(opts)
 
 	sprintf(
-		"<script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble(%s) })</script>",
+		paste0(
+			"<script>document.addEventListener('DOMContentLoaded', function() {",
+			" window.xeScribble = new Scribble(%s) })</script>"
+		),
 		opts
 	)
 }

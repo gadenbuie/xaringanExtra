@@ -12,7 +12,7 @@ class Scribble {
     this.penSize = opts['pen_size'] || 3
     this.eraserSize = opts['eraser_size'] || 30
     this.tolerance = this.eraserSize / 2
-    this.eraserColor = opts['eraser_color'] || 'rgba(0, 0, 0, 0.1)'
+    // this.eraserColor = opts['eraser_color'] || 'rgba(0, 0, 0, 0.1)'
     this.transparent = 'rgba(0, 0, 0, 0)'
 
     // Fabric objects
@@ -221,7 +221,24 @@ class Scribble {
     this.toolBox.classList = 'xe-scribble__tools'
   }
 
+  rgbColorToHex(color) {
+    // https://haacked.com/archive/2009/12/29/convert-rgb-to-hex.aspx/
+    if (color.substr(0, 1) === '#') {
+      return color
+    }
+    const digits = /rgb\((\d+), (\d+), (\d+)\)/.exec(color)
+
+    const red = parseInt(digits[1]);
+    const green = parseInt(digits[2]);
+    const blue = parseInt(digits[3]);
+
+    const rgb = blue | (green << 8) | (red << 16);
+    return '#' + rgb.toString(16).padStart(6, '0');
+  }
+
   pickContrastForegroundColor(color, light, dark, threshold) {
+    color = this.rgbColorToHex(color)
+
     // https://stackoverflow.com/a/41491220/2022615
     light = light || '#FFFFFF'
     dark = dark || '#000000'
@@ -429,6 +446,19 @@ class Scribble {
     })
   }
 
+  eraserColor() {
+    const slide = this.getVisibleSlide().querySelector('.remark-slide-content')
+    const slideBgColor = window
+      .getComputedStyle(slide)
+      .getPropertyValue('background-color')
+
+    return this.pickContrastForegroundColor(
+      slideBgColor,
+      'rgba(255, 255, 255, 0.33)',
+      'rgba(0, 0, 0, 0.33)'
+    )
+  }
+
   startErasing() {
     slideshow.pause()
 
@@ -436,6 +466,7 @@ class Scribble {
     this.drawMode = false
     this.eraseBtn.title = 'Stop Erasing'
     this.eraserCursor.classList.remove('hidden')
+    this.eraserCursor.style.backgroundColor = this.eraserColor()
     this.colorPicker.classList.add('hidden')
 
     const outerDiv = this.getVisibleSlideOuterContainer()
@@ -536,7 +567,6 @@ class Scribble {
     this.eraserCursor.classList.add('xe-scribble__cursor__eraser','hidden')
     this.eraserCursor.style.width = this.eraserSize + 'px'
     this.eraserCursor.style.height = this.eraserSize + 'px'
-    this.eraserCursor.style.backgroundColor = this.eraserColor
 
     slideArea.appendChild(this.eraserCursor)
   }

@@ -7,27 +7,21 @@
 \alias{html_dependency_scribble}
 \title{Scribble}
 \usage{
-use_scribble(
-  pen_color = "rgba(0, 0, 0, 1)",
-  pen_size = 3,
-  eraser_color = "rgba(0, 0, 0, 0.6)",
-  eraser_size = 50
-)
+use_scribble(pen_color = "#FF0000", pen_size = 3, eraser_size = pen_size * 10)
 
-html_dependency_fabricjs()
+html_dependency_fabricjs(minimized = TRUE)
 
-html_dependency_scribble(pen_color, pen_size, eraser_color, eraser_size)
+html_dependency_scribble(pen_color, pen_size, eraser_size)
 }
 \arguments{
-\item{pen_color}{Pen color (default is "black").
-Users may choose any valid CSS Hex, RGB, or HSL color.}
+\item{pen_color}{Initial pen color (default is \verb{"#FF0000} (red)). May be any
+valid CSS Hex, RGB, or HSL color.}
 
 \item{pen_size}{Pen size (default is 3).}
 
-\item{eraser_color}{Eraser color (default is "translucent black").
-Users may choose any valid CSS Hex, RGB, or HSL color.}
+\item{eraser_size}{Eraser size (default is \code{pen_size * 10}).}
 
-\item{eraser_size}{Eraser size (default is 50).}
+\item{minimized}{Use the minimized \code{fabric.js} dependency?}
 }
 \value{
 An \code{htmltools::tagList()} with the scribble dependencies, or an
@@ -55,7 +49,7 @@ markup by saving your presentation (e.g. using Chrome > File > Print).
 Most users will want to use \code{use_scribble()} instead.
 
 \item \code{html_dependency_scribble}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
-\code{Scribble} dependencies for use in xaringan and R Markdown documents. Most
+\code{scribble} dependencies for use in xaringan and R Markdown documents. Most
 users will want to use \code{use_scribble()} instead.
 }}
 
