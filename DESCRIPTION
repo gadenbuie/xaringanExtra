@@ -50,7 +50,11 @@ Authors@R:
       person(given = "Kiril",
              family = "Vatev",
              role = "ctb",
-             comment = "tiny.toast."))
+             comment = "tiny.toast"),
+      person(family = "Printio (Juriy Zaytsev, Maxim Chernyak)",
+             role = "ctb",
+             comment = "fabric.js"
+            ))
 Description: Extras and extensions for xaringan slides. Nagivate
     your slides with tile view. Make your slides editable, live! Announce
     slide changes with subtle tones. Animate slide transitions with

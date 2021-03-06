@@ -53,7 +53,8 @@ Other contributors:
   \item Nikita Karamov (shareon.js) [contributor]
   \item Ross Zurowski (fitvids.js) [contributor]
   \item  Michelle Bu and Eric Zhang (peerjs) [contributor]
-  \item Kiril Vatev (tiny.toast.) [contributor]
+  \item Kiril Vatev (tiny.toast) [contributor]
+  \item  Printio (Juriy Zaytsev, Maxim Chernyak) (fabric.js) [contributor]
 }
 
 }
