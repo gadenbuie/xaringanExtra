@@ -189,6 +189,13 @@ class Scribble {
       fab.setHeight(scalerSize.height)
       fab.setZoom(scaleRatio)
     })
+
+    // Reposition toolbox outside slides if there is extra space
+    if ((window.innerWidth - scalerSize.width) / 2 >= 42) {
+      this.toolBox.style.right = '-40px'
+    } else {
+      this.toolBox.style.right = '10px'
+    }
   }
 
   createButton(id, name) {
