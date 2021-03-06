@@ -198,10 +198,11 @@ class Scribble {
     }
   }
 
-  createButton(id, name) {
+  createButton(id, name, title) {
     const btn = document.createElement('button')
     btn.classList.add('xe-scribble__button', 'xe-scribble__button__' + id)
     btn.innerHTML = this.svgs[name]
+    btn.title = title || (name.slice(0, 1).toUpperCase() + name.slice(1))
     return btn
   }
 
@@ -211,6 +212,7 @@ class Scribble {
     colorPicker.classList.add('xe-scribble__button')
     colorPicker.setAttribute('type', 'color')
     colorPicker.setAttribute('value', this.currColor)
+    colorPicker.title = 'Choose Pen Color'
     return colorPicker
   }
 
@@ -236,9 +238,9 @@ class Scribble {
     this.createToolbox()
 
     // Build draw, erase, clear buttons
-    this.drawBtn = this.createButton('draw', 'draw')
-    this.eraseBtn = this.createButton('erase', 'eraser')
-    this.clearBtn = this.createButton('clear', 'trash')
+    this.drawBtn = this.createButton('draw', 'draw', 'Start Drawing (S)')
+    this.eraseBtn = this.createButton('erase', 'eraser', 'Erase Lines')
+    this.clearBtn = this.createButton('clear', 'trash', 'Clear This Slide')
 
     this.colorPicker = this.createColorPicker()
     this.colorPicker.addEventListener('input', () => {
@@ -359,6 +361,7 @@ class Scribble {
 
     this.drawMode = true
     this.eraseMode = false
+    this.drawBtn.title = 'Stop Drawing (S)'
 
     this.currFabric.isDrawingMode = true
     this.currFabric.freeDrawingBrush.width = this.penSize
@@ -386,6 +389,7 @@ class Scribble {
 
     this.drawMode = false
     this.eraseMode = false
+    this.drawBtn.title = 'Start Drawing (S)'
 
     const drawingCanvas = this.getVisibleSlideCanvasContainers()
     drawingCanvas.forEach((container) => {
@@ -430,6 +434,7 @@ class Scribble {
 
     this.eraseMode = true
     this.drawMode = false
+    this.eraseBtn.title = 'Stop Erasing'
     this.eraserCursor.classList.remove('hidden')
     this.colorPicker.classList.add('hidden')
 
@@ -461,6 +466,7 @@ class Scribble {
     this.drawMode = false
     this.eraseMode = false
     this.eraserCursor.classList.add('hidden')
+    this.eraseBtn.title = 'Erase Lines'
 
     const outerDiv = this.getVisibleSlideOuterContainer()
     outerDiv.removeEventListener('mousemove', this.eraser_impl)
