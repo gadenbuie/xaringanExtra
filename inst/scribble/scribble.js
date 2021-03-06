@@ -1,24 +1,27 @@
 /*
  *  Scribble for remark.js/xaringan
  *  Matthew T. Warkentin <warkentin@lunenfeld.ca>
+ *  and Garrick Aden-Buie <garrick@adenbuie.com>
  */
 
+/* global slideshow,fabric */
+
 class Scribble {
-  constructor(opts) {
+  constructor (opts) {
     // User options
     this.opts = opts
-    this.penColors = opts['pen_color'] || '#000000'
+    this.penColors = opts.pen_color || '#000000'
     this.currColor = this.penColors[0]
-    this.penSize = opts['pen_size'] || 3
-    this.eraserSize = opts['eraser_size'] || 30
+    this.penSize = opts.pen_size || 3
+    this.eraserSize = opts.eraser_size || 30
     this.tolerance = this.eraserSize / 2
     // this.eraserColor = opts['eraser_color'] || 'rgba(0, 0, 0, 0.1)'
     this.transparent = 'rgba(0, 0, 0, 0)'
 
     // Fabric objects
-    this.fabrics
-    this.currFabric
-    this.pathCache = new Array()
+    this.fabrics = null
+    this.currFabric = null
+    this.pathCache = []
     this.undo = this.undo.bind(this)
     this.redo = this.redo.bind(this)
 
@@ -29,16 +32,16 @@ class Scribble {
     this.hideToolbox = true
 
     this.eraserCursorMovement = this.eraserCursorMovement.bind(this)
-    this.eraser_impl = this.eraser_impl.bind(this)
+    this.eraserDetectErase = this.eraserDetectErase.bind(this)
 
     // Toolbox objects
     this.launchKey = 83 // "S" used to toggle toolbox/state
-    this.toolBox
-    this.drawBtn
-    this.eraseBtn
-    this.clearBtn
-    this.colorPicker
-    this.eraserCursor
+    this.toolBox = null
+    this.drawBtn = null
+    this.eraseBtn = null
+    this.clearBtn = null
+    this.colorPicker = null
+    this.eraserCursor = null
 
     // Scribble initialization
     this.setPenColorCSSVariables(this.currColor)
@@ -58,50 +61,50 @@ class Scribble {
     slideshow.on('afterShowSlide', (slide) => {
       this.currFabric = this.fabrics[slide.getSlideIndex()]
       this.addToolboxToSlide()
-      this.pathCache = new Array()
+      this.pathCache = []
     })
     slideshow.on(
       'beforeHideSlide',
-      this.removeTransparentEraserPaths.bind(this),
+      this.removeTransparentEraserPaths.bind(this)
     )
     window.addEventListener('resize', this.resizeContent.bind(this))
   }
 
-  getVisibleSlide() {
+  getVisibleSlide () {
     return document.querySelector('.remark-visible')
   }
 
-  getVisibleSlideSize() {
+  getVisibleSlideSize () {
     const slideSize = this.getVisibleSlide()
       .querySelector('.remark-slide-scaler')
       .getBoundingClientRect()
     return slideSize
   }
 
-  getVisibleSlideScaleRatio() {
+  getVisibleSlideScaleRatio () {
     const scaleRatio = this.getVisibleSlide().querySelector(
-      '.remark-slide-scaler',
+      '.remark-slide-scaler'
     ).style.transform
     return scaleRatio
   }
 
-  getVisibleSlideCanvas() {
+  getVisibleSlideCanvas () {
     return this.fabrics[slideshow.getCurrentSlideIndex()]
   }
 
-  getVisibleSlideOuterContainer() {
+  getVisibleSlideOuterContainer () {
     return this.getVisibleSlide().querySelector(
-      '.xe-scribble',
+      '.xe-scribble'
     )
   }
 
-  getVisibleSlideCanvasContainers() {
+  getVisibleSlideCanvasContainers () {
     return this.getVisibleSlide().querySelectorAll(
-      '.xe-scribble__canvas__drawing',
+      '.xe-scribble__canvas__drawing'
     )
   }
 
-  setPenColorCSSVariables(color) {
+  setPenColorCSSVariables (color) {
     const root = document.documentElement
     root.style.setProperty('--xe-scribble--button-draw-active-bg', color)
     root.style.setProperty(
@@ -111,7 +114,7 @@ class Scribble {
     root.style.setProperty('--xe-scribble--pen-color', color)
   }
 
-  createCanvas(id) {
+  createCanvas (id) {
     const slideSize = this.getVisibleSlideSize()
 
     const canvasDiv = document.createElement('div')
@@ -138,7 +141,7 @@ class Scribble {
     return canvasDiv
   }
 
-  addCanvasToAllSlides() {
+  addCanvasToAllSlides () {
     // Add <canvas> to slide container
     const nslides = slideshow.getSlideCount()
     let i = 0
@@ -153,24 +156,24 @@ class Scribble {
 
     // Convert <canvas> to fabric.Canvas
     const allCanvases = document.querySelectorAll('.xe-scribble__canvas__drawing')
-    this.fabrics = new Array()
+    this.fabrics = []
     allCanvases.forEach((el, index) => {
       this.fabrics[index] = new fabric.Canvas(el.id, {
         isDrawingMode: false,
-        containerClass: 'xe-scribble__canvas',
+        containerClass: 'xe-scribble__canvas'
       })
     })
     this.currFabric = this.fabrics[slideshow.getCurrentSlideIndex()]
   }
 
-  resizeContent() {
+  resizeContent () {
     const scalerSize = document
       .querySelector('.remark-visible .remark-slide-scaler')
       .getBoundingClientRect()
 
     // Resize canvas container
     const outerContainers = document.querySelectorAll(
-      '.xe-scribble',
+      '.xe-scribble'
     )
     outerContainers.forEach((div) => {
       div.style.width = scalerSize.width + 'px'
@@ -179,8 +182,8 @@ class Scribble {
       div.style.top = scalerSize.top + 'px'
     })
 
-    let scaleRatio = parseFloat(
-      this.getVisibleSlideScaleRatio().match('\\d+.\\d+'),
+    const scaleRatio = parseFloat(
+      this.getVisibleSlideScaleRatio().match('\\d+.\\d+')
     )
 
     // Resize canvas itself
@@ -198,7 +201,7 @@ class Scribble {
     }
   }
 
-  createButton(id, name, title) {
+  createButton (id, name, title) {
     const btn = document.createElement('button')
     btn.classList.add('xe-scribble__button', 'xe-scribble__button__' + id)
     btn.innerHTML = this.svgs[name]
@@ -206,7 +209,7 @@ class Scribble {
     return btn
   }
 
-  createColorPicker() {
+  createColorPicker () {
     const colorPicker = document.createElement('input')
     colorPicker.setAttribute('id', 'colorPicker')
     colorPicker.classList.add('xe-scribble__button')
@@ -216,42 +219,42 @@ class Scribble {
     return colorPicker
   }
 
-  createToolbox() {
+  createToolbox () {
     this.toolBox = document.createElement('div')
     this.toolBox.classList = 'xe-scribble__tools'
   }
 
-  rgbColorToHex(color) {
+  rgbColorToHex (color) {
     // https://haacked.com/archive/2009/12/29/convert-rgb-to-hex.aspx/
     if (color.substr(0, 1) === '#') {
       return color
     }
     const digits = /rgb\((\d+), (\d+), (\d+)\)/.exec(color)
 
-    const red = parseInt(digits[1]);
-    const green = parseInt(digits[2]);
-    const blue = parseInt(digits[3]);
+    const red = parseInt(digits[1])
+    const green = parseInt(digits[2])
+    const blue = parseInt(digits[3])
 
-    const rgb = blue | (green << 8) | (red << 16);
-    return '#' + rgb.toString(16).padStart(6, '0');
+    const rgb = blue | (green << 8) | (red << 16)
+    return '#' + rgb.toString(16).padStart(6, '0')
   }
 
-  pickContrastForegroundColor(color, light, dark, threshold) {
+  pickContrastForegroundColor (color, light, dark, threshold) {
     color = this.rgbColorToHex(color)
 
     // https://stackoverflow.com/a/41491220/2022615
     light = light || '#FFFFFF'
     dark = dark || '#000000'
     threshold = threshold || 145
-    color = (color.charAt(0) === '#') ? color.substring(1, 7) : color;
-    const r = parseInt(color.substring(0, 2), 16); // hexToR
-    const g = parseInt(color.substring(2, 4), 16); // hexToG
-    const b = parseInt(color.substring(4, 6), 16); // hexToB
+    color = (color.charAt(0) === '#') ? color.substring(1, 7) : color
+    const r = parseInt(color.substring(0, 2), 16) // hexToR
+    const g = parseInt(color.substring(2, 4), 16) // hexToG
+    const b = parseInt(color.substring(4, 6), 16) // hexToB
     const score = ((r * 0.299) + (g * 0.587) + (b * 0.114))
-    return  (score > threshold) ? dark : light;
+    return (score > threshold) ? dark : light
   }
 
-  assembleToolbox() {
+  assembleToolbox () {
     this.createToolbox()
 
     // Build draw, erase, clear buttons
@@ -276,7 +279,7 @@ class Scribble {
     })
   }
 
-  addToolboxToSlide() {
+  addToolboxToSlide () {
     const canvasDiv = this.getVisibleSlideOuterContainer()
     canvasDiv.appendChild(this.toolBox)
     if (this.hideToolbox) {
@@ -284,8 +287,8 @@ class Scribble {
     }
   }
 
-  addToggleToolbox() {
-    self = this
+  addToggleToolbox () {
+    const self = this
 
     document.addEventListener('keydown', (ev) => {
       if (ev.keyCode === this.launchKey) {
@@ -293,34 +296,34 @@ class Scribble {
       }
     })
 
-    this.toolBox.addEventListener('mouseleave', function(ev) {
+    this.toolBox.addEventListener('mouseleave', function (ev) {
       if (self.drawMode | self.eraseMode) {
-        return;
+        return
       }
       self.minimizeTimeout = setTimeout(() => self.toggleToolbox(false), 2000)
     })
 
-    this.toolBox.addEventListener('mouseenter', function(ev) {
+    this.toolBox.addEventListener('mouseenter', function (ev) {
       if (self.minimizeTimeout) {
         clearTimeout(self.minimizeTimeout)
       }
     })
   }
 
-  toggleToolbox(show) {
+  toggleToolbox (show) {
     const isMinimized = this.toolBox.matches('.minimized')
-    if (show && show === !isMinimized) return;
+    if (show && show === !isMinimized) return
 
     this.hideToolbox = !(show || isMinimized)
     this.toolBox.classList.toggle('minimized')
 
     if (this.hideToolbox) {
       this.toolBox.classList.add('minimized')
-      this.drawMode
-        ? this.drawBtn.click()
-        : this.eraseMode
-        ? this.eraseBtn.click()
-        : null
+      if (this.drawMode) {
+        this.drawBtn.click()
+      } else if (this.eraseMode) {
+        this.eraseBtn.click()
+      }
     } else {
       this.toolBox.classList.remove('minimized')
       clearTimeout(this.minimizeTimeout)
@@ -329,13 +332,13 @@ class Scribble {
     }
   }
 
-  addCanvasHelpText() {
+  addCanvasHelpText () {
     const helpTable = document.querySelector(
-      '.remark-help-content table.light-keys',
+      '.remark-help-content table.light-keys'
     )
     if (!helpTable) {
       console.error(
-        'Could not find remark help table, has remark been initialized?',
+        'Could not find remark help table, has remark been initialized?'
       )
       return
     }
@@ -345,20 +348,20 @@ class Scribble {
     helpTable.append(newRow)
   }
 
-  mousedown() {
+  mousedown () {
     this.mouseDown = true
   }
 
-  mouseup() {
+  mouseup () {
     this.mouseDown = false
   }
 
-  getCanvasPaths() {
+  getCanvasPaths () {
     return this.currFabric.getObjects('path')
   }
 
-  addDrawing() {
-    self = this
+  addDrawing () {
+    const self = this
     ;['click', 'touchend'].forEach((gesture) => {
       this.drawBtn.addEventListener(gesture, (ev) => {
         ev.preventDefault()
@@ -372,7 +375,7 @@ class Scribble {
     })
   }
 
-  startDrawing() {
+  startDrawing () {
     slideshow.pause()
     this.toggleToolbox(true)
 
@@ -401,7 +404,7 @@ class Scribble {
     this.eraseBtn.classList.remove('active')
   }
 
-  stopDrawing() {
+  stopDrawing () {
     slideshow.resume()
 
     this.drawMode = false
@@ -420,7 +423,7 @@ class Scribble {
     this.eraseBtn.classList.remove('active')
   }
 
-  addClearing() {
+  addClearing () {
     ;['click', 'touchend'].forEach((gesture) => {
       this.clearBtn.addEventListener(gesture, (ev) => {
         ev.preventDefault()
@@ -430,13 +433,13 @@ class Scribble {
     })
   }
 
-  clearCurrentCanvas() {
+  clearCurrentCanvas () {
     this.currFabric.forEachObject((obj) => {
       this.currFabric.remove(obj)
     })
   }
 
-  addErasing() {
+  addErasing () {
     ;['click', 'touchend'].forEach((gesture) => {
       this.eraseBtn.addEventListener(gesture, (ev) => {
         ev.preventDefault()
@@ -446,7 +449,7 @@ class Scribble {
     })
   }
 
-  eraserColor() {
+  eraserColor () {
     const slide = this.getVisibleSlide().querySelector('.remark-slide-content')
     const slideBgColor = window
       .getComputedStyle(slide)
@@ -459,7 +462,7 @@ class Scribble {
     )
   }
 
-  startErasing() {
+  startErasing () {
     slideshow.pause()
 
     this.eraseMode = true
@@ -470,8 +473,8 @@ class Scribble {
     this.colorPicker.classList.add('hidden')
 
     const outerDiv = this.getVisibleSlideOuterContainer()
-    outerDiv.addEventListener('mousemove', this.eraser_impl)
-    outerDiv.addEventListener('touchmove', this.eraser_impl)
+    outerDiv.addEventListener('mousemove', this.eraserDetectErase)
+    outerDiv.addEventListener('touchmove', this.eraserDetectErase)
 
     document.addEventListener('mousemove', this.eraserCursorMovement)
     document.addEventListener('touchmove', this.eraserCursorMovement)
@@ -493,15 +496,15 @@ class Scribble {
     this.eraseBtn.classList.add('active')
   }
 
-  stopErasing() {
+  stopErasing () {
     this.drawMode = false
     this.eraseMode = false
     this.eraserCursor.classList.add('hidden')
     this.eraseBtn.title = 'Erase Lines'
 
     const outerDiv = this.getVisibleSlideOuterContainer()
-    outerDiv.removeEventListener('mousemove', this.eraser_impl)
-    outerDiv.removeEventListener('touchmove', this.eraser_impl)
+    outerDiv.removeEventListener('mousemove', this.eraserDetectErase)
+    outerDiv.removeEventListener('touchmove', this.eraserDetectErase)
 
     document.removeEventListener('mousemove', this.eraserCursorMovement)
     document.removeEventListener('touchmove', this.eraserCursorMovement)
@@ -520,18 +523,18 @@ class Scribble {
     slideshow.resume()
   }
 
-  eraser_impl(ev) {
+  eraserDetectErase (ev) {
     if (this.mouseDown & this.eraseMode) {
-      let xy = [
+      const xy = [
         this.currFabric.getPointer(ev).x,
-        this.currFabric.getPointer(ev).y,
+        this.currFabric.getPointer(ev).y
       ]
-      let objs = this.getCanvasPaths()
-      let paths = objs.map((path) => {
+      const objs = this.getCanvasPaths()
+      const paths = objs.map((path) => {
         return path.path
       })
 
-      let remove_or_not = paths.map((path) => {
+      const shouldRemove = paths.map((path) => {
         const toRemove = path.some((point) => {
           const xcond = Math.abs(point[1] - xy[0]) < this.tolerance
           const ycond = Math.abs(point[2] - xy[1]) < this.tolerance
@@ -541,11 +544,11 @@ class Scribble {
         return toRemove
       })
 
-      let pathCache = this.pathCache
-      let currFabric = this.currFabric
+      const pathCache = this.pathCache
+      const currFabric = this.currFabric
 
       objs.map(function (item, index) {
-        if (remove_or_not[index]) {
+        if (shouldRemove[index]) {
           pathCache.push(item)
           currFabric.remove(item)
         }
@@ -553,7 +556,7 @@ class Scribble {
     }
   }
 
-  removeTransparentEraserPaths() {
+  removeTransparentEraserPaths () {
     this.currFabric.forEachObject((obj) => {
       if (obj.stroke === this.transparent) {
         this.currFabric.remove(obj)
@@ -561,17 +564,17 @@ class Scribble {
     })
   }
 
-  initEraserCursor() {
+  initEraserCursor () {
     const slideArea = document.querySelector('.remark-slides-area')
     this.eraserCursor = document.createElement('div')
-    this.eraserCursor.classList.add('xe-scribble__cursor__eraser','hidden')
+    this.eraserCursor.classList.add('xe-scribble__cursor__eraser', 'hidden')
     this.eraserCursor.style.width = this.eraserSize + 'px'
     this.eraserCursor.style.height = this.eraserSize + 'px'
 
     slideArea.appendChild(this.eraserCursor)
   }
 
-  eraserCursorMovement(ev) {
+  eraserCursorMovement (ev) {
     var pX
     var pY
     if (ev.type === 'mousemove') {
@@ -585,25 +588,25 @@ class Scribble {
     this.eraserCursor.style.left = pX - this.tolerance + 'px'
   }
 
-  undo(ev) {
+  undo (ev) {
     if (ev.keyCode === 37) {
       this.removeTransparentEraserPaths()
 
       if (this.currFabric._objects.length === 0) return
 
-      let removedPath = this.currFabric._objects.pop()
+      const removedPath = this.currFabric._objects.pop()
       this.pathCache.push(removedPath)
       this.currFabric.renderAll()
     }
   }
 
-  redo(ev) {
+  redo (ev) {
     if (ev.keyCode === 39) {
       this.removeTransparentEraserPaths()
 
       if (this.pathCache.length === 0) return
 
-      let addedPath = this.pathCache.pop()
+      const addedPath = this.pathCache.pop()
       this.currFabric._objects.push(addedPath)
       this.currFabric.renderAll()
     }

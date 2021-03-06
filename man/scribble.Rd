@@ -28,33 +28,32 @@ An \code{htmltools::tagList()} with the scribble dependencies, or an
 \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}.
 }
 \description{
-\code{Scribble} provides a set of tools to allow you to mark up
-your \code{xaringan} slides. Click the "edit" icon to begin drawing. Use the
-eraser to remove select markup, or the trash to clear the entire
-canvas. NOTE: You will not be able to navigate slides while in draw or
-erase mode.
-}
-\details{
-You may toggle the visibility of the \code{Scribble} toolbox by pressing
-\strong{S} at any time. Markup will persist when changing slides as long as the
-canvas isn't cleared. You may save a permanent copy of the slides with the
-markup by saving your presentation (e.g. using Chrome > File > Print).
+Scribble provides a set of tools to allow you to mark up your \code{xaringan}
+slides. Click the "pencil" icon to begin drawing. Use the eraser to remove
+lines from your drawing, or the trash to clear the entire canvas. Note that
+in order to minimize confusion, you will not be able to navigate slides while
+in draw or erase mode.
+
+You may toggle the visibility of the scribble toolbox by pressing \code{S} at
+any time. Your drawings will persist when changing slides. You may save a
+permanent copy of the slides with the markup by printing your presentation
+(e.g. using Chrome > File > Print).
 }
 \section{Functions}{
 \itemize{
-\item \code{use_scribble}: Adds \code{Scribble} to your xaringan slides.
+\item \code{use_scribble}: Adds scribble to your xaringan slides.
 
 \item \code{html_dependency_fabricjs}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
 \code{fabric.js} dependencies for use in xaringan and R Markdown documents.
 Most users will want to use \code{use_scribble()} instead.
 
 \item \code{html_dependency_scribble}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
-\code{scribble} dependencies for use in xaringan and R Markdown documents. Most
+scribble dependencies for use in xaringan and R Markdown documents. Most
 users will want to use \code{use_scribble()} instead.
 }}
 
 \section{Usage}{
- To add \code{Scribble} to your \code{xaringan} presentation,
+ To add scribble to your \code{xaringan} presentation,
 add the following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r xaringan-scribble, echo=FALSE\}
 xaringanExtra::use_scribble()
 ```
