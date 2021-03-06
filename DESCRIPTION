@@ -7,6 +7,11 @@ Authors@R:
              role = c("aut", "cre"),
              email = "garrick@aden-buie.com",
              comment = c(ORCID = "0000-0002-7111-0077")),
+      person(given = "Matthew T.",
+             family = "Warkentin",
+             role = "aut",
+             email = "warkentin@lunenfeld.ca",
+             comment = c("Contributed scribble", ORCID = "0000-0001-8730-3511")),
       person(given = "Yotam",
              family = "Mann",
              role = "ctb",
@@ -42,14 +47,17 @@ Authors@R:
       person(family = "Michelle Bu and Eric Zhang",
              role = "ctb",
              comment = "peerjs"),
-      person(given = "Kiril", family = "Vatev", role = "ctb", comment = "tiny.toast."))
+      person(given = "Kiril",
+             family = "Vatev",
+             role = "ctb",
+             comment = "tiny.toast."))
 Description: Extras and extensions for xaringan slides. Nagivate
     your slides with tile view. Make your slides editable, live! Announce
     slide changes with subtle tones. Animate slide transitions with
     animate.css. Add tabbed panels to slides with panelset. Include
-    yourself in your slides with webcam. Add a "copy" button to your code
-    chunk with clipboard. Use the Tachyons CSS utility toolkit. Fit your
-    slides to fill the browser window.
+    yourself in your slides with webcam. Scribble on your slides. Add a
+    "copy" button to your code chunk with clipboard. Use the Tachyons CSS
+    utility toolkit. Fit your slides to fill the browser window.
 License: MIT + file LICENSE
 URL: https://github.com/gadenbuie/xaringanExtra
 BugReports: https://github.com/gadenbuie/xaringanExtra/issues

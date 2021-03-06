@@ -36,6 +36,11 @@ Useful links:
 \author{
 \strong{Maintainer}: Garrick Aden-Buie \email{garrick@aden-buie.com} (\href{https://orcid.org/0000-0002-7111-0077}{ORCID})
 
+Authors:
+\itemize{
+  \item Matthew T. Warkentin \email{warkentin@lunenfeld.ca} (\href{https://orcid.org/0000-0001-8730-3511}{ORCID}) (Contributed scribble)
+}
+
 Other contributors:
 \itemize{
   \item Yotam Mann (tone.js) [contributor]
