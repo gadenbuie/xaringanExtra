@@ -43,12 +43,6 @@
   pointer-events: all;
   z-index: 101;
   width: 32px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 1fr);
-  align-content: center;
-  justify-items: center;
-  grid-gap: 5px;
 }
 
 .xe-scribble__button {
@@ -59,9 +53,7 @@
   border-radius: 100%;
   width: 100%;
   height: calc(100% - 3px);
-}
-
-.xe-scribble__button {
+  margin-bottom: 5px;
   opacity: 1;
   transition: transform ease-out 100ms, opacity ease-out 80ms;
 }
