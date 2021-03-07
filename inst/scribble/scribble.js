@@ -265,7 +265,9 @@ class Scribble {
     this.colorPicker = this.createColorPicker()
     this.colorPicker.addEventListener('input', () => {
       this.currColor = this.colorPicker.value
-      this.currFabric.freeDrawingBrush.color = this.currColor
+      if (this.drawMode) {
+        this.currFabric.freeDrawingBrush.color = this.currColor
+      }
       this.setPenColorCSSVariables(this.currColor)
     })
 
