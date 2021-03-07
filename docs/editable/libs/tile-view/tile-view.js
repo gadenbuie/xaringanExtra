@@ -44,7 +44,7 @@
       el.style.display = el.style.display === 'none' ? '' : 'none'
     }
 
-    function slideshowResize() {
+    function slideshowResize () {
       window.dispatchEvent(new Event('resize'))
     }
 

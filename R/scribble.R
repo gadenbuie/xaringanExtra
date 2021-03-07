@@ -1,11 +1,10 @@
 #' Scribble
 #'
 #' @description
-#' Scribble provides a set of tools to allow you to mark up your `xaringan`
-#' slides. Click the "pencil" icon to begin drawing. Use the eraser to remove
-#' lines from your drawing, or the trash to clear the entire canvas. Note that
-#' in order to minimize confusion, you will not be able to navigate slides while
-#' in draw or erase mode.
+#' Scribble lets you draw on your \pkg{xaringan} slides. Click the pencil icon
+#' to begin drawing. Use the eraser to remove lines from your drawing, or the
+#' trash to clear the entire canvas. Note that in order to minimize confusion,
+#' you will not be able to navigate slides while in draw or erase mode.
 #'
 #' You may toggle the visibility of the scribble toolbox by pressing `S` at
 #' any time. Your drawings will persist when changing slides. You may save a

@@ -7,6 +7,7 @@
 #' - Make your slide content editable with [use_editable()]
 #' - Share your slides in style with [use_share_again()]
 #' - Broadcast your slides in real time to viewers with [use_broadcast()]
+#' - Scribble on your slides during your presentation with [use_scribble()]
 #' - Announce slide changes with a subtle tone: [use_slide_tone()]
 #' - Animate slide transitions with [use_animate_css()]
 #' - Add tabbed panels to slides with [use_panelset()]
@@ -30,11 +31,12 @@
 #' @param include Character vector of extensions to include. One or more of
 #'   `"tile_view"`, `"editable"`, `"share_again"`, `"broadcast"`, `"slide_tone"`,
 #'   `"animate_css"`, `"panelset"` `"tachyons"`, `"fit_screen"`, `"webcam"`,
-#'   `"clipboard"`, `"search"`.
+#'   `"clipboard"`, `"search"`, `"scribble"`.
 #' @export
 use_xaringan_extra <- function(
   include = c(
-    "tile_view", "animate_css", "tachyons", "panelset", "broadcast", "share_again"
+    "tile_view", "animate_css", "tachyons", "panelset", "broadcast",
+    "share_again", "scribble"
   )
 ) {
   opts <- c(
@@ -49,7 +51,8 @@ use_xaringan_extra <- function(
     "clipboard",
     "share_again",
     "broadcast",
-    "search"
+    "search",
+    "scribble"
   )
   include <- match.arg(include, opts, TRUE)
   includes <- function(x) x %in% include
@@ -65,7 +68,8 @@ use_xaringan_extra <- function(
     if (includes("clipboard")) use_clipboard(),
     if (includes("share_again")) use_share_again(),
     if (includes("broadcast")) use_broadcast(),
-    if (includes("search")) use_search()
+    if (includes("search")) use_search(),
+    if (includes("scribble")) use_scribble()
   )
 }
 

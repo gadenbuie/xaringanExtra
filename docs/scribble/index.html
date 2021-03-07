@@ -12,12 +12,11 @@
     <script src="libs/xaringanExtra-scribble/scribble.js"></script>
     <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30}) })</script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Permanent+Marker&family=Vibur&family=Pangolin&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Permanent+Marker&family=Pangolin&display=swap" rel="stylesheet">
 
     <script>
     function insertIcons() {
       if (typeof window.xeScribble === 'undefined') {
-        console.log("no scribble yet...")
         return setTimeout(insertIcons, 1000)
       }
       document.getElementById('pencil-icon').innerHTML = window.xeScribble.svgs['draw']

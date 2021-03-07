@@ -15,6 +15,7 @@
 \item Make your slide content editable with \code{\link[=use_editable]{use_editable()}}
 \item Share your slides in style with \code{\link[=use_share_again]{use_share_again()}}
 \item Broadcast your slides in real time to viewers with \code{\link[=use_broadcast]{use_broadcast()}}
+\item Scribble on your slides during your presentation with \code{\link[=use_scribble]{use_scribble()}}
 \item Announce slide changes with a subtle tone: \code{\link[=use_slide_tone]{use_slide_tone()}}
 \item Animate slide transitions with \code{\link[=use_animate_css]{use_animate_css()}}
 \item Add tabbed panels to slides with \code{\link[=use_panelset]{use_panelset()}}
@@ -44,19 +45,19 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item Yotam Mann (tone.js) [contributor]
-  \item Daniel Eden (animate.css) [contributor]
-  \item  Tachyons authors [contributor]
-  \item  Klaus Hartl, Fagner Brack, GitHub Contributors (js-cookie) [contributor]
-  \item  Chris Andrejewski (himalaya) [contributor]
-  \item Eric Londaits (text-poster.js) [contributor]
-  \item Zeno Rocha (clipboard.js) [contributor]
-  \item Nikita Karamov (shareon.js) [contributor]
-  \item Ross Zurowski (fitvids.js) [contributor]
-  \item  Michelle Bu and Eric Zhang (peerjs) [contributor]
-  \item Kiril Vatev (tiny.toast) [contributor]
-  \item André Restive (remark.search) [contributor]
-  \item  Printio (Juriy Zaytsev, Maxim Chernyak) (fabric.js) [contributor]
+  \item Yotam Mann (tone.js) [copyright holder]
+  \item Daniel Eden (animate.css) [copyright holder]
+  \item  Tachyons authors [copyright holder]
+  \item  Klaus Hartl, Fagner Brack, GitHub Contributors (js-cookie) [copyright holder]
+  \item  Chris Andrejewski (himalaya) [copyright holder]
+  \item Eric Londaits (text-poster.js) [copyright holder]
+  \item Zeno Rocha (clipboard.js) [copyright holder]
+  \item Nikita Karamov (shareon.js) [copyright holder]
+  \item Ross Zurowski (fitvids.js) [copyright holder]
+  \item  Michelle Bu and Eric Zhang (peerjs) [copyright holder]
+  \item Kiril Vatev (tiny.toast) [copyright holder]
+  \item André Restive (remark.search) [copyright holder]
+  \item  Printio (Juriy Zaytsev, Maxim Chernyak) (fabric.js) [copyright holder]
 }
 
 }

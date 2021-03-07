@@ -1,7 +1,7 @@
 devtools::document()
 devtools::install(dependencies = FALSE)
 
-rmarkdown_v_expected <- package_version("2.6.6")
+rmarkdown_v_expected <- package_version("2.7.2")
 rmarkdown_v <- packageVersion("rmarkdown")
 if (rmarkdown_v != rmarkdown_v_expected) {
   message(
@@ -27,7 +27,8 @@ docs <- file.path(
     "extra-styles",
     "clipboard",
     "broadcast",
-    "share-again"
+    "share-again",
+    "scribble"
   )
 )
 
