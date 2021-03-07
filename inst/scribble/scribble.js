@@ -211,7 +211,7 @@ class Scribble {
 
   createColorPicker () {
     const colorPicker = document.createElement('input')
-    colorPicker.setAttribute('id', 'colorPicker')
+    colorPicker.setAttribute('id', 'xe-scribble__colorPicker')
     colorPicker.classList.add('xe-scribble__button')
     colorPicker.setAttribute('type', 'color')
     colorPicker.setAttribute('value', this.currColor)

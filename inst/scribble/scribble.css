@@ -124,28 +124,25 @@
   color: var(--xe-scribble--button-active-color);
 }
 
-#colorPicker {
-  border-radius: 100%;
-  height: 22px;
-  width: 22px;
-  margin: 0;
-}
-
-#colorPicker {
+#xe-scribble__colorPicker {
   border-radius: 100%;
   height: 30px;
   width: 30px;
+  margin: 0;
   border: none;
   outline: none;
   -webkit-appearance: none;
 }
 
-#colorPicker::-webkit-color-swatch-wrapper {
+#xe-scribble__colorPicker::-webkit-color-swatch-wrapper {
   padding: 0;
 }
 
-#colorPicker::-webkit-color-swatch,
-#colorPicker::-moz-color-swatch{
+#xe-scribble__colorPicker::-webkit-color-swatch {
+  border-radius: 100%;
+}
+
+#xe-scribble__colorPicker::-moz-color-swatch{
   border: none;
   border-radius: 100%;
 }
@@ -155,7 +152,7 @@
   <button class="xe-scribble__button xe-scribble__button__draw active"><svg></svg></button>
   <button class="xe-scribble__button xe-scribble__button__erase"><svg></svg></button>
   <button class="xe-scribble__button xe-scribble__button__clear"><svg></svg></button>
-  <input id="colorPicker" class="xe-scribble__button" type="color" value="rgba(0, 0, 0, 1)">
+  <input id="xe-scribble__colorPicker" class="xe-scribble__button" type="color" value="rgba(0, 0, 0, 1)">
 </div>
 
 #f44336 #E91E63 #9C27B0 #673AB7  #3F51B5 #2196F3 #03A9F4 #00BCD4 #009688 #4CAF50 #8BC34A #CDDC39 #FFEB3B #FFC107 #FF9800 #FF5722 #795548 #9E9E9E #000000 #FFFFFF
