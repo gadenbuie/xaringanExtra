@@ -85,18 +85,21 @@ html_dependency_scribble <- function(
     src = "scribble",
     script = "scribble.js",
     stylesheet = "scribble.css",
-    head = init_Scribble(pen_color, pen_size, eraser_size),
+    head = init_scribble(pen_color, pen_size, eraser_size),
     all_files = FALSE
   )
 }
 
-init_Scribble <- function(
-  pen_color,
-  pen_size,
-  eraser_size
+init_scribble <- function(
+  pen_color = "#FF0000",
+  pen_size = 3,
+  eraser_size = pen_size * 10
 ) {
   # Current we expect one color, we may lift this restriction in the future
-  stopifnot("single pen color" = length(pen_color) == 1)
+  stopifnot(
+    "single pen color" = length(pen_color) == 1,
+    "pen_color must be character" = is.character(pen_color)
+  )
   stopifnot(is.numeric(pen_size))
   stopifnot(is.numeric(eraser_size))
   opts <- list(
