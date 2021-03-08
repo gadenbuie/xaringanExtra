@@ -399,7 +399,7 @@ and positioning. You can also make the logo a link using `link_url` and
 you can hide the logo for a particular slide by using the `hide_logo`
 slide class.
 
-## &#x1F50D; search
+## &#x1F50D; Search
 
 #### &#x1F4FA; [Search Demo](https://gadenbuie.github.io/xaringanExtra/search)
 
