@@ -12,6 +12,8 @@
 -   Share your slides in style with [share again](/share-again)
 -   Broadcast your slides in real time to viewers with
     [broadcast](/broadcast)
+-   Scribble on your slides during your presentation with
+    [scribble](/scribble)
 -   Announce slide changes with a [subtle tone](/slide-tone)
 -   Animate slide transitions with [animate.css](/animate-css)
 -   Add tabbed panels to slides with [panelset](/panelset)

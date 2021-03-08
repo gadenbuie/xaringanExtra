@@ -1,62 +1,71 @@
 Package: xaringanExtra
 Title: Extras And Extensions for Xaringan Slides
-Version: 0.2.6
+Version: 0.3.0
 Authors@R: 
     c(person(given = "Garrick",
              family = "Aden-Buie",
              role = c("aut", "cre"),
              email = "garrick@aden-buie.com",
              comment = c(ORCID = "0000-0002-7111-0077")),
+      person(given = "Matthew T.",
+             family = "Warkentin",
+             role = "aut",
+             email = "warkentin@lunenfeld.ca",
+             comment = c("Contributed scribble", ORCID = "0000-0001-8730-3511")),
       person(given = "Yotam",
              family = "Mann",
-             role = "ctb",
+             role = "cph",
              comment = "tone.js"),
       person(given = "Daniel",
              family = "Eden",
-             role = "ctb",
+             role = "cph",
              comment = "animate.css"),
       person(family = "Tachyons authors",
-             role = "ctb"),
+             role = "cph"),
       person(family = "Klaus Hartl, Fagner Brack, GitHub Contributors",
-             role = "ctb",
+             role = "cph",
              comment = "js-cookie"),
       person(family = "Chris Andrejewski",
-             role = "ctb",
+             role = "cph",
              comment = "himalaya"),
       person(given = "Eric",
              family = "Londaits",
-             role = "ctb",
+             role = "cph",
              comment = "text-poster.js"),
       person(given = "Zeno",
              family = "Rocha",
-             role = "ctb",
+             role = "cph",
              comment = "clipboard.js"),
       person(given = "Nikita",
              family = "Karamov",
-             role = "ctb",
+             role = "cph",
              comment = "shareon.js"),
       person(given = "Ross",
              family = "Zurowski",
-             role = "ctb",
+             role = "cph",
              comment = "fitvids.js"),
       person(family = "Michelle Bu and Eric Zhang",
-             role = "ctb",
+             role = "cph",
              comment = "peerjs"),
       person(given = "Kiril",
              family = "Vatev",
-             role = "ctb",
-             comment = "tiny.toast."),
+             role = "cph",
+             comment = "tiny.toast"),
       person(given = "André",
              family = "Restive",
-             role = "ctb",
-             comment = "remark.search"))
+             role = "cph",
+             comment = "remark.search"),
+      person(family = "Printio (Juriy Zaytsev, Maxim Chernyak)",
+             role = "cph",
+             comment = "fabric.js"
+            ))
 Description: Extras and extensions for xaringan slides. Nagivate
     your slides with tile view. Make your slides editable, live! Announce
     slide changes with subtle tones. Animate slide transitions with
     animate.css. Add tabbed panels to slides with panelset. Include
-    yourself in your slides with webcam. Add a "copy" button to your code
-    chunk with clipboard. Use the Tachyons CSS utility toolkit. Fit your
-    slides to fill the browser window.
+    yourself in your slides with webcam. Scribble on your slides. Add a
+    "copy" button to your code chunk with clipboard. Use the Tachyons CSS
+    utility toolkit. Fit your slides to fill the browser window.
 License: MIT + file LICENSE
 URL: https://github.com/gadenbuie/xaringanExtra
 BugReports: https://github.com/gadenbuie/xaringanExtra/issues
@@ -82,6 +91,7 @@ Collate:
     'editable.R'
     'fit-screen.R'
     'panelset.R'
+    'scribble.R'
     'share_again.R'
     'slide-tone.R'
     'styles.R'

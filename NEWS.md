@@ -1,3 +1,14 @@
+# xaringanExtra 0.3.0 (2021-03-07)
+
+- New addin: **scribble**! Now you can draw on your slides! Huge thanks to
+  @mattwarkentin for developing and contributing this extension. With
+  `use_scribble()` you can draw on your slides using your mouse or a tablet with
+  stylus. Drawings stay with each slide and scale when the slides are resized.
+  You can erase individual lines, undo or redo with keyboard shortcuts, or clear
+  the drawings on the current slide easily with the provided toolbox.
+  Thanks also to @LauraRK and @rpruim for suggestions and feedback.
+  (@mattwarkentin #87)
+
 # xaringanExtra 0.2.6 (2021-03-02)
 
 - New addin: **search**! Easily search through the text in your slides.
@@ -97,7 +108,7 @@
 
 * Added **clipboard** extra with `use_clipboard()`. Adds a "Copy Code" button
   to code chunks (`<pre><code>...</code></pre>`) and works in both xaringan
-  slides and R Markdown documents (thanks @mattwrkentin #20, #36).
+  slides and R Markdown documents (thanks @mattwarkentin #20, #36).
 
 # xaringanExtra 0.0.18 (2020-07-16)
 

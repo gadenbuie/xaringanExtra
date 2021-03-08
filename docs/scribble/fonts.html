@@ -1,0 +1,14 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Permanent+Marker&family=Pangolin&display=swap" rel="stylesheet">
+
+<script>
+function insertIcons() {
+  if (typeof window.xeScribble === 'undefined') {
+    return setTimeout(insertIcons, 1000)
+  }
+  document.getElementById('pencil-icon').innerHTML = window.xeScribble.svgs['draw']
+  document.getElementById('erase-icon').innerHTML = window.xeScribble.svgs['eraser']
+  document.getElementById('clear-icon').innerHTML = window.xeScribble.svgs['trash']
+}
+document.addEventListener('DOMContentLoaded', insertIcons)
+</script>

@@ -1,0 +1,148 @@
+---
+title: "Scribble <br>.gray[for xaringan]"
+pagetitle: "&#x1F469;&#x200D;&#x1F3A8; Scribble for xaringan"
+subtitle: "&#x1F469;&#x200D;&#x1F3A8;"
+author: "<a href='https://pkg.garrickadenbuie.com/xaringanExtra'>xaringanExtra<a>"
+date: '.purple[Scribble] on your xaringan slides '
+output:
+  xaringan::moon_reader:
+    css: [robot-fonts, robot]
+    lib_dir: libs
+    includes:
+      in_header: fonts.html
+    nature:
+      highlightStyle: 'atom-one-light'
+---
+
+class: center middle
+
+```{r xaringanExtra-canvas, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(fig.retina = 2)
+```
+
+```{css, echo=FALSE}
+.gray { color: #999; }
+.big { font-size: 1.5em; }
+.purple { color: #A53B87; }
+.green { color: #42B983; }
+.vibur { font-family: Vibur, sans-serif; }
+.tr { text-align: right; }
+.remark-slide-content h1,
+.remark-slide-content h2,
+.remark-slide-content h3 {
+  font-family: 'Permanent Marker', sans-serif;
+}
+.remark-slide-content,
+.remark-slide-content.title-slide h3 {
+  font-size: 28px;
+  font-family:  'Gaegu', sans-serif;
+}
+.remark-slide-content .remark-inline-code {
+  font-size: 0.9em;
+  font-family: 'Pangolin', monospace;
+}
+```
+
+
+# Draw on me!
+
+.big[
+Press <kbd>S</kbd> to start drawing<br>
+or click the **pencil** icon<br>
+in the upper right corner.
+]
+
+.gray[Press <kbd>S</kbd> or click again to stop.]
+
+---
+class: middle center
+
+# Scribble Controls
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+<div><div id="pencil-icon" style="color: var(--xe-scribble--button-inactive-color)"></div><div style="padding: 1em"><strong style="color: red">Draw</strong><br>on your slides</div></div>
+<div><div id="erase-icon" style="color: var(--xe-scribble--button-inactive-color)"></div><div style="padding: 1em"><strong style="color: red">Erase</strong><br>individual lines</div></div>
+<div><div id="clear-icon" style="color: var(--xe-scribble--button-inactive-color)"></div><div style="padding: 1em"><strong style="color: red">Clear</strong><br>drawings from a slide</div></div>
+</div>
+
+---
+
+# How to Use Scribble
+
+Add **scribble** to your slides.
+
+````
+```{r xaringanExtra-scribble, echo=FALSE}`r ''`
+xaringanExtra::use_scribble()
+```
+````
+
+```{r xaringanExtra-scribble, echo=FALSE}
+xaringanExtra::use_scribble()
+```
+
+--
+
+### Choose your options
+
+- `pen_color` sets the starting pen color
+
+- `pen_size` sets the size of the drawing line
+
+- `eraser_size` sets the size of the eraser
+
+---
+class: center middle inverse
+
+# Try It Now!
+
+.green[**scribble** works great with touch devices]
+
+---
+layout: true
+
+## Perfect for teaching
+
+---
+
+Draw your own regression lines!
+
+```{r mtcars-plot, out.width="65%", fig.align='center', echo=FALSE}
+plot(mtcars$wt, mtcars$mpg, pch = 19, xlab = "Weight (1000 lbs)", ylab = "Miles per US Gallon")
+```
+
+---
+
+How close were you?
+
+```{r mtcars-regression, out.width="65%", fig.align='center', echo=FALSE}
+plot(mtcars$wt, mtcars$mpg, pch = 19, xlab = "Weight (1000 lbs)", ylab = "Miles per US Gallon")
+abline(lm(mpg ~ wt, data = mtcars), col = "blue", lwd = 3)
+```
+
+---
+layout: false
+class: middle
+
+.center[
+# Thanks &#x1F64F;
+
+Scribble was built for [xaringan] by 
+
+- [Matt Warkentin](https://mattwarkentin.github.io/) and 
+- [Garrick Aden-Buie](https://www.garrickadenbuie.com)
+
+using the amazing [fabric.js][fabric] library
+]
+
+[fabric]: http://fabricjs.com/
+[xaringan]: https://slides.yihui.org/xaringan
+
+---
+layout: false
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" alt="GitHub Octocat Logo" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
