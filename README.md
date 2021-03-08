@@ -287,7 +287,7 @@ Remember that if you use slide continuations to partially reveal slide
 contents, each partial slide is technically a *brand-new* slide as far
 as xaringan is concerned. This means that each partial slide will have
 it’s own drawing layer and your drawings on one slide won’t carry over
-to the next. (But they’ll stil be there when you switch back!)
+to the next. (But they’ll still be there when you switch back!)
 
 To save a copy of the slide with your drawings, your best option is to
 print your presentation from the browser.
