@@ -90,6 +90,7 @@ Collate:
     'clipboard.R'
     'editable.R'
     'fit-screen.R'
+    'freezeframe.R'
     'panelset.R'
     'scribble.R'
     'share_again.R'
