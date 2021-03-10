@@ -13,7 +13,7 @@ html_dependency_freezeframe <- function() {
     script = "freezeframe.min.js",
     head = paste0(
       "<script>document.addEventListener('DOMContentLoaded', function() {
-        window.xeFreezeframe = new Freezeframe('.remark-slides-area')
+        window.xeFreezeframe = new Freezeframe('.remark-slides-area img[src$=\"gif\"]')
       })</script>"
     ),
     all_files = FALSE
