@@ -314,7 +314,7 @@ class Scribble {
 
   toggleToolbox (show) {
     const isMinimized = this.toolBox.matches('.minimized')
-    if (show && show === !isMinimized) return
+    if (typeof show !== 'undefined' && show === !isMinimized) return
 
     this.hideToolbox = !(show || isMinimized)
     this.toolBox.classList.toggle('minimized')
