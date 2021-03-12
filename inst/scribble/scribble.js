@@ -470,7 +470,6 @@ class Scribble {
     this.eraseMode = true
     this.drawMode = false
     this.eraseBtn.title = 'Stop Erasing'
-    this.eraserCursor.classList.remove('hidden')
     this.eraserCursor.style.backgroundColor = this.eraserColor()
     this.colorPicker.classList.add('hidden')
 
@@ -480,6 +479,13 @@ class Scribble {
 
     document.addEventListener('mousemove', this.eraserCursorMovement)
     document.addEventListener('touchmove', this.eraserCursorMovement)
+
+    const self = this
+    ;['mousemove', 'touchmove'].forEach(function (action) {
+      document.addEventListener(action, function (ev) {
+        self.eraserCursor.classList.remove('hidden')
+      }, { once: true })
+    })
 
     document.addEventListener('keydown', this.undo)
     document.addEventListener('keydown', this.redo)
