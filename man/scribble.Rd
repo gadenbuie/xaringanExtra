@@ -14,8 +14,8 @@ html_dependency_fabricjs(minimized = TRUE)
 html_dependency_scribble(pen_color, pen_size, eraser_size)
 }
 \arguments{
-\item{pen_color}{Initial pen color (default is \verb{"#FF0000} (red)). May be any
-valid CSS Hex, RGB, or HSL color.}
+\item{pen_color}{Initial pen color (default is \verb{"#FF0000} (red)). Must be a
+hexadecimal color, e.g. \verb{#000} or \verb{#4232ea}.}
 
 \item{pen_size}{Pen size (default is 3).}
 

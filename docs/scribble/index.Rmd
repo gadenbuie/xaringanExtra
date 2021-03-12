@@ -79,7 +79,7 @@ xaringanExtra::use_scribble()
 ````
 
 ```{r xaringanExtra-scribble, echo=FALSE}
-xaringanExtra::use_scribble()
+xaringanExtra::use_scribble(rgb(0.9, 0.5, 0.5))
 ```
 
 --

@@ -17,6 +17,7 @@ describe("use_scribble()", {
     expect_error(use_scribble(pen_color = 12))
     expect_error(use_scribble(pen_size = "three"))
     expect_error(use_scribble(eraser_size = "thirty"))
+    expect_error(use_scribble(pen_color = "rgb(0, 0, 0)"))
   })
 })
 
@@ -33,4 +34,19 @@ describe("init_scribble()", {
     expect_snapshot(init_scribble("#FF00FF", pen_size = 4))
     expect_snapshot(init_scribble(pen_size = 4, eraser_size = 33))
   })
+})
+
+test_that("is_hex_color()", {
+  expect_true(is_hex_color("#fff"))
+  expect_true(is_hex_color("#FFF"))
+  expect_true(is_hex_color("#444"))
+  expect_true(is_hex_color("#012345"))
+  expect_true(is_hex_color("#67abcd"))
+  expect_true(is_hex_color("#123456ab"))
+  expect_false(is_hex_color("#1234"))
+  expect_false(is_hex_color("#12345"))
+  expect_false(is_hex_color("#1234567"))
+  expect_false(is_hex_color("rgb(0, 0, 0)"))
+  expect_false(is_hex_color("rgba(0, 0, 0, 10%)"))
+  expect_false(is_hex_color("hsl(0, 0, 0, 10%)"))
 })
