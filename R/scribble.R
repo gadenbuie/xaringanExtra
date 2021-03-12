@@ -20,8 +20,8 @@
 #'   ```
 #'   ````
 #'
-#' @param pen_color Initial pen color (default is `"#FF0000` (red)). May be any
-#'   valid CSS Hex, RGB, or HSL color.
+#' @param pen_color Initial pen color (default is `"#FF0000` (red)). Must be a
+#'   hexadecimal color, e.g. `#000` or `#4232ea`.
 #' @param pen_size Pen size (default is 3).
 #' @param eraser_size Eraser size (default is `pen_size * 10`).
 #'
@@ -98,7 +98,8 @@ init_scribble <- function(
   # Current we expect one color, we may lift this restriction in the future
   stopifnot(
     "single pen color" = length(pen_color) == 1,
-    "pen_color must be character" = is.character(pen_color)
+    "pen_color must be character" = is.character(pen_color),
+  	"pen_color must be a hexadecimal color" = all(is_hex_color(pen_color))
   )
   stopifnot(is.numeric(pen_size))
   stopifnot(is.numeric(eraser_size))
@@ -116,4 +117,9 @@ init_scribble <- function(
     ),
     opts
   )
+}
+
+is_hex_color <- function(x) {
+  x <- trimws(x)
+  grepl("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$", x)
 }
