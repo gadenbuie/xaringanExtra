@@ -229,7 +229,7 @@ class Scribble {
     if (color.substr(0, 1) === '#') {
       return color
     }
-    const digits = /rgb\((\d+), (\d+), (\d+)\)/.exec(color)
+    const digits = /rgb\((\d+),\s*(\d+),\s*(\d+)/.exec(color)
 
     const red = parseInt(digits[1])
     const green = parseInt(digits[2])
