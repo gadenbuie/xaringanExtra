@@ -1,3 +1,12 @@
+# xaringanExtra 0.3.1 (2021-03-13)
+
+* **Breaking change:** scribble now only accepts hexadecimal pen colors. You
+  can still use `rgb()` syntax by calling the `rgb()` function in R: instead of
+  `"rgb(61, 255, 232)"`, you can write `rgb(61, 255, 232, maxColorValue = 255)`.
+* Fix a few other minor issues with **scrible**:
+    - Fix toolbox unminimizing after mouseover when it should stay minimized
+    - Don't show the eraser cursor until the mouse moves
+
 # xaringanExtra 0.3.0 (2021-03-07)
 
 - New addin: **scribble**! Now you can draw on your slides! Huge thanks to
