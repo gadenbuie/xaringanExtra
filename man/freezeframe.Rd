@@ -6,9 +6,30 @@
 \alias{html_dependency_freezeframe}
 \title{FreezeFrame}
 \usage{
-use_freezeframe()
+use_freezeframe(
+  selector = "img[src$=\\"gif\\"]",
+  trigger = c("click", "hover", "none"),
+  overlay = FALSE,
+  responsive = TRUE,
+  warnings = TRUE
+)
 
 html_dependency_freezeframe()
+}
+\arguments{
+\item{selector}{The selector used to search for \code{.gifs} to freeze.}
+
+\item{trigger}{The trigger event to start animation for non-touch devices.
+One of \code{"click"} (default), \code{"hover"} or \code{"none"}.}
+
+\item{overlay}{Whether or not to display a play icon on top of the paused
+image, default: \code{FALSE}.}
+
+\item{responsive}{Whether or not to make the image responsive (100\% width),
+default: \code{TRUE}.}
+
+\item{warnings}{Whether or not to issue warnings in the browser console if
+an image doesn't appear to be a gif.}
 }
 \value{
 An \code{htmltools::tagList()} with the FreezeFrame dependencies, or an

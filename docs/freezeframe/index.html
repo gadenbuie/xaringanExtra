@@ -8,36 +8,8 @@
     <link href="libs/remark-css/robot-fonts.css" rel="stylesheet" />
     <link href="libs/remark-css/robot.css" rel="stylesheet" />
     <script src="libs/freezeframe/freezeframe.min.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', function() {
-            if (typeof slideshow !== 'undefined') {
-              const slides = Array.from(document.querySelectorAll('.remark-slide-container'))
-              // const getExitingSlideIndex = () => slides.findIndex(s => s.matches('.remark-fading'))
-              const getCurrentSlideIndex = () => slides.findIndex(s => s.matches('.remark-visible'))
-              window.xeFreezeframe = slides.map(function(slide) {
-                return new Freezeframe(
-                    slide.querySelectorAll('img[src$="gif"]'), {
-                    trigger: 'click',
-                    responsive: true
-                  })
-              })
-              slideshow.on('hideSlide', function() {
-                const ffPrev = window.xeFreezeframe[getCurrentSlideIndex()]
-                if (ffPrev) ffPrev.stop()
-              })
-              slideshow.on('afterShowSlide', function() {
-                const ffNew = window.xeFreezeframe[getCurrentSlideIndex()]
-                if (ffNew) {
-                  ffNew.stop()
-                  ffNew.start()
-                }
-              })
-            } else {
-              window.xeFreezeframe = new Freezeframe('img[src$="gif"]', {
-                trigger: 'click',
-                responsive: true
-              })
-            }
-          })</script>
+    <script src="libs/xaringanExtra-freezeframe/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
   </head>
   <body>
     <textarea id="source">

@@ -15,6 +15,16 @@
 #'   ```
 #'   ````
 #'
+#' @param selector The selector used to search for `.gifs` to freeze.
+#' @param trigger The trigger event to start animation for non-touch devices.
+#'   One of `"click"` (default), `"hover"` or `"none"`.
+#' @param overlay Whether or not to display a play icon on top of the paused
+#'   image, default: `FALSE`.
+#' @param responsive Whether or not to make the image responsive (100% width),
+#'   default: `TRUE`.
+#' @param warnings Whether or not to issue warnings in the browser console if
+#'   an image doesn't appear to be a gif.
+#'
 #' @return An `htmltools::tagList()` with the FreezeFrame dependencies, or an
 #'   [htmltools::htmlDependency()].
 #'
@@ -25,9 +35,16 @@ NULL
 
 #' @describeIn freezeframe Adds FreezeFrame to your xaringan slides.
 #' @export
-use_freezeframe <- function() {
+use_freezeframe <- function(
+  selector = 'img[src$="gif"]',
+  trigger = c("click", "hover", "none"),
+  overlay = FALSE,
+  responsive = TRUE,
+  warnings = TRUE
+) {
   htmltools::tagList(
-    html_dependency_freezeframe()
+    html_dependency_freezeframe(),
+    html_dependency_freezeframe_init(selector, trigger, overlay, responsive, warnings)
   )
 }
 
@@ -43,38 +60,58 @@ html_dependency_freezeframe <- function() {
     package = "xaringanExtra",
     src = "jslib/freezeframe",
     script = "freezeframe.min.js",
-    head = paste0(
-      "<script>document.addEventListener('DOMContentLoaded', function() {
-        if (typeof slideshow !== 'undefined') {
-          const slides = Array.from(document.querySelectorAll('.remark-slide-container'))
-          // const getExitingSlideIndex = () => slides.findIndex(s => s.matches('.remark-fading'))
-          const getCurrentSlideIndex = () => slides.findIndex(s => s.matches('.remark-visible'))
-          window.xeFreezeframe = slides.map(function(slide) {
-            return new Freezeframe(
-                slide.querySelectorAll('img[src$=\"gif\"]'), {
-                trigger: 'click',
-                responsive: true
-              })
-          })
-          slideshow.on('hideSlide', function() {
-            const ffPrev = window.xeFreezeframe[getCurrentSlideIndex()]
-            if (ffPrev) ffPrev.stop()
-          })
-          slideshow.on('afterShowSlide', function() {
-            const ffNew = window.xeFreezeframe[getCurrentSlideIndex()]
-            if (ffNew) {
-              ffNew.stop()
-              ffNew.start()
-            }
-          })
-        } else {
-          window.xeFreezeframe = new Freezeframe('img[src$=\"gif\"]', {
-            trigger: 'click',
-            responsive: true
-          })
-        }
-      })</script>"
-    ),
     all_files = FALSE
   )
+}
+
+html_dependency_freezeframe_init <- function(
+  selector = 'img[src$="gif"]',
+  trigger = c("click", "hover", "none"),
+  overlay = FALSE,
+  responsive = TRUE,
+  warnings = TRUE
+) {
+  htmltools::htmlDependency(
+    name = "xaringanExtra-freezeframe",
+    version = "0.0.1",
+    package = "xaringanExtra",
+    src = "freezeframe",
+    script = "freezeframe-init.js",
+    head = freezeframe_options(selector, trigger, overlay, responsive, warnings),
+    all_files = FALSE
+  )
+}
+
+freezeframe_options <- function(
+  selector = 'img[src$="gif"]',
+  trigger = c("click", "hover", "none"),
+  overlay = FALSE,
+  responsive = TRUE,
+  warnings = TRUE
+) {
+  trigger <- match.arg(trigger)
+  if (identical(trigger, "none")) trigger <- FALSE
+  stopifnot(
+    "selector must be a character" = is.character(selector),
+    "selector must be non-missing" = length(selector) > 0 && !is.na(selector),
+    "overlay must be boolean" = is.logical(overlay),
+    "responsive must be boolean" = is.logical(responsive),
+    "warnings must be boolean" = is.logical(warnings)
+  )
+  opts <- jsonlite::toJSON(
+    list(
+      selector = paste(selector, collapse = ', '),
+      trigger = trigger,
+      overlay = overlay,
+      responsive = responsive,
+      warnings = warnings
+    ),
+    auto_unbox = TRUE
+  )
+  script <- htmltools::tags$script(
+    id = "xaringanExtra-freezeframe-options",
+    type = "application/json",
+    htmltools::HTML(opts)
+  )
+  format(script)
 }
