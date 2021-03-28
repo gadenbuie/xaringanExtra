@@ -1,3 +1,7 @@
+# xaringanExtra 0.4.0 (2021-03-27)
+
+* New extension: Always play gifs from the start with `use_freezeframe()` (#102)
+
 # xaringanExtra 0.3.1 (2021-03-13)
 
 * **Breaking change:** scribble now only accepts hexadecimal pen colors. You
