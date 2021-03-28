@@ -32,7 +32,7 @@ xaringanExtra::style_search(match_background = "pink")
 ```
 ````
 
-| Parameter                  | Description                                                                            |
+| Argument                   | Description                                                                            |
 |:---------------------------|:---------------------------------------------------------------------------------------|
 | `icon_fill`                | Color of search icon                                                                   |
 | `input_background`         | Color of search input box background                                                   |

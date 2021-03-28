@@ -1,0 +1,138 @@
+---
+title: "FreezeFrame<br>.gray[for xaringan]"
+pagetitle: "&#x23F8;&#xFE0F; FreezeFrame | xaringanExtra"
+subtitle: ".big[&#x23F8;&#xFE0F;]"
+author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
+date: 'xaringanExtra'
+output:
+  xaringan::moon_reader:
+    css: [robot-fonts, robot]
+    lib_dir: libs
+---
+
+```{r xaringan-panelset, echo=FALSE, message=FALSE}
+options(htmltools.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+```
+
+class: center middle
+
+![](https://media.giphy.com/media/l4FGDukN065CC06gE/giphy.gif)
+
+---
+class: center middle
+
+.w-75.h-center[
+![](https://media.giphy.com/media/l0FF56cexcW2JAXCJj/giphy.gif)
+]
+
+---
+class: center middle
+
+.h-center[
+![](https://media.giphy.com/media/K5QYsbHL2pzBFRo1cj/giphy.gif)
+]
+
+---
+class: center middle big-text
+
+Did you notice
+
+--
+
+each slide has
+
+--
+
+perfect timing?
+
+
+---
+class: center middle
+
+.h-center[
+![](https://media.giphy.com/media/GS8rAgUNI35uw/giphy.gif)
+]
+
+---
+class: center middle
+
+.w-45.h-center[
+![](https://media.giphy.com/media/JoDT2WaykzFnN9vJqL/giphy.gif)
+]
+
+---
+class: center middle
+
+.h-center[
+![](https://media.giphy.com/media/11StaZ9Lj74oCY/giphy.gif)
+]
+
+---
+class: center middle big-text
+
+Try going back
+
+&#x1F448;
+
+---
+
+# Use _freezeframe_
+
+Drop this into your slides:
+
+````
+```{r xaringanExtra-freezeframe, echo=FALSE}`r ''`
+xaringanExtra::use_freezeframe()
+```
+````
+
+--
+
+1. Gifs start when you enter a slide.
+
+--
+
+2. They stop when you exit (but you can't see that).
+
+--
+
+3. You can start or stop the gif with a click.
+
+---
+class: center middle
+
+.h-center[
+![](https://media.giphy.com/media/IcGkqdUmYLFGE/giphy.gif)
+]
+
+---
+layout: false
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" alt="GitHub Octocat Logo" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
+
+
+```{css echo=FALSE}
+.gray {
+  color: #888;
+}
+.big-text p {
+  font-size: 4em;
+  line-height: 0.3;
+}
+.h-center {
+  margin: 0 auto;
+}
+.w-45 {
+  width: 45%;
+}
+.w-75 {
+  width: 75%;
+}
+.w-100 {
+  width: 100%;
+}
+```
