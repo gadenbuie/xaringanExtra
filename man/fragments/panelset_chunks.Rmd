@@ -1,6 +1,6 @@
 ```{r echo=FALSE, results="asis"}
 if (!exists("INCLUDE_CHILD_HEADER") || isTRUE(INCLUDE_CHILD_HEADER)) {
-	cat("# Panelset knitr Chunks")
+  cat("# Panelset knitr Chunks")
 }
 ```
 
@@ -17,8 +17,10 @@ To help facilitate this process,
 When set to `TRUE`,
 the code is included in a panel tab named _Code_
 and the output is included in a panel tab named _Output_.
+Note that you still need to wrap this chunk in a panelset-creating container.
 
 ````markdown
+.panelset[
 ```{r panelset = TRUE}`r ''`
 list(
   normal = rnorm(10),
@@ -26,9 +28,10 @@ list(
   cauchy = rcauchy(10)
 )
 ```
+]
 ````
 
-You can also set `panelset` to a named vector,
+You can also set the `panelset` chunk option to a named vector,
 where the `source` item is the tab name for the source code
 and the `output` item is the tab name for the code output.
 
@@ -43,10 +46,10 @@ ggplot(Orange) +
 ```
 ````
 
-Note that when your code contains multiple expressions and outputs,
+When your code contains multiple expressions and outputs,
 you may also want to set the `results = "hold"` chunk option.
-Currently, knitr chunks default to `results = "markup"`
-and each code expression and output pair will generate a pair of tabs.
+Currently, knitr uses `results = "markup"` as the default,
+in which case each code expression and output pair will generate a pair of tabs.
 
 ````markdown
 ```{r panelset = TRUE, results="hold"}`r ''`
@@ -56,7 +59,7 @@ print("The lake sparkled in the red hot sun.")
 ````
 
 Finally, panelset chunks also work in R Markdown documents,
-but they must be encapsulated in `<div class="panelset">` and `</div>`:
+but they must be encapsulated in `<div class="panelset">` and `</div>`
 
 ````markdown
 <div class="panelset">
@@ -66,4 +69,15 @@ print("Oak is strong and also gives shade.")
 ```
 
 </div>
+````
+
+or appear inside a section with the panelset class.
+
+````markdown
+### A Random Sentence {.panelset}
+
+```{r panelset = TRUE}`r ''`
+print("Oak is strong and also gives shade.")
+```
+
 ````
