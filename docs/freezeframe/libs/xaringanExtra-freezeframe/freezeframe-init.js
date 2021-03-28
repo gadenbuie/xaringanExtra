@@ -15,14 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
       return new Freezeframe(optsSlide)
     })
 
-    slideshow.on('hideSlide', function () {
-      window.xeFreezeframe.forEach(ff => ff.stop())
-    })
     slideshow.on('afterShowSlide', function () {
-      const ffNew = window.xeFreezeframe[getCurrentSlideIndex()]
-      if (ffNew) {
-        ffNew.start()
-      }
+      window.xeFreezeframe.forEach((ff, idx) => {
+        idx == getCurrentSlideIndex() ? ff.start() : ff.stop()
+      })
     })
   } else {
     window.xeFreezeframe = new Freezeframe(opts)
