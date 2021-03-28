@@ -36,10 +36,11 @@ An \code{htmltools::tagList()} with the FreezeFrame dependencies, or an
 \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}.
 }
 \description{
-FreezeFrame starts your gifs when you turn to a slide. This helps alleviate
-the awkward pause that can happen when you turn to a slide with a gif that
-has already started and you have to wait until it looks back around. You can
-also directly click on the gif to stop or start it.
+FreezeFrame starts any gifs on a slide when you turn to that slide. This
+helps This helps alleviate the awkward pause that can happen when you turn to
+a slide with a gif that has already started and you have to wait until it
+loops back around. You can also directly click on the gif to stop or start
+it.
 }
 \section{Functions}{
 \itemize{

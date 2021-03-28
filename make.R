@@ -28,7 +28,8 @@ docs <- file.path(
     "clipboard",
     "broadcast",
     "share-again",
-    "scribble"
+    "scribble",
+    "freezeframe"
   )
 )
 

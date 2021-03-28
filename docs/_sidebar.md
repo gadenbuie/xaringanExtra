@@ -13,6 +13,7 @@
 * [🔍 Search](search.md)
 * [🏗 Tachyons](tachyons.md)
 * [🤳 Webcam](webcam.md)
+* [⏸️ FreezeFrame](freezeframe.md)
 * [📋 Clipboard](clipboard.md)
 * [📐 Fit to Screen](fit-to-screen.md)
 * [😎 Extra Styles](extra-styles.md)

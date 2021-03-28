@@ -1,6 +1,6 @@
 ---
-title: "freezeframe<br>.gray[for xaringan]"
-pagetitle: "&#x23F8;&#xFE0F; freezeframe | xaringanExtra"
+title: "FreezeFrame<br>.gray[for xaringan]"
+pagetitle: "&#x23F8;&#xFE0F; FreezeFrame | xaringanExtra"
 subtitle: ".big[&#x23F8;&#xFE0F;]"
 author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
 date: 'xaringanExtra'
