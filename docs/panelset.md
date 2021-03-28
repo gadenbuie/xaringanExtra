@@ -187,8 +187,11 @@ slides where space is constrained, this approach can be useful.
 To help facilitate this process, **panelset** provides a `panelset`
 chunk option. When set to `TRUE`, the code is included in a panel tab
 named *Code* and the output is included in a panel tab named *Output*.
+Note that you still need to wrap this chunk in a panelset-creating
+container.
 
 ```` markdown
+.panelset[
 ```{r panelset = TRUE}
 list(
   normal = rnorm(10),
@@ -196,11 +199,12 @@ list(
   cauchy = rcauchy(10)
 )
 ```
+]
 ````
 
-You can also set `panelset` to a named vector, where the `source` item
-is the tab name for the source code and the `output` item is the tab
-name for the code output.
+You can also set the `panelset` chunk option to a named vector, where
+the `source` item is the tab name for the source code and the `output`
+item is the tab name for the code output.
 
 ```` markdown
 ```{r panelset = c(source = "ggplot2", output = "Plot")}
@@ -213,9 +217,9 @@ ggplot(Orange) +
 ```
 ````
 
-Note that when your code contains multiple expressions and outputs, you
-may also want to set the `results = "hold"` chunk option. Currently,
-knitr chunks default to `results = "markup"` and each code expression
+When your code contains multiple expressions and outputs, you may also
+want to set the `results = "hold"` chunk option. Currently, knitr uses
+`results = "markup"` as the default, in which case each code expression
 and output pair will generate a pair of tabs.
 
 ```` markdown
@@ -226,7 +230,7 @@ print("The lake sparkled in the red hot sun.")
 ````
 
 Finally, panelset chunks also work in R Markdown documents, but they
-must be encapsulated in `<div class="panelset">` and `</div>`:
+must be encapsulated in `<div class="panelset">` and `</div>`
 
 ```` markdown
 <div class="panelset">
@@ -236,5 +240,15 @@ print("Oak is strong and also gives shade.")
 ```
 
 </div>
+````
+
+or appear inside a section with the panelset class.
+
+```` markdown
+### A Random Sentence {.panelset}
+
+```{r panelset = TRUE}
+print("Oak is strong and also gives shade.")
+```
 ````
 

@@ -15,6 +15,7 @@
 #' - Add a search box to search through your slides with [use_search()]
 #' - Use the Tachyons CSS utility toolkit: [use_tachyons()]
 #' - Add a live video feed to you slides with [use_webcam()]
+#' - Always play gifs from the start with [use_freezeframe()]
 #' - Add one-click code copying with [use_clipboard()]
 #' - Fit your slides to fill the browser window: [use_fit_screen()]
 #'
@@ -31,7 +32,7 @@
 #' @param include Character vector of extensions to include. One or more of
 #'   `"tile_view"`, `"editable"`, `"share_again"`, `"broadcast"`, `"slide_tone"`,
 #'   `"animate_css"`, `"panelset"` `"tachyons"`, `"fit_screen"`, `"webcam"`,
-#'   `"clipboard"`, `"search"`, `"scribble"`.
+#'   `"clipboard"`, `"search"`, `"scribble"`, `"freezeframe"`.
 #' @export
 use_xaringan_extra <- function(
   include = c(
@@ -52,7 +53,8 @@ use_xaringan_extra <- function(
     "share_again",
     "broadcast",
     "search",
-    "scribble"
+    "scribble",
+    "freezeframe"
   )
   include <- match.arg(include, opts, TRUE)
   includes <- function(x) x %in% include
@@ -69,7 +71,8 @@ use_xaringan_extra <- function(
     if (includes("share_again")) use_share_again(),
     if (includes("broadcast")) use_broadcast(),
     if (includes("search")) use_search(),
-    if (includes("scribble")) use_scribble()
+    if (includes("scribble")) use_scribble(),
+    if (includes("freezeframe")) use_freezeframe()
   )
 }
 

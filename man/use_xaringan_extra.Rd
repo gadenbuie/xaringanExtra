@@ -13,7 +13,7 @@ use_xaringan_extra(
 \item{include}{Character vector of extensions to include. One or more of
 \code{"tile_view"}, \code{"editable"}, \code{"share_again"}, \code{"broadcast"}, \code{"slide_tone"},
 \code{"animate_css"}, \code{"panelset"} \code{"tachyons"}, \code{"fit_screen"}, \code{"webcam"},
-\code{"clipboard"}, \code{"search"}, \code{"scribble"}.}
+\code{"clipboard"}, \code{"search"}, \code{"scribble"}, \code{"freezeframe"}.}
 }
 \value{
 An \code{htmltools::tagList()} with the \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}s

@@ -23,6 +23,7 @@
 \item Add a search box to search through your slides with \code{\link[=use_search]{use_search()}}
 \item Use the Tachyons CSS utility toolkit: \code{\link[=use_tachyons]{use_tachyons()}}
 \item Add a live video feed to you slides with \code{\link[=use_webcam]{use_webcam()}}
+\item Always play gifs from the start with \code{\link[=use_freezeframe]{use_freezeframe()}}
 \item Add one-click code copying with \code{\link[=use_clipboard]{use_clipboard()}}
 \item Fit your slides to fill the browser window: \code{\link[=use_fit_screen]{use_fit_screen()}}
 }
@@ -58,6 +59,7 @@ Other contributors:
   \item Kiril Vatev (tiny.toast) [copyright holder]
   \item André Restive (remark.search) [copyright holder]
   \item  Printio (Juriy Zaytsev, Maxim Chernyak) (fabric.js) [copyright holder]
+  \item Christpher Antonellis (freezeframe.js) [copyright holder]
 }
 
 }

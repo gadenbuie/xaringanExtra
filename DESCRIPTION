@@ -57,8 +57,11 @@ Authors@R:
              comment = "remark.search"),
       person(family = "Printio (Juriy Zaytsev, Maxim Chernyak)",
              role = "cph",
-             comment = "fabric.js"
-            ))
+             comment = "fabric.js"),
+      person(given = "Christpher",
+             family = "Antonellis",
+             role = "cph",
+             comment = "freezeframe.js"))
 Description: Extras and extensions for xaringan slides. Nagivate
     your slides with tile view. Make your slides editable, live! Announce
     slide changes with subtle tones. Animate slide transitions with
@@ -90,6 +93,7 @@ Collate:
     'clipboard.R'
     'editable.R'
     'fit-screen.R'
+    'freezeframe.R'
     'panelset.R'
     'scribble.R'
     'share_again.R'

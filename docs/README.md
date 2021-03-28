@@ -23,6 +23,7 @@
 -   Use the [Tachyons CSS utility toolkit](/tachyons)
 -   Add a live video feed of your [webcam](/webcam)
 -   Add one-click code copying with [clipboard](/clipboard)
+-   Always play gifs from the start with [freezeframe](/freezeframe)
 -   Fit your slides to [fill the browser window](/fit-to-screen)
 -   Add [extra CSS styles](/extra-styles)
 
