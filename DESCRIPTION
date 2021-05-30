@@ -95,6 +95,7 @@ Collate:
     'fit-screen.R'
     'freezeframe.R'
     'panelset.R'
+    'progress-bar.R'
     'scribble.R'
     'share_again.R'
     'slide-tone.R'

@@ -23,6 +23,7 @@ xaringanExtra::use_extra_styles(
   mute_unhighlighted_code = TRUE,
   bundle_id = "extra-styles-docs"
 )
+xaringanExtra::use_progress_bar("#0051BA", "top", "0.25em")
 ```
 
 ```{css, echo=FALSE}
@@ -55,6 +56,19 @@ xaringanExtra::use_extra_styles(
   mute_unhighlighted_code = TRUE #<<
 )
 ```
+
+---
+class: middle
+
+## Add a progress bar
+
+````markdown
+```{r xaringanExtra, echo = FALSE}`r ''`
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "top", height = "10px")
+```
+````
+
+26gg 
 
 ---
 layout: false

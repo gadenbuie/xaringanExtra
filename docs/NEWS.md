@@ -2,7 +2,7 @@
 
 * Added color presets to **scribble**: press `0` through `9` while drawing to
   quickly toggle through a preset color palette, customizable using the
-  `palette` argument of `use_palette()` (thanks [@kim](https://github.com/kim)-soo-hwan, [#112](https://github.com/gadenbuie/xaringanExtra/issues/112), [#117](https://github.com/gadenbuie/xaringanExtra/issues/117)).
+  `palette` argument of `use_palette()` (thanks [@kim-soo-hwan](https://github.com/kim-soo-hwan), [#112](https://github.com/gadenbuie/xaringanExtra/issues/112), [#117](https://github.com/gadenbuie/xaringanExtra/issues/117)).
 
 # xaringanExtra 0.4.0 (2021-03-27)
 
