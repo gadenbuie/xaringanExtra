@@ -18,6 +18,9 @@ describe("use_scribble()", {
     expect_error(use_scribble(pen_size = "three"))
     expect_error(use_scribble(eraser_size = "thirty"))
     expect_error(use_scribble(pen_color = "rgb(0, 0, 0)"))
+    expect_warning(use_scribble(
+      palette = paste0("#", replicate(11, paste(sample(c(0:9, letters[1:6]), 6, replace = TRUE), collapse = "")))
+    ))
   })
 })
 
@@ -33,6 +36,7 @@ describe("init_scribble()", {
     expect_snapshot(init_scribble("#abc123"))
     expect_snapshot(init_scribble("#FF00FF", pen_size = 4))
     expect_snapshot(init_scribble(pen_size = 4, eraser_size = 33))
+    expect_snapshot(init_scribble(palette = c("#bada55", "#55adab", "#bada55")))
   })
 })
 

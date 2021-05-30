@@ -33,6 +33,7 @@ class Scribble {
 
     this.eraserCursorMovement = this.eraserCursorMovement.bind(this)
     this.eraserDetectErase = this.eraserDetectErase.bind(this)
+    this.setPresetColor = this.setPresetColor.bind(this)
 
     // Toolbox objects
     this.launchKey = 83 // "S" used to toggle toolbox/state
@@ -377,6 +378,17 @@ class Scribble {
     })
   }
 
+  setPresetColor (ev) {
+    let idx = Number(ev.key)
+    if (isNaN(idx) || typeof idx === 'undefined' || idx >= 10) return;
+    idx = idx === 0 ? 10 : idx
+    const presetColor = this.opts.palette[idx - 1]
+    this.currColor = presetColor
+    this.currFabric.freeDrawingBrush.color = presetColor
+    this.setPenColorCSSVariables(presetColor)
+    this.colorPicker.value = presetColor
+  }
+
   startDrawing () {
     slideshow.pause()
     this.toggleToolbox(true)
@@ -397,6 +409,7 @@ class Scribble {
 
     document.addEventListener('keydown', this.undo)
     document.addEventListener('keydown', this.redo)
+    document.addEventListener('keydown', this.setPresetColor)
 
     document.removeEventListener('mousemove', this.eraserCursorMovement)
     document.removeEventListener('touchmove', this.eraserCursorMovement)
@@ -420,6 +433,7 @@ class Scribble {
 
     document.removeEventListener('keydown', this.undo)
     document.removeEventListener('keydown', this.redo)
+    document.removeEventListener('keydown', this.setPresetColor)
 
     this.drawBtn.classList.remove('active')
     this.eraseBtn.classList.remove('active')

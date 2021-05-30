@@ -24,6 +24,9 @@
 #'   hexadecimal color, e.g. `#000` or `#4232ea`.
 #' @param pen_size Pen size (default is 3).
 #' @param eraser_size Eraser size (default is `pen_size * 10`).
+#' @param palette A selection of up to 10 colors that become available when
+#'   drawing is active via the keys `0` through `9`. Press the number keys of
+#'   0-9 to quickly active each of the palette colors.
 #'
 #' @return An `htmltools::tagList()` with the scribble dependencies, or an
 #'   [htmltools::htmlDependency()].
@@ -36,14 +39,16 @@ NULL
 use_scribble <- function(
   pen_color = "#FF0000",
   pen_size = 3,
-  eraser_size = pen_size * 10
+  eraser_size = pen_size * 10,
+  palette = NULL
 ) {
   htmltools::tagList(
     html_dependency_fabricjs(),
     html_dependency_scribble(
       pen_color,
       pen_size,
-      eraser_size
+      eraser_size,
+      palette
     )
   )
 }
@@ -76,7 +81,8 @@ html_dependency_fabricjs <- function(minimized = TRUE) {
 html_dependency_scribble <- function(
   pen_color,
   pen_size,
-  eraser_size
+  eraser_size,
+  palette = NULL
 ) {
   htmltools::htmlDependency(
     name = "xaringanExtra-scribble",
@@ -85,7 +91,7 @@ html_dependency_scribble <- function(
     src = "scribble",
     script = "scribble.js",
     stylesheet = "scribble.css",
-    head = init_scribble(pen_color, pen_size, eraser_size),
+    head = init_scribble(pen_color, pen_size, eraser_size, palette),
     all_files = FALSE
   )
 }
@@ -93,7 +99,8 @@ html_dependency_scribble <- function(
 init_scribble <- function(
   pen_color = "#FF0000",
   pen_size = 3,
-  eraser_size = pen_size * 10
+  eraser_size = pen_size * 10,
+  palette = NULL
 ) {
   # Current we expect one color, we may lift this restriction in the future
   stopifnot(
@@ -103,10 +110,22 @@ init_scribble <- function(
   )
   stopifnot(is.numeric(pen_size))
   stopifnot(is.numeric(eraser_size))
+
+  palette <- palette %||% default_palette
+  if (length(palette) > 10) {
+    warning("The scribble easy-access palette accepts at most 10 colors.")
+    palette <- palette[1:10]
+  }
+
+  if (length(palette) < 10) {
+    palette <- c(palette, default_palette[-seq_along(palette)])
+  }
+
   opts <- list(
     pen_color = pen_color,
     pen_size = jsonlite::unbox(pen_size),
-    eraser_size = jsonlite::unbox(eraser_size)
+    eraser_size = jsonlite::unbox(eraser_size),
+    palette = palette
   )
   opts <- jsonlite::toJSON(opts)
 
@@ -123,3 +142,16 @@ is_hex_color <- function(x) {
   x <- trimws(x)
   grepl("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$", x)
 }
+
+default_palette <- c(
+  red    = "#e51c23", # (1)
+  green  = "#259b24", # (2)
+  purple = "#9c27b0", # (3)
+  blue   = "#5677fc", # (4)
+  orange = "#ff9800", # (5)
+  cyan   = "#00bcd4", # (6)
+  yellow = "#ffc107", # (7)
+  teal   = "#009688", # (8)
+  grey   = "#9e9e9e", # (9)
+  black  = "#212121"  # (0)
+)
