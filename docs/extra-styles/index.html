@@ -8,6 +8,7 @@
     <link href="libs/remark-css/robot-fonts.css" rel="stylesheet" />
     <link href="libs/remark-css/robot.css" rel="stylesheet" />
     <link href="libs/xaringanExtra-extra-styles_extra-styles-docs/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -23,7 +24,25 @@ class: center, middle, inverse, title-slide
 
 class: middle
 
-
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #0051BA;
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
 
 &lt;style type="text/css"&gt;
 .gray { color: #999; }
@@ -56,6 +75,19 @@ xaringanExtra::use_extra_styles(
 * mute_unhighlighted_code = TRUE
 )
 ```
+
+---
+class: middle
+
+## Add a progress bar
+
+````markdown
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "top", height = "10px")
+```
+````
+
+26gg 
 
 ---
 layout: false

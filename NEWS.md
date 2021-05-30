@@ -1,8 +1,11 @@
-# xaringanExtra 0.4.1 (2021-05-29)
+# xaringanExtra 0.4.2 (2021-05-29)
 
 * Added color presets to **scribble**: press `0` through `9` while drawing to
   quickly toggle through a preset color palette, customizable using the
   `palette` argument of `use_palette()` (thanks @kim-soo-hwan, #112, #117).
+  
+* New feature: animated progress bars that don't interfere with the slide
+  number. Simply add `use_progress_bar()` to your slides! (#109, #118)
 
 # xaringanExtra 0.4.0 (2021-03-27)
 

@@ -22,3 +22,18 @@ xaringanExtra::use_extra_styles(
     highlighting to mute the lines that *aren’t highlighted*.
 
 ![](figures/extra-styles-hover.gif)
+
+You can also add an animated progress bar using
+`xaringanExtra::use_progress_bar()`.
+
+```` markdown
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "top")
+```
+````
+
+-   `color` can be any CSS color
+
+-   `location` can be `"top"` or `"bottom"`
+
+-   `height` can be a valid CSS unit, e.g. `10px` or `0.25em`

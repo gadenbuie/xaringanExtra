@@ -1,6 +1,6 @@
 Package: xaringanExtra
 Title: Extras And Extensions for Xaringan Slides
-Version: 0.4.1
+Version: 0.4.2
 Authors@R: 
     c(person(given = "Garrick",
              family = "Aden-Buie",
@@ -95,6 +95,7 @@ Collate:
     'fit-screen.R'
     'freezeframe.R'
     'panelset.R'
+    'progress-bar.R'
     'scribble.R'
     'share_again.R'
     'slide-tone.R'
