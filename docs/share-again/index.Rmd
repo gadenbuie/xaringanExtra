@@ -3,7 +3,9 @@ title: "Share Again"
 pagetitle: "&#x1F4FC; share again | xaringanExtra"
 author: xaringanExtra
 date: '`r utils::packageVersion("xaringanExtra")`'
-output: rmarkdown::html_document
+output: 
+  rmarkdown::html_document:
+    self_contained: false
 ---
 
 # Have you seen my xaringan slides?
