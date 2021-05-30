@@ -111,14 +111,10 @@ init_scribble <- function(
   stopifnot(is.numeric(pen_size))
   stopifnot(is.numeric(eraser_size))
 
-  palette <- palette %||% default_palette
+  palette <- palette %||% list()
   if (length(palette) > 10) {
     warning("The scribble easy-access palette accepts at most 10 colors.")
     palette <- palette[1:10]
-  }
-
-  if (length(palette) < 10) {
-    palette <- c(palette, default_palette[-seq_along(palette)])
   }
 
   opts <- list(
@@ -142,16 +138,3 @@ is_hex_color <- function(x) {
   x <- trimws(x)
   grepl("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$", x)
 }
-
-default_palette <- c(
-  red    = "#e51c23", # (1)
-  green  = "#259b24", # (2)
-  purple = "#9c27b0", # (3)
-  blue   = "#5677fc", # (4)
-  orange = "#ff9800", # (5)
-  cyan   = "#00bcd4", # (6)
-  yellow = "#ffc107", # (7)
-  teal   = "#009688", # (8)
-  grey   = "#9e9e9e", # (9)
-  black  = "#212121"  # (0)
-)
