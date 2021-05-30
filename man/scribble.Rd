@@ -7,11 +7,16 @@
 \alias{html_dependency_scribble}
 \title{Scribble}
 \usage{
-use_scribble(pen_color = "#FF0000", pen_size = 3, eraser_size = pen_size * 10)
+use_scribble(
+  pen_color = "#FF0000",
+  pen_size = 3,
+  eraser_size = pen_size * 10,
+  palette = NULL
+)
 
 html_dependency_fabricjs(minimized = TRUE)
 
-html_dependency_scribble(pen_color, pen_size, eraser_size)
+html_dependency_scribble(pen_color, pen_size, eraser_size, palette = NULL)
 }
 \arguments{
 \item{pen_color}{Initial pen color (default is \verb{"#FF0000} (red)). Must be a
@@ -20,6 +25,10 @@ hexadecimal color, e.g. \verb{#000} or \verb{#4232ea}.}
 \item{pen_size}{Pen size (default is 3).}
 
 \item{eraser_size}{Eraser size (default is \code{pen_size * 10}).}
+
+\item{palette}{A selection of up to 10 colors that become available when
+drawing is active via the keys \code{0} through \code{9}. Press the number keys of
+0-9 to quickly active each of the palette colors.}
 
 \item{minimized}{Use the minimized \code{fabric.js} dependency?}
 }

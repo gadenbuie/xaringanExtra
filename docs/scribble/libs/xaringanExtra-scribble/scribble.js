@@ -17,6 +17,10 @@ class Scribble {
     this.tolerance = this.eraserSize / 2
     // this.eraserColor = opts['eraser_color'] || 'rgba(0, 0, 0, 0.1)'
     this.transparent = 'rgba(0, 0, 0, 0)'
+    this.opts.palette = [
+      ...this.opts.palette,
+      ...this.defaultPresetColors.slice(this.opts.palette.length)
+    ]
 
     // Fabric objects
     this.fabrics = null
@@ -33,6 +37,7 @@ class Scribble {
 
     this.eraserCursorMovement = this.eraserCursorMovement.bind(this)
     this.eraserDetectErase = this.eraserDetectErase.bind(this)
+    this.setPresetColor = this.setPresetColor.bind(this)
 
     // Toolbox objects
     this.launchKey = 83 // "S" used to toggle toolbox/state
@@ -69,6 +74,7 @@ class Scribble {
     )
     window.addEventListener('resize', this.resizeContent.bind(this))
   }
+
 
   getVisibleSlide () {
     return document.querySelector('.remark-visible')
@@ -377,6 +383,17 @@ class Scribble {
     })
   }
 
+  setPresetColor (ev) {
+    let idx = Number(ev.key)
+    if (isNaN(idx) || typeof idx === 'undefined' || idx >= 10) return;
+    idx = idx === 0 ? 10 : idx
+    const presetColor = this.opts.palette[idx - 1]
+    this.currColor = presetColor
+    this.currFabric.freeDrawingBrush.color = presetColor
+    this.setPenColorCSSVariables(presetColor)
+    this.colorPicker.value = presetColor
+  }
+
   startDrawing () {
     slideshow.pause()
     this.toggleToolbox(true)
@@ -397,6 +414,7 @@ class Scribble {
 
     document.addEventListener('keydown', this.undo)
     document.addEventListener('keydown', this.redo)
+    document.addEventListener('keydown', this.setPresetColor)
 
     document.removeEventListener('mousemove', this.eraserCursorMovement)
     document.removeEventListener('touchmove', this.eraserCursorMovement)
@@ -420,6 +438,7 @@ class Scribble {
 
     document.removeEventListener('keydown', this.undo)
     document.removeEventListener('keydown', this.redo)
+    document.removeEventListener('keydown', this.setPresetColor)
 
     this.drawBtn.classList.remove('active')
     this.eraseBtn.classList.remove('active')
@@ -630,3 +649,16 @@ Scribble.prototype.svgs = {
   trash:
     '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="215.99609" y1="56" x2="39.99609" y2="56.00005" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="104" y1="104" x2="104" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="152" y1="104" x2="152" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>'
 }
+
+Scribble.prototype.defaultPresetColors = [
+  "#e51c23", // red (1)
+  "#259b24", // green (2)
+  "#9c27b0", // purple (3)
+  "#5677fc", // blue (4)
+  "#ff9800", // orange (5)
+  "#00bcd4", // cyan (6)
+  "#ffc107", // yellow (7)
+  "#009688", // teal (8)
+  "#9e9e9e", // grey (9)
+  "#212121"  // black (0)
+]

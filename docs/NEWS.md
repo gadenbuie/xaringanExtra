@@ -1,3 +1,9 @@
+# xaringanExtra 0.4.1 (2021-05-29)
+
+* Added color presets to **scribble**: press `0` through `9` while drawing to
+  quickly toggle through a preset color palette, customizable using the
+  `palette` argument of `use_palette()` (thanks [@kim](https://github.com/kim)-soo-hwan, [#112](https://github.com/gadenbuie/xaringanExtra/issues/112), [#117](https://github.com/gadenbuie/xaringanExtra/issues/117)).
+
 # xaringanExtra 0.4.0 (2021-03-27)
 
 * New extension: Always play gifs from the start with `use_freezeframe()` ([#102](https://github.com/gadenbuie/xaringanExtra/issues/102))
@@ -7,7 +13,7 @@
 * **Breaking change:** scribble now only accepts hexadecimal pen colors. You
   can still use `rgb()` syntax by calling the `rgb()` function in R: instead of
   `"rgb(61, 255, 232)"`, you can write `rgb(61, 255, 232, maxColorValue = 255)`.
-* Fix a few other minor issues with **scrible**:
+* Fix a few other minor issues with **scribble**:
     - Fix toolbox unminimizing after mouseover when it should stay minimized
     - Don't show the eraser cursor until the mouse moves
 
