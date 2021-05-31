@@ -42,6 +42,7 @@ progress_bar_css <- function(color = "red", location = "top", height = "10px") {
 .xe__progress-bar {
   height: %s;
   background-color: %s;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%%);
 }
 .remark-visible .xe__progress-bar {
   animation: xe__progress-bar__wipe 200ms forwards;

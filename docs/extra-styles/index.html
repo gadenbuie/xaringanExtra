@@ -34,6 +34,7 @@ class: middle
 .xe__progress-bar {
   height: 0.25em;
   background-color: #0051BA;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
 }
 .remark-visible .xe__progress-bar {
   animation: xe__progress-bar__wipe 200ms forwards;

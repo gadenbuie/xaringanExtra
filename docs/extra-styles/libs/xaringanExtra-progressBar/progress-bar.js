@@ -20,23 +20,19 @@
     // set --slide-total CSS property
     document.body.style.setProperty('--slide-total', slideshow.getSlides().length - 1)
     document.body.style.setProperty('--slide-previous', 0)
-    document.body.style.setProperty('--slide-current', slideshow.getCurrentSlideIndex())
 
     document
       .querySelectorAll('.remark-slides-area .remark-slide-content')
-      .forEach(function (slide) {
+      .forEach(function (slide, idx) {
         const pb = document.createElement('div')
         pb.classList = 'xe__progress-bar__container'
+        // set current slide variable directly on the slide's progress bar
+        pb.style.setProperty('--slide-current', idx)
         const pbFill = document.createElement('div')
         pbFill.classList = 'xe__progress-bar'
         pb.appendChild(pbFill)
         slide.appendChild(pb)
       })
-
-    // set --slide-current using slide index for where we're headed
-    slideshow.on('beforeShowSlide', function (slide) {
-      document.body.style.setProperty('--slide-current', slide.getSlideIndex())
-    })
 
     // set --slide-previous from slide we're moving away from
     slideshow.on('beforeHideSlide', function (slide) {
