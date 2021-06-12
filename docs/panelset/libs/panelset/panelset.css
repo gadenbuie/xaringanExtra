@@ -123,8 +123,21 @@
   border-right: 2px solid var(--panel-tabs-border-bottom);
 }
 
-.panelset .panel-tabs .panel-tab {
+.panelset.sideways .panel-tabs .panel-tab {
   border-top: unset;
   border-bottom: unset;
   padding-left: 0;
+}
+
+.panelset.sideways.right-side .panel-tabs {
+  float: right;
+  align-items: end;
+  margin-right: 0;
+  margin-left: 1em;
+  border-right: unset;
+  border-left: 2px solid var(--panel-tabs-border-bottom);
+}
+
+.panelset.sideways.right-side .panel-tabs .panel-tab {
+  padding-left: 1em;
 }
