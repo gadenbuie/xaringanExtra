@@ -58,6 +58,36 @@ Oops, I forgot to give this panel a name &amp;#x1F937;&amp;#x200D;&amp;#x2642;&a
 
 ---
 
+## How to do this in one easy template
+
+Wrap everything in `.panelset[...]` and create a new panel with
+
+```markdown
+.panel[.panel-name[NAME]
+...content...
+]
+```
+
+&amp;#x1F448; The previous slide looks something like this
+
+````markdown
+.panelset[
+.panel[.panel-name[R Code]
+
+```{r oplot, fig.show='hide'}
+# ... r code ...
+```
+]
+
+.panel[.panel-name[Plot]
+
+![](`r knitr::fig_chunk("oplot", ".png")`)
+]
+]
+````
+
+---
+
 ### Panelset Chunks
 
 You can use the `panelset` chunk option to create two panels from a code chunk:
@@ -141,33 +171,53 @@ ggplot(Orange) +
 
 ---
 
-## How to do this in one easy template
+## Sideways Panelsets
 
-Wrap everything in `.panelset[...]` and create a new panel with
+Add `.sideways` to your `.panelset`, e.g. `.panelset.sideways[ ... ]` to get this:
 
-```markdown
-.panel[.panel-name[NAME]
-...content...
-]
-```
-
-&amp;#x1F448; The previous slide looks something like this
-
-````markdown
-.panelset[
+.panelset.sideways[
 .panel[.panel-name[R Code]
 
-```{r oplot, fig.show='hide'}
-# ... r code ...
+
+```r
+library(ggplot2)
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
 ```
+]
+
+.panel[
+.panel-name[
+Plot
+]
+
+&lt;img src="index_files/figure-html/oplot-1.png" height="425px" /&gt;
+]
+
+.panel[.panel-name[ggplot2]
+
+```r
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+```
+
 ]
 
 .panel[.panel-name[Plot]
 
-![](`r knitr::fig_chunk("oplot", ".png")`)
+![](index_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
 ]
 ]
-````
+
 
 ---
 
@@ -212,6 +262,7 @@ Or use CSS directly...
 See `?style_panelset_tabs()` for the complete list of CSS properties.
 ]
 ]
+
 
 ---
 class: center middle
