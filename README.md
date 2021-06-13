@@ -434,26 +434,14 @@ slides or R Markdown text.
 .panelset.sideways[
 .panel[.panel-name[ui.R]
 ```r
-library(shiny)
-
-# Define UI for application that draws a histogram
-fluidPage(
-  title = "Old Faithful Geyser Data",
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)
-    ),
-    # Show a plot of the generated distribution
-    mainPanel(plotOutput("distPlot"))
-  )
-)
+# shiny ui code here...
 ```
 ]
+
 .panel[.panel-name[server.R]
 ```r
-library(shiny)
-function(input, output) {
-  # server logic here...
+function(input, output, session) {
+  # shiny server code here...
 }
 ```
 ]
