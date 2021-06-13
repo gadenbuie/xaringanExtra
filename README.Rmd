@@ -371,7 +371,7 @@ Here's the example used in the demo slides.
 ```{r child="man/fragments/panelset_other-rmd.Rmd"}
 ```
 
-### Customize Panelset Appearnce
+### Customize Panelset Appearance
 
 ```{r child="man/fragments/panelset_custom-styles.Rmd"}
 ```
