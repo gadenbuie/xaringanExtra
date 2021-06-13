@@ -41,10 +41,40 @@ Plot
 
 .panel[
 
-Oops, I forgot to give this panel a name &#x1F937;&#x200D;&#x2642;&#xFE0F;
+Hey look, I'm a panel! &#x1F47E;
 
 ]
 ]
+
+---
+
+## How to do this in one easy template
+
+Wrap everything in `.panelset[...]` and create a new panel with
+
+```markdown
+.panel[.panel-name[NAME]
+...content...
+]
+```
+
+&#x1F448; The previous slide looks something like this
+
+````markdown
+.panelset[
+.panel[.panel-name[R Code]
+
+```{r oplot, fig.show='hide'}`r ''`
+# ... r code ...
+```
+]
+
+.panel[.panel-name[Plot]
+
+![](`r knitr::inline_expr('knitr::fig_chunk("oplot", ".png")')`)
+]
+]
+````
 
 ---
 
@@ -106,33 +136,105 @@ ggplot(Orange) +
 
 ---
 
-## How to do this in one easy template
+## Sideways Panelsets
 
-Wrap everything in `.panelset[...]` and create a new panel with
+Add `.sideways` to your `.panelset`, e.g. `.panelset.sideways[ ... ]` to get this:
 
-```markdown
-.panel[.panel-name[NAME]
-...content...
-]
+.panelset.sideways[
+.panel[.panel-name[Code for a plot about oranges]
+
+```{r ref.label="oplot", eval=FALSE}
+library(ggplot2)
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
 ```
+]
 
-&#x1F448; The previous slide looks something like this
+.panel[
+.panel-name[
+Plot about Orange Trees
+]
 
+<img src="`r knitr::fig_chunk("oplot", ".png")`" height="425px" />
+]
+
+.panel[.panel-name[The code for the panels on this slide]
 ````markdown
-.panelset[
-.panel[.panel-name[R Code]
-
-```{r oplot, fig.show='hide'}`r ''`
-# ... r code ...
+.panelset.sideways[
+```{r include=FALSE}`r ''`
+orange_panel_names <- c(
+  source = "Code for a plot about oranges",
+  output = "Plot about Orange Trees"
+)
 ```
-]
 
-.panel[.panel-name[Plot]
-
-![](`r knitr::inline_expr('knitr::fig_chunk("oplot", ".png")')`)
-]
+```{r panelset = orange_panel_names}`r ''`
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+```
 ]
 ````
+]
+]
+
+---
+
+## Right Sideways Panelsets
+
+Add `.sideways.right` to place the tabs on the right side.
+
+.panelset.sideways.right[
+.panel[.panel-name[Code for a plot about oranges]
+
+```{r ref.label="oplot", eval=FALSE}
+library(ggplot2)
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+```
+]
+
+.panel[
+.panel-name[
+Plot about Orange Trees
+]
+
+<img src="`r knitr::fig_chunk("oplot", ".png")`" height="425px" />
+]
+
+.panel[.panel-name[The code for the panels on this slide]
+````markdown
+.panelset.sideways.right-side[
+```{r include=FALSE}`r ''`
+orange_panel_names <- c(
+  source = "Code for a plot about oranges",
+  output = "Plot about Orange Trees"
+)
+```
+
+```{r panelset = orange_panel_names}`r ''`
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+```
+]
+````
+]
+]
 
 ---
 
@@ -183,6 +285,7 @@ Or use CSS directly...
 See `?style_panelset_tabs()` for the complete list of CSS properties.
 ]
 ]
+
 
 ---
 class: center middle

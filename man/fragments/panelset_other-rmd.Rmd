@@ -10,8 +10,8 @@ like HTML reports and [blogdown](https://bookdown.org/yihui/blogdown/) webpages!
 Panelset works in the same way as
 `rmarkdown`'s [tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html) feature,
 albeit with fewer style options,
-but the trade-off is that it works in a wider range of document types;
-generally, as long as the output is HTML, panelset should work.
+but the trade-off is that it works in a wider range of document types.
+Generally, as long as the output is HTML, panelset should work.
 
 Another advantage of panelset is that it enables deeplinking:
 the currently shown tab is encoded in the URL automatically,

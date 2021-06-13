@@ -34,12 +34,15 @@
 #'   `"animate_css"`, `"panelset"` `"tachyons"`, `"fit_screen"`, `"webcam"`,
 #'   `"clipboard"`, `"search"`, `"scribble"`, `"freezeframe"`.
 #' @export
-use_xaringan_extra <- function(
-  include = c(
-    "tile_view", "animate_css", "tachyons", "panelset", "broadcast",
-    "share_again", "scribble"
-  )
-) {
+use_xaringan_extra <- function(include = c(
+    "tile_view",
+    "animate_css",
+    "tachyons",
+    "panelset",
+    "broadcast",
+    "share_again",
+    "scribble"
+  )) {
   opts <- c(
     "tile_view",
     "animate_css",

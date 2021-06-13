@@ -106,7 +106,7 @@ init_scribble <- function(
   stopifnot(
     "single pen color" = length(pen_color) == 1,
     "pen_color must be character" = is.character(pen_color),
-  	"pen_color must be a hexadecimal color" = all(is_hex_color(pen_color))
+    "pen_color must be a hexadecimal color" = all(is_hex_color(pen_color))
   )
   stopifnot(is.numeric(pen_size))
   stopifnot(is.numeric(eraser_size))

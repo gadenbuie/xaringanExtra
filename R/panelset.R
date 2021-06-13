@@ -27,6 +27,8 @@
 #'   ]
 #'   ````
 #'
+#' @includeRmd man/fragments/panelset_sideways.Rmd
+#'
 #' @includeRmd man/fragments/panelset_custom-styles.Rmd
 #'
 #' @includeRmd man/fragments/panelset_other-rmd.Rmd
@@ -58,6 +60,9 @@ use_panelset <- function(in_xaringan = NULL) {
 #'   `currentColor`.
 #' @param tabs_border_bottom The border color between the tabs and content.
 #'   Default is `#ddd`.
+#' @param tabs_sideways_max_width The maximum width of the tabs in sideways
+#'   mode. The default value is `25%`. A value between 25% and 33% is
+#'   recommended. The tabs can only ever be at most 50% of the container width.
 #' @param inactive_opacity The opacity of inactive panel tabs, default is `0.5`.
 #' @param font_family The font family to be used for the panel tabs text.
 #'   Default is a monospace system font stack.
@@ -82,6 +87,7 @@ style_panelset_tabs <- function(
   hover_foreground = NULL,
   hover_border_color = NULL,
   tabs_border_bottom = NULL,
+  tabs_sideways_max_width = NULL,
   inactive_opacity = NULL,
   font_family = NULL,
   selector = ".panelset"
@@ -105,8 +111,8 @@ style_panelset_tabs <- function(
   names(args) <- panelset_match_vars(names(args))
 
   if ("--panel-tab-font-family" %in% names(args) &&
-      identical(args["--panel-tab-font-family"], "monospace")) {
-   args["--panel-tab-font-family"] <- "Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace"
+    identical(args["--panel-tab-font-family"], "monospace")) {
+    args["--panel-tab-font-family"] <- "Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace"
   }
 
   style <- ""
@@ -126,21 +132,24 @@ style_panelset <- function(...) {
 }
 
 panelset_match_vars <- function(x = NULL) {
-  vars <-  c(
-    foreground          = "--panel-tab-foreground",
-    background          = "--panel-tab-background",
-    active_foreground   = "--panel-tab-active-foreground",
-    active_background   = "--panel-tab-active-background",
+  vars <- c(
+    foreground = "--panel-tab-foreground",
+    background = "--panel-tab-background",
+    active_foreground = "--panel-tab-active-foreground",
+    active_background = "--panel-tab-active-background",
     active_border_color = "--panel-tab-active-border-color",
-    hover_background    = "--panel-tab-hover-background",
-    hover_foreground    = "--panel-tab-hover-foreground",
-    hover_border_color  = "--panel-tab-hover-border-color",
-    tabs_border_bottom  = "--panel-tabs-border-bottom",
-    inactive_opacity    = "--panel-tab-inactive-opacity",
-    font_family         = "--panel-tab-font-family"
+    hover_background = "--panel-tab-hover-background",
+    hover_foreground = "--panel-tab-hover-foreground",
+    hover_border_color = "--panel-tab-hover-border-color",
+    tabs_border_bottom = "--panel-tabs-border-bottom",
+    inactive_opacity = "--panel-tab-inactive-opacity",
+    font_family = "--panel-tab-font-family",
+    tabs_sideways_max_width = "--panel-tabs-sideways-max-width"
   )
 
-  if (is.null(x)) return(vars)
+  if (is.null(x)) {
+    return(vars)
+  }
   vars[x]
 }
 
@@ -189,7 +198,9 @@ register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
   })
 
   knitr::knit_hooks$set(panelset = function(before, options, ...) {
-    if (before) return()
+    if (before) {
+      return()
+    }
     if (isTRUE(in_xaringan)) "\n\n]" else "\n\n</div>"
   })
 }
@@ -259,7 +270,9 @@ panelset_chunk_before_html <- function(x, panel_names) {
 }
 
 output_is_xaringan <- function(in_xaringan) {
-  if (isTRUE(in_xaringan)) return(TRUE)
+  if (isTRUE(in_xaringan)) {
+    return(TRUE)
+  }
 
   # This will probably work in most cases but I'm not sure how else to be
   # certain that the document currently being rendered is xaringan slides...

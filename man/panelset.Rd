@@ -21,6 +21,7 @@ style_panelset_tabs(
   hover_foreground = NULL,
   hover_border_color = NULL,
   tabs_border_bottom = NULL,
+  tabs_sideways_max_width = NULL,
   inactive_opacity = NULL,
   font_family = NULL,
   selector = ".panelset"
@@ -56,6 +57,10 @@ is hovered or focused. Defaults are \code{currentColor}.}
 
 \item{tabs_border_bottom}{The border color between the tabs and content.
 Default is \verb{#ddd}.}
+
+\item{tabs_sideways_max_width}{The maximum width of the tabs in sideways
+mode. The default value is \verb{25\%}. A value between 25\% and 33\% is
+recommended. The tabs can only ever be at most 50\% of the container width.}
 
 \item{inactive_opacity}{The opacity of inactive panel tabs, default is \code{0.5}.}
 
@@ -108,6 +113,48 @@ Take a look at the R code in that other panel.
 }\if{html}{\out{</div>}}
 }
 
+\section{Sideways Panelsets}{
+As an alternative to the “tabs above content” view, you can also use
+\emph{sideways} panelsets where the tabs appear beside the tabbed content.
+
+To choose this effect, add the \code{.sideways} class to \code{.panelset} in your
+slides or R Markdown text.\if{html}{\out{<div class="markdown">}}\preformatted{.panelset.sideways[
+.panel[.panel-name[ui.R]
+```r
+# shiny ui code here...
+```
+]
+
+.panel[.panel-name[server.R]
+```r
+function(input, output, session) \{
+  # shiny server code here...
+\}
+```
+]
+]
+}\if{html}{\out{</div>}}
+
+By default in sideways-mode, the tabs will appear on the left side. You
+can choose to place the tabs on the right side by including both
+\code{.sideways} and \code{.right} with \code{.panelset}.\if{html}{\out{<div class="markdown">}}\preformatted{.panelset.sideways.right[
+.panel[.panel-name[ui.R]
+```r
+# shiny ui code here...
+```
+]
+
+.panel[.panel-name[server.R]
+```r
+function(input, output, session) \{
+  # shiny server code here...
+\}
+```
+]
+]
+}\if{html}{\out{</div>}}
+}
+
 \section{Style Panelset}{
 To customize the appearance of your panels, you can use
 \code{style_panelset_tabs()} called directly in an R chunk in your slides.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r echo=FALSE\}
@@ -150,7 +197,7 @@ Panelset works in all R Markdown HTML outputs like HTML reports and
 Panelset works in the same way as \code{rmarkdown}’s
 \href{https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html}{tabset}
 feature, albeit with fewer style options, but the trade-off is that it
-works in a wider range of document types; generally, as long as the
+works in a wider range of document types. Generally, as long as the
 output is HTML, panelset should work.
 
 Another advantage of panelset is that it enables deeplinking: the

@@ -46,18 +46,66 @@ Here’s the example used in the demo slides.
 ]
 ````
 
+### Sideways Panelsets
+
+As an alternative to the “tabs above content” view, you can also use
+*sideways* panelsets where the tabs appear beside the tabbed content.
+
+To choose this effect, add the `.sideways` class to `.panelset` in your
+slides or R Markdown text.
+
+```` markdown
+.panelset.sideways[
+.panel[.panel-name[ui.R]
+```r
+# shiny ui code here...
+```
+]
+
+.panel[.panel-name[server.R]
+```r
+function(input, output, session) {
+  # shiny server code here...
+}
+```
+]
+]
+````
+
+By default in sideways-mode, the tabs will appear on the left side. You
+can choose to place the tabs on the right side by including both
+`.sideways` and `.right` with `.panelset`.
+
+```` markdown
+.panelset.sideways.right[
+.panel[.panel-name[ui.R]
+```r
+# shiny ui code here...
+```
+]
+
+.panel[.panel-name[server.R]
+```r
+function(input, output, session) {
+  # shiny server code here...
+}
+```
+]
+]
+````
+
 ### Use in R Markdown
 
 [Example R Markdown output with
 panelset](https://gadenbuie.github.io/xaringanExtra/panelset/rmarkdown.html)
 
 Panelset works in all R Markdown HTML outputs like HTML reports and
-[blogdown](https://bookdown.org/yihui/blogdown/) webpages!
+[blogdown](https://bookdown.org/yihui/blogdown/) webpages\!
 
 Panelset works in the same way as `rmarkdown`’s
 [tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html)
 feature, albeit with fewer style options, but the trade-off is that it
-works in a wider range of document types; generally, as long as the
+works in a wider range of document types. Generally, as long as the
 output is HTML, panelset should work.
 
 Another advantage of panelset is that it enables deeplinking: the
@@ -135,7 +183,7 @@ Alternatively, you can also use raw HTML.
 </div>
 ```
 
-### Customize Panelset Appearnce
+### Customize Panelset Appearance
 
 To customize the appearance of your panels, you can use
 `style_panelset_tabs()` called directly in an R chunk in your slides.

@@ -1,0 +1,52 @@
+```{r echo=FALSE, results="asis"}
+if (!exists("INCLUDE_CHILD_HEADER") || isTRUE(INCLUDE_CHILD_HEADER)) {
+	cat("# Sideways Panelsets")
+}
+```
+
+As an alternative to the "tabs above content" view,
+you can also use _sideways_ panelsets
+where the tabs appear beside the tabbed content.
+
+To choose this effect,
+add the `.sideways` class to `.panelset` in your slides or R Markdown text.
+
+````markdown
+.panelset.sideways[
+.panel[.panel-name[ui.R]
+```r
+# shiny ui code here...
+```
+]
+
+.panel[.panel-name[server.R]
+```r
+function(input, output, session) {
+  # shiny server code here...
+}
+```
+]
+]
+````
+
+By default in sideways-mode, the tabs will appear on the left side.
+You can choose to place the tabs on the right side
+by including both `.sideways` and `.right` with `.panelset`.
+
+````markdown
+.panelset.sideways.right[
+.panel[.panel-name[ui.R]
+```r
+# shiny ui code here...
+```
+]
+
+.panel[.panel-name[server.R]
+```r
+function(input, output, session) {
+  # shiny server code here...
+}
+```
+]
+]
+````

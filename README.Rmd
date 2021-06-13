@@ -356,6 +356,11 @@ Here's the example used in the demo slides.
 ]
 ````
 
+### Sideways Panelsets
+
+```{r child="man/fragments/panelset_sideways.Rmd"}
+```
+
 ### Use in R Markdown
 
 [rmarkdown::html_document()]: https://rmarkdown.rstudio.com/docs/reference/html_document.html
@@ -366,7 +371,7 @@ Here's the example used in the demo slides.
 ```{r child="man/fragments/panelset_other-rmd.Rmd"}
 ```
 
-### Customize Panelset Appearnce
+### Customize Panelset Appearance
 
 ```{r child="man/fragments/panelset_custom-styles.Rmd"}
 ```
@@ -592,6 +597,8 @@ xaringanExtra::use_fit_screen()
 
 #### &#x1F4FA; [Extra Styles Demo](https://gadenbuie.github.io/xaringanExtra/extra-styles)
 
+### Extra Styles
+
 I've collected a few CSS extras that I like to include in my slides,
 that I've bundled up into the `use_extra_styles()` function.
 
@@ -609,6 +616,8 @@ xaringanExtra::use_extra_styles(
 - `mute_unhighlighted_code` modifies the xaringan/remarkjs line highlighting to mute the lines that _aren't highlighted_.
 
 ![](man/figures/extra-styles-hover.gif)
+
+### Progress Bar
 
 You can also add an animated progress bar using `xaringanExtra::use_progress_bar()`.
 

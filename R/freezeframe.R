@@ -101,7 +101,7 @@ freezeframe_options <- function(
   )
   opts <- jsonlite::toJSON(
     list(
-      selector = paste(selector, collapse = ', '),
+      selector = paste(selector, collapse = ", "),
       trigger = trigger,
       overlay = overlay,
       responsive = responsive,
