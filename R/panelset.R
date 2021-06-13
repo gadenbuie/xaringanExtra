@@ -58,6 +58,9 @@ use_panelset <- function(in_xaringan = NULL) {
 #'   `currentColor`.
 #' @param tabs_border_bottom The border color between the tabs and content.
 #'   Default is `#ddd`.
+#' @param tabs_sideways_max_width The maximum width of the tabs in sideways
+#'   mode. The default value is `25%`. A value between 25% and 33% is
+#'   recommended. The tabs can only ever be at most 50% of the container width.
 #' @param inactive_opacity The opacity of inactive panel tabs, default is `0.5`.
 #' @param font_family The font family to be used for the panel tabs text.
 #'   Default is a monospace system font stack.
@@ -82,6 +85,7 @@ style_panelset_tabs <- function(
   hover_foreground = NULL,
   hover_border_color = NULL,
   tabs_border_bottom = NULL,
+  tabs_sideways_max_width = NULL,
   inactive_opacity = NULL,
   font_family = NULL,
   selector = ".panelset"
@@ -137,7 +141,8 @@ panelset_match_vars <- function(x = NULL) {
     hover_border_color  = "--panel-tab-hover-border-color",
     tabs_border_bottom  = "--panel-tabs-border-bottom",
     inactive_opacity    = "--panel-tab-inactive-opacity",
-    font_family         = "--panel-tab-font-family"
+    font_family         = "--panel-tab-font-family",
+    tabs_sideways_max_width = "--panel-tabs-sideways-max-width"
   )
 
   if (is.null(x)) return(vars)

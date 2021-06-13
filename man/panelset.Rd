@@ -21,6 +21,7 @@ style_panelset_tabs(
   hover_foreground = NULL,
   hover_border_color = NULL,
   tabs_border_bottom = NULL,
+  tabs_sideways_max_width = NULL,
   inactive_opacity = NULL,
   font_family = NULL,
   selector = ".panelset"
@@ -56,6 +57,10 @@ is hovered or focused. Defaults are \code{currentColor}.}
 
 \item{tabs_border_bottom}{The border color between the tabs and content.
 Default is \verb{#ddd}.}
+
+\item{tabs_sideways_max_width}{The maximum width of the tabs in sideways
+mode. The default value is \verb{25\%}. A value between 25\% and 33\% is
+recommended. The tabs can only ever be at most 50\% of the container width.}
 
 \item{inactive_opacity}{The opacity of inactive panel tabs, default is \code{0.5}.}
 
