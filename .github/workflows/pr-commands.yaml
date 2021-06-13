@@ -29,8 +29,8 @@ jobs:
         run: Rscript make.R
       - name: commit
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add man/\* NAMESPACE
           git commit -m 'Document'
       - uses: r-lib/actions/pr-push@v1
@@ -56,8 +56,8 @@ jobs:
         run: Rscript -e 'grkstyle::grk_style_pkg(".")'
       - name: commit
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add \*.R
           git commit -m 'grkstyle::grk_style_pkg()'
       - uses: r-lib/actions/pr-push@v1
@@ -92,8 +92,8 @@ jobs:
         run: Rscript -e "cat(sep = '', 'version=', as.character(desc::desc_get_version()))" >> $GITHUB_ENV
       - name: Commit
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add DESCRIPTION
           git commit -m "v${{ env.version }}"
       - uses: r-lib/actions/pr-push@v1
