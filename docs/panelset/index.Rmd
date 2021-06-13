@@ -41,7 +41,7 @@ Plot
 
 .panel[
 
-Oops, I forgot to give this panel a name &#x1F937;&#x200D;&#x2642;&#xFE0F;
+Hey look, I'm a panel! &#x1F47E;
 
 ]
 ]
@@ -141,7 +141,7 @@ ggplot(Orange) +
 Add `.sideways` to your `.panelset`, e.g. `.panelset.sideways[ ... ]` to get this:
 
 .panelset.sideways[
-.panel[.panel-name[R Code]
+.panel[.panel-name[Code for a plot about oranges]
 
 ```{r ref.label="oplot", eval=FALSE}
 library(ggplot2)
@@ -156,13 +156,46 @@ ggplot(Orange) +
 
 .panel[
 .panel-name[
-Plot
+Plot about Orange Trees
 ]
 
 <img src="`r knitr::fig_chunk("oplot", ".png")`" height="425px" />
 ]
 
-```{r panelset = c(source = "ggplot2", output = "Plot")}
+.panel[.panel-name[The code for the panels on this slide]
+````markdown
+.panelset.sideways[
+```{r include=FALSE}`r ''`
+orange_panel_names <- c(
+  source = "Code for a plot about oranges",
+  output = "Plot about Orange Trees"
+)
+```
+
+```{r panelset = orange_panel_names}`r ''`
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+```
+]
+````
+]
+]
+
+---
+
+## Sideways Panelsets
+
+Add `.sideways.right-side` to place the tabs on the right side.
+
+.panelset.sideways.right-side[
+.panel[.panel-name[Code for a plot about oranges]
+
+```{r ref.label="oplot", eval=FALSE}
+library(ggplot2)
 ggplot(Orange) +
   aes(x = age, y = circumference, colour = Tree) +
   geom_point() +
@@ -172,6 +205,36 @@ ggplot(Orange) +
 ```
 ]
 
+.panel[
+.panel-name[
+Plot about Orange Trees
+]
+
+<img src="`r knitr::fig_chunk("oplot", ".png")`" height="425px" />
+]
+
+.panel[.panel-name[The code for the panels on this slide]
+````markdown
+.panelset.sideways.right-side[
+```{r include=FALSE}`r ''`
+orange_panel_names <- c(
+  source = "Code for a plot about oranges",
+  output = "Plot about Orange Trees"
+)
+```
+
+```{r panelset = orange_panel_names}`r ''`
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+```
+]
+````
+]
+]
 
 ---
 

@@ -51,7 +51,7 @@ Plot
 
 .panel[
 
-Oops, I forgot to give this panel a name &amp;#x1F937;&amp;#x200D;&amp;#x2642;&amp;#xFE0F;
+Hey look, I'm a panel! &amp;#x1F47E;
 
 ]
 ]
@@ -176,7 +176,7 @@ ggplot(Orange) +
 Add `.sideways` to your `.panelset`, e.g. `.panelset.sideways[ ... ]` to get this:
 
 .panelset.sideways[
-.panel[.panel-name[R Code]
+.panel[.panel-name[Code for a plot about oranges]
 
 
 ```r
@@ -192,15 +192,23 @@ ggplot(Orange) +
 
 .panel[
 .panel-name[
-Plot
+Plot about Orange Trees
 ]
 
 &lt;img src="index_files/figure-html/oplot-1.png" height="425px" /&gt;
 ]
 
-.panel[.panel-name[ggplot2]
+.panel[.panel-name[The code for the panels on this slide]
+````markdown
+.panelset.sideways[
+```{r include=FALSE}
+orange_panel_names &lt;- c(
+  source = "Code for a plot about oranges",
+  output = "Plot about Orange Trees"
+)
+```
 
-```r
+```{r panelset = orange_panel_names}
 ggplot(Orange) +
   aes(x = age, y = circumference, colour = Tree) +
   geom_point() +
@@ -208,16 +216,62 @@ ggplot(Orange) +
   guides(colour = "none") +
   theme_bw()
 ```
-
 ]
-
-.panel[.panel-name[Plot]
-
-![](index_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
-
+````
 ]
 ]
 
+---
+
+## Sideways Panelsets
+
+Add `.sideways.right-side` to place the tabs on the right side.
+
+.panelset.sideways.right-side[
+.panel[.panel-name[Code for a plot about oranges]
+
+
+```r
+library(ggplot2)
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+```
+]
+
+.panel[
+.panel-name[
+Plot about Orange Trees
+]
+
+&lt;img src="index_files/figure-html/oplot-1.png" height="425px" /&gt;
+]
+
+.panel[.panel-name[The code for the panels on this slide]
+````markdown
+.panelset.sideways.right-side[
+```{r include=FALSE}
+orange_panel_names &lt;- c(
+  source = "Code for a plot about oranges",
+  output = "Plot about Orange Trees"
+)
+```
+
+```{r panelset = orange_panel_names}
+ggplot(Orange) +
+  aes(x = age, y = circumference, colour = Tree) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+```
+]
+````
+]
+]
 
 ---
 
