@@ -1,3 +1,8 @@
+# xaringanExtra 0.5.0 (2021-06-13)
+
+* Added _sideways_ panelsets where tabs appear on the left or right side next
+  to the tabbed content. [Learn more about this feature](https://pkg.garrickadenbuie.com/xaringanExtra/#/panelset?id=sideways-panelsets). (#121)
+
 # xaringanExtra 0.4.2 (2021-05-29)
 
 * Added color presets to **scribble**: press `0` through `9` while drawing to
