@@ -356,6 +356,11 @@ Here's the example used in the demo slides.
 ]
 ````
 
+### Sideways Panelsets
+
+```{r child="man/fragments/panelset_sideways.Rmd"}
+```
+
 ### Use in R Markdown
 
 [rmarkdown::html_document()]: https://rmarkdown.rstudio.com/docs/reference/html_document.html

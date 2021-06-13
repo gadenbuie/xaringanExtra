@@ -46,6 +46,66 @@ Here’s the example used in the demo slides.
 ]
 ````
 
+### Sideways Panelsets
+
+As an alternative to the “tabs above content” view, you can also use
+*sideways* panelsets where the tabs appear beside the tabbed content.
+
+To choose this effect, add the `.sideways` class to `.panelset` in your
+slides or R Markdown text.
+
+```` markdown
+.panelset.sideways[
+.panel[.panel-name[ui.R]
+```r
+library(shiny)
+
+# Define UI for application that draws a histogram
+fluidPage(
+  title = "Old Faithful Geyser Data",
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)
+    ),
+    # Show a plot of the generated distribution
+    mainPanel(plotOutput("distPlot"))
+  )
+)
+```
+]
+.panel[.panel-name[server.R]
+```r
+library(shiny)
+function(input, output) {
+  # server logic here...
+}
+```
+]
+]
+````
+
+By default in sideways-mode, the tabs will appear on the left side. You
+can choose to place the tabs on the right side by including both
+`.sideways` and `.right-side` with `.panelset`.
+
+```` markdown
+.panelset.sideways.right-side[
+.panel[.panel-name[ui.R]
+```r
+# shiny ui code here...
+```
+]
+
+.panel[.panel-name[server.R]
+```r
+function(input, output, session) {
+  # shiny server code here...
+}
+```
+]
+]
+````
+
 ### Use in R Markdown
 
 [Example R Markdown output with

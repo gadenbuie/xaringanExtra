@@ -27,6 +27,8 @@
 #'   ]
 #'   ````
 #'
+#' @includeRmd man/fragments/panelset_sideways.Rmd
+#'
 #' @includeRmd man/fragments/panelset_custom-styles.Rmd
 #'
 #' @includeRmd man/fragments/panelset_other-rmd.Rmd

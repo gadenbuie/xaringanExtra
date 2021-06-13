@@ -113,6 +113,60 @@ Take a look at the R code in that other panel.
 }\if{html}{\out{</div>}}
 }
 
+\section{Sideways Panelsets}{
+As an alternative to the “tabs above content” view, you can also use
+\emph{sideways} panelsets where the tabs appear beside the tabbed content.
+
+To choose this effect, add the \code{.sideways} class to \code{.panelset} in your
+slides or R Markdown text.\if{html}{\out{<div class="markdown">}}\preformatted{.panelset.sideways[
+.panel[.panel-name[ui.R]
+```r
+library(shiny)
+
+# Define UI for application that draws a histogram
+fluidPage(
+  title = "Old Faithful Geyser Data",
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)
+    ),
+    # Show a plot of the generated distribution
+    mainPanel(plotOutput("distPlot"))
+  )
+)
+```
+]
+.panel[.panel-name[server.R]
+```r
+library(shiny)
+function(input, output) \{
+  # server logic here...
+\}
+```
+]
+]
+}\if{html}{\out{</div>}}
+
+By default in sideways-mode, the tabs will appear on the left side. You
+can choose to place the tabs on the right side by including both
+\code{.sideways} and \code{.right-side} with \code{.panelset}.\if{html}{\out{<div class="markdown">}}\preformatted{.panelset.sideways.right-side[
+.panel[.panel-name[ui.R]
+```r
+# shiny ui code here...
+```
+]
+
+.panel[.panel-name[server.R]
+```r
+function(input, output, session) \{
+  # shiny server code here...
+\}
+```
+]
+]
+}\if{html}{\out{</div>}}
+}
+
 \section{Style Panelset}{
 To customize the appearance of your panels, you can use
 \code{style_panelset_tabs()} called directly in an R chunk in your slides.\if{html}{\out{<div class="markdown">}}\preformatted{```\{r echo=FALSE\}
