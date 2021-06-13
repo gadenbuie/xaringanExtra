@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           pak::local_install_dev_deps(upgrade = TRUE)
-          pak::pak(c("rmarkdown", "fs", "metathis"))
+          pak::pak(c("rmarkdown", "fs", "metathis", "devtools"))
         shell: Rscript {0}
       - name: Document
         run: Rscript make.R
