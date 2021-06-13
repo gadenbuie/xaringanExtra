@@ -59,7 +59,7 @@ message("Rendering docs/README.md from README.md")
 if (fs::dir_exists("docs/figures")) fs::dir_delete("docs/figures")
 fs::dir_copy("man/figures", "docs/figures", overwrite = TRUE)
 
-fs::file_copy("NEWs.md", "docs/NEWS.md", overwrite = TRUE)
+fs::file_copy("NEWS.md", "docs/NEWS.md", overwrite = TRUE)
 
 news <- readLines("docs/NEWS.md", warn = FALSE)
 news <- gsub("#(\\d+)", "[#\\1](https://github.com/gadenbuie/xaringanExtra/issues/\\1)", news)
