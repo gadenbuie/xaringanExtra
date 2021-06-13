@@ -7,7 +7,9 @@ xe_file <- function(...) {
 }
 
 xaringan_version <- function(min = NULL) {
-	xv <- utils::packageVersion("xaringan")
-	if (is.null(min)) return(xv)
-	xv >= package_version(min)
+  xv <- utils::packageVersion("xaringan")
+  if (is.null(min)) {
+    return(xv)
+  }
+  xv >= package_version(min)
 }

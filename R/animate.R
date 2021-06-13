@@ -86,8 +86,7 @@ html_dependency_animate_css <- function(minified = FALSE, xaringan = TRUE) {
 #'   - `roll`: Roll in from the left and roll out to the right
 #'   - `fade`: Fade in
 #' @export
-use_animate_all <- function(
-  style = c(
+use_animate_all <- function(style = c(
     "slide_left",
     "slide_right",
     "slide_up",

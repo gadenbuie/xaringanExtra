@@ -34,6 +34,6 @@ describe("freezeframe_options()", {
 
     expect_snapshot(freezeframe_options())
     expect_snapshot(freezeframe_options("img"))
-    expect_snapshot(freezeframe_options(trigger = 'none', responsive = FALSE))
+    expect_snapshot(freezeframe_options(trigger = "none", responsive = FALSE))
   })
 })

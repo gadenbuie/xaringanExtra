@@ -19,53 +19,62 @@ NULL
 #' @return An [htmltools::htmlDependency()] with the selected additional styles.
 #' @export
 use_extra_styles <- function(
-	hover_code_line = TRUE,
-	mute_unhighlighted_code = TRUE,
-	bundle_id = NULL
+  hover_code_line = TRUE,
+  mute_unhighlighted_code = TRUE,
+  bundle_id = NULL
 ) {
-	dep <- html_dependency_extra_styles(
-		hover_code_line, mute_unhighlighted_code, bundle_id
-	)
-	if (is.null(dep)) return(invisible())
+  dep <- html_dependency_extra_styles(
+    hover_code_line,
+    mute_unhighlighted_code,
+    bundle_id
+  )
+  if (is.null(dep)) {
+    return(invisible())
+  }
 
-	htmltools::tagList(dep)
+  htmltools::tagList(dep)
 }
 
 #' @describeIn extra_styles Returns an [htmltools::htmlDependency()] with the
 #'   extra styles dependencies. Most users will want to use `use_extra_styles()`.
 #' @export
 html_dependency_extra_styles <- function(
-	hover_code_line = TRUE,
-	mute_unhighlighted_code = TRUE,
-	bundle_id = NULL
+  hover_code_line = TRUE,
+  mute_unhighlighted_code = TRUE,
+  bundle_id = NULL
 ) {
-	if (!any(c(hover_code_line, mute_unhighlighted_code))) return(invisible())
+  if (!any(c(hover_code_line, mute_unhighlighted_code))) {
+    return(invisible())
+  }
 
-	css_file <- file.path(tempdir(), "xaringanExtra-extra-styles.css")
-	if (file.exists(css_file)) unlink(css_file)
+  css_file <- file.path(tempdir(), "xaringanExtra-extra-styles.css")
+  if (file.exists(css_file)) unlink(css_file)
 
-	add_to_css <- function(...) {
-		new_css <- readLines(xe_file("extra-styles", ...), warn = FALSE)
-		cat(new_css, file = css_file, sep = "\n", append = TRUE)
-	}
+  add_to_css <- function(...) {
+    new_css <- readLines(xe_file("extra-styles", ...), warn = FALSE)
+    cat(new_css, file = css_file, sep = "\n", append = TRUE)
+  }
 
-	if (isTRUE(hover_code_line)) {
-		add_to_css("code-line-hover.css")
-	}
+  if (isTRUE(hover_code_line)) {
+    add_to_css("code-line-hover.css")
+  }
 
-	if (isTRUE(mute_unhighlighted_code)) {
-		add_to_css("code-mute-unhighlighted.css")
-	}
+  if (isTRUE(mute_unhighlighted_code)) {
+    add_to_css("code-mute-unhighlighted.css")
+  }
 
-	name <- paste0("xaringanExtra-extra-styles", if (!is.null(bundle_id)) paste0(
-		"_", bundle_id
-	))
+  name <- paste0("xaringanExtra-extra-styles", if (!is.null(bundle_id)) {
+    paste0(
+      "_",
+      bundle_id
+    )
+  })
 
-	htmltools::htmlDependency(
-	  name = name,
-	  version = "0.2.6",
-	  src = dirname(css_file),
-	  stylesheet = basename(css_file),
-	  all_files = FALSE
-	)
+  htmltools::htmlDependency(
+    name = name,
+    version = "0.2.6",
+    src = dirname(css_file),
+    stylesheet = basename(css_file),
+    all_files = FALSE
+  )
 }

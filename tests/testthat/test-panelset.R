@@ -127,39 +127,39 @@ test_that("panelset knitr chunks with plots", {
 })
 
 test_that("panelset knitr chunks with custom tab names", {
-   rmd <- paste(
-      "```{r echo=FALSE}",
-      "xaringanExtra::use_panelset(in_xaringan = TRUE)",
-      "```",
-      "",
-      "```{r plot, panelset = c(source = 'Hist', output = 'Plot')}",
-      "hist(precip)",
-      "```",
-      sep = "\n"
-   )
-   out <- render_slide_text(rmd)
+  rmd <- paste(
+    "```{r echo=FALSE}",
+    "xaringanExtra::use_panelset(in_xaringan = TRUE)",
+    "```",
+    "",
+    "```{r plot, panelset = c(source = 'Hist', output = 'Plot')}",
+    "hist(precip)",
+    "```",
+    sep = "\n"
+  )
+  out <- render_slide_text(rmd)
 
-   expect_equal(
-      out,
-      paste(
-         c(
-            ".panel[.panel-name[Hist]",
-            "",
-            "```r",
-            "hist(precip)",
-            "```",
-            "",
-            "]",
-            "",
-            ".panel[.panel-name[Plot]",
-            "",
-            "![](slides_files/figure-html/plot-1.png)&lt;!-- --&gt;",
-            "",
-            "]"
-         ),
-         collapse = "\n"
-      )
-   )
+  expect_equal(
+    out,
+    paste(
+      c(
+        ".panel[.panel-name[Hist]",
+        "",
+        "```r",
+        "hist(precip)",
+        "```",
+        "",
+        "]",
+        "",
+        ".panel[.panel-name[Plot]",
+        "",
+        "![](slides_files/figure-html/plot-1.png)&lt;!-- --&gt;",
+        "",
+        "]"
+      ),
+      collapse = "\n"
+    )
+  )
 })
 
 test_that("panelset knitr chunks with mutiple outputs", {

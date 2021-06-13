@@ -18,43 +18,44 @@ NULL
 #' @param margin Margin around the video pane in CSS units.
 #' @export
 use_webcam <- function(width = 200, height = 200, margin = "1em") {
-	htmltools::tagList(
-		html_dependency_webcam(width, height, margin)
-	)
+  htmltools::tagList(
+    html_dependency_webcam(width, height, margin)
+  )
 }
 
 #' @describeIn webcam Returns an [htmltools::htmlDependency()] with the webcam
 #'   dependencies. Most users will want to use `use_webcam()`.
 #' @export
 html_dependency_webcam <- function(width = 200, height = 200, margin = "1em") {
-	width  <- validateAbsoluteCssUnit(width)
-	height <- validateAbsoluteCssUnit(height)
-	margin <- htmltools::validateCssUnit(margin)
-	opts <- sprintf('{"width":"%s","height":"%s","margin":"%s"}', width, height, margin)
-	opts <- sprintf(
-		'<script id="xaringanExtra-webcam-options" type="application/json">%s</script>',
-		opts
-	)
-	htmltools::htmlDependency(
-	  name = "xaringanExtra-webcam",
-	  version = "0.0.1",
-	  package = "xaringanExtra",
-	  src = "webcam",
-	  script = "webcam.js",
-	  head = opts,
-	  all_files = FALSE
-	)
+  width <- validateAbsoluteCssUnit(width)
+  height <- validateAbsoluteCssUnit(height)
+  margin <- htmltools::validateCssUnit(margin)
+  opts <- sprintf('{"width":"%s","height":"%s","margin":"%s"}', width, height, margin)
+  opts <- sprintf(
+    '<script id="xaringanExtra-webcam-options" type="application/json">%s</script>',
+    opts
+  )
+  htmltools::htmlDependency(
+    name = "xaringanExtra-webcam",
+    version = "0.0.1",
+    package = "xaringanExtra",
+    src = "webcam",
+    script = "webcam.js",
+    head = opts,
+    all_files = FALSE
+  )
 }
 
 validateAbsoluteCssUnit <- function(x) {
-	var <- deparse(substitute(x))
-	x <- htmltools::validateCssUnit(x)
-	if (!grepl("px$", x)) {
-		stop(
-			var, " must be expressed in absolute integer ",
-			"or pixel units.",
-			call. = FALSE
-		)
-	}
-	sub("px$", "", x)
+  var <- deparse(substitute(x))
+  x <- htmltools::validateCssUnit(x)
+  if (!grepl("px$", x)) {
+    stop(
+      var,
+      " must be expressed in absolute integer ",
+      "or pixel units.",
+      call. = FALSE
+    )
+  }
+  sub("px$", "", x)
 }
