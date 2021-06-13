@@ -141,12 +141,16 @@
   padding-left: 0;
 }
 
-.panelset.sideways.right-side {
+.panelset.sideways.right {
   flex-direction: row-reverse;
   justify-content: space-between;
 }
 
-.panelset.sideways.right-side .panel-tabs {
+.panelset.sideways.right {
+	text-align: inherit;
+}
+
+.panelset.sideways.right .panel-tabs {
   align-items: end;
   margin-right: 0;
   margin-left: 1em;
@@ -154,11 +158,11 @@
   border-left: 2px solid var(--panel-tabs-border-bottom);
 }
 
-.panelset.sideways.right-side .panel-tabs .panel-tab {
+.panelset.sideways.right .panel-tabs .panel-tab {
   padding-left: 1em;
   width: 100%;
 }
 
-.panelset.sideways.right-side .panel-tabs .panel-tab a {
+.panelset.sideways.right .panel-tabs .panel-tab a {
   text-align: right;
 }

@@ -137,7 +137,7 @@ function(input, output, session) \{
 
 By default in sideways-mode, the tabs will appear on the left side. You
 can choose to place the tabs on the right side by including both
-\code{.sideways} and \code{.right-side} with \code{.panelset}.\if{html}{\out{<div class="markdown">}}\preformatted{.panelset.sideways.right-side[
+\code{.sideways} and \code{.right} with \code{.panelset}.\if{html}{\out{<div class="markdown">}}\preformatted{.panelset.sideways.right[
 .panel[.panel-name[ui.R]
 ```r
 # shiny ui code here...

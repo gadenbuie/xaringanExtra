@@ -31,10 +31,10 @@ function(input, output, session) {
 
 By default in sideways-mode, the tabs will appear on the left side.
 You can choose to place the tabs on the right side
-by including both `.sideways` and `.right-side` with `.panelset`.
+by including both `.sideways` and `.right` with `.panelset`.
 
 ````markdown
-.panelset.sideways.right-side[
+.panelset.sideways.right[
 .panel[.panel-name[ui.R]
 ```r
 # shiny ui code here...

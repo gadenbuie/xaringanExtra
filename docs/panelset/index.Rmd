@@ -187,11 +187,11 @@ ggplot(Orange) +
 
 ---
 
-## Sideways Panelsets
+## Right Sideways Panelsets
 
-Add `.sideways.right-side` to place the tabs on the right side.
+Add `.sideways.right` to place the tabs on the right side.
 
-.panelset.sideways.right-side[
+.panelset.sideways.right[
 .panel[.panel-name[Code for a plot about oranges]
 
 ```{r ref.label="oplot", eval=FALSE}
