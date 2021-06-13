@@ -32,8 +32,9 @@ jobs:
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git add man/\* NAMESPACE
-          git commit -m 'Document'
+          git add -u .
+          git add -f docs/*/*_files # rendered files that would be missed by heavy-handed gitignore
+          git commit -m 'Update docs'
       - uses: r-lib/actions/pr-push@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
