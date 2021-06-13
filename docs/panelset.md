@@ -74,10 +74,10 @@ function(input, output, session) {
 
 By default in sideways-mode, the tabs will appear on the left side. You
 can choose to place the tabs on the right side by including both
-`.sideways` and `.right-side` with `.panelset`.
+`.sideways` and `.right` with `.panelset`.
 
 ```` markdown
-.panelset.sideways.right-side[
+.panelset.sideways.right[
 .panel[.panel-name[ui.R]
 ```r
 # shiny ui code here...
@@ -100,7 +100,7 @@ function(input, output, session) {
 panelset](https://gadenbuie.github.io/xaringanExtra/panelset/rmarkdown.html)
 
 Panelset works in all R Markdown HTML outputs like HTML reports and
-[blogdown](https://bookdown.org/yihui/blogdown/) webpages!
+[blogdown](https://bookdown.org/yihui/blogdown/) webpages\!
 
 Panelset works in the same way as `rmarkdown`’s
 [tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html)

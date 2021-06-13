@@ -38,13 +38,13 @@ htmltools::tagList(
 ````
 
 clipboard works in xaringan slides, R Markdown documents, blogdown
-sites, and Shiny apps!
+sites, and Shiny apps\!
 
 **Related projects:** For related R packages that provide copy support
 via [clipboard.js](https://clipboardjs.com/) see
 
--   [RLesur/klippy: Copy to Clipboard Buttons for RMarkdown HTML
+  - [RLesur/klippy: Copy to Clipboard Buttons for RMarkdown HTML
     Documents](https://github.com/RLesur/klippy)
--   [sbihorel/rclipboard: clipboard.js for R/Shiny
+  - [sbihorel/rclipboard: clipboard.js for R/Shiny
     Applications](https://github.com/sbihorel/rclipboard)
 
