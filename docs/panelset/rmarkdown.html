@@ -320,6 +320,7 @@ display: none;
 display: block;
 }
 
+@media (min-width: 480px) {
 .panelset.sideways {
 display: flex;
 flex-direction: row;
@@ -360,6 +361,50 @@ padding-left: 1em;
 width: 100%;
 }
 .panelset.sideways.right .panel-tabs .panel-tab a {
+text-align: right;
+}
+}
+
+.remark-container .panelset.sideways {
+display: flex;
+flex-direction: row;
+}
+.remark-container .panelset.sideways .panel-tabs {
+box-shadow: none;
+flex-direction: column;
+align-items: start;
+margin: 0;
+margin-right: 1em;
+border-right: 2px solid var(--panel-tabs-border-bottom);
+max-width: var(--panel-tabs-sideways-max-width);
+}
+.remark-container .panelset.sideways .panel {
+max-width: calc(100% - var(--panel-tabs-sideways-max-width) - 1em);
+}
+.remark-container .panelset.sideways .panel-tabs .panel-tab {
+border-top: unset;
+border-bottom: unset;
+padding-left: 0;
+}
+.remark-container .panelset.sideways.right {
+flex-direction: row-reverse;
+justify-content: space-between;
+}
+.remark-container .panelset.sideways.right {
+text-align: inherit;
+}
+.remark-container .panelset.sideways.right .panel-tabs {
+align-items: end;
+margin-right: 0;
+margin-left: 1em;
+border-right: unset;
+border-left: 2px solid var(--panel-tabs-border-bottom);
+}
+.remark-container .panelset.sideways.right .panel-tabs .panel-tab {
+padding-left: 1em;
+width: 100%;
+}
+.remark-container .panelset.sideways.right .panel-tabs .panel-tab a {
 text-align: right;
 }
 </style>
@@ -821,7 +866,7 @@ pre code {
 
 
 <h1 class="title toc-ignore">Panelset in R Markdown</h1>
-<h3 class="subtitle">xaringanExtra 0.5.0</h3>
+<h3 class="subtitle">xaringanExtra 0.5.1</h3>
 <h4 class="author"><a href="https://pkg.garrickadenbuie.com/xaringanExtra" class="uri">https://pkg.garrickadenbuie.com/xaringanExtra</a></h4>
 
 </div>
@@ -940,6 +985,44 @@ Ipsum nascetur duis senectus praesent...
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 </div>
+</div>
+</div>
+<div id="sideways-panels" class="section level2 panelset sideways">
+<h2>Sideways Panels</h2>
+<div id="first" class="section level3">
+<h3>First</h3>
+<p>Elit netus sociosqu purus massa semper in magna inceptos proin diam tristique laoreet interdum imperdiet conubia. Aliquam aenean suspendisse faucibus nostra nam habitant facilisi habitant tristique. Senectus natoque id.</p>
+</div>
+<div id="second" class="section level3">
+<h3>Second</h3>
+<p>Lorem dictumst orci nulla senectus nunc venenatis ante purus habitant taciti. Platea facilisi faucibus interdum nisi faucibus gravida at nascetur.</p>
+<p>Adipiscing nascetur viverra urna vitae sociis morbi purus taciti aptent metus. Nibh cubilia habitasse penatibus in est condimentum faucibus nunc ullamcorper placerat vel?</p>
+</div>
+<div id="third" class="section level3">
+<h3>Third</h3>
+<p>Lorem tristique montes sem cursus laoreet metus! Facilisis ullamcorper donec potenti torquent nam quisque lectus vel facilisis. Montes ante mus curae lacinia.</p>
+<p>Lorem tristique iaculis metus nibh sem nisi eleifend accumsan fusce est. Sollicitudin libero cras iaculis proin cursus phasellus sem diam dignissim aptent lacus. Na lacus.</p>
+<p>Consectetur tincidunt eu sem cursus ullamcorper ullamcorper condimentum cum porttitor. Ligula gravida ligula augue vel suscipit odio mi? Natoque tincidunt nibh etiam est scelerisque himenaeos quis posuere conubia.</p>
+<p>Elit taciti turpis molestie dui massa orci porttitor odio facilisi? A vel semper molestie euismod tincidunt nibh suspendisse. Egestas augue praesent himenaeos mus lacinia fames faucibus accumsan litora vulputate commodo.</p>
+</div>
+</div>
+<div id="right-sideways-panels" class="section level2 panelset sideways right">
+<h2>Right Sideways Panels</h2>
+<div id="first-1" class="section level3">
+<h3>First</h3>
+<p>Elit netus sociosqu purus massa semper in magna inceptos proin diam tristique laoreet interdum imperdiet conubia. Aliquam aenean suspendisse faucibus nostra nam habitant facilisi habitant tristique. Senectus natoque id.</p>
+</div>
+<div id="second-1" class="section level3">
+<h3>Second</h3>
+<p>Lorem dictumst orci nulla senectus nunc venenatis ante purus habitant taciti. Platea facilisi faucibus interdum nisi faucibus gravida at nascetur.</p>
+<p>Adipiscing nascetur viverra urna vitae sociis morbi purus taciti aptent metus. Nibh cubilia habitasse penatibus in est condimentum faucibus nunc ullamcorper placerat vel?</p>
+</div>
+<div id="third-1" class="section level3">
+<h3>Third</h3>
+<p>Lorem tristique montes sem cursus laoreet metus! Facilisis ullamcorper donec potenti torquent nam quisque lectus vel facilisis. Montes ante mus curae lacinia.</p>
+<p>Lorem tristique iaculis metus nibh sem nisi eleifend accumsan fusce est. Sollicitudin libero cras iaculis proin cursus phasellus sem diam dignissim aptent lacus. Na lacus.</p>
+<p>Consectetur tincidunt eu sem cursus ullamcorper ullamcorper condimentum cum porttitor. Ligula gravida ligula augue vel suscipit odio mi? Natoque tincidunt nibh etiam est scelerisque himenaeos quis posuere conubia.</p>
+<p>Elit taciti turpis molestie dui massa orci porttitor odio facilisi? A vel semper molestie euismod tincidunt nibh suspendisse. Egestas augue praesent himenaeos mus lacinia fames faucibus accumsan litora vulputate commodo.</p>
 </div>
 </div>
 
