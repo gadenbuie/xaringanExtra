@@ -2,6 +2,7 @@
 
 export(css_position)
 export(embed_xaringan)
+export(flashcard)
 export(html_dependency_animate_css)
 export(html_dependency_clipboard)
 export(html_dependency_clipboardjs)
