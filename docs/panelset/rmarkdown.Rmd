@@ -171,3 +171,48 @@ you can fall back to raw HTML.
 
 :::::
 
+
+## Sideways Panels {.panelset .sideways #sideways-panels}
+
+### First
+
+Elit netus sociosqu purus massa semper in magna inceptos proin diam tristique laoreet interdum imperdiet conubia. Aliquam aenean suspendisse faucibus nostra nam habitant facilisi habitant tristique. Senectus natoque id.
+
+### Second
+
+Lorem dictumst orci nulla senectus nunc venenatis ante purus habitant taciti. Platea facilisi faucibus interdum nisi faucibus gravida at nascetur.
+
+Adipiscing nascetur viverra urna vitae sociis morbi purus taciti aptent metus. Nibh cubilia habitasse penatibus in est condimentum faucibus nunc ullamcorper placerat vel?
+
+### Third
+
+Lorem tristique montes sem cursus laoreet metus! Facilisis ullamcorper donec potenti torquent nam quisque lectus vel facilisis. Montes ante mus curae lacinia.
+
+Lorem tristique iaculis metus nibh sem nisi eleifend accumsan fusce est. Sollicitudin libero cras iaculis proin cursus phasellus sem diam dignissim aptent lacus. Na lacus.
+
+Consectetur tincidunt eu sem cursus ullamcorper ullamcorper condimentum cum porttitor. Ligula gravida ligula augue vel suscipit odio mi? Natoque tincidunt nibh etiam est scelerisque himenaeos quis posuere conubia.
+
+Elit taciti turpis molestie dui massa orci porttitor odio facilisi? A vel semper molestie euismod tincidunt nibh suspendisse. Egestas augue praesent himenaeos mus lacinia fames faucibus accumsan litora vulputate commodo.
+
+## Right Sideways Panels {.panelset .sideways .right}
+
+### First
+
+Elit netus sociosqu purus massa semper in magna inceptos proin diam tristique laoreet interdum imperdiet conubia. Aliquam aenean suspendisse faucibus nostra nam habitant facilisi habitant tristique. Senectus natoque id.
+
+### Second
+
+Lorem dictumst orci nulla senectus nunc venenatis ante purus habitant taciti. Platea facilisi faucibus interdum nisi faucibus gravida at nascetur.
+
+Adipiscing nascetur viverra urna vitae sociis morbi purus taciti aptent metus. Nibh cubilia habitasse penatibus in est condimentum faucibus nunc ullamcorper placerat vel?
+
+### Third
+
+Lorem tristique montes sem cursus laoreet metus! Facilisis ullamcorper donec potenti torquent nam quisque lectus vel facilisis. Montes ante mus curae lacinia.
+
+Lorem tristique iaculis metus nibh sem nisi eleifend accumsan fusce est. Sollicitudin libero cras iaculis proin cursus phasellus sem diam dignissim aptent lacus. Na lacus.
+
+Consectetur tincidunt eu sem cursus ullamcorper ullamcorper condimentum cum porttitor. Ligula gravida ligula augue vel suscipit odio mi? Natoque tincidunt nibh etiam est scelerisque himenaeos quis posuere conubia.
+
+Elit taciti turpis molestie dui massa orci porttitor odio facilisi? A vel semper molestie euismod tincidunt nibh suspendisse. Egestas augue praesent himenaeos mus lacinia fames faucibus accumsan litora vulputate commodo.
+
