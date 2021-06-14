@@ -3,6 +3,8 @@
 * Sideways panelsets collapse to standard panelsets with tabs above the content
   on small devices (max-width 480px). ([#122](https://github.com/gadenbuie/xaringanExtra/issues/122))
 
+* Keep sideways panelset tabs on screen with long-scrolling content. ([#123](https://github.com/gadenbuie/xaringanExtra/issues/123))
+
 # xaringanExtra 0.5.0 (2021-06-13)
 
 * Added _sideways_ panelsets where tabs appear on the left or right side next
