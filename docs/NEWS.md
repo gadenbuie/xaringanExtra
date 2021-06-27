@@ -5,6 +5,8 @@
 
 * Keep sideways panelset tabs on screen with long-scrolling content. ([#123](https://github.com/gadenbuie/xaringanExtra/issues/123))
 
+* _share again_ no longer shows when viewing slides in the RStudio viewer pane. ([#128](https://github.com/gadenbuie/xaringanExtra/issues/128))
+
 # xaringanExtra 0.5.0 (2021-06-13)
 
 * Added _sideways_ panelsets where tabs appear on the left or right side next
