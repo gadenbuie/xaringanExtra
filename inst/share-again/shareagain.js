@@ -2,7 +2,8 @@
 (function () {
   function inIframe () {
     try {
-      return window.self !== window.top
+      return window.self !== window.top &&
+        !window.self.location.href.match('viewer_pane=1') // in RStudio
     } catch (e) {
       return true
     }
