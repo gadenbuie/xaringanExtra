@@ -184,9 +184,9 @@ register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
     }
 
     panel_names <- panelset_source_opts(options$panelset)
+    chunk_opts <- attr(knitr::knit_code$get(options$label), "chunk_opts")
 
-    # TODO: check that result was set by user, if not assume 'hold' as default
-    if (identical(options$results, "hold")) {
+    if (identical(chunk_opts$results %||% "hold", "hold")) {
       x <- paste(x, collapse = "\n")
     }
 
