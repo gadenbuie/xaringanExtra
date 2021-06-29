@@ -7,6 +7,12 @@
 
 * _share again_ no longer shows when viewing slides in the RStudio viewer pane. (#128)
 
+* `use_xaringan_extras("panelset")` is now equivalent to `use_panelset()`.
+  Previously the first would not install the knitr chunk hooks.
+  
+* The `panelset=TRUE` chunk option now automatically sets `results="hold"`
+  unless over-ridden by a local chunk option.
+
 # xaringanExtra 0.5.0 (2021-06-13)
 
 * Added _sideways_ panelsets where tabs appear on the left or right side next

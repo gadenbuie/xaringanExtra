@@ -1,7 +1,7 @@
 devtools::document()
 devtools::install(dependencies = FALSE)
 
-rmarkdown_v_expected <- package_version("2.8")
+rmarkdown_v_expected <- package_version("2.9")
 rmarkdown_v <- packageVersion("rmarkdown")
 if (rmarkdown_v != rmarkdown_v_expected) {
   message(
