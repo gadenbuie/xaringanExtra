@@ -67,7 +67,7 @@ use_xaringan_extra <- function(include = c(
     if (includes("tachyons")) html_dependency_tachyons(),
     if (includes("slide_tone")) html_dependency_slide_tone(),
     if (includes("fit_screen")) html_dependency_fit_screen(),
-    if (includes("panelset")) html_dependency_panelset(),
+    if (includes("panelset")) use_panelset(),
     if (includes("editable")) html_dependency_editable(),
     if (includes("webcam")) html_dependency_webcam(),
     if (includes("clipboard")) use_clipboard(),
