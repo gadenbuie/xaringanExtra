@@ -45,8 +45,8 @@ use_logo <- function(
   logo_class = "xaringan-extra-logo",
   position = css_position(top = "1em", right = "1em"),
   link_url = NULL,
-  exclude_class = c("title-slide", "inverse", "hide_logo")
-) {
+  exclude_class = c("title-slide", "inverse", "hide_logo")){
+
 	htmltools::div(
 		htmltools::tags$style(
 			type = "text/css",
@@ -54,7 +54,7 @@ use_logo <- function(
 				logo_css(image_url, width, height, position, logo_class)
 			)
 		),
-		html_dependency_logo(link_url, logo_class, exclude_class)
+		html_dependency_logo(link_url, exclude_class, logo_class)
 	)
 }
 
@@ -133,7 +133,7 @@ html_dependency_logo <- function(
   htmltools::tagList(ret)
 }
 
-logo_css <- function(url, width, height, position, logo_class = "xaringan-extra-logo") {
+logo_css <- function(url, width, height, position, logo_class) {
   if (!is_css_position(position)) {
     stop("Please use `css_position()` to specify the position of your logo", call. = FALSE)
   }
@@ -145,19 +145,22 @@ logo_css <- function(url, width, height, position, logo_class = "xaringan-extra-
   width <- htmltools::validateCssUnit(width)
   height <- htmltools::validateCssUnit(height)
   sprintf(".%s {
-width: %s;
-height: %s;
-z-index: 0;
-background-image: url(%s);
-background-size: contain;
-background-repeat: no-repeat;
-position: absolute;
-%s%s%s%s
-}
-", logo_class, width, height, url, p$top, p$right, p$bottom, p$left)
+          width: %s;
+          height: %s;
+          z-index: 0;
+          background-image: url(%s);
+          background-size: contain;
+          background-repeat: no-repeat;
+          position: absolute;
+          %s%s%s%s
+          }",
+          logo_class, width, height, url, p$top, p$right, p$bottom, p$left)
 }
 
-logo_js <- function(link_url, exclude_class = c("title-slide", "inverse", "hide_logo"), logo_class = "xaringan-extra-logo") {
+logo_js <- function(link_url,
+                    exclude_class = c("title-slide", "inverse", "hide_logo"),
+                    logo_class = "xaringan-extra-logo") {
+
   element <- if (!is.null(link_url)) 'a' else 'div'
   link <- if (!is.null(link_url)) sprintf("'%s'", link_url) else "null"
 
@@ -192,5 +195,5 @@ logo_js <- function(link_url, exclude_class = c("title-slide", "inverse", "hide_
   }
   document.addEventListener('DOMContentLoaded', addLogo)
 })()",
-    exclude_class, element, logo_class, link)
+  exclude_class, element, logo_class, link)
 }
