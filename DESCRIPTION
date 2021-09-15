@@ -1,6 +1,6 @@
 Package: xaringanExtra
 Title: Extras And Extensions for Xaringan Slides
-Version: 0.5.4
+Version: 0.5.5
 Authors@R: 
     c(person(given = "Garrick",
              family = "Aden-Buie",
@@ -87,7 +87,7 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Collate: 
     'animate.R'
     'broadcast.R'
