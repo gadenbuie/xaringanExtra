@@ -12,6 +12,8 @@
   
 * The `panelset=TRUE` chunk option now automatically sets `results="hold"`
   unless over-ridden by a local chunk option.
+  
+* Hide scribble controls when printing slides (thanks @yyzeng, #136).
 
 # xaringanExtra 0.5.0 (2021-06-13)
 
