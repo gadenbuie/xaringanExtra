@@ -12,6 +12,9 @@
   
 * The `panelset=TRUE` chunk option now automatically sets `results="hold"`
   unless over-ridden by a local chunk option.
+  
+* panelset now uses the xaringan knitr source hooks, restoring line highlighting
+  in the source panel of panelset chunks. (#138)
 
 # xaringanExtra 0.5.0 (2021-06-13)
 
