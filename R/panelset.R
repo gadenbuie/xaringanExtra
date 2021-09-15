@@ -167,33 +167,35 @@ html_dependency_panelset <- function() {
   )
 }
 
+# package env to hold original knitr hooks
+.hooks <- new.env(parent = emptyenv())
 
 register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
   if (!knitr::is_html_output()) {
     return()
   }
 
-  hook_source_original <- knitr::knit_hooks$get("source")
-  hook_output_original <- knitr::knit_hooks$get("output")
+  .hooks$source <- knitr::knit_hooks$get("source")
+  .hooks$output <- knitr::knit_hooks$get("output")
 
   in_xaringan <- output_is_xaringan(in_xaringan)
 
+  # ::: start-code-panel   <- panelset source hook
+  # source code            <- original source hook
+  # ::: end-code-panel     <- panelset source hook
+  # ::: start-output-panel <- panelset source hook
+  # output
+  # ::: end-output-panel   <- panelset knit hook, !before
+
   knitr::knit_hooks$set(source = function(x, options) {
     if (is.null(options$panelset) || identical(options$panelset, FALSE)) {
-      return(hook_source_original(x, options))
-    }
-
-    panel_names <- panelset_source_opts(options$panelset)
-    chunk_opts <- attr(knitr::knit_code$get(options$label), "chunk_opts")
-
-    if (identical(chunk_opts$results %||% "hold", "hold")) {
-      x <- paste(x, collapse = "\n")
+      return(.hooks$source(x, options))
     }
 
     if (isTRUE(in_xaringan)) {
-      panelset_chunk_before_xaringan(x, panel_names)
+      panelset_chunk_before_xaringan(x, options)
     } else {
-      panelset_chunk_before_html(x, panel_names)
+      panelset_chunk_before_html(x, options)
     }
   })
 
@@ -202,6 +204,14 @@ register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
       return()
     }
     if (isTRUE(in_xaringan)) "\n\n]" else "\n\n</div>"
+  })
+
+  knitr::opts_hooks$set(panelset = function(options) {
+    # panelset chunks ignore global options and default to results="hold"
+    # but can be overwritten by the local chunk options if declared explicitly
+    chunk_opts <- attr(knitr::knit_code$get(options$label), "chunk_opts")
+    options$results <- chunk_opts$results %||% "hold"
+    options
   })
 }
 
@@ -239,13 +249,13 @@ panelset_source_opts <- function(opt) {
   opt[names(default)]
 }
 
-panelset_chunk_before_xaringan <- function(x, panel_names) {
+panelset_chunk_before_xaringan <- function(x, options) {
+  panel_names <- panelset_source_opts(options$panelset)
+
   paste(
     sprintf(".panel[.panel-name[%s]", panel_names["source"]),
     "",
-    "```r",
-    x,
-    "```",
+    .hooks$source(x, options),
     "\n]\n",
     sprintf(".panel[.panel-name[%s]", panel_names["output"]),
     "\n",
@@ -253,14 +263,14 @@ panelset_chunk_before_xaringan <- function(x, panel_names) {
   )
 }
 
-panelset_chunk_before_html <- function(x, panel_names) {
+panelset_chunk_before_html <- function(x, options) {
+  panel_names <- panelset_source_opts(options$panelset)
+
   paste(
     '<div class="panel">',
     sprintf('<div class="panel-name">%s</div>', panel_names["source"]),
     "",
-    "```r",
-    x,
-    "```",
+    .hooks$source(x, options),
     "\n</div>\n",
     '<div class="panel">',
     sprintf('<div class="panel-name">%s</div>', panel_names["output"]),
