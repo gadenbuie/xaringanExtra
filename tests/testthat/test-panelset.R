@@ -92,6 +92,7 @@ extract_slides_text <- function(path) {
   idx <- grep("^\\s*</?textarea", txt)
   txt <- txt[(idx[1] + 1):(idx[2] - 1)]
   txt <- paste(txt, collapse = "\n")
+  txt <- gsub("\n\n+", "\n\n", txt)
   trimws(txt)
 }
 
@@ -189,19 +190,6 @@ test_that("panelset knitr chunks with mutiple outputs", {
         "",
         "```r",
         "print(\"Oak is strong and also gives shade.\")",
-        "```",
-        "",
-        "]",
-        "",
-        ".panel[.panel-name[Output]",
-        "",
-        "```",
-        "## [1] \"Oak is strong and also gives shade.\"",
-        "```",
-        "",
-        ".panel[.panel-name[Code]",
-        "",
-        "```r",
         "print(\"The lake sparkled in the red hot sun.\")",
         "```",
         "",
@@ -210,10 +198,9 @@ test_that("panelset knitr chunks with mutiple outputs", {
         ".panel[.panel-name[Output]",
         "",
         "```",
+        "## [1] \"Oak is strong and also gives shade.\"",
         "## [1] \"The lake sparkled in the red hot sun.\"",
         "```",
-        "",
-        "",
         "",
         "]"
       ),
