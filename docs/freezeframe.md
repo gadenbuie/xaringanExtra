@@ -20,7 +20,7 @@ xaringanExtra::use_freezeframe()
 ````
 
 | Argument   | Description                                                                                                    |
-|:-----------|:---------------------------------------------------------------------------------------------------------------|
+| :--------- | :------------------------------------------------------------------------------------------------------------- |
 | selector   | The selector used to search for `.gifs` to freeze.                                                             |
 | trigger    | The trigger event to start animation for non-touch devices. One of `"click"` (default), `"hover"` or `"none"`. |
 | overlay    | Whether or not to display a play icon on top of the paused image, default: `FALSE`.                            |

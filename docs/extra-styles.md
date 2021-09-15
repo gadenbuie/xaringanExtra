@@ -17,10 +17,10 @@ xaringanExtra::use_extra_styles(
 ```
 ````
 
--   `hover_code_line` adds a little floating triangle next to the
+  - `hover_code_line` adds a little floating triangle next to the
     hovered line in a code chunk
 
--   `mute_unhighlighted_code` modifies the xaringan/remarkjs line
+  - `mute_unhighlighted_code` modifies the xaringan/remarkjs line
     highlighting to mute the lines that *aren’t highlighted*.
 
 ![](figures/extra-styles-hover.gif)
@@ -36,8 +36,8 @@ xaringanExtra::use_progress_bar(color = "#0051BA", location = "top")
 ```
 ````
 
--   `color` can be any CSS color
+  - `color` can be any CSS color
 
--   `location` can be `"top"` or `"bottom"`
+  - `location` can be `"top"` or `"bottom"`
 
--   `height` can be a valid CSS unit, e.g. `10px` or `0.25em`
+  - `height` can be a valid CSS unit, e.g. `10px` or `0.25em`
