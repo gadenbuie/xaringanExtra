@@ -71,14 +71,19 @@ describe("panelset_source_opts()", {
 
 render_slide_text <- function(rmd) {
   tmpfile <- tempfile(fileext = ".Rmd")
+  on.exit(unlink(tmpfile))
   rmd <- c("---", "title: test", "---", "", rmd)
   writeLines(rmd, tmpfile)
-  rmarkdown::render(
-    tmpfile,
-    output_file = "slides.html",
-    output_format = xaringan::moon_reader(seal = FALSE),
-    quiet = TRUE
-  )
+
+  callr::r_safe(function(tmpfile) {
+    rmarkdown::render(
+      tmpfile,
+      output_file = "slides.html",
+      output_format = xaringan::moon_reader(seal = FALSE),
+      quiet = TRUE
+    )
+  }, list(tmpfile = tmpfile))
+
   extract_slides_text(file.path(dirname(tmpfile), "slides.html"))
 }
 

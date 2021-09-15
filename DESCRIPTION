@@ -79,6 +79,7 @@ Imports:
     utils,
     uuid
 Suggests: 
+    callr,
     rmarkdown,
     testthat (>= 2.1.0),
     xaringan
