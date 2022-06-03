@@ -65,6 +65,9 @@ use_logo <- function(
 #' @param top,right,bottom,left The position of the element in distance from the
 #'   top, right, bottom, or left edge of it's container element.
 #'
+#' @return An object of class `css_position` that describes `top`, `right`,
+#'   `bottom`, and `left` positions.
+#'
 #' @examples
 #' css_position(top = "1em", right = "1em") # top right corner
 #' css_position(top = "1em", left = "1em") # top left corner

@@ -17,6 +17,10 @@ NULL
 
 #' @describeIn share_again Add the _share again_ bar to your slides (only shown
 #'   when embedded in an `<iframe>`)
+#'
+#' @return An `htmltools::tagList()` with the HTML dependencies required for
+#'   **share again**.
+#'
 #' @export
 use_share_again <- function() {
   htmltools::tagList(
@@ -102,6 +106,9 @@ share_button_social_options <- function() {
 #' @param margin The margin placed around the embedded `<iframe>`.
 #' @param style Additional CSS `style` property value pairs, e.g.
 #'   `c("padding-left: 1em", "padding-right: 1em")`.
+#'
+#' @return An `htmltools::tagList()` with the HTML dependencies required for
+#'   **share again**.
 #'
 #' @seealso [use_share_again()]
 #' @export

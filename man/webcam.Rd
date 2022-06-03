@@ -16,6 +16,10 @@ i.e. as \code{200} or \code{"200px"}.}
 
 \item{margin}{Margin around the video pane in CSS units.}
 }
+\value{
+An \code{htmltools::tagList()} with the HTML dependencies required for
+\strong{webcam}.
+}
 \description{
 Add a live video of your webcam into your slides (in your own browser only).
 Useful when you are presenting via video conference to include your video,

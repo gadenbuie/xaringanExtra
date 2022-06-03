@@ -29,6 +29,10 @@ embed_xaringan(
 \item{style}{Additional CSS \code{style} property value pairs, e.g.
 \code{c("padding-left: 1em", "padding-right: 1em")}.}
 }
+\value{
+An \code{htmltools::tagList()} with the HTML dependencies required for
+\strong{share again}.
+}
 \description{
 Embed xaringan slides in any HTML web page, such as a blogdown page or an
 R Markdown website. The presentation is embedded in a responsive aspect ratio

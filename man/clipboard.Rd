@@ -36,6 +36,10 @@ clipboard.}
 
 \item{minified}{Should the minified clipboardjs dependency be used?}
 }
+\value{
+An \code{htmltools::tagList()} with the HTML dependencies required for
+\strong{clipboard}.
+}
 \description{
 Add a "Copy Code" button for one-click code chunk copying.
 }

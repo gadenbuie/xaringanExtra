@@ -26,6 +26,10 @@ buttons, and if either are included in \code{share_buttons}, then the rest of
 the vector is ignored. (And \code{"all"} takes precedence over \code{"none"}.) The
 \emph{copy link} option is always included.}
 }
+\value{
+An \code{htmltools::tagList()} with the HTML dependencies required for
+\strong{share again}.
+}
 \description{
 The \emph{share again} extension helps you share your xaringan slides. Adding the
 extension to your slides with \code{use_share_again()} enables a "share" bar that
