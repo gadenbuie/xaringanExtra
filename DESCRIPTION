@@ -1,76 +1,50 @@
 Package: xaringanExtra
-Title: Extras And Extensions for Xaringan Slides
+Title: Extras and Extensions for 'xaringan' Slides
 Version: 0.5.5
-Authors@R: 
-    c(person(given = "Garrick",
-             family = "Aden-Buie",
-             role = c("aut", "cre"),
-             email = "garrick@adenbuie.com",
-             comment = c(ORCID = "0000-0002-7111-0077")),
-      person(given = "Matthew T.",
-             family = "Warkentin",
-             role = "aut",
-             email = "warkentin@lunenfeld.ca",
-             comment = c("Contributed scribble", ORCID = "0000-0001-8730-3511")),
-      person(given = "Yotam",
-             family = "Mann",
-             role = "cph",
-             comment = "tone.js"),
-      person(given = "Daniel",
-             family = "Eden",
-             role = "cph",
-             comment = "animate.css"),
-      person(family = "Tachyons authors",
-             role = "cph"),
-      person(family = "Klaus Hartl, Fagner Brack, GitHub Contributors",
-             role = "cph",
-             comment = "js-cookie"),
-      person(family = "Chris Andrejewski",
-             role = "cph",
-             comment = "himalaya"),
-      person(given = "Eric",
-             family = "Londaits",
-             role = "cph",
-             comment = "text-poster.js"),
-      person(given = "Zeno",
-             family = "Rocha",
-             role = "cph",
-             comment = "clipboard.js"),
-      person(given = "Nikita",
-             family = "Karamov",
-             role = "cph",
-             comment = "shareon.js"),
-      person(given = "Ross",
-             family = "Zurowski",
-             role = "cph",
-             comment = "fitvids.js"),
-      person(family = "Michelle Bu and Eric Zhang",
-             role = "cph",
-             comment = "peerjs"),
-      person(given = "Kiril",
-             family = "Vatev",
-             role = "cph",
-             comment = "tiny.toast"),
-      person(given = "André",
-             family = "Restive",
-             role = "cph",
-             comment = "remark.search"),
-      person(family = "Printio (Juriy Zaytsev, Maxim Chernyak)",
-             role = "cph",
-             comment = "fabric.js"),
-      person(given = "Christpher",
-             family = "Antonellis",
-             role = "cph",
-             comment = "freezeframe.js"))
-Description: Extras and extensions for xaringan slides. Nagivate
-    your slides with tile view. Make your slides editable, live! Announce
-    slide changes with subtle tones. Animate slide transitions with
-    animate.css. Add tabbed panels to slides with panelset. Include
-    yourself in your slides with webcam. Scribble on your slides. Add a
-    "copy" button to your code chunk with clipboard. Use the Tachyons CSS
-    utility toolkit. Fit your slides to fill the browser window.
+Authors@R: c(
+    person("Garrick", "Aden-Buie", , "garrick@adenbuie.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-7111-0077")),
+    person("Matthew T.", "Warkentin", , "warkentin@lunenfeld.ca", role = "aut",
+           comment = c("Contributed scribble", ORCID = "0000-0001-8730-3511")),
+    person("Yotam", "Mann", role = "cph",
+           comment = "tone.js"),
+    person("Daniel", "Eden", role = "cph",
+           comment = "animate.css"),
+    person(, "Tachyons authors", role = "cph"),
+    person(, "Klaus Hartl, Fagner Brack, GitHub Contributors", role = "cph",
+           comment = "js-cookie"),
+    person(, "Chris Andrejewski", role = "cph",
+           comment = "himalaya"),
+    person("Eric", "Londaits", role = "cph",
+           comment = "text-poster.js"),
+    person("Zeno", "Rocha", role = "cph",
+           comment = "clipboard.js"),
+    person("Nikita", "Karamov", role = "cph",
+           comment = "shareon.js"),
+    person("Ross", "Zurowski", role = "cph",
+           comment = "fitvids.js"),
+    person(, "Michelle Bu and Eric Zhang", role = "cph",
+           comment = "peerjs"),
+    person("Kiril", "Vatev", role = "cph",
+           comment = "tiny.toast"),
+    person("André", "Restive", role = "cph",
+           comment = "remark.search"),
+    person(, "Printio (Juriy Zaytsev, Maxim Chernyak)", role = "cph",
+           comment = "fabric.js"),
+    person("Christpher", "Antonellis", role = "cph",
+           comment = "freezeframe.js")
+  )
+Description: Extras and extensions for 'xaringan' slides. Nagivate your
+    slides with tile view. Make your slides editable, live! Announce slide
+    changes with subtle tones. Animate slide transitions with animate.css.
+    Add tabbed panels to slides with panelset. Include yourself in your
+    slides with webcam. Scribble on your slides. Add a "copy" button to
+    your code chunk with clipboard. Use the 'Tachyons CSS' utility
+    toolkit. Fit your slides to fill the browser window. Plus a whole lot
+    more!
 License: MIT + file LICENSE
-URL: https://github.com/gadenbuie/xaringanExtra
+URL: https://pkg.garrickadenbuie.com/xaringanExtra/,
+    https://github.com/gadenbuie/xaringanExtra
 BugReports: https://github.com/gadenbuie/xaringanExtra/issues
 Imports: 
     htmltools,
