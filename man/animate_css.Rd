@@ -85,6 +85,6 @@ xaringanExtra::use_animate_all("slide_left")
 }
 
 \references{
-See \href{http://daneden.github.io/animate.css}{animate.css} for a
+See \href{http://daneden.github.io/animate.css/}{animate.css} for a
 full list of animations.
 }

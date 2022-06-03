@@ -5,7 +5,7 @@
 
 [Tachyons](http://tachyons.io/) is a collection of CSS utility classes
 that works beautifully with
-[xaringan](https://slides.yihuie.org/xaringan) presentations and the
+[xaringan](https://slides.yihui.org/xaringan) presentations and the
 [remarkjs](http://remarkjs.com/) class syntax.
 
 To use tachyons in your slides, add the following code chunk to your

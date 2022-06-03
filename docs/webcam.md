@@ -22,5 +22,5 @@ drag and drop the video within the browser window.
 
 The webcam extension is based on the original [webcam
 implementation](https://yihui.org/en/2017/12/html5-camera/) by Yihui
-Xie, author of [xaringan](https://slides.yihuie.org/xaringan).
+Xie, author of [xaringan](https://slides.yihui.org/xaringan).
 

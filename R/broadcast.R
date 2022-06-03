@@ -1,6 +1,6 @@
 #' Broadcast Your Slides
 #'
-#' [Experimental](https://www.tidyverse.org/lifecycle/#experimental)!
+#' [Experimental](https://lifecycle.r-lib.org/articles/stages.html)!
 #' **Broadcast** lets others follow along, in real time! Built with
 #' [PeerJS](https://peerjs.com), **broadcast** give you a unique URL to share
 #' with your viewers. Then, when they load your slides, their slides will

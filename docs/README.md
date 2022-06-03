@@ -5,7 +5,7 @@
 <!-- Links -->
 
 `xaringanExtra` is a playground of enhancements and extensions for
-[xaringan](https://slides.yihuie.org/xaringan) slides.
+[xaringan](https://slides.yihui.org/xaringan) slides.
 
 -   Add an overview of your presentation with [tile view](/tile-view)
 -   Make your slides [editable](/editable)
