@@ -34,7 +34,9 @@ CSS rules to set the width and height of the \code{.text-poster} container.}
 }
 \value{
 The \code{text_poster()} function returns HTML with the following
-structure:\if{html}{\out{<div class="sourceCode html">}}\preformatted{<div class="text-poster" style="width:100\%;height:100\%;padding:1em;">
+structure:
+
+\if{html}{\out{<div class="sourceCode html">}}\preformatted{<div class="text-poster" style="width:100\%;height:100\%;padding:1em;">
   <div class="text-poster__text" data-text="first line\\\\nsecond line"></div>
 </div>
 }\if{html}{\out{</div>}}
@@ -45,7 +47,9 @@ Additional inline styles can be applied using named arguments to
 equal to \code{NULL}. Note that the \code{div.text-poster} must have a width and
 height.
 
-Once rendered, the final output will have the following structure:\if{html}{\out{<div class="sourceCode html">}}\preformatted{<div class="text-poster" style="width:100\%;height:100\%;padding:1em;">
+Once rendered, the final output will have the following structure:
+
+\if{html}{\out{<div class="sourceCode html">}}\preformatted{<div class="text-poster" style="width:100\%;height:100\%;padding:1em;">
   <div class="text-poster__text" data-text="first line\\\\nsecond line">
     <div class="line-container">
       <div class="line">first line</div>
@@ -75,7 +79,9 @@ need to call this function.
 \section{Usage}{
  To add text-poster to your xaringan presentation, use
 \code{text_poster()} to create a block of poster text. Include line breaks in
-the text string to split the text block.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r poster-text, echo=FALSE\}`r ''`
+the text string to split the text block.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r poster-text, echo=FALSE\}`r ''`
 xaringanExtra::text_poster(
   "There are no
   routine statistical

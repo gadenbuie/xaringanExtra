@@ -47,7 +47,9 @@ view dependencies. Most users will want to use \code{use_editable()}.
 
 \section{Usage}{
  To make your xaringan presentations \emph{editable}, add the
-following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-editable, echo=FALSE\}
+following code chunk to your slides' R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-editable, echo=FALSE\}
 # Setup editable fields and only store values in the browser for one day
 # (by default values expire in 2 weeks).
 xaringanExtra::use_editable(expires = 1)
@@ -55,14 +57,18 @@ xaringanExtra::use_editable(expires = 1)
 }\if{html}{\out{</div>}}
 
 Then, to make a component of your slides editable, use the \code{.can-edit[]}
-class.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{## .can-edit[You can edit this slide title]
+class.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{## .can-edit[You can edit this slide title]
 }\if{html}{\out{</div>}}
 
 Editable fields that only have the \code{.can-edit} class are reset whenever the
 slides are re-loaded in your browser. If you want to store the edited
 values and have them persist across browser sessions, give each editable
 field a \verb{.key-<NAME>} class. Be sure to make each key unique and note that
-the key name must be a valid CSS class, i.e. it cannot contain spaces.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{## .can-edit.key-firstSlideTitle[Change this title and then reload the page]
+the key name must be a valid CSS class, i.e. it cannot contain spaces.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{## .can-edit.key-firstSlideTitle[Change this title and then reload the page]
 }\if{html}{\out{</div>}}
 
 \strong{Warning} Editable fields may not work well with slide continuations. If

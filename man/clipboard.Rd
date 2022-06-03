@@ -41,7 +41,9 @@ Add a "Copy Code" button for one-click code chunk copying.
 }
 \details{
 To add \strong{clipboard} to your xaringan presentation or R Markdown
-document, add the following code chunk to your slides’ R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringanExtra-clipboard, echo=FALSE\}
+document, add the following code chunk to your slides’ R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringanExtra-clipboard, echo=FALSE\}
 xaringanExtra::use_clipboard()
 ```
 }\if{html}{\out{</div>}}
@@ -54,7 +56,9 @@ text will still be selected, so the user can still manually press
 \code{Ctrl+C} to copy the code chunk.
 
 These options accept raw HTML strings, so you can achieve an icon-only
-appearance using FontAwesome icons:\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringanExtra-clipboard, echo=FALSE\}
+appearance using FontAwesome icons:
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringanExtra-clipboard, echo=FALSE\}
 htmltools::tagList(
   xaringanExtra::use_clipboard(
     button_text = "<i class=\"fa fa-clipboard\"></i>",

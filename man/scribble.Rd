@@ -62,7 +62,9 @@ users will want to use \code{use_scribble()} instead.
 
 \section{Usage}{
  To add scribble to your \code{xaringan} presentation,
-add the following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-scribble, echo=FALSE\}
+add the following code chunk to your slides' R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-scribble, echo=FALSE\}
 xaringanExtra::use_scribble()
 ```
 }\if{html}{\out{</div>}}

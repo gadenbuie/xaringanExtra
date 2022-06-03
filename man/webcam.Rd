@@ -23,7 +23,9 @@ or when you are recording a class or lecture.
 }
 \details{
 To add \strong{webcam} to your xaringan presentation, add the following code
-chunk to your slides’ R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r\}
+chunk to your slides’ R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r\}
 xaringanExtra::use_webcam()
 ```
 }\if{html}{\out{</div>}}

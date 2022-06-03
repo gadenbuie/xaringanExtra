@@ -58,7 +58,9 @@ slides by adding the class \code{.no-animation}.
 
 \section{Usage}{
  To add animate.css to your xaringan presentation, add the
-following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-animate, echo=FALSE\}
+following code chunk to your slides' R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-animate, echo=FALSE\}
 xaringanExtra::use_animate_css()
 ```
 
@@ -74,7 +76,9 @@ and out behavior of each slide.
 
 Or use \code{use_animate_all()} to set default in and out animations for all
 slides. Animations can be disabled for individual slides by adding the
-class \code{.no-animation} to the slide.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-animate, echo=FALSE\}
+class \code{.no-animation} to the slide.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-animate, echo=FALSE\}
 xaringanExtra::use_animate_all("slide_left")
 ```
 }\if{html}{\out{</div>}}

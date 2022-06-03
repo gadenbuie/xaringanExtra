@@ -80,7 +80,9 @@ dependencies. Most users will want to use \code{use_search()}.
 
 \section{Usage}{
  To add search to your xaringan presentation, add the
-following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-search, echo=FALSE\}
+following code chunk to your slides' R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-search, echo=FALSE\}
 xaringanExtra::use_search()
 ```
 }\if{html}{\out{</div>}}

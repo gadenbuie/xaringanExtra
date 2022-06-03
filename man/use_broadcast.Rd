@@ -19,7 +19,9 @@ automatically follow you as you present!
 }
 \details{
 To equip your slides with broadcast capabilities, add the following
-chunk to your slides’ \code{.Rmd} file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r broadcast, echo=FALSE\}
+chunk to your slides’ \code{.Rmd} file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r broadcast, echo=FALSE\}
 xaringanExtra::use_broadcast()
 ```
 }\if{html}{\out{</div>}}
