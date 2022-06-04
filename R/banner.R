@@ -36,8 +36,8 @@ use_banner <- function(
   top_right = NULL,
   exclude = NULL
 ) {
-  top <- banner_opts(top_left, top_center, top_right, "top", exclude)
-  bottom <- banner_opts(bottom_left, bottom_center, bottom_right, "bottom", exclude)
+  top <- init_banner(top_left, top_center, top_right, "top", exclude)
+  bottom <- init_banner(bottom_left, bottom_center, bottom_right, "bottom", exclude)
 
   htmltools::tagList(
     top,
@@ -54,7 +54,7 @@ use_banner <- function(
   )
 }
 
-banner_opts <- function(
+init_banner <- function(
   left = NULL,
   center = NULL,
   right = NULL,
