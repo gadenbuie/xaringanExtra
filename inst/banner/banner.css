@@ -1,0 +1,53 @@
+:root {
+  --xe-banner-bg: ;
+  --xe-banner-fg: curentcolor;
+  --xe-banner-padding-x: 2em;
+  --xe-banner-padding-y: 0;
+  --xe-banner-height: 3em;
+  --xe-banner-font-size: 0.7em;
+  --xe-banner-font-family: inherit;
+  --xe-banner-font-family: inherit;
+}
+
+.xe-banner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--xe-banner-height);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--xe-banner-fg);
+  background: var(--xe-banner-bg);
+  font-size: var(--xe-banner-font-size);
+  font-family: var(--xe-banner-font-family);
+  padding: var(--xe-banner-padding-y) var(--xe-banner-padding-x);
+}
+
+.xe-banner > * {
+  margin: 0;
+  padding: 0;
+  overflow: clip;
+  line-height: 1.1;
+}
+
+.xe-banner > [class=^"xe-banner"] > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xe-banner > .xe-banner__left {
+  text-align: left;
+  margin-right: auto;
+}
+
+.xe-banner > .xe-banner__center {
+  text-align: center;
+  position: absolute;
+}
+
+.xe-banner > .xe-banner__right {
+  text-align: right;
+  margin-left: auto;
+}

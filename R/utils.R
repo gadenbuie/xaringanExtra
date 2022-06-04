@@ -13,3 +13,10 @@ xaringan_version <- function(min = NULL) {
   }
   xv >= package_version(min)
 }
+
+compact <- function(.l) {
+  is_null <- vapply(.l, is.null, logical(1))
+  is_len_0 <- vapply(.l, length, integer(1)) == 0
+
+  .l[!(is_null | is_len_0)]
+}
