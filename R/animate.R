@@ -37,7 +37,7 @@
 #' use_animate_css()
 #' html_dependency_animate_css()
 #'
-#' @references See [animate.css](http://daneden.github.io/animate.css/) for a
+#' @references See [animate.css](https://daneden.github.io/animate.css/) for a
 #'   full list of animations.
 #'
 #' @param minified Should the minified or full CSS source be used?

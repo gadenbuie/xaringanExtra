@@ -90,6 +90,6 @@ html_dependency_animate_css()
 
 }
 \references{
-See \href{http://daneden.github.io/animate.css/}{animate.css} for a
+See \href{https://daneden.github.io/animate.css/}{animate.css} for a
 full list of animations.
 }
