@@ -28,6 +28,10 @@ the top or bottom of the slide.}
 applied. By default all slides are included, but you might want to exclude
 the title and inverse slides with \code{exclude = c("title-slide", "inverse")}.}
 }
+\value{
+An \code{htmltools::tagList()} with the banner dependencies, or an
+\link[htmltools:htmlDependency]{htmltools::htmlDependency}.
+}
 \description{
 Adds a banner to all the slides in your deck at the top or the bottom of the
 slide. You can place content in the left, center, or right portion of the
@@ -42,4 +46,7 @@ use_banner(
   exclude = c("title-slide", "inverse")
 )
 
+}
+\seealso{
+\code{\link[=style_banner]{style_banner()}}
 }

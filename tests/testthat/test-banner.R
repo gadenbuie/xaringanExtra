@@ -32,3 +32,44 @@ describe("init_banner()", {
     expect_snapshot(init_banner(center = "center", exclude = c("one", "two")))
   })
 })
+
+describe("style_banner()", {
+  it("returns style tag", {
+    x <- style_banner(text_color = "red", height = "3em")
+    expect_s3_class(x, "shiny.tag")
+    expect_length(x$children, 1)
+    expect_s3_class(x$children[[1]], "html")
+    expect_equal(x$name, "style")
+    expect_snapshot(paste(x$children[[1]]))
+  })
+
+  it("errors when non-length-1 values are provided", {
+    expect_error(style_banner(text_color = c("red", "blue")), "text_color")
+    expect_error(style_banner(selector = c("this", "that")), "selector")
+  })
+
+  it("returns nothing if only default values", {
+    expect_null(style_banner())
+  })
+
+  it("errrors if invalid units are provided", {
+    expect_silent(style_banner(height = 12))
+    expect_error(style_banner(height = "twelve"))
+
+    expect_silent(style_banner(padding_horizontal = "10%"))
+    expect_error(style_banner(padding_horizontal = "10 pct"))
+
+    expect_silent(style_banner(padding_vertical = "10%"))
+    expect_error(style_banner(padding_vertical = "10 pct"))
+
+    expect_silent(style_banner(font_size = "auto"))
+    expect_error(style_banner(font_size = "automatic"))
+  })
+
+  it("allow reset values in unit properties", {
+    expect_silent(style_banner(font_size = "inherit"))
+    expect_silent(style_banner(font_size = "unset"))
+    expect_silent(style_banner(font_size = "revert"))
+    expect_silent(style_banner(font_size = "initial"))
+  })
+})
