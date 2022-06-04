@@ -6,7 +6,7 @@
   --xe-banner-height: 3em;
   --xe-banner-font-size: 0.7em;
   --xe-banner-font-family: inherit;
-  --xe-banner-z-index: 1;
+  --xe-banner-z-index: 0;
 }
 
 .xe-banner {

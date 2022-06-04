@@ -27,7 +27,11 @@ class xeBanner {
 
       // add banner
       const banner = this.createBanner()
-      slide.appendChild(banner)
+      if (slide.children.length) {
+        slide.insertBefore(banner, slide.firstElementChild)
+      } else {
+        slide.appendChild(banner)
+      }
 
       if (this.position === 'top') {
         banner.style.top = '0'
