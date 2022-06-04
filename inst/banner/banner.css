@@ -1,11 +1,10 @@
 :root {
-  --xe-banner-bg: ;
+  --xe-banner-bg: transparent;
   --xe-banner-fg: curentcolor;
   --xe-banner-padding-x: 2em;
   --xe-banner-padding-y: 0;
   --xe-banner-height: 3em;
   --xe-banner-font-size: 0.7em;
-  --xe-banner-font-family: inherit;
   --xe-banner-font-family: inherit;
 }
 
