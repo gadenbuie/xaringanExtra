@@ -79,3 +79,7 @@ In other words, you can edit the title on the first slide of a multi-part
 slide and reload the page to have the title applied to subsequent slides.
 }
 
+\examples{
+use_editable()
+
+}

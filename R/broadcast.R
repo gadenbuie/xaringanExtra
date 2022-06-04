@@ -8,6 +8,9 @@
 #'
 #' @includeRmd man/fragments/broadcast-details.Rmd
 #'
+#' @examples
+#' use_broadcast()
+#'
 #' @return An `htmltools::tagList()` with the HTML dependencies required for
 #'   **broadcast**.
 #'

@@ -7,6 +7,9 @@
 #' element a `.key-<NAME>` class, where `<NAME>` is a unique identifier (and
 #' valid CSS class).
 #'
+#' @examples
+#' use_editable()
+#'
 #' @return An `htmltools::tagList()` with the editable dependencies, or an
 #'   [htmltools::htmlDependency].
 #' @section Usage: To make your xaringan presentations _editable_, add the

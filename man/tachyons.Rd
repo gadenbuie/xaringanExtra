@@ -57,6 +57,10 @@ Feeling shame about bad code stops you from getting to good code
 }\if{html}{\out{</div>}}
 }
 
+\examples{
+use_tachyons()
+
+}
 \references{
 \href{http://tachyons.io/}{tachyons},
 \href{https://roperzh.github.io/tachyons-cheatsheet/}{Tachyons Cheat Sheet}

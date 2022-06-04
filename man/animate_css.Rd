@@ -84,6 +84,11 @@ xaringanExtra::use_animate_all("slide_left")
 }\if{html}{\out{</div>}}
 }
 
+\examples{
+use_animate_css()
+html_dependency_animate_css()
+
+}
 \references{
 See \href{http://daneden.github.io/animate.css/}{animate.css} for a
 full list of animations.

@@ -364,3 +364,7 @@ print("Oak is strong and also gives shade.")
 ]: R:\%0A\%60\%60\%60\%7Br\%20panelset\%20=\%20TRUE\%7D\%0Alist(\%0A\%20\%20normal\%20=\%20rnorm(10),\%0A\%20\%20uniform\%20=\%20runif(10),\%0A\%20\%20cauchy\%20=\%20rcauchy(10)\%0A)\%0A\%60\%60\%60\%0A
 }
 
+\examples{
+use_panelset()
+
+}

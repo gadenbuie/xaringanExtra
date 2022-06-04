@@ -45,3 +45,7 @@ to your slides.
 extra styles dependencies. Most users will want to use \code{use_extra_styles()}.
 }}
 
+\examples{
+use_extra_styles()
+
+}

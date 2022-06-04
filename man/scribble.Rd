@@ -70,3 +70,7 @@ xaringanExtra::use_scribble()
 }\if{html}{\out{</div>}}
 }
 
+\examples{
+use_scribble()
+
+}

@@ -43,3 +43,7 @@ And then press \strong{Alt}/\strong{Option} + \strong{F} at any point during you
 enable the extension.
 }
 
+\examples{
+use_fit_screen()
+
+}

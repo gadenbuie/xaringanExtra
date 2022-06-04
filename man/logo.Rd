@@ -77,3 +77,11 @@ you can hide the logo for a particular slide by using the \code{hide_logo}
 slide class.
 }
 
+\examples{
+xaringan_logo <- file.path(
+  "https://raw.githubusercontent.com/rstudio/hex-stickers/master",
+  "PNG/xaringan.png"
+)
+use_logo(xaringan_logo)
+
+}

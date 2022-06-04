@@ -6,6 +6,9 @@
 #'
 #' @includeRmd man/fragments/webcam-details.Rmd details
 #'
+#' @examples
+#' use_webcam()
+#'
 #' @references The webcam extension is based on the original
 #'   [webcam implementation](https://yihui.org/en/2017/12/html5-camera/) by
 #'   Yihui Xie, author of \pkg{xaringan}.

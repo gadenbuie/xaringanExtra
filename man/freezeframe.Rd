@@ -61,6 +61,10 @@ xaringanExtra::use_freezeframe()
 }\if{html}{\out{</div>}}
 }
 
+\examples{
+use_freezeframe()
+
+}
 \references{
 \url{http://ctrl-freaks.github.io/freezeframe.js/},
 \url{https://github.com/ctrl-freaks/freezeframe.js/}

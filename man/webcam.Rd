@@ -46,6 +46,10 @@ drag and drop the video within the browser window.
 dependencies. Most users will want to use \code{use_webcam()}.
 }}
 
+\examples{
+use_webcam()
+
+}
 \references{
 The webcam extension is based on the original
 \href{https://yihui.org/en/2017/12/html5-camera/}{webcam implementation} by

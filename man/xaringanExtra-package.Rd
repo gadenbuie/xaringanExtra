@@ -32,6 +32,7 @@
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://pkg.garrickadenbuie.com/xaringanExtra/}
   \item \url{https://github.com/gadenbuie/xaringanExtra}
   \item Report bugs at \url{https://github.com/gadenbuie/xaringanExtra/issues}
 }

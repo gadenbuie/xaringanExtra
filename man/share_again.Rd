@@ -51,6 +51,14 @@ when embedded in an \verb{<iframe>})
 choose the social media sites included in the share menu
 }}
 
+\examples{
+# In your slides call
+use_share_again()
+
+# In the document where you want to embed the slides call
+embed_xaringan("https://slides.yihui.org/xaringan/")
+
+}
 \seealso{
 \code{\link[=embed_xaringan]{embed_xaringan()}}
 }

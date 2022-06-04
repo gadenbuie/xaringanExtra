@@ -95,6 +95,10 @@ hours, load your slides with \code{?broadcast=1} and new broadcast link will
 be created at the next broadcast.
 }
 }
+\examples{
+use_broadcast()
+
+}
 \references{
 \url{https://peerjs.com}
 }

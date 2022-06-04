@@ -4,6 +4,9 @@
 #'
 #' @includeRmd man/fragments/clipboard-details.Rmd details
 #'
+#' @examples
+#' use_clipboard()
+#'
 #' @rdname clipboard
 #' @name clipboard
 NULL

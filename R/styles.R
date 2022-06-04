@@ -3,6 +3,9 @@
 #' Adds CSS extras to your slides. You can select which extras you wish to add
 #' to your slides.
 #'
+#' @examples
+#' use_extra_styles()
+#'
 #' @name extra_styles
 NULL
 

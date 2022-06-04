@@ -40,6 +40,11 @@ container for seamless integration with your web page. This feature works
 best when combined with \code{\link[=use_share_again]{use_share_again()}}, but \code{embed_xaringan()} can be
 used for any xaringan presentation.
 }
+\examples{
+# In your slides call
+use_share_again()
+
+}
 \seealso{
 \code{\link[=use_share_again]{use_share_again()}}
 }

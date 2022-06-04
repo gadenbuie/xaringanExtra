@@ -7,6 +7,9 @@
 #' another window. To enable fit-to-screen, press **Alt**/**Option** + **F** during the
 #' slideshow. To disable, reload the slides.
 #'
+#' @examples
+#' use_fit_screen()
+#'
 #' @return An`htmltools::tagList()` with the fit-to-screen dependency, or an
 #'   [htmltools::htmlDependency()].
 #'

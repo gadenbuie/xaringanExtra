@@ -88,6 +88,10 @@ xaringanExtra::use_search()
 }\if{html}{\out{</div>}}
 }
 
+\examples{
+use_search()
+
+}
 \references{
 \url{https://github.com/arestivo/remark.search}
 }

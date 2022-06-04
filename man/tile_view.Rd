@@ -37,3 +37,7 @@ xaringanExtra::use_tile_view()
 }\if{html}{\out{</div>}}
 }
 
+\examples{
+use_tile_view()
+
+}

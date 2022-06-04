@@ -11,6 +11,13 @@
 #' function to enable or disable specific social media sites and platforms from
 #' the share menu.
 #'
+#' @examples
+#' # In your slides call
+#' use_share_again()
+#'
+#' # In the document where you want to embed the slides call
+#' embed_xaringan("https://slides.yihui.org/xaringan/")
+#'
 #' @seealso [embed_xaringan()]
 #' @name share_again
 NULL
@@ -96,6 +103,10 @@ share_button_social_options <- function() {
 #' container for seamless integration with your web page. This feature works
 #' best when combined with [use_share_again()], but `embed_xaringan()` can be
 #' used for any xaringan presentation.
+#'
+#' @examples
+#' # In your slides call
+#' use_share_again()
 #'
 #' @param url The URL or path to the presentation to embed.
 #' @param ratio The ratio of the presentation, either as `"width:height"` or

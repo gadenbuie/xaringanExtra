@@ -87,6 +87,10 @@ clipboard dependencies for use in xaringan and R Markdown documents. Most
 users will want to use \code{use_clipboard()} instead.
 }}
 
+\examples{
+use_clipboard()
+
+}
 \references{
 https://clipboardjs.com/
 }

@@ -35,6 +35,9 @@
 #'
 #' @includeRmd man/fragments/panelset_chunks.Rmd
 #'
+#' @examples
+#' use_panelset()
+#'
 #' @name panelset
 NULL
 

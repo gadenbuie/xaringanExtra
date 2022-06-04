@@ -33,6 +33,10 @@
 #'   ```
 #'   ````
 #'
+#' @examples
+#' use_animate_css()
+#' html_dependency_animate_css()
+#'
 #' @references See [animate.css](http://daneden.github.io/animate.css/) for a
 #'   full list of animations.
 #'

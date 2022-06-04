@@ -37,6 +37,10 @@ xaringanExtra::use_slide_tone()
 }\if{html}{\out{</div>}}
 }
 
+\examples{
+use_slide_tone()
+
+}
 \references{
 \href{https://tonejs.github.io/}{tone.js}
 }
