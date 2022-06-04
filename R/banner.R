@@ -4,6 +4,15 @@
 #' slide. You can place content in the left, center, or right portion of the
 #' banner.
 #'
+#' @examples
+#' use_banner(bottom_left = "bit.ly/my-awesome-slides")
+#'
+#' use_banner(
+#'   bottom_left = "bit.ly/my-awesome-slides",
+#'   top_center = "My Presentation",
+#'   exclude = c("title-slide", "inverse")
+#' )
+#'
 #' @param bottom_left,top_left Text or HTML to place in the left column of the
 #'   top or bottom of the slide.
 #' @param bottom_right,top_right Text or HTML to place in the right column of
@@ -14,14 +23,8 @@
 #'   applied. By default all slides are included, but you might want to exclude
 #'   the title and inverse slides with `exclude = c("title-slide", "inverse")`.
 #'
-#' @examples
-#' use_banner(bottom_left = "bit.ly/my-awesome-slides")
-#'
-#' use_banner(
-#'   bottom_left = "bit.ly/my-awesome-slides",
-#'   top_center = "My Presentation",
-#'   exclude = c("title-slide", "inverse")
-#' )
+#' @return An `htmltools::tagList()` with the banner dependencies, or an
+#'   [htmltools::htmlDependency].
 #'
 #' @export
 use_banner <- function(
