@@ -89,6 +89,9 @@ use_banner <- function(
 #'   `style_banner()` as many times as you want in your slides, but you'll want
 #'   to change the `selector` for each call.
 #'
+#' @return Returns a `<style>` tag with the banner styles for `selector` as
+#'   HTML via [htmltools::HTML()].
+#'
 #' @seealso [use_banner()]
 #' @export
 style_banner <- function(

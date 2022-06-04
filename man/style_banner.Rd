@@ -46,6 +46,10 @@ banner appearance for particular slide classes. Note that you can call
 \code{style_banner()} as many times as you want in your slides, but you'll want
 to change the \code{selector} for each call.}
 }
+\value{
+Returns a \verb{<style>} tag with the banner styles for \code{selector} as
+HTML via \code{\link[htmltools:HTML]{htmltools::HTML()}}.
+}
 \description{
 Change the banner style properties for a specific selector. By default, the
 changes apply to all banners, but by setting \code{selector} you can apply style
