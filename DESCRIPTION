@@ -77,7 +77,6 @@ Collate:
     'styles.R'
     'search.R'
     'tachyons.R'
-    'text-poster.R'
     'tile-view.R'
     'use_logo.R'
     'utils.R'
