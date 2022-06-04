@@ -59,14 +59,22 @@ banner_opts <- function(
   exclude = NULL
 ) {
   opts <- compact(list(left = left, center = center, right = right, exclude = exclude))
+  opts <- lapply(opts, function(x) {
+    if (!is.character(x)) {
+      x <- format(x)
+    }
+    paste(x, collapse = " ")
+  })
   if (length(opts)) {
     opts$position <- position
     if (!is.null(opts$exclude)) {
       opts$exclude <- I(opts$exclude)
     }
-    htmltools::HTML(sprintf(
+    opts <- sprintf(
       "<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('%s'))})</script>",
       jsonlite::toJSON(opts, auto_unbox = TRUE)
-    ))
+    )
+    opts <- gsub('\\\\"', '\\\\\\\\"', opts)
+    htmltools::HTML(opts)
   }
 }
