@@ -171,8 +171,8 @@ Add share again to your slides in three easy steps.
     *share again* not required!
 
     Here’s what your [slides will look
-    like](https://pkg.garrickadenbuie.com/xaringanExtra/share-again/) in an
-    R Markdown HTML document.
+    like](https://pkg.garrickadenbuie.com/xaringanExtra/share-again/) in
+    an R Markdown HTML document.
 
 ## 📡 Broadcast
 
