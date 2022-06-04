@@ -12,6 +12,7 @@ style_banner(
   height = NULL,
   font_size = NULL,
   font_family = NULL,
+  z_index = NULL,
   selector = ":root"
 )
 }
@@ -33,6 +34,12 @@ change the value of \code{padding_horizontal}.}
 \item{font_size, font_family}{The font size and family of the text in the
 banner. The default font size is \verb{0.7em} and the default family inherits
 from the primary text of the slide.}
+
+\item{z_index}{The z-index of the banner. By default this value is 1 so that
+you can ensure other content can appear over the banner by setting
+\code{z-index: 10} (or using any value greater than 1). You probably don't need
+to adjust this value; I've only included it in \code{style_banner()} in case
+you run into problems with the banner appearing above other content.}
 
 \item{selector}{A CSS selector, e.g. \code{".inverse"}, where the styles set in
 this call should be applied. Typically, you'll either set these styles for

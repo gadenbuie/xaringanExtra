@@ -79,6 +79,11 @@ use_banner <- function(
 #' @param font_size,font_family The font size and family of the text in the
 #'   banner. The default font size is `0.7em` and the default family inherits
 #'   from the primary text of the slide.
+#' @param z_index The z-index of the banner. By default this value is 1 so that
+#'   you can ensure other content can appear over the banner by setting
+#'   `z-index: 10` (or using any value greater than 1). You probably don't need
+#'   to adjust this value; I've only included it in `style_banner()` in case
+#'   you run into problems with the banner appearing above other content.
 #' @param selector A CSS selector, e.g. `".inverse"`, where the styles set in
 #'   this call should be applied. Typically, you'll either set these styles for
 #'   all banners using the default `selector`, or you'll want to customize the
@@ -96,6 +101,7 @@ style_banner <- function(
   height = NULL,
   font_size = NULL,
   font_family = NULL,
+  z_index = NULL,
   selector = ":root"
 ) {
   assert_len_1 <- function(x) {
@@ -114,6 +120,7 @@ style_banner <- function(
     fg            = assert_len_1(text_color),
     bg            = assert_len_1(background_color),
     height        = assert_len_1(height),
+    "z-index"     = assert_len_1(z_index),
     "padding-x"   = assert_len_1(padding_horizontal),
     "padding-y"   = assert_len_1(padding_vertical),
     "font-size"   = assert_len_1(font_size),
