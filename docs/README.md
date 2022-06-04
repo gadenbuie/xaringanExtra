@@ -1,7 +1,14 @@
 ## xaringanExtra
 
 <!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/xaringanExtra)](https://CRAN.R-project.org/package=xaringanExtra)
+[![xaringanExtra status
+badge](https://gadenbuie.r-universe.dev/badges/xaringanExtra)](https://gadenbuie.r-universe.dev)
+[![tic](https://github.com/gadenbuie/xaringanExtra/actions/workflows/tic.yml/badge.svg)](https://github.com/gadenbuie/xaringanExtra/actions/workflows/tic.yml)
 <!-- badges: end -->
+
 <!-- Links -->
 
 `xaringanExtra` is a playground of enhancements and extensions for
@@ -40,10 +47,28 @@ xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons"))
 
 ## Installation
 
-You can install the current version of xaringanExtra from GitHub.
+You can install the released version of xaringanExtra from CRAN:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("gadenbuie/xaringanExtra")
+install.packages("xaringanExtra")
+```
+
+You can install the latest development version from
+[GitHub](https://github.com/gadenbuie/xaringanExtra/):
+
+``` r
+# install.packages("remotes")
+remotes::install_github("gadenbuie/xaringanExtra")
+```
+
+or from [gadenbuie.r-universe.dev](https://gadenbuie.r-universe.dev/):
+
+``` r
+options(repos = c(
+  gadenbuie = 'https://gadenbuie.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org'
+))
+
+install.packages('xaringanExtra')
 ```
 
