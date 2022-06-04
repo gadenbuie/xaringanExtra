@@ -140,12 +140,6 @@ style_banner <- function(
     }
   }
 
-  for (var in names(css)) {
-    if (length(css[[var]]) != 1) {
-      stop(sprintf("`"))
-    }
-  }
-
   names(css) <- paste0("--xe-banner-", names(css))
   css <- paste(sprintf("  %s: %s;", names(css), unlist(css)), collapse = "\n")
   css <- sprintf("%s {\n%s\n}", selector, css)
