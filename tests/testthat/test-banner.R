@@ -52,7 +52,7 @@ describe("style_banner()", {
     expect_null(style_banner())
   })
 
-  it("errrors if invalid units are provided", {
+  it("errors if invalid units are provided", {
     expect_silent(style_banner(height = 12))
     expect_error(style_banner(height = "twelve"))
 
