@@ -729,7 +729,7 @@ slide class.
 
 ## 📰 Banner
 
-#### 📺 [Banner Demo](https://gadenbuie.github.io/xaringanExtra/banner)
+#### 📺 [Banner Demo](https://gadenbuie.github.io/xaringanExtra/banner/)
 
 `use_banner()` adds a banner to the top or the bottom of your slides.
 Use banner to add the title of your talk, a link to your materials

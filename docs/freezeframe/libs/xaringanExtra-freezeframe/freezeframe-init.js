@@ -2,8 +2,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   const optsEl = document.getElementById('xaringanExtra-freezeframe-options')
   const opts = optsEl
-             ? JSON.parse(optsEl.innerText)
-             : { selector: 'img[src$="gif"]', trigger: 'click', responsive: true }
+    ? JSON.parse(optsEl.innerText)
+    : { selector: 'img[src$="gif"]', trigger: 'click', responsive: true }
 
   if (typeof slideshow !== 'undefined') {
     const slides = Array.from(document.querySelectorAll('.remark-slide-container'))
