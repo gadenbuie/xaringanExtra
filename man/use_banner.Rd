@@ -11,7 +11,8 @@ use_banner(
   top_left = NULL,
   top_center = NULL,
   top_right = NULL,
-  exclude = NULL
+  exclude = NULL,
+  ...
 )
 }
 \arguments{
@@ -27,9 +28,14 @@ the top or bottom of the slide.}
 \item{exclude}{A vector of slide classes where the banner should not be
 applied. By default all slides are included, but you might want to exclude
 the title and inverse slides with \code{exclude = c("title-slide", "inverse")}.}
+
+\item{...}{Banner styles created with \code{\link[=style_banner]{style_banner()}}. Technically,
+additional arguments are added into the \code{\link[htmltools:tagList]{htmltools::tagList()}} with the
+banner dependencies, but you'll only want to use \code{\link[=style_banner]{style_banner()}} calls
+here.}
 }
 \value{
-An \code{htmltools::tagList()} with the banner dependencies, or an
+An \code{\link[htmltools:tagList]{htmltools::tagList()}} with the banner dependencies, or an
 \link[htmltools:htmlDependency]{htmltools::htmlDependency}.
 }
 \description{
@@ -43,7 +49,8 @@ use_banner(bottom_left = "bit.ly/my-awesome-slides")
 use_banner(
   bottom_left = "bit.ly/my-awesome-slides",
   top_center = "My Presentation",
-  exclude = c("title-slide", "inverse")
+  exclude = c("title-slide", "inverse"),
+  style_banner(text_color = "grey")
 )
 
 }
