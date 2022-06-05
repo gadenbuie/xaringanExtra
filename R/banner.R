@@ -76,6 +76,10 @@ use_banner <- function(
 #'   padding is applied horizontally. If anything, you probably only want to
 #'   change the value of `padding_horizontal`.
 #' @param height The height of the banner in a valid CSS unit.
+#' @param width The maximum width of each column in the banner. You can set the
+#'   width for all columns with a single valid CSS unit, or you may provide a
+#'   vector of CSS units, named `"left"`, `"center"`, or `"right"` or provided
+#'   in that order.
 #' @param font_size,font_family The font size and family of the text in the
 #'   banner. The default font size is `0.7em` and the default family inherits
 #'   from the primary text of the slide.
@@ -100,6 +104,7 @@ style_banner <- function(
   padding_horizontal = NULL,
   padding_vertical = NULL,
   height = NULL,
+  width = NULL,
   font_size = NULL,
   font_family = NULL,
   z_index = NULL,
@@ -127,12 +132,17 @@ style_banner <- function(
     "font-size"   = assert_len_1(font_size),
     "font-family" = assert_len_1(font_family)
   )
+  css <- style_banner_width(css, width)
+
   css <- compact(css)
   if (!length(css)) {
     return(invisible())
   }
 
-  unit_vars <- c("padding-x", "padding-y", "height", "font-size")
+  unit_vars <- c(
+    "padding-x", "padding-y", "height", "font-size",
+    "width-left", "width-right", "width-center"
+  )
   unit_vars <- intersect(unit_vars, names(css))
   for (unit_var in unit_vars) {
     if (!css[[unit_var]] %in% c("inherit", "unset", "initial", "revert")) {
@@ -144,6 +154,34 @@ style_banner <- function(
   css <- paste(sprintf("  %s: %s;", names(css), unlist(css)), collapse = "\n")
   css <- sprintf("%s {\n%s\n}", selector, css)
   htmltools::tags$style(htmltools::HTML(css))
+}
+
+style_banner_width <- function(css, width) {
+  if (is.null(width)) {
+    return(css)
+  }
+  if (length(width) < 1 || length(width) > 3) {
+    stop(
+      "`width` must be named vector or at most length 3 ",
+      "('left', 'center', 'right')"
+    )
+  }
+  if (length(width) == 1) {
+    width <- rep(width, 3)
+  }
+  if (is.null(names(width))) {
+    names(width) <- c("left", "center", "right")[1:length(width)]
+  } else {
+    bad <- setdiff(names(width), c("left", "center", "right"))
+    if (length(bad)) {
+      stop(
+        "`width` contains unexpected names: ",
+        paste(bad, collapse = ", ")
+      )
+    }
+  }
+  names(width) <- paste0("width-", names(width))
+  c(css, width)
 }
 
 init_banner <- function(

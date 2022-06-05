@@ -72,4 +72,29 @@ describe("style_banner()", {
     expect_silent(style_banner(font_size = "revert"))
     expect_silent(style_banner(font_size = "initial"))
   })
+
+  it("handles width units", {
+    expect_snapshot(style_banner(width = "25%"))
+    expect_snapshot(style_banner(width = c("100px", "200px")))
+    expect_snapshot(style_banner(width = c(center = "2em", right = "3em")))
+
+    expect_error(
+      style_banner(width = "infinite")
+    )
+
+    expect_error(
+      style_banner(width = 1:5),
+      "length 3"
+    )
+
+    expect_error(
+      style_banner(width = character()),
+      "length 3"
+    )
+
+    expect_error(
+      style_banner(width = c(CENTER = "foo")),
+      "CENTER"
+    )
+  })
 })

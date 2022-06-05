@@ -10,6 +10,7 @@ style_banner(
   padding_horizontal = NULL,
   padding_vertical = NULL,
   height = NULL,
+  width = NULL,
   font_size = NULL,
   font_family = NULL,
   z_index = NULL,
@@ -30,6 +31,11 @@ padding is applied horizontally. If anything, you probably only want to
 change the value of \code{padding_horizontal}.}
 
 \item{height}{The height of the banner in a valid CSS unit.}
+
+\item{width}{The maximum width of each column in the banner. You can set the
+width for all columns with a single valid CSS unit, or you may provide a
+vector of CSS units, named \code{"left"}, \code{"center"}, or \code{"right"} or provided
+in that order.}
 
 \item{font_size, font_family}{The font size and family of the text in the
 banner. The default font size is \verb{0.7em} and the default family inherits
