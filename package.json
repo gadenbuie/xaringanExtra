@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "standard inst/*/*.js",
     "lint:fix": "standard --fix inst/*/*.js",
-    "copy": "npm run copy:tone && npm run copy:himalaya && npm run copy:js-cookie && npm run copy:tachyons && npm run copy:clipboard && npm run copy:fitvids && npm run copy:shareon && npm run copy:peerjs && npm run copy:markjs && npm run copy:fabric npm run copy:freezeframe",
+    "copy": "npm run copy:tone && npm run copy:himalaya && npm run copy:js-cookie && npm run copy:tachyons && npm run copy:clipboard && npm run copy:fitvids && npm run copy:shareon && npm run copy:peerjs && npm run copy:markjs && npm run copy:fabric && npm run copy:freezeframe",
     "copy:tone": "cpy 'node_modules/tone/build/Tone.js' inst/jslib/tone/",
     "copy:himalaya": "cpy 'node_modules/himalaya/docs/dist/himalaya.js*' inst/jslib/himalaya/",
     "copy:js-cookie": "cpy 'node_modules/js-cookie/src/js.cookie.js' inst/jslib/js-cookie/",
@@ -39,7 +39,7 @@
     ]
   },
   "devDependencies": {
-    "cpy-cli": "^3.1.1",
+    "cpy-cli": "^4.1.0",
     "standard": "^14.3.4"
   },
   "dependencies": {
