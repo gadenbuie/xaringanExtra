@@ -10,6 +10,7 @@
 * [📽 Animate.css](animate-css.md)
 * [🗂 Panelset](panelset.md)
 * [💌 Logo](logo.md)
+* [📰 Banner](banner.md)
 * [🔍 Search](search.md)
 * [🏗 Tachyons](tachyons.md)
 * [🤳 Webcam](webcam.md)

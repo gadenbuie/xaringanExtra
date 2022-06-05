@@ -100,7 +100,7 @@ function(input, output, session) {
 panelset](https://gadenbuie.github.io/xaringanExtra/panelset/rmarkdown.html)
 
 Panelset works in all R Markdown HTML outputs like HTML reports and
-[blogdown](https://bookdown.org/yihui/blogdown/) webpages\!
+[blogdown](https://bookdown.org/yihui/blogdown/) webpages!
 
 Panelset works in the same way as `rmarkdown`’s
 [tabset](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html)
@@ -115,7 +115,7 @@ select *Copy Link* to link directly to a specific panel’s tab, which
 will appear in view when visiting the copied link.
 
 With standard R Markdown,
-i.e. [rmarkdown::html\_document()](https://rmarkdown.rstudio.com/reference/html_document.html),
+i.e. [rmarkdown::html_document()](https://rmarkdown.rstudio.com/reference/html_document.html),
 you can use the following template.
 
 ``` markdown
