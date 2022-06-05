@@ -30,7 +30,7 @@
 #'
 #' @examples
 #' use_xaringan_extra(c("tile_view", "panelset"))
-#' use_xaringan_exra(c("tile_view", "scribble", "share_again"))
+#' use_xaringan_extra(c("tile_view", "scribble", "share_again"))
 #'
 #' @return An `htmltools::tagList()` with the [htmltools::htmlDependency()]s
 #'   for the requested extensions.
