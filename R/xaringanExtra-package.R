@@ -12,6 +12,7 @@
 #' - Animate slide transitions with [use_animate_css()]
 #' - Add tabbed panels to slides with [use_panelset()]
 #' - Add a logo to all of your slides with [use_logo()]
+#' - Add a top or bottom banner to all of your slides with [use_banner()]
 #' - Add a search box to search through your slides with [use_search()]
 #' - Use the Tachyons CSS utility toolkit: [use_tachyons()]
 #' - Add a live video feed to you slides with [use_webcam()]
