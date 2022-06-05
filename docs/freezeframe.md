@@ -24,5 +24,5 @@ xaringanExtra::use_freezeframe()
 | trigger    | The trigger event to start animation for non-touch devices. One of `"click"` (default), `"hover"` or `"none"`. |
 | overlay    | Whether or not to display a play icon on top of the paused image, default: `FALSE`.                            |
 | responsive | Whether or not to make the image responsive (100% width), default: `TRUE`.                                     |
-| warnings   | Whether or not to issue warnings in the browser console if an image doesn't appear to be a gif.                |
+| warnings   | Whether or not to issue warnings in the browser console if an image doesn’t appear to be a gif.                |
 

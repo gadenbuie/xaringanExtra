@@ -78,7 +78,7 @@ Similarly, if the broadcaster reloads their slides, viewers will also
 need to reload to reconnect. But once everyone is connected, a message
 will appear for the viewer to prompt them to reconnect.
 
-If you are the presenter and you load the broadcast link, the broadcst
+If you are the presenter and you load the broadcast link, the broadcast
 will automatically reconnect and start broadcasting. If you want to view
 your slides without broadcasting, just load the plain URL for the slides
 without the `?broadcast=...` portion. From this view, you can restart

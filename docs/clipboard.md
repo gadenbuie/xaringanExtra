@@ -13,7 +13,7 @@ xaringanExtra::use_clipboard()
 ```
 ````
 
-You can also customize the text that is shown bby default when hovering
+You can also customize the text that is shown by default when hovering
 over a code chunk with the `button_text` argument. Use `success_text` to
 specify the text shown when the copy action works, or `error_text` for
 the text shown when the copy action fails. If the copy action fails, the

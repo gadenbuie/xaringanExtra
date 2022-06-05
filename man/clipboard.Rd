@@ -52,7 +52,7 @@ xaringanExtra::use_clipboard()
 ```
 }\if{html}{\out{</div>}}
 
-You can also customize the text that is shown bby default when hovering
+You can also customize the text that is shown by default when hovering
 over a code chunk with the \code{button_text} argument. Use \code{success_text} to
 specify the text shown when the copy action works, or \code{error_text} for
 the text shown when the copy action fails. If the copy action fails, the

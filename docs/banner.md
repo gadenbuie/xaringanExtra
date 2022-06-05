@@ -20,6 +20,6 @@ xaringanExtra::use_banner(
 ````
 
 Banners are fully customizable and can be styled based on slide class,
-althought the defaults will generally work in most places. See
+although the defaults will generally work in most places. See
 `style_banner()` for full details!
 

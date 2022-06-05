@@ -279,7 +279,7 @@ Similarly, if the broadcaster reloads their slides, viewers will also
 need to reload to reconnect. But once everyone is connected, a message
 will appear for the viewer to prompt them to reconnect.
 
-If you are the presenter and you load the broadcast link, the broadcst
+If you are the presenter and you load the broadcast link, the broadcast
 will automatically reconnect and start broadcasting. If you want to view
 your slides without broadcasting, just load the plain URL for the slides
 without the `?broadcast=...` portion. From this view, you can restart
@@ -749,7 +749,7 @@ xaringanExtra::use_banner(
 ````
 
 Banners are fully customizable and can be styled based on slide class,
-althought the defaults will generally work in most places. See
+although the defaults will generally work in most places. See
 `style_banner()` for full details!
 
 ## 🔍 Search
@@ -895,7 +895,7 @@ xaringanExtra::use_freezeframe()
 | trigger    | The trigger event to start animation for non-touch devices. One of `"click"` (default), `"hover"` or `"none"`. |
 | overlay    | Whether or not to display a play icon on top of the paused image, default: `FALSE`.                            |
 | responsive | Whether or not to make the image responsive (100% width), default: `TRUE`.                                     |
-| warnings   | Whether or not to issue warnings in the browser console if an image doesn't appear to be a gif.                |
+| warnings   | Whether or not to issue warnings in the browser console if an image doesn’t appear to be a gif.                |
 
 ## 📋 Clipboard
 
@@ -912,7 +912,7 @@ xaringanExtra::use_clipboard()
 ```
 ````
 
-You can also customize the text that is shown bby default when hovering
+You can also customize the text that is shown by default when hovering
 over a code chunk with the `button_text` argument. Use `success_text` to
 specify the text shown when the copy action works, or `error_text` for
 the text shown when the copy action fails. If the copy action fails, the
