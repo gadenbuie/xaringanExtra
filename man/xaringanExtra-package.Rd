@@ -20,6 +20,7 @@
 \item Animate slide transitions with \code{\link[=use_animate_css]{use_animate_css()}}
 \item Add tabbed panels to slides with \code{\link[=use_panelset]{use_panelset()}}
 \item Add a logo to all of your slides with \code{\link[=use_logo]{use_logo()}}
+\item Add a top or bottom banner to all of your slides with \code{\link[=use_banner]{use_banner()}}
 \item Add a search box to search through your slides with \code{\link[=use_search]{use_search()}}
 \item Use the Tachyons CSS utility toolkit: \code{\link[=use_tachyons]{use_tachyons()}}
 \item Add a live video feed to you slides with \code{\link[=use_webcam]{use_webcam()}}

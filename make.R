@@ -22,6 +22,7 @@ docs <- file.path(
     "panelset",
     "editable",
     "logo",
+    "banner",
     "search",
     "webcam",
     "extra-styles",

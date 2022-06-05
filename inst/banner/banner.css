@@ -1,0 +1,68 @@
+:root {
+  --xe-banner-bg: transparent;
+  --xe-banner-fg: curentcolor;
+  --xe-banner-padding-x: 2em;
+  --xe-banner-padding-y: 0;
+  --xe-banner-height: 3em;
+  --xe-banner-font-size: 0.7em;
+  --xe-banner-font-family: inherit;
+  --xe-banner-z-index: 0;
+  --xe-banner-width-left: 100%;
+  --xe-banner-width-center: 100%;
+  --xe-banner-width-right: 100%;
+}
+
+.xe-banner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--xe-banner-height);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--xe-banner-fg);
+  background: var(--xe-banner-bg);
+  font-size: var(--xe-banner-font-size);
+  font-family: var(--xe-banner-font-family);
+  padding: var(--xe-banner-padding-y) var(--xe-banner-padding-x);
+  z-index: var(--xe-banner-z-index);
+}
+
+.xe-banner.top {
+  top: 0;
+}
+
+.xe-banner.bottom {
+  bottom: 0;
+}
+
+.xe-banner > * {
+  margin: 0;
+  padding: 0;
+  overflow: clip;
+  line-height: 1.1;
+}
+
+.xe-banner > [class=^"xe-banner"] > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xe-banner > .xe-banner__left {
+  text-align: left;
+  margin-right: auto;
+  max-width: var(--xe-banner-width-left);
+}
+
+.xe-banner > .xe-banner__center {
+  text-align: center;
+  position: absolute;
+  max-width: var(--xe-banner-width-center);
+}
+
+.xe-banner > .xe-banner__right {
+  text-align: right;
+  margin-left: auto;
+  max-width: var(--xe-banner-width-right);
+}

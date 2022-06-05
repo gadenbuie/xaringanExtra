@@ -1,0 +1,86 @@
+---
+title: "Banner<br>.gray[for xaringan]"
+pagetitle: "&#x1F4F0; Banner | xaringanExtra"
+subtitle: ".big[&#x1F4F0;]"
+author: "<a href='https://www.garrickadenbuie.com/'>Garrick Aden-Buie<a>"
+date: 'xaringanExtra'
+output:
+  xaringan::moon_reader:
+    css: [robot-fonts, robot]
+    lib_dir: libs
+---
+
+class: middle
+
+```{r xaringan-panelset, echo=FALSE, message=FALSE}
+options(htmltools.dir.version = FALSE)
+
+xaringanExtra::use_banner(
+  top_left = "My Awesome Talk Title",
+  top_right = "Mr. Fancy Pants",
+  bottom_left = "bit.ly/my-awesome-talk"
+)
+```
+
+# Use banner
+
+Drop this into your slides:
+
+````
+```{r xaringanExtra-freezeframe, echo=FALSE}`r ''`
+xaringanExtra::use_banner(
+  top_left = "My Awesome Talk Title",
+  top_right = "Mr. Fancy Pants",
+  bottom_left = "bit.ly/my-awesome-talk",
+  exclude = "title-slide"
+)
+```
+````
+
+---
+class: middle special-slide
+
+## Style Banner
+
+Customize banners for an individual slide (this one has `class: special-slide`)
+
+```{r style-banner}
+xaringanExtra::style_banner(
+  text_color = "#1874CD",
+  background_color = "#F0F8FF",
+  selector = ".special-slide"
+)
+```
+
+Or call `style_banner()` without `selector` to set default banner styles.
+
+---
+layout: false
+class: center middle
+
+<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" alt="GitHub Octocat Logo" />
+
+### [gadenbuie/xaringanExtra](https://github.com/gadenbuie/xaringanExtra)
+
+
+```{css echo=FALSE}
+.gray {
+  color: #888;
+}
+.big-text p {
+  font-size: 4em;
+  line-height: 0.3;
+}
+.h-center {
+  margin: 0 auto;
+}
+.w-45 {
+  width: 45%;
+}
+.w-75 {
+  width: 75%;
+}
+.w-100 {
+  width: 100%;
+}
+```

@@ -18,6 +18,10 @@
 
 * Hide scribble controls when printing slides (thanks [@yyzeng](https://github.com/yyzeng), [#136](https://github.com/gadenbuie/xaringanExtra/issues/136)).
 
+* Add banners to your slides with `use_banner()`. Banners are text (or other
+  HTML) that appear on every slide, for example the title of your talk or a link
+  to your slides online. (thanks [@mattwarkentin](https://github.com/mattwarkentin) and [@dataning](https://github.com/dataning), [#161](https://github.com/gadenbuie/xaringanExtra/issues/161))
+
 # xaringanExtra 0.5.0 (2021-06-13)
 
 * Added _sideways_ panelsets where tabs appear on the left or right side next

@@ -29,6 +29,7 @@ IN_README <- TRUE
 - Animate slide transitions with [animate.css](#-animatecss)
 - Add tabbed panels to slides with [panelset](#-panelset)
 - Add a logo to all of your slides with [logo](#-logo)
+- Add a top or bottom banner to all of your slides with [banner](#-banner)
 - Add a search box to search through your slides with [search](#-search)
 - Use the [Tachyons CSS utility toolkit](#-tachyons)
 - Add a live video feed of your [webcam](#-webcam)
@@ -404,6 +405,32 @@ See the documentation for `?use_logo` for more options regarding sizing
 and positioning. You can also make the logo a link using `link_url` and
 you can hide the logo for a particular slide by using the `hide_logo`
 slide class.
+
+## &#x1F4F0; Banner
+
+#### &#x1F4FA; [Banner Demo](https://gadenbuie.github.io/xaringanExtra/banner)
+
+`use_banner()` adds a banner to the top or the bottom of your slides.
+Use banner to add the title of your talk,
+a link to your materials online,
+or any other text to every slide.
+Each banner has three columns: left, center, and right.
+Choose to `exclude` the banner from particular slides by class.
+
+````markdown
+```{r xaringan-banner, echo=FALSE}`r ''`
+xaringanExtra::use_banner(
+  top_left = "My Awesome Talk Title",
+  top_right = "Mr. Fancy Pants",
+  bottom_left = "bit.ly/my-awesome-talk",
+  exclude = "title-slide"
+)
+```
+````
+
+Banners are fully customizable and can be styled based on slide class,
+althought the defaults will generally work in most places.
+See `style_banner()` for full details!
 
 ## &#x1F50D; Search
 
