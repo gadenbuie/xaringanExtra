@@ -1,6 +1,6 @@
 class xeBanner {
-  constructor(opts) {
-    const {position, exclude, ...content} = opts
+  constructor (opts) {
+    const { position, exclude, ...content } = opts
     this.position = position || 'bottom'
     this.exclude = exclude
     this.content = content
@@ -8,16 +8,16 @@ class xeBanner {
     this.addBanner()
   }
 
-  getBanners() {
+  getBanners () {
     return this.banners
   }
 
-  addBanner() {
+  addBanner () {
     const slides = document.querySelectorAll('.remark-slides-area .remark-slide-content')
 
     slides.forEach(slide => {
       if (this.exclude) {
-        for (let excludeClass of this.exclude) {
+        for (const excludeClass of this.exclude) {
           if (slide.classList.contains(excludeClass)) {
             return
           }
@@ -39,7 +39,7 @@ class xeBanner {
     return this.banners
   }
 
-  createBanner() {
+  createBanner () {
     const el = document.createElement('div')
     el.classList.add('xe-banner', this.position)
 
