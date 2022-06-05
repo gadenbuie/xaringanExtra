@@ -1,18 +1,30 @@
-# xaringanExtra (development version)
+# xaringanExtra 0.6.0
 
+* First release available on CRAN!
+
+## New extras
+
+* Add banners to your slides with `use_banner()`. Banners are text (or other
+  HTML) that appear on every slide, for example the title of your talk or a link
+  to your slides online. (thanks @mattwarkentin and @dataning, #161)
+  
+## Improved extras
+  
 * Sideways panelsets collapse to standard panelsets with tabs above the content
   on small devices (max-width 480px). (#122)
 
 * Keep sideways panelset tabs on screen with long-scrolling content. (#123)
+
+* The `panelset=TRUE` chunk option now automatically sets `results="hold"`
+  unless over-ridden by a local chunk option.
+
+## Fixed extras
 
 * _share again_ no longer shows when viewing slides in the RStudio viewer pane. (#128)
 
 * `use_xaringan_extras("panelset")` is now equivalent to `use_panelset()`.
   Previously the first would not install the knitr chunk hooks.
   
-* The `panelset=TRUE` chunk option now automatically sets `results="hold"`
-  unless over-ridden by a local chunk option.
-
 * panelset now uses the xaringan knitr source hooks, restoring line highlighting
   in the source panel of panelset chunks. (#138)
 
@@ -20,9 +32,6 @@
 
 * `text_poster()` has been removed.
 
-* Add banners to your slides with `use_banner()`. Banners are text (or other
-  HTML) that appear on every slide, for example the title of your talk or a link
-  to your slides online. (thanks @mattwarkentin and @dataning, #161)
 
 # xaringanExtra 0.5.0 (2021-06-13)
 
