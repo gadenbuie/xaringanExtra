@@ -26,6 +26,14 @@
   z-index: var(--xe-banner-z-index);
 }
 
+.xe-banner.top {
+  top: 0;
+}
+
+.xe-banner.bottom {
+  bottom: 0;
+}
+
 .xe-banner > * {
   margin: 0;
   padding: 0;

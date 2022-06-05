@@ -33,12 +33,6 @@ class xeBanner {
         slide.appendChild(banner)
       }
 
-      if (this.position === 'top') {
-        banner.style.top = '0'
-      } else {
-        banner.style.bottom = '0'
-      }
-
       this.banners.push(banner)
     })
 
@@ -47,7 +41,7 @@ class xeBanner {
 
   createBanner() {
     const el = document.createElement('div')
-    el.classList.add('xe-banner')
+    el.classList.add('xe-banner', this.position)
 
     if (this.banners.length) {
       // hide subsequent banners from assistive technologies so they don't
