@@ -34,14 +34,14 @@ Authors@R: c(
     person("Christpher", "Antonellis", role = "cph",
            comment = "freezeframe.js")
   )
-Description: Extras and extensions for 'xaringan' slides. Nagivate your
+Description: Extras and extensions for 'xaringan' slides. Navigate your
     slides with tile view. Make your slides editable, live! Announce slide
-    changes with subtle tones. Animate slide transitions with animate.css.
-    Add tabbed panels to slides with panelset. Include yourself in your
-    slides with webcam. Scribble on your slides. Add a "copy" button to
-    your code chunk with clipboard. Use the 'Tachyons CSS' utility
-    toolkit. Fit your slides to fill the browser window. Plus a whole lot
-    more!
+    changes with subtle tones. Animate slide transitions with
+    'animate.css'. Add tabbed panels to slides with 'panelset'. Include
+    yourself in your slides with 'webcam'. Scribble on your slides. Add a
+    copy button to your code chunk with clipboard. Use the 'Tachyons CSS'
+    utility toolkit. Fit your slides to fill the browser window. Plus a
+    whole lot more!
 License: MIT + file LICENSE
 URL: https://pkg.garrickadenbuie.com/xaringanExtra/,
     https://github.com/gadenbuie/xaringanExtra
