@@ -122,6 +122,26 @@ abline(lm(mpg ~ wt, data = mtcars), col = "blue", lwd = 3)
 ```
 
 ---
+
+layout: false
+class: no-scribble
+
+### Disabling Scribble for specific slides
+
+- You can add the `no-scribble` class to any slide (including the title slide!) to disable Scribble for that slide without affecting your other slides
+    + Note: this slide doesn't have Scribble!
+
+- Example usage:
+
+````md
+class: no-scribble
+
+# My Awesome Slide
+
+- This slide won't have Scribble enabled!
+````
+
+---
 layout: false
 class: middle
 
