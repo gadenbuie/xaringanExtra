@@ -287,7 +287,15 @@ class Scribble {
     })
   }
 
+  isHiddenScribble () {
+    return this.getVisibleSlide()
+      .querySelector('.remark-slide-content')
+      .classList.contains('hide-scribble')
+  }
+
   addToolboxToSlide () {
+    if (this.isHiddenScribble()) return
+
     const canvasDiv = this.getVisibleSlideOuterContainer()
     canvasDiv.appendChild(this.toolBox)
     if (this.hideToolbox) {
@@ -319,6 +327,8 @@ class Scribble {
   }
 
   toggleToolbox (show) {
+    if (this.isHiddenScribble()) return
+
     const isMinimized = this.toolBox.matches('.minimized')
     if (typeof show !== 'undefined' && show === !isMinimized) return
 
@@ -395,6 +405,8 @@ class Scribble {
   }
 
   startDrawing () {
+    if (this.isHiddenScribble()) return
+    
     slideshow.pause()
     this.toggleToolbox(true)
 
