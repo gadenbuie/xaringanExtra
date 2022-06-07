@@ -22,6 +22,13 @@
 #'   you can hide the logo for a particular slide by using the `hide_logo`
 #'   slide class.
 #'
+#' @examples
+#' xaringan_logo <- file.path(
+#'   "https://raw.githubusercontent.com/rstudio/hex-stickers/master",
+#'   "PNG/xaringan.png"
+#' )
+#' use_logo(xaringan_logo)
+#'
 #' @name logo
 NULL
 
@@ -64,6 +71,9 @@ use_logo <- function(
 #'
 #' @param top,right,bottom,left The position of the element in distance from the
 #'   top, right, bottom, or left edge of it's container element.
+#'
+#' @return An object of class `css_position` that describes `top`, `right`,
+#'   `bottom`, and `left` positions.
 #'
 #' @examples
 #' css_position(top = "1em", right = "1em") # top right corner

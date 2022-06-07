@@ -4,6 +4,9 @@
 #'
 #' @includeRmd man/fragments/clipboard-details.Rmd details
 #'
+#' @examples
+#' use_clipboard()
+#'
 #' @rdname clipboard
 #' @name clipboard
 NULL
@@ -23,6 +26,10 @@ NULL
 #'   identified by the selector, minus the copy button text, is copied to the
 #'   clipboard.
 #' @param minified Should the minified clipboardjs dependency be used?
+#'
+#' @return An `htmltools::tagList()` with the HTML dependencies required for
+#'   **clipboard**.
+#'
 #' @export
 use_clipboard <- function(
   button_text = "Copy Code",

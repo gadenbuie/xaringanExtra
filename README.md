@@ -2,11 +2,18 @@ xaringanExtra
 ================
 
 <!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/xaringanExtra)](https://CRAN.R-project.org/package=xaringanExtra)
+[![xaringanExtra status
+badge](https://gadenbuie.r-universe.dev/badges/xaringanExtra)](https://gadenbuie.r-universe.dev)
+[![tic](https://github.com/gadenbuie/xaringanExtra/actions/workflows/tic.yml/badge.svg)](https://github.com/gadenbuie/xaringanExtra/actions/workflows/tic.yml)
 <!-- badges: end -->
+
 <!-- Links -->
 
 `xaringanExtra` is a playground of enhancements and extensions for
-[xaringan](https://slides.yihuie.org/xaringan) slides.
+[xaringan](https://slides.yihui.org/xaringan) slides.
 
 -   Add an overview of your presentation with [tile view](#-tile-view)
 -   Make your slides [editable](#-editable)
@@ -41,16 +48,34 @@ xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons"))
 
 ## Installation
 
-You can install the current version of xaringanExtra from GitHub.
+You can install the released version of xaringanExtra from CRAN:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("gadenbuie/xaringanExtra")
+install.packages("xaringanExtra")
+```
+
+You can install the latest development version from
+[GitHub](https://github.com/gadenbuie/xaringanExtra/):
+
+``` r
+# install.packages("remotes")
+remotes::install_github("gadenbuie/xaringanExtra")
+```
+
+or from [gadenbuie.r-universe.dev](https://gadenbuie.r-universe.dev/):
+
+``` r
+options(repos = c(
+  gadenbuie = 'https://gadenbuie.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org'
+))
+
+install.packages('xaringanExtra')
 ```
 
 ## 🗺 Tile View
 
-#### 📺 [Tile View Demo](https://gadenbuie.github.io/xaringanExtra/tile-view)
+#### 📺 [Tile View Demo](https://pkg.garrickadenbuie.com/xaringanExtra/tile-view/)
 
 Tile view gives you a way to quickly jump between slides. Just press
 <kbd>O</kbd> (the letter **O** for **O**verview) at any point in your
@@ -75,7 +100,7 @@ by [Stephen Hesperus](https://github.com/StephenHesperus).
 
 ## 📝 Editable
 
-#### 📺 [Editable Demo](https://gadenbuie.github.io/xaringanExtra/editable)
+#### 📺 [Editable Demo](https://pkg.garrickadenbuie.com/xaringanExtra/editable/)
 
 Editable gives you a way to write directly inside your slides, updating
 your content live. Make any element of your slides editable by using the
@@ -127,7 +152,7 @@ or to use placeholder text.
 
 ## 📼 Share Again
 
-#### 📺 [Share Again](https://gadenbuie.github.io/xaringanExtra/share-again/share-again.html)
+#### 📺 [Share Again](https://pkg.garrickadenbuie.com/xaringanExtra/share-again/share-again.html)
 
 Share your slides in style with *share again*! It adds a share bar to
 your slides that only shows up when they’re embedded in another page.
@@ -171,12 +196,12 @@ Add share again to your slides in three easy steps.
     *share again* not required!
 
     Here’s what your [slides will look
-    like](https://gadenbuie.github.io/xaringanExtra/share-again/) in an
-    R Markdown HTML document.
+    like](https://pkg.garrickadenbuie.com/xaringanExtra/share-again/) in
+    an R Markdown HTML document.
 
 ## 📡 Broadcast
 
-#### 📺 [Broadcast Demo](https://gadenbuie.github.io/xaringanExtra/broadcast)
+#### 📺 [Broadcast Demo](https://pkg.garrickadenbuie.com/xaringanExtra/broadcast/)
 
 **Broadcast** lets others follow along, in real time! Built with
 [PeerJS](https://peerjs.com), **broadcast** give you a unique URL to
@@ -254,7 +279,7 @@ Similarly, if the broadcaster reloads their slides, viewers will also
 need to reload to reconnect. But once everyone is connected, a message
 will appear for the viewer to prompt them to reconnect.
 
-If you are the presenter and you load the broadcast link, the broadcst
+If you are the presenter and you load the broadcast link, the broadcast
 will automatically reconnect and start broadcasting. If you want to view
 your slides without broadcasting, just load the plain URL for the slides
 without the `?broadcast=...` portion. From this view, you can restart
@@ -265,7 +290,7 @@ be created at the next broadcast.
 
 ## 👩‍🎨 Scribble
 
-#### 📺 [Scribble Demo](https://gadenbuie.github.io/xaringanExtra/scribble)
+#### 📺 [Scribble Demo](https://pkg.garrickadenbuie.com/xaringanExtra/scribble/)
 
 Scribble lets you draw on your
 [xaringan](https://slides.yihui.org/xaringan) slides. Click the *pencil*
@@ -297,7 +322,7 @@ print your presentation from the browser.
 
 ## 🔊 Slide Tone
 
-#### 📺 [Slide Tone Demo](https://gadenbuie.github.io/xaringanExtra/slide-tone)
+#### 📺 [Slide Tone Demo](https://pkg.garrickadenbuie.com/xaringanExtra/slide-tone/)
 
 Slide tone plays a subtle sound when you change slides. It was
 [requested by a blind R
@@ -308,7 +333,7 @@ The tones increase in pitch for each slide from a low C to a high C
 note. The tone pitch stays the same for incremental slides.
 
 Visit the [slide tone demo
-slides](https://gadenbuie.github.io/xaringanExtra/slide-tone) to
+slides](https://pkg.garrickadenbuie.com/xaringanExtra/slide-tone/) to
 experience it yourself. Or include slide tone in your next xaringan
 presentation by adding the following code chunk to your slides’ R
 Markdown.
@@ -321,9 +346,9 @@ xaringanExtra::use_slide_tone()
 
 ## 📽 Animate.css
 
-#### 📺 [Animate.css Demo](https://gadenbuie.github.io/xaringanExtra/animate-css)
+#### 📺 [Animate.css Demo](https://pkg.garrickadenbuie.com/xaringanExtra/animate-css/)
 
-[Animate.css](http://daneden.github.io/animate.css) is a popular
+[Animate.css](https://daneden.github.io/animate.css/) is a popular
 collection of CSS animations. It contains
 
 > a bunch of cool, fun, and cross-browser animations for you to use in
@@ -348,7 +373,7 @@ xaringanExtra::use_animate_css()
 ````
 
 Then add the `animated` class and the [desired animation
-class](http://daneden.github.io/animate.css) to the slides you want to
+class](https://daneden.github.io/animate.css/) to the slides you want to
 animate. `Out` animations are only applied to slides on exit.
 
 ``` markdown
@@ -379,7 +404,7 @@ slide in and slide out animations, you need to also include
 
 ## 🗂 Panelset
 
-#### 📺 [Panelset Demo](https://gadenbuie.github.io/xaringanExtra/panelset)
+#### 📺 [Panelset Demo](https://pkg.garrickadenbuie.com/xaringanExtra/panelset/)
 
 Panelset adds accessible tabbed panels — just like R Markdown’s
 `.tabset` panels — to your xaringan slides. You can activate a panel by
@@ -475,7 +500,7 @@ function(input, output, session) {
 ### Use in R Markdown
 
 [Example R Markdown output with
-panelset](https://gadenbuie.github.io/xaringanExtra/panelset/rmarkdown.html)
+panelset](https://pkg.garrickadenbuie.com/xaringanExtra/panelset//rmarkdown.html)
 
 Panelset works in all R Markdown HTML outputs like HTML reports and
 [blogdown](https://bookdown.org/yihui/blogdown/) webpages!
@@ -680,7 +705,7 @@ print("Oak is strong and also gives shade.")
 
 ## 💌 Logo
 
-#### 📺 [Logo Demo](https://gadenbuie.github.io/xaringanExtra/logo)
+#### 📺 [Logo Demo](https://pkg.garrickadenbuie.com/xaringanExtra/logo/)
 
 `use_logo()` adds a logo to all of your slides. You can make the logo a
 clickable link and choose where on the slide it is placed. You can also
@@ -704,7 +729,7 @@ slide class.
 
 ## 📰 Banner
 
-#### 📺 [Banner Demo](https://gadenbuie.github.io/xaringanExtra/banner)
+#### 📺 [Banner Demo](https://pkg.garrickadenbuie.com/xaringanExtra/banner/)
 
 `use_banner()` adds a banner to the top or the bottom of your slides.
 Use banner to add the title of your talk, a link to your materials
@@ -724,12 +749,12 @@ xaringanExtra::use_banner(
 ````
 
 Banners are fully customizable and can be styled based on slide class,
-althought the defaults will generally work in most places. See
+although the defaults will generally work in most places. See
 `style_banner()` for full details!
 
 ## 🔍 Search
 
-#### 📺 [Search Demo](https://gadenbuie.github.io/xaringanExtra/search)
+#### 📺 [Search Demo](https://pkg.garrickadenbuie.com/xaringanExtra/search/)
 
 Brings [remark.search](https://github.com/arestivo/remark.search) to
 xaringan slides! Call `use_search()` to add **search** to your slides
@@ -774,12 +799,12 @@ xaringanExtra::style_search(match_background = "pink")
 
 ## 🏗 Tachyons
 
-#### 📺 [Tachyons Demo](https://gadenbuie.github.io/xaringanExtra/tachyons)
+#### 📺 [Tachyons Demo](https://pkg.garrickadenbuie.com/xaringanExtra/tachyons/)
 
 [Tachyons](http://tachyons.io/) is a collection of CSS utility classes
 that works beautifully with
-[xaringan](https://slides.yihuie.org/xaringan) presentations and the
-[remarkjs](http://remarkjs.com/) class syntax.
+[xaringan](https://slides.yihui.org/xaringan) presentations and the
+[remarkjs](https://remarkjs.com/) class syntax.
 
 To use tachyons in your slides, add the following code chunk to your
 slides’ R Markdown.
@@ -821,7 +846,7 @@ excellent and easy to use reference.
 
 ## 🤳 Webcam
 
-#### 📺 [Webcam Demo](https://gadenbuie.github.io/xaringanExtra/webcam)
+#### 📺 [Webcam Demo](https://pkg.garrickadenbuie.com/xaringanExtra/webcam/)
 
 Add a live video of your webcam into your slides (in your own browser
 only). Useful when you are presenting via video conference to include
@@ -842,18 +867,18 @@ drag and drop the video within the browser window.
 
 The webcam extension is based on the original [webcam
 implementation](https://yihui.org/en/2017/12/html5-camera/) by Yihui
-Xie, author of [xaringan](https://slides.yihuie.org/xaringan).
+Xie, author of [xaringan](https://slides.yihui.org/xaringan).
 
 ## ⏸️ FreezeFrame
 
-#### 📺 [FreezeFrame Demo](https://gadenbuie.github.io/xaringanExtra/freezeframe)
+#### 📺 [FreezeFrame Demo](https://pkg.garrickadenbuie.com/xaringanExtra/freezeframe/)
 
 FreezeFrame starts any gifs on a slide when you turn to that slide. This
 helps alleviate the awkward pause that can happen when you turn to a
 slide with a gif that has already started and you have to wait until it
 loops back around. You can also directly click on the gif to stop or
 start it. Built using
-[freezeframe.js](http://ctrl-freaks.github.io/freezeframe.js).
+[freezeframe.js](http://ctrl-freaks.github.io/freezeframe.js/).
 
 To add FreezeFrame to your `xaringan` presentation, add the following
 code chunk to your slides' R Markdown file.
@@ -870,11 +895,11 @@ xaringanExtra::use_freezeframe()
 | trigger    | The trigger event to start animation for non-touch devices. One of `"click"` (default), `"hover"` or `"none"`. |
 | overlay    | Whether or not to display a play icon on top of the paused image, default: `FALSE`.                            |
 | responsive | Whether or not to make the image responsive (100% width), default: `TRUE`.                                     |
-| warnings   | Whether or not to issue warnings in the browser console if an image doesn't appear to be a gif.                |
+| warnings   | Whether or not to issue warnings in the browser console if an image doesn’t appear to be a gif.                |
 
 ## 📋 Clipboard
 
-#### 📺 [Clipboard Demo](https://gadenbuie.github.io/xaringanExtra/clipboard)
+#### 📺 [Clipboard Demo](https://pkg.garrickadenbuie.com/xaringanExtra/clipboard/)
 
 Add a “Copy Code” button for one-click code chunk copying.
 
@@ -887,7 +912,7 @@ xaringanExtra::use_clipboard()
 ```
 ````
 
-You can also customize the text that is shown bby default when hovering
+You can also customize the text that is shown by default when hovering
 over a code chunk with the `button_text` argument. Use `success_text` to
 specify the text shown when the copy action works, or `error_text` for
 the text shown when the copy action fails. If the copy action fails, the
@@ -923,7 +948,7 @@ via [clipboard.js](https://clipboardjs.com/) see
 
 ## 📐 Fit to Screen
 
-#### 📺 [Fit to Screen Demo](https://gadenbuie.github.io/xaringanExtra/fit-screen)
+#### 📺 [Fit to Screen Demo](https://pkg.garrickadenbuie.com/xaringanExtra/fit-screen/)
 
 xaringan/remark slides scale at a consistent ratio when the browser
 window is resized. In other words, if the slide ratio is `4:3`, then
@@ -951,7 +976,7 @@ xaringanExtra::use_fit_screen()
 
 ## 😎 Extra Styles
 
-#### 📺 [Extra Styles Demo](https://gadenbuie.github.io/xaringanExtra/extra-styles)
+#### 📺 [Extra Styles Demo](https://pkg.garrickadenbuie.com/xaringanExtra/extra-styles/)
 
 ### Extra Styles
 

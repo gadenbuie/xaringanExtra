@@ -6,6 +6,9 @@
 #' @param location One of `"top"` or `"bottom"`.
 #' @param height A valid CSS unit specifying the height of the progress bar.
 #'
+#' @return An `htmltools::tagList()` with the HTML dependencies required for
+#'   **progress bar**.
+#'
 #' @examples
 #' xaringanExtra::use_progress_bar("red", "top", "0.25em")
 #'

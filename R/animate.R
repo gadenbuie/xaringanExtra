@@ -5,8 +5,6 @@
 #' projects. Great for emphasis, home pages, sliders, and general
 #' just-add-water-awesomeness."
 #'
-#' @return An `htmltools::tagList()` with the tile view dependencies, or an
-#'   [htmltools::htmlDependency()].
 #' @section Usage: To add animate.css to your xaringan presentation, add the
 #'   following code chunk to your slides' R Markdown file.
 #'
@@ -35,7 +33,11 @@
 #'   ```
 #'   ````
 #'
-#' @references See [animate.css](http://daneden.github.io/animate.css) for a
+#' @examples
+#' use_animate_css()
+#' html_dependency_animate_css()
+#'
+#' @references See [animate.css](https://daneden.github.io/animate.css/) for a
 #'   full list of animations.
 #'
 #' @param minified Should the minified or full CSS source be used?
@@ -44,6 +46,10 @@
 #'   presentations with many animated slides may have poor performance,
 #'   especially on page load. Set to `FALSE` to use animate.css in other
 #'   HTML-based documents.
+#'
+#' @return An `htmltools::tagList()` with the tile view dependencies, or an
+#'   [htmltools::htmlDependency()].
+#'
 #' @name animate_css
 NULL
 

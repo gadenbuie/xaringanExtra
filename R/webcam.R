@@ -6,6 +6,9 @@
 #'
 #' @includeRmd man/fragments/webcam-details.Rmd details
 #'
+#' @examples
+#' use_webcam()
+#'
 #' @references The webcam extension is based on the original
 #'   [webcam implementation](https://yihui.org/en/2017/12/html5-camera/) by
 #'   Yihui Xie, author of \pkg{xaringan}.
@@ -16,6 +19,10 @@ NULL
 #' @param width,height Width and height of the video pane in absolute CSS units,
 #'   i.e. as `200` or `"200px"`.
 #' @param margin Margin around the video pane in CSS units.
+#'
+#' @return An `htmltools::tagList()` with the HTML dependencies required for
+#'   **webcam**.
+#'
 #' @export
 use_webcam <- function(width = 200, height = 200, margin = "1em") {
   htmltools::tagList(

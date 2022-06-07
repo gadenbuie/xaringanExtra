@@ -93,7 +93,9 @@ view dependencies. Most users will want to use \code{use_panelset()}.
 
 \section{Usage}{
  To add panelset to your xaringan presentation, add the
-following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-panelset, echo=FALSE\}
+following code chunk to your slides' R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-panelset, echo=FALSE\}
 xaringanExtra::use_panelset()
 ```
 
@@ -118,7 +120,9 @@ As an alternative to the “tabs above content” view, you can also use
 \emph{sideways} panelsets where the tabs appear beside the tabbed content.
 
 To choose this effect, add the \code{.sideways} class to \code{.panelset} in your
-slides or R Markdown text.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{.panelset.sideways[
+slides or R Markdown text.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{.panelset.sideways[
 .panel[.panel-name[ui.R]
 ```r
 # shiny ui code here...
@@ -137,7 +141,9 @@ function(input, output, session) \{
 
 By default in sideways-mode, the tabs will appear on the left side. You
 can choose to place the tabs on the right side by including both
-\code{.sideways} and \code{.right} with \code{.panelset}.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{.panelset.sideways.right[
+\code{.sideways} and \code{.right} with \code{.panelset}.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{.panelset.sideways.right[
 .panel[.panel-name[ui.R]
 ```r
 # shiny ui code here...
@@ -157,7 +163,9 @@ function(input, output, session) \{
 
 \section{Style Panelset}{
 To customize the appearance of your panels, you can use
-\code{style_panelset_tabs()} called directly in an R chunk in your slides.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r echo=FALSE\}
+\code{style_panelset_tabs()} called directly in an R chunk in your slides.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r echo=FALSE\}
 style_panelset_tabs(foreground = "honeydew", background = "seagreen")
 ```
 }\if{html}{\out{</div>}}
@@ -172,7 +180,9 @@ Behind the scenes, \code{style_panelset_tabs()} updates the values of \href{http
 that define the panelset appearance. If you’d rather work with CSS, the
 default values of these properties are shown in the CSS code below. You
 can copy the whole CSS block to your slides and modify the values to
-customize the style to fit your presentation.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{css echo=FALSE\}
+customize the style to fit your presentation.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{css echo=FALSE\}
 .panelset \{
    --panel-tab-foreground: currentColor;
    --panel-tab-background: unset;
@@ -207,8 +217,10 @@ select \emph{Copy Link} to link directly to a specific panel’s tab, which
 will appear in view when visiting the copied link.
 
 With standard R Markdown,
-i.e. \code{\link[rmarkdown:html_document]{rmarkdown::html_document()}}, you
-can use the following template.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{# Panelset In R Markdown! \{.panelset\}
+i.e. \code{\link[rmarkdown:html_document]{rmarkdown::html_document()}}, you can
+use the following template.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{# Panelset In R Markdown! \{.panelset\}
 
 ## Tab One
 
@@ -233,7 +245,9 @@ This content won't appear in a panel.
 }\if{html}{\out{</div>}}
 
 In other, less-standard R Markdown HTML formats, you can use pandoc’s
-\href{https://pandoc.org/MANUAL.html#extension-fenced_divs}{fenced divs}.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{::::: \{.panelset\}
+\href{https://pandoc.org/MANUAL.html#extension-fenced_divs}{fenced divs}.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{::::: \{.panelset\}
 
 ::: \{.panel\}
 [First Tab]\{.panel-name\}
@@ -252,7 +266,9 @@ class pharetra netus lobortis quisque mollis iaculis.
 :::::
 }\if{html}{\out{</div>}}
 
-Alternatively, you can also use raw HTML.\if{html}{\out{<div class="sourceCode html">}}\preformatted{<div class="panelset">
+Alternatively, you can also use raw HTML.
+
+\if{html}{\out{<div class="sourceCode html">}}\preformatted{<div class="panelset">
   <div class="panel">
     <div class="panel-name">First Tab</div>
     <!-- Panel content -->
@@ -277,7 +293,9 @@ To help facilitate this process, \strong{panelset} provides a \code{panelset}
 chunk option. When set to \code{TRUE}, the code is included in a panel tab
 named \emph{Code} and the output is included in a panel tab named \emph{Output}.
 Note that you still need to wrap this chunk in a panelset-creating
-container.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{.panelset[
+container.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{.panelset[
 ```\{r panelset = TRUE\}
 list(
   normal = rnorm(10),
@@ -290,7 +308,9 @@ list(
 
 You can also set the \code{panelset} chunk option to a named vector, where
 the \code{source} item is the tab name for the source code and the \code{output}
-item is the tab name for the code output.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r panelset = c(source = "ggplot2", output = "Plot")\}
+item is the tab name for the code output.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r panelset = c(source = "ggplot2", output = "Plot")\}
 ggplot(Orange) +
   aes(x = age, y = circumference, colour = Tree) +
   geom_point() +
@@ -303,14 +323,18 @@ ggplot(Orange) +
 When your code contains multiple expressions and outputs, you may also
 want to set the \code{results = "hold"} chunk option. Currently, knitr uses
 \code{results = "markup"} as the default, in which case each code expression
-and output pair will generate a pair of tabs.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r panelset = TRUE, results="hold"\}
+and output pair will generate a pair of tabs.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r panelset = TRUE, results="hold"\}
 print("Oak is strong and also gives shade.")
 print("The lake sparkled in the red hot sun.")
 ```
 }\if{html}{\out{</div>}}
 
 Finally, panelset chunks also work in R Markdown documents, but they
-must be encapsulated in \verb{<div class="panelset">} and \verb{</div>}\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{<div class="panelset">
+must be encapsulated in \verb{<div class="panelset">} and \verb{</div>}
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{<div class="panelset">
 
 ```\{r panelset = TRUE\}
 print("Oak is strong and also gives shade.")
@@ -319,14 +343,18 @@ print("Oak is strong and also gives shade.")
 </div>
 }\if{html}{\out{</div>}}
 
-or appear inside a section with the panelset class.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{### A Random Sentence \{.panelset\}
+or appear inside a section with the panelset class.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{### A Random Sentence \{.panelset\}
 
 ```\{r panelset = TRUE\}
 print("Oak is strong and also gives shade.")
 ```
 }\if{html}{\out{</div>}}
 
-[\if{html}{\out{<div class="sourceCode {r panelset = TRUE}">}}\preformatted{list(
+[
+
+\if{html}{\out{<div class="sourceCode {r panelset = TRUE}">}}\preformatted{list(
   normal = rnorm(10),
   uniform = runif(10),
   cauchy = rcauchy(10)
@@ -336,3 +364,7 @@ print("Oak is strong and also gives shade.")
 ]: R:\%0A\%60\%60\%60\%7Br\%20panelset\%20=\%20TRUE\%7D\%0Alist(\%0A\%20\%20normal\%20=\%20rnorm(10),\%0A\%20\%20uniform\%20=\%20runif(10),\%0A\%20\%20cauchy\%20=\%20rcauchy(10)\%0A)\%0A\%60\%60\%60\%0A
 }
 
+\examples{
+use_panelset()
+
+}

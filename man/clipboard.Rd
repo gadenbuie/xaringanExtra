@@ -36,17 +36,23 @@ clipboard.}
 
 \item{minified}{Should the minified clipboardjs dependency be used?}
 }
+\value{
+An \code{htmltools::tagList()} with the HTML dependencies required for
+\strong{clipboard}.
+}
 \description{
 Add a "Copy Code" button for one-click code chunk copying.
 }
 \details{
 To add \strong{clipboard} to your xaringan presentation or R Markdown
-document, add the following code chunk to your slides’ R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringanExtra-clipboard, echo=FALSE\}
+document, add the following code chunk to your slides’ R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringanExtra-clipboard, echo=FALSE\}
 xaringanExtra::use_clipboard()
 ```
 }\if{html}{\out{</div>}}
 
-You can also customize the text that is shown bby default when hovering
+You can also customize the text that is shown by default when hovering
 over a code chunk with the \code{button_text} argument. Use \code{success_text} to
 specify the text shown when the copy action works, or \code{error_text} for
 the text shown when the copy action fails. If the copy action fails, the
@@ -54,7 +60,9 @@ text will still be selected, so the user can still manually press
 \code{Ctrl+C} to copy the code chunk.
 
 These options accept raw HTML strings, so you can achieve an icon-only
-appearance using FontAwesome icons:\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringanExtra-clipboard, echo=FALSE\}
+appearance using FontAwesome icons:
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringanExtra-clipboard, echo=FALSE\}
 htmltools::tagList(
   xaringanExtra::use_clipboard(
     button_text = "<i class=\"fa fa-clipboard\"></i>",
@@ -79,6 +87,10 @@ clipboard dependencies for use in xaringan and R Markdown documents. Most
 users will want to use \code{use_clipboard()} instead.
 }}
 
+\examples{
+use_clipboard()
+
+}
 \references{
 https://clipboardjs.com/
 }

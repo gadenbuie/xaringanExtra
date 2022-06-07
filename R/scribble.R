@@ -20,6 +20,9 @@
 #'   ```
 #'   ````
 #'
+#' @examples
+#' use_scribble()
+#'
 #' @param pen_color Initial pen color (default is `"#FF0000` (red)). Must be a
 #'   hexadecimal color, e.g. `#000` or `#4232ea`.
 #' @param pen_size Pen size (default is 3).

@@ -4,8 +4,6 @@
 #' pitch for each slide from a low C to a high C note. The tone pitch stays the
 #' same for incremental slides.
 #'
-#' @return An `htmltools::tagList()` with the slide tone dependencies, or an
-#'   [htmltools::htmlDependency].
 #' @section Usage: To add slide tone to your xaringan presentation, add the
 #'   following code chunk to your slides' R Markdown file.
 #'
@@ -14,6 +12,11 @@
 #'   xaringanExtra::use_slide_tone()
 #'   ```
 #'   ````
+#' @examples
+#' use_slide_tone()
+#'
+#' @return An `htmltools::tagList()` with the slide tone dependencies, or an
+#'   [htmltools::htmlDependency].
 #'
 #' @references [tone.js](https://tonejs.github.io/)
 #' @name slide_tone

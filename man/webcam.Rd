@@ -16,6 +16,10 @@ i.e. as \code{200} or \code{"200px"}.}
 
 \item{margin}{Margin around the video pane in CSS units.}
 }
+\value{
+An \code{htmltools::tagList()} with the HTML dependencies required for
+\strong{webcam}.
+}
 \description{
 Add a live video of your webcam into your slides (in your own browser only).
 Useful when you are presenting via video conference to include your video,
@@ -23,7 +27,9 @@ or when you are recording a class or lecture.
 }
 \details{
 To add \strong{webcam} to your xaringan presentation, add the following code
-chunk to your slides’ R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r\}
+chunk to your slides’ R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r\}
 xaringanExtra::use_webcam()
 ```
 }\if{html}{\out{</div>}}
@@ -40,6 +46,10 @@ drag and drop the video within the browser window.
 dependencies. Most users will want to use \code{use_webcam()}.
 }}
 
+\examples{
+use_webcam()
+
+}
 \references{
 The webcam extension is based on the original
 \href{https://yihui.org/en/2017/12/html5-camera/}{webcam implementation} by

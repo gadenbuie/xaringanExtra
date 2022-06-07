@@ -62,7 +62,9 @@ view dependencies. Most users will want to use \code{use_logo()}.
 
 \section{Usage}{
  To add a logo to your xaringan presentation, add the
-following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-logo, echo=FALSE\}
+following code chunk to your slides' R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-logo, echo=FALSE\}
 xaringanExtra::use_logo(
   image_url = "https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png"
 )
@@ -75,3 +77,11 @@ you can hide the logo for a particular slide by using the \code{hide_logo}
 slide class.
 }
 
+\examples{
+xaringan_logo <- file.path(
+  "https://raw.githubusercontent.com/rstudio/hex-stickers/master",
+  "PNG/xaringan.png"
+)
+use_logo(xaringan_logo)
+
+}

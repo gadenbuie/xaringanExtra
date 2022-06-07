@@ -11,7 +11,7 @@ An \code{htmltools::tagList()} with the HTML dependencies required for
 \strong{broadcast}.
 }
 \description{
-\href{https://www.tidyverse.org/lifecycle/#experimental}{Experimental}!
+\href{https://lifecycle.r-lib.org/articles/stages.html}{Experimental}!
 \strong{Broadcast} lets others follow along, in real time! Built with
 \href{https://peerjs.com}{PeerJS}, \strong{broadcast} give you a unique URL to share
 with your viewers. Then, when they load your slides, their slides will
@@ -19,7 +19,9 @@ automatically follow you as you present!
 }
 \details{
 To equip your slides with broadcast capabilities, add the following
-chunk to your slides’ \code{.Rmd} file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r broadcast, echo=FALSE\}
+chunk to your slides’ \code{.Rmd} file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r broadcast, echo=FALSE\}
 xaringanExtra::use_broadcast()
 ```
 }\if{html}{\out{</div>}}
@@ -83,7 +85,7 @@ Similarly, if the broadcaster reloads their slides, viewers will also
 need to reload to reconnect. But once everyone is connected, a message
 will appear for the viewer to prompt them to reconnect.
 
-If you are the presenter and you load the broadcast link, the broadcst
+If you are the presenter and you load the broadcast link, the broadcast
 will automatically reconnect and start broadcasting. If you want to view
 your slides without broadcasting, just load the plain URL for the slides
 without the \code{?broadcast=...} portion. From this view, you can restart
@@ -92,6 +94,10 @@ valid that ID will be used. To reset the broadcast ID without waiting 4
 hours, load your slides with \code{?broadcast=1} and new broadcast link will
 be created at the next broadcast.
 }
+}
+\examples{
+use_broadcast()
+
 }
 \references{
 \url{https://peerjs.com}

@@ -28,6 +28,10 @@
 #' Load multiple \pkg{xaringanExtra} extensions at once. All extensions can be
 #' loaded with this function.
 #'
+#' @examples
+#' use_xaringan_extra(c("tile_view", "panelset"))
+#' use_xaringan_extra(c("tile_view", "scribble", "share_again"))
+#'
 #' @return An `htmltools::tagList()` with the [htmltools::htmlDependency()]s
 #'   for the requested extensions.
 #' @param include Character vector of extensions to include. One or more of

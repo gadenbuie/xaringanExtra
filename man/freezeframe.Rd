@@ -53,12 +53,18 @@ Most users will want to use \code{use_freezeframe()} instead.
 
 \section{Usage}{
  To add FreezeFrame to your \code{xaringan} presentation,
-add the following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringanExtra-freezeframe, echo=FALSE\}
+add the following code chunk to your slides' R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringanExtra-freezeframe, echo=FALSE\}
 xaringanExtra::use_freezeframe()
 ```
 }\if{html}{\out{</div>}}
 }
 
+\examples{
+use_freezeframe()
+
+}
 \references{
 \url{http://ctrl-freaks.github.io/freezeframe.js/},
 \url{https://github.com/ctrl-freaks/freezeframe.js/}

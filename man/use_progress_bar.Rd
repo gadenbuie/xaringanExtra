@@ -17,6 +17,10 @@ use_progress_bar(
 
 \item{height}{A valid CSS unit specifying the height of the progress bar.}
 }
+\value{
+An \code{htmltools::tagList()} with the HTML dependencies required for
+\strong{progress bar}.
+}
 \description{
 Adds an animated progress bar to all slides.
 }

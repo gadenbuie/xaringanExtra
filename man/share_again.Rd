@@ -26,6 +26,10 @@ buttons, and if either are included in \code{share_buttons}, then the rest of
 the vector is ignored. (And \code{"all"} takes precedence over \code{"none"}.) The
 \emph{copy link} option is always included.}
 }
+\value{
+An \code{htmltools::tagList()} with the HTML dependencies required for
+\strong{share again}.
+}
 \description{
 The \emph{share again} extension helps you share your xaringan slides. Adding the
 extension to your slides with \code{use_share_again()} enables a "share" bar that
@@ -47,6 +51,14 @@ when embedded in an \verb{<iframe>})
 choose the social media sites included in the share menu
 }}
 
+\examples{
+# In your slides call
+use_share_again()
+
+# In the document where you want to embed the slides call
+embed_xaringan("https://slides.yihui.org/xaringan/")
+
+}
 \seealso{
 \code{\link[=embed_xaringan]{embed_xaringan()}}
 }

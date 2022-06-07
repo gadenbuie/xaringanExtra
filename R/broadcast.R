@@ -1,12 +1,15 @@
 #' Broadcast Your Slides
 #'
-#' [Experimental](https://www.tidyverse.org/lifecycle/#experimental)!
+#' [Experimental](https://lifecycle.r-lib.org/articles/stages.html)!
 #' **Broadcast** lets others follow along, in real time! Built with
 #' [PeerJS](https://peerjs.com), **broadcast** give you a unique URL to share
 #' with your viewers. Then, when they load your slides, their slides will
 #' automatically follow you as you present!
 #'
 #' @includeRmd man/fragments/broadcast-details.Rmd
+#'
+#' @examples
+#' use_broadcast()
 #'
 #' @return An `htmltools::tagList()` with the HTML dependencies required for
 #'   **broadcast**.

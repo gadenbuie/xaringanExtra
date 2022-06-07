@@ -15,6 +15,8 @@
 #'   xaringanExtra::use_freezeframe()
 #'   ```
 #'   ````
+#' @examples
+#' use_freezeframe()
 #'
 #' @param selector The selector used to search for `.gifs` to freeze.
 #' @param trigger The trigger event to start animation for non-touch devices.
