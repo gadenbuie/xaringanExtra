@@ -1,3 +1,5 @@
+# xaringanExtra (development version)
+
 # xaringanExtra 0.6.0 (2022-06-07)
 
 * First release available on CRAN! Read about it at [garrickadenbuie.com/blog/xaringanextra-v0.6.0/](https://www.garrickadenbuie.com/blog/xaringanextra-v0.6.0/).

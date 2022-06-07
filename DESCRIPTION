@@ -1,6 +1,6 @@
 Package: xaringanExtra
 Title: Extras and Extensions for 'xaringan' Slides
-Version: 0.6.0
+Version: 0.6.0.9000
 Authors@R: c(
     person("Garrick", "Aden-Buie", , "garrick@adenbuie.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7111-0077")),
