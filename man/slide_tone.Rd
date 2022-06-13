@@ -29,12 +29,18 @@ view dependencies. Most users will want to use \code{use_slide_tone()}.
 
 \section{Usage}{
  To add slide tone to your xaringan presentation, add the
-following code chunk to your slides' R Markdown file.\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-slide-tone, echo=FALSE\}
+following code chunk to your slides' R Markdown file.
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-slide-tone, echo=FALSE\}
 xaringanExtra::use_slide_tone()
 ```
 }\if{html}{\out{</div>}}
 }
 
+\examples{
+use_slide_tone()
+
+}
 \references{
 \href{https://tonejs.github.io/}{tone.js}
 }

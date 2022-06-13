@@ -13,3 +13,5 @@
 ^\.ccache$
 ^\.github$
 ^tic\.R$
+^cran-comments\.md$
+^CRAN-SUBMISSION$

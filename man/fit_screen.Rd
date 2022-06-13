@@ -32,7 +32,9 @@ screen dependencies. Most users will want to use \code{use_fit_screen()}.
 
 \section{Usage}{
  To enable fit-to-screen, add the following code chunk to your
-slides:\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-fit-screen, echo=FALSE\}
+slides:
+
+\if{html}{\out{<div class="sourceCode markdown">}}\preformatted{```\{r xaringan-fit-screen, echo=FALSE\}
 xaringanExtra::use_fit_screen()
 ```
 }\if{html}{\out{</div>}}
@@ -41,3 +43,7 @@ And then press \strong{Alt}/\strong{Option} + \strong{F} at any point during you
 enable the extension.
 }
 
+\examples{
+use_fit_screen()
+
+}

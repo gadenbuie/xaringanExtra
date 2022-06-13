@@ -13,6 +13,9 @@
 #'   ```
 #'   ````
 #'
+#' @examples
+#' use_search()
+#'
 #' @references <https://github.com/arestivo/remark.search>
 #' @author Original implementation by André Restivo
 #' @name search

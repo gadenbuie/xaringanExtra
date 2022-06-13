@@ -29,12 +29,21 @@ embed_xaringan(
 \item{style}{Additional CSS \code{style} property value pairs, e.g.
 \code{c("padding-left: 1em", "padding-right: 1em")}.}
 }
+\value{
+An \code{htmltools::tagList()} with the HTML dependencies required for
+\strong{share again}.
+}
 \description{
 Embed xaringan slides in any HTML web page, such as a blogdown page or an
 R Markdown website. The presentation is embedded in a responsive aspect ratio
 container for seamless integration with your web page. This feature works
 best when combined with \code{\link[=use_share_again]{use_share_again()}}, but \code{embed_xaringan()} can be
 used for any xaringan presentation.
+}
+\examples{
+# In your slides call
+use_share_again()
+
 }
 \seealso{
 \code{\link[=use_share_again]{use_share_again()}}

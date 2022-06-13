@@ -10,6 +10,10 @@ css_position(top = "1em", right = "1em", left = NULL, bottom = NULL)
 \item{top, right, bottom, left}{The position of the element in distance from the
 top, right, bottom, or left edge of it's container element.}
 }
+\value{
+An object of class \code{css_position} that describes \code{top}, \code{right},
+\code{bottom}, and \code{left} positions.
+}
 \description{
 Sets position for an absolutely positioned element. Setting one of top or
 bottom or one of left or right will "unset" the other. It's probably not a
