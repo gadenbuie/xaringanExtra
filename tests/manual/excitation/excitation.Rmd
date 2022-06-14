@@ -1,0 +1,20 @@
+---
+title: "Excitation Tests"
+date: "`r Sys.Date()`"
+output: xaringan::moon_reader
+bibliography: [refs.bib]
+---
+
+```{r setup, include=FALSE}
+library(xaringanExtra)
+```
+
+```{r}
+use_excitation()
+```
+
+This is an interesting sentence (`r excite('doe2024')`).
+
+This is another sentence with a citation here (`r excite('active2021')`) and here (`r excite('fantastic1998')`).
+
+Here we reuse a citation (`r excite('doe2024')`).

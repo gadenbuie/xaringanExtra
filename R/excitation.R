@@ -61,7 +61,8 @@ excite <- function(key) {
         include_qr = if (self_contained) 'embed' else 'link',
         qr_hyperlink = TRUE,
         qr_size = 150,
-        style = 'classic'
+        style = 'classic',
+        path_absolute = TRUE
       )
     )
     tooltip <- htmltools::HTML(as.character(tooltip))
