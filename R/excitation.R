@@ -48,6 +48,8 @@ excite <- function(key) {
 
   .excitation_keys <- get('.excitation_keys', envir = globalenv())
 
+  script <- NULL
+
   if (!key %in% .excitation_keys) {
     tooltip <- htmltools::includeHTML(
       namedropR::drop_name(
@@ -65,9 +67,16 @@ excite <- function(key) {
     tooltip <- htmltools::HTML(as.character(tooltip))
     tooltip_json <- jsonlite::toJSON(tooltip, auto_unbox = TRUE)
     .excitation_keys <- c(.excitation_keys, key)
-    num_id <- which(.excitation_keys == key)
     assign('.excitation_keys', .excitation_keys, envir = globalenv())
+    script <- htmltools::tags$script(
+      tooltip_json,
+      type = 'application/json',
+      class = 'xe-excitation__data',
+      `data-excitation-key` = key
+    )
   }
+
+  num_id <- which(.excitation_keys == key)
 
   htmltools::tagList(
     htmltools::tags$span(
@@ -76,12 +85,7 @@ excite <- function(key) {
       `data-excitation-key` = key,
       `data-excitation-id` = num_id
     ),
-    htmltools::tags$script(
-      tooltip_json,
-      type = 'application/json',
-      class = 'xe-excitation__data',
-      `data-excitation-key` = key
-    )
+    script
   )
 }
 
