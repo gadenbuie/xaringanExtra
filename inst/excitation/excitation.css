@@ -1,0 +1,21 @@
+/*
+ *  Excitation for remark.js/xaringan
+ *  Matthew T. Warkentin <warkentin@lunenfeld.ca>
+ *  and Garrick Aden-Buie <garrick@adenbuie.com>
+ */
+.xe-excitation__tooltip {
+  cursor: pointer;
+  color: #357EDD;
+  text-decoration: underline;
+}
+
+.xe-excitation__tooltip:hover {
+  cursor: pointer;
+  color: #96CCFF;
+  text-decoration: underline;
+}
+
+.tippy-box[data-theme~='simple'] {
+  background-color: white;
+  border: 1px solid black;
+}

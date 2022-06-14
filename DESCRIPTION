@@ -51,6 +51,7 @@ Imports:
     htmltools,
     jsonlite,
     knitr,
+    namedropR,
     utils,
     uuid
 Suggests: 
@@ -68,6 +69,7 @@ Collate:
     'broadcast.R'
     'clipboard.R'
     'editable.R'
+    'excitation.R'
     'fit-screen.R'
     'freezeframe.R'
     'panelset.R'
