@@ -3,35 +3,35 @@
  *  Matthew T. Warkentin <warkentin@lunenfeld.ca>
  *  and Garrick Aden-Buie <garrick@adenbuie.com>
  */
+/* globals tippy */
 window.addEventListener('DOMContentLoaded', (event) => {
   function htmlDecode (text) {
-    const elem = document.createElement('textarea');
-    elem.innerHTML = text;
-    return elem.value; // decoded
+    const elem = document.createElement('textarea')
+    elem.innerHTML = text
+    return elem.value // decoded
   }
-
   function getTooltipData (key) {
-    const tooltip_data = document.querySelector(`script[data-excitation-key=${key}]`)
+    const tooltipData = document.querySelector(`script[data-excitation-key=${key}]`)
 
-    return tooltip_data
-      ? JSON.parse(htmlDecode(tooltip_data.textContent))
+    return tooltipData
+      ? JSON.parse(htmlDecode(tooltipData.textContent))
       : undefined
   }
 
-  let excite_spans = document.querySelectorAll('span.xe-excitation__tooltip')
+  const exciteSpans = document.querySelectorAll('span.xe-excitation__tooltip')
 
-  excite_spans.forEach((span) => {
-    let key = span.getAttribute('data-excitation-key')
-    let num_id = span.getAttribute('data-excitation-id')
+  exciteSpans.forEach((span) => {
+    const citeKey = span.getAttribute('data-excitation-key')
+    const citeNum = span.getAttribute('data-excitation-id')
 
-    const tooltip_data = getTooltipData(key)
-    if (!tooltip_data) {
+    const tooltipData = getTooltipData(citeKey)
+    if (!tooltipData) {
       return
     }
 
-    span.innerHTML = num_id
+    span.innerHTML = citeNum
     tippy(span, {
-      content: tooltip_data,
+      content: tooltipData,
       allowHTML: true,
       hideOnClick: true,
       interactive: true,
@@ -39,6 +39,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       placement: 'auto',
       theme: 'simple',
       trigger: 'click'
-    });
-  });
-});
+    })
+  })
+})
