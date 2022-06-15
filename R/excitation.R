@@ -48,7 +48,7 @@ excite <- function(key) {
 
   .excitation_keys <- get('.excitation_keys', envir = globalenv())
 
-  script <- NULL
+  script <- ""
 
   if (!key %in% .excitation_keys) {
     tooltip <- htmltools::includeHTML(
@@ -65,29 +65,30 @@ excite <- function(key) {
         path_absolute = TRUE
       )
     )
-    tooltip <- htmltools::HTML(as.character(tooltip))
+    tooltip <- format(tooltip)
     tooltip_json <- jsonlite::toJSON(tooltip, auto_unbox = TRUE)
     .excitation_keys <- c(.excitation_keys, key)
     assign('.excitation_keys', .excitation_keys, envir = globalenv())
     script <- htmltools::tags$script(
-      tooltip_json,
+      htmltools::HTML(tooltip_json),
       type = 'application/json',
       class = 'xe-excitation__data',
-      `data-excitation-key` = key
+      `data-excitation-key` = key,
+      .noWS = "inside"
     )
   }
 
   num_id <- which(.excitation_keys == key)
 
-  htmltools::tagList(
-    htmltools::tags$span(
-      key,
-      class = 'xe-excitation__tooltip',
-      `data-excitation-key` = key,
-      `data-excitation-id` = num_id
-    ),
-    script
+  span <- htmltools::tags$span(
+    key,
+    class = 'xe-excitation__tooltip',
+    `data-excitation-key` = key,
+    `data-excitation-id` = num_id,
+    .noWS = "inside"
   )
+
+  htmltools::HTML(paste0(span, script))
 }
 
 #' @describeIn excitation Returns an [htmltools::htmlDependency()] with the
