@@ -9,7 +9,7 @@
 \alias{html_dependency_tippy}
 \title{Excitation}
 \usage{
-use_excitation()
+use_excitation(bib = NULL)
 
 excite(key)
 
@@ -18,6 +18,13 @@ html_dependency_excitation()
 html_dependency_popper()
 
 html_dependency_tippy()
+}
+\arguments{
+\item{bib}{File path to bibliography file. Currently only .bib files
+are supported. If not supplied, \code{exite()} will use the \code{bibliography}
+entry in the R Markdown YAML header, by default.}
+
+\item{key}{Citation key in the bibliography file.}
 }
 \description{
 Excitation lets you add visual citations as tooltips to your
@@ -28,7 +35,7 @@ YAML header, as usual, and cite away!
 \itemize{
 \item \code{use_excitation}: Adds visual citations to your xaringan slides.
 
-\item \code{excite}: Adds visual citations to your xaringan slides.
+\item \code{excite}: Create an in-text citation.
 
 \item \code{html_dependency_excitation}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
 \code{excitation.js} dependencies for use in xaringan and R Markdown
@@ -54,6 +61,6 @@ xaringanExtra::use_excitation()
 }
 
 \examples{
-use_excitation()
+\dontrun{use_excitation()}
 
 }

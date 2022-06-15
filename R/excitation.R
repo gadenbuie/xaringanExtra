@@ -14,15 +14,35 @@
 #'   ````
 #'
 #' @examples
-#' use_excitation()
+#' \dontrun{use_excitation()}
 #'
 #' @name excitation
 NULL
 
 #' @describeIn excitation Adds visual citations to your xaringan slides.
+#' @param bib File path to bibliography file. Currently only .bib files
+#'   are supported. If not supplied, `exite()` will use the `bibliography`
+#'   entry in the R Markdown YAML header, by default.
 #' @export
-use_excitation <- function() {
-  assign('.excitation_keys', vector('character'), envir = globalenv())
+use_excitation <- function(bib = NULL) {
+  if (is.null(bib)) bib <- rmarkdown::metadata$bibliography
+
+  stopifnot('You must either provide `bib` to `use_excitation()` or include a `bibliography` entry at the top-level of your YAML header.' = !is.null(bib))
+
+  if (length(bib) > 1) {
+    tmp_bib <- tempfile(fileext = '.bib')
+    on.exit(unlink(tmp_bib))
+    for (i in seq_len(bib)) {
+      write(readLines(bib[[i]]), tmp_bib, append = TRUE)
+    }
+    bib <- readLines(tmp_bib)
+  } else {
+    bib <- readLines(bib)
+  }
+
+  assign('keys', vector('character'), envir = excitation)
+  assign('bib', bib, envir = excitation)
+
   htmltools::tagList(
     html_dependency_popper(),
     html_dependency_tippy(),
@@ -30,45 +50,46 @@ use_excitation <- function() {
   )
 }
 
-#' @describeIn excitation Adds visual citations to your xaringan slides.
+excitation <- new.env(parent = emptyenv())
+
+#' @describeIn excitation Create an in-text citation.
+#' @param key Citation key in the bibliography file.
 #' @export
 excite <- function(key) {
-  bibs <- rmarkdown::metadata$bibliography
+  stopifnot('`key` must be a length one character vector' = is.character(key) & length(key) == 1)
+
+  keys <- get('keys', envir = excitation)
+  bib <- get('bib', envir = excitation)
+
+  tmp_bib <- tempfile(fileext = '.bib')
+  writeLines(bib, tmp_bib)
+  on.exit(unlink(tmp_bib))
+
   self_contained <- FALSE
-
-  if (is.null(bibs)) return(key)
-
-  if (length(bibs) > 1) {
-    tmp_bib <- tempfile(fileext = '.bib')
-    for (i in seq_len(bibs)) {
-      write(readLines(bibs[[i]]), tmp_bib, append = TRUE)
-    }
-    bibs <- tmp_bib
-  }
-
-  .excitation_keys <- get('.excitation_keys', envir = globalenv())
 
   script <- ""
 
-  if (!key %in% .excitation_keys) {
+  if (!key %in% keys) {
     tooltip <- htmltools::includeHTML(
-      namedropR::drop_name(
-        bibs,
-        output_dir = tempdir(),
-        cite_key = key,
-        export_as = "html",
-        use_xaringan = TRUE,
-        include_qr = if (self_contained) 'embed' else 'link',
-        qr_hyperlink = TRUE,
-        qr_size = 150,
-        style = 'classic',
-        path_absolute = TRUE
+      suppressMessages(
+        namedropR::drop_name(
+          tmp_bib,
+          output_dir = tempdir(),
+          cite_key = key,
+          export_as = "html",
+          use_xaringan = TRUE,
+          include_qr = if (self_contained) 'embed' else 'link',
+          qr_hyperlink = TRUE,
+          qr_size = 150,
+          style = 'classic',
+          path_absolute = TRUE
+        )
       )
     )
     tooltip <- format(tooltip)
     tooltip_json <- jsonlite::toJSON(tooltip, auto_unbox = TRUE)
-    .excitation_keys <- c(.excitation_keys, key)
-    assign('.excitation_keys', .excitation_keys, envir = globalenv())
+    keys <- c(keys, key)
+    assign('keys', keys, envir = excitation)
     script <- htmltools::tags$script(
       htmltools::HTML(tooltip_json),
       type = 'application/json',
@@ -78,7 +99,7 @@ excite <- function(key) {
     )
   }
 
-  num_id <- which(.excitation_keys == key)
+  num_id <- which(keys == key)
 
   span <- htmltools::tags$span(
     key,
@@ -98,7 +119,7 @@ excite <- function(key) {
 #' @export
 html_dependency_excitation <- function() {
   htmltools::htmlDependency(
-    name = "excitation",
+    name = "xaringanExtra-excitation",
     version = "0.0.1",
     package = "xaringanExtra",
     src = "excitation",
