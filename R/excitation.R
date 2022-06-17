@@ -21,23 +21,23 @@ NULL
 
 #' @describeIn excitation Adds visual citations to your xaringan slides.
 #' @param bib File path to bibliography file. Currently only .bib files
-#'   are supported. If not supplied, `exite()` will use the `bibliography`
-#'   entry in the R Markdown YAML header, by default.
+#'   are supported. If not supplied, `use_exitation()` will try to use the
+#'   `bibliography` entry in the R Markdown YAML header.
 #' @export
 use_excitation <- function(bib = NULL) {
   if (is.null(bib)) bib <- rmarkdown::metadata$bibliography
 
-  stopifnot('You must either provide `bib` to `use_excitation()` or include a `bibliography` entry at the top-level of your YAML header.' = !is.null(bib))
-
-  if (length(bib) > 1) {
-    tmp_bib <- tempfile(fileext = '.bib')
-    on.exit(unlink(tmp_bib))
-    for (i in seq_len(bib)) {
-      write(readLines(bib[[i]]), tmp_bib, append = TRUE)
+  if (!is.null(bib)) {
+    if (length(bib) > 1) {
+      tmp_bib <- tempfile(fileext = '.bib')
+      on.exit(unlink(tmp_bib))
+      for (i in seq_len(bib)) {
+        write(readLines(bib[[i]]), tmp_bib, append = TRUE)
+      }
+      bib <- readLines(tmp_bib)
+    } else {
+      bib <- readLines(bib)
     }
-    bib <- readLines(tmp_bib)
-  } else {
-    bib <- readLines(bib)
   }
 
   assign('keys', vector('character'), envir = excitation)
@@ -55,15 +55,21 @@ excitation <- new.env(parent = emptyenv())
 #' @describeIn excitation Create an in-text citation.
 #' @param key Citation key in the bibliography file.
 #' @export
-excite <- function(key) {
+excite <- function(key, bib = NULL) {
   stopifnot('`key` must be a length one character vector' = is.character(key) & length(key) == 1)
 
-  keys <- get('keys', envir = excitation)
-  bib <- get('bib', envir = excitation)
+  if (is.null(bib)) {
+    bib <- get('bib', envir = excitation)
+      if (!is.null(bib)) {
+        tmp_bib <- tempfile(fileext = '.bib')
+        writeLines(bib, tmp_bib)
+        on.exit(unlink(tmp_bib))
+        bib <- tmp_bib
+      }
+  }
+  if (is.null(bib)) return(key)
 
-  tmp_bib <- tempfile(fileext = '.bib')
-  writeLines(bib, tmp_bib)
-  on.exit(unlink(tmp_bib))
+  keys <- get('keys', envir = excitation)
 
   self_contained <- FALSE
 
@@ -73,7 +79,7 @@ excite <- function(key) {
     tooltip <- htmltools::includeHTML(
       suppressMessages(
         namedropR::drop_name(
-          tmp_bib,
+          bib = bib,
           output_dir = tempdir(),
           cite_key = key,
           export_as = "html",

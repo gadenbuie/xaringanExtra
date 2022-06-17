@@ -11,7 +11,7 @@
 \usage{
 use_excitation(bib = NULL)
 
-excite(key)
+excite(key, bib = NULL)
 
 html_dependency_excitation()
 
@@ -21,8 +21,8 @@ html_dependency_tippy()
 }
 \arguments{
 \item{bib}{File path to bibliography file. Currently only .bib files
-are supported. If not supplied, \code{exite()} will use the \code{bibliography}
-entry in the R Markdown YAML header, by default.}
+are supported. If not supplied, \code{use_exitation()} will try to use the
+\code{bibliography} entry in the R Markdown YAML header.}
 
 \item{key}{Citation key in the bibliography file.}
 }
