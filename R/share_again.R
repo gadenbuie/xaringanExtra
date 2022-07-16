@@ -149,6 +149,7 @@ embed_xaringan <- function(
     htmltools::div(
       class = "shareagain",
       style = parent_style,
+      `data-exeternal` = "1",
       htmltools::tags$iframe(
         src = url,
         width = unname(ratio["width"]),
