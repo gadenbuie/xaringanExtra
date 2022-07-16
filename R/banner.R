@@ -34,14 +34,14 @@
 #' @seealso [style_banner()]
 #' @export
 use_banner <- function(
+  ...,
   bottom_left = NULL,
   bottom_center = NULL,
   bottom_right = NULL,
   top_left = NULL,
   top_center = NULL,
   top_right = NULL,
-  exclude = NULL,
-  ...
+  exclude = NULL
 ) {
   top <- init_banner(top_left, top_center, top_right, "top", exclude)
   bottom <- init_banner(bottom_left, bottom_center, bottom_right, "bottom", exclude)

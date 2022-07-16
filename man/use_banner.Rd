@@ -5,17 +5,22 @@
 \title{Add a banner to the top or bottom of your slides.}
 \usage{
 use_banner(
+  ...,
   bottom_left = NULL,
   bottom_center = NULL,
   bottom_right = NULL,
   top_left = NULL,
   top_center = NULL,
   top_right = NULL,
-  exclude = NULL,
-  ...
+  exclude = NULL
 )
 }
 \arguments{
+\item{...}{Banner styles created with \code{\link[=style_banner]{style_banner()}}. Technically,
+additional arguments are added into the \code{\link[htmltools:tagList]{htmltools::tagList()}} with the
+banner dependencies, but you'll only want to use \code{\link[=style_banner]{style_banner()}} calls
+here.}
+
 \item{bottom_left, top_left}{Text or HTML to place in the left column of the
 top or bottom of the slide.}
 
@@ -28,11 +33,6 @@ the top or bottom of the slide.}
 \item{exclude}{A vector of slide classes where the banner should not be
 applied. By default all slides are included, but you might want to exclude
 the title and inverse slides with \code{exclude = c("title-slide", "inverse")}.}
-
-\item{...}{Banner styles created with \code{\link[=style_banner]{style_banner()}}. Technically,
-additional arguments are added into the \code{\link[htmltools:tagList]{htmltools::tagList()}} with the
-banner dependencies, but you'll only want to use \code{\link[=style_banner]{style_banner()}} calls
-here.}
 }
 \value{
 An \code{\link[htmltools:tagList]{htmltools::tagList()}} with the banner dependencies, or an
