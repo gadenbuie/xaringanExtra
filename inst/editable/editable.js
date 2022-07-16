@@ -48,6 +48,14 @@
       el.innerHTML = json2html(stored[key])
     }
 
+    function setIsEditingClass () {
+      document.body.classList.add('xe-editable_is-editing')
+    }
+
+    function removeIsEditingClass() {
+      document.body.classList.remove('xe-editable_is-editing')
+    }
+
     window.editable = {
       clearCookies () {
         Cookies.remove(docId.id)
@@ -73,6 +81,7 @@
     editables.forEach(function (el) {
       el.addEventListener('focus', function () {
         if (window.editable.debug) console.log('[editable] blocking shortcuts')
+        setIsEditingClass()
         slideshow.pause()
         el.addEventListener('keyup', blockEvents)
         el.addEventListener('keydown', blockEvents)
@@ -84,6 +93,7 @@
       el.addEventListener('blur', function () {
         if (window.editable.debug) console.log('[editable] unblocking shortcuts')
         slideshow.resume()
+        removeIsEditingClass()
         el.removeEventListener('keyup', blockEvents)
         el.removeEventListener('keydown', blockEvents)
         el.removeEventListener('keypress', blockEvents)

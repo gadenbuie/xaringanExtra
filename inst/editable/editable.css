@@ -12,3 +12,8 @@
   outline-offset: 10px;
   transition: outline-offset 0.5s linear;
 }
+
+.xe-editable_is-editing.remark-container.remark-presenter-mode.remark-pause-mode .remark-pause,
+.xe-editable_is-editing.remark-container.remark-presenter-mode.remark-pause-mode .remark-backdrop {
+ display: none;
+}
