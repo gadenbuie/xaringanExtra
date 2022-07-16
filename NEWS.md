@@ -1,4 +1,4 @@
-# xaringanExtra (development version)
+# xaringanExtra 0.7.0
 
 * BREAKING CHANGE: All arguments to `use_banner()` must be named. `use_banner()`
   now takes `...` earlier since you may want to include `style_banner()` style
