@@ -405,7 +405,7 @@ class Scribble {
 
   startDrawing () {
     if (this.noScribble()) return
-    
+
     slideshow.pause()
     this.toggleToolbox(true)
 
