@@ -1,5 +1,10 @@
 # xaringanExtra (development version)
 
+* Embedding slides via `embed_xaringan()` no longer requires that you set
+  `self_contained: false` in the R Markdown document. `embed_xaringan()` now
+  automatically sets the `data-external="1"` attribute on the element embedding
+  the xaringan slides (thanks [@jhelvy](https://github.com/jhelvy), [@drfurtado](https://github.com/drfurtado), [#177](https://github.com/gadenbuie/xaringanExtra/issues/177)).
+
 * **scribble** can now be disabled on an individual slide by adding
   `class: no-scribble` to the slide ([@mattwarkentin](https://github.com/mattwarkentin) [#166](https://github.com/gadenbuie/xaringanExtra/issues/166)).
   
