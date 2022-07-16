@@ -1,12 +1,12 @@
-# xaringanExtra (development version)
+# xaringanExtra 0.7.0
 
-* **scribble** can now be disabled on an individual slide by adding
-  `class: no-scribble` to the slide (@mattwarkentin #166).
-  
 * BREAKING CHANGE: All arguments to `use_banner()` must be named. `use_banner()`
   now takes `...` earlier since you may want to include `style_banner()` style
   arguments without having to specify all the other arguments (#169).
   
+* **scribble** can now be disabled on an individual slide by adding
+  `class: no-scribble` to the slide (@mattwarkentin #166).
+
 * Embedding slides via `embed_xaringan()` no longer requires that you set
   `self_contained: false` in the R Markdown document. `embed_xaringan()` now
   automatically sets the `data-external="1"` attribute on the element embedding
