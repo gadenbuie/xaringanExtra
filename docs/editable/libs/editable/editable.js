@@ -52,7 +52,7 @@
       document.body.classList.add('xe-editable_is-editing')
     }
 
-    function removeIsEditingClass() {
+    function removeIsEditingClass () {
       document.body.classList.remove('xe-editable_is-editing')
     }
 
