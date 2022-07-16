@@ -1,5 +1,8 @@
 # xaringanExtra (development version)
 
+* **editable** now hides remark's "Paused" overlay when editing slides in
+  presenter mode (#178).
+
 * **scribble** can now be disabled on an individual slide by adding
   `class: no-scribble` to the slide (@mattwarkentin #166).
   
