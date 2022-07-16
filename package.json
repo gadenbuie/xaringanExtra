@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "clipboard": "^2.0.6",
-    "fabric": "^4.3.1",
+    "fabric": "^5.2.1",
     "fitvids": "^2.1.1",
     "freezeframe": "^5.0.2",
     "himalaya": "^1.1.0",
