@@ -1,17 +1,20 @@
 # xaringanExtra (development version)
 
-* Embedding slides via `embed_xaringan()` no longer requires that you set
-  `self_contained: false` in the R Markdown document. `embed_xaringan()` now
-  automatically sets the `data-external="1"` attribute on the element embedding
-  the xaringan slides (thanks [@jhelvy](https://github.com/jhelvy), [@drfurtado](https://github.com/drfurtado), [#177](https://github.com/gadenbuie/xaringanExtra/issues/177)).
-
 * **scribble** can now be disabled on an individual slide by adding
   `class: no-scribble` to the slide ([@mattwarkentin](https://github.com/mattwarkentin) [#166](https://github.com/gadenbuie/xaringanExtra/issues/166)).
   
 * BREAKING CHANGE: All arguments to `use_banner()` must be named. `use_banner()`
   now takes `...` earlier since you may want to include `style_banner()` style
   arguments without having to specify all the other arguments ([#169](https://github.com/gadenbuie/xaringanExtra/issues/169)).
+  
+* Embedding slides via `embed_xaringan()` no longer requires that you set
+  `self_contained: false` in the R Markdown document. `embed_xaringan()` now
+  automatically sets the `data-external="1"` attribute on the element embedding
+  the xaringan slides (thanks [@jhelvy](https://github.com/jhelvy), [@drfurtado](https://github.com/drfurtado), [#177](https://github.com/gadenbuie/xaringanExtra/issues/177)).
 
+* **editable** now hides remark's "Paused" overlay when editing slides in
+  presenter mode ([#178](https://github.com/gadenbuie/xaringanExtra/issues/178)).
+  
 # xaringanExtra 0.6.0 (2022-06-07)
 
 * First release available on CRAN! Read about it at [garrickadenbuie.com/blog/xaringanextra-v0.6.0/](https://www.garrickadenbuie.com/blog/xaringanextra-v0.6.0/).
