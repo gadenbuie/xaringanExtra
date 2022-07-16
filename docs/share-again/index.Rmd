@@ -5,7 +5,7 @@ author: xaringanExtra
 date: '`r utils::packageVersion("xaringanExtra")`'
 output: 
   rmarkdown::html_document:
-    self_contained: false
+    self_contained: true
 ---
 
 # Have you seen my xaringan slides?
