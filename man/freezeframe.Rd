@@ -44,13 +44,13 @@ it.
 }
 \section{Functions}{
 \itemize{
-\item \code{use_freezeframe}: Adds FreezeFrame to your xaringan slides.
+\item \code{use_freezeframe()}: Adds FreezeFrame to your xaringan slides.
 
-\item \code{html_dependency_freezeframe}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
+\item \code{html_dependency_freezeframe()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
 FreezeFrame dependencies for use in xaringan and R Markdown documents.
 Most users will want to use \code{use_freezeframe()} instead.
-}}
 
+}}
 \section{Usage}{
  To add FreezeFrame to your \code{xaringan} presentation,
 add the following code chunk to your slides' R Markdown file.

@@ -40,9 +40,9 @@ Add share again to your slides in three easy steps.
     ```
     ````
 
-    `embed_xaringan()` works with <span
-    style="text-decoration: underline">any</span> xaringan presentation,
-    *share again* not required!
+    `embed_xaringan()` works with
+    <span style="text-decoration: underline">any</span> xaringan
+    presentation, *share again* not required!
 
     Here’s what your [slides will look
     like](https://pkg.garrickadenbuie.com/xaringanExtra/share-again/) in

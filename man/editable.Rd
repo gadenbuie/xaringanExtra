@@ -39,12 +39,12 @@ valid CSS class).
 }
 \section{Functions}{
 \itemize{
-\item \code{use_editable}: Adds editable to your xaringan slides.
+\item \code{use_editable()}: Adds editable to your xaringan slides.
 
-\item \code{html_dependency_editable}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
+\item \code{html_dependency_editable()}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
 view dependencies. Most users will want to use \code{use_editable()}.
-}}
 
+}}
 \section{Usage}{
  To make your xaringan presentations \emph{editable}, add the
 following code chunk to your slides' R Markdown file.

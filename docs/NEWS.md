@@ -1,9 +1,14 @@
+# xaringanExtra (development version)
+
+* **panelset** now works even better in Quarto documents, using the same syntax
+  as [used for panelsets in R Markdown documents](http://pkg.garrickadenbuie.com/xaringanExtra/#/panelset?id=use-in-r-markdown) ([#190](https://github.com/gadenbuie/xaringanExtra/issues/190)).
+
 # xaringanExtra 0.7.0
 
 * BREAKING CHANGE: All arguments to `use_banner()` must be named. `use_banner()`
   now takes `...` earlier since you may want to include `style_banner()` style
   arguments without having to specify all the other arguments ([#169](https://github.com/gadenbuie/xaringanExtra/issues/169)).
-  
+
 * **scribble** can now be disabled on an individual slide by adding
   `class: no-scribble` to the slide ([@mattwarkentin](https://github.com/mattwarkentin) [#166](https://github.com/gadenbuie/xaringanExtra/issues/166)).
 
@@ -14,7 +19,7 @@
 
 * **editable** now hides remark's "Paused" overlay when editing slides in
   presenter mode ([#178](https://github.com/gadenbuie/xaringanExtra/issues/178)).
-  
+
 # xaringanExtra 0.6.0 (2022-06-07)
 
 * First release available on CRAN! Read about it at [garrickadenbuie.com/blog/xaringanextra-v0.6.0/](https://www.garrickadenbuie.com/blog/xaringanextra-v0.6.0/).
@@ -24,9 +29,9 @@
 * Add banners to your slides with `use_banner()`. Banners are text (or other
   HTML) that appear on every slide, for example the title of your talk or a link
   to your slides online. (thanks [@mattwarkentin](https://github.com/mattwarkentin) and [@dataning](https://github.com/dataning), [#161](https://github.com/gadenbuie/xaringanExtra/issues/161))
-  
+
 ## Improved extras
-  
+
 * Sideways panelsets collapse to standard panelsets with tabs above the content
   on small devices (max-width 480px). ([#122](https://github.com/gadenbuie/xaringanExtra/issues/122))
 
@@ -41,7 +46,7 @@
 
 * `use_xaringan_extras("panelset")` is now equivalent to `use_panelset()`.
   Previously the first would not install the knitr chunk hooks.
-  
+
 * panelset now uses the xaringan knitr source hooks, restoring line highlighting
   in the source panel of panelset chunks. ([#138](https://github.com/gadenbuie/xaringanExtra/issues/138))
 
@@ -60,7 +65,7 @@
 * Added color presets to **scribble**: press `0` through `9` while drawing to
   quickly toggle through a preset color palette, customizable using the
   `palette` argument of `use_palette()` (thanks [@kim-soo-hwan](https://github.com/kim-soo-hwan), [#112](https://github.com/gadenbuie/xaringanExtra/issues/112), [#117](https://github.com/gadenbuie/xaringanExtra/issues/117)).
-  
+
 * New feature: animated progress bars that don't interfere with the slide
   number. Simply add `use_progress_bar()` to your slides! ([#109](https://github.com/gadenbuie/xaringanExtra/issues/109), [#118](https://github.com/gadenbuie/xaringanExtra/issues/118))
 
@@ -92,7 +97,7 @@
 
 - New addin: **search**! Easily search through the text in your slides.
   (thanks [@statnmap](https://github.com/statnmap), [#82](https://github.com/gadenbuie/xaringanExtra/issues/82))
-  
+
 - All extensions now use version numbers that are independent of the
   xaringanExtra package version. This will reduce the number of copies of an
   extension that are added to a blogdown site's dependencies by ensuring that
@@ -104,12 +109,12 @@
 
 # xaringanExtra 0.2.4 (2020-10-21)
 
-- Added **panelset chunks** that output code chunks source and results in 
+- Added **panelset chunks** that output code chunks source and results in
   separate panel tabs ([#59](https://github.com/gadenbuie/xaringanExtra/issues/59))
-  
+
 - Added **broadcast**, a new experimental extension that allows viewers to follow the
   presenter's slides in their own browsers (thanks [@spcanelon](https://github.com/spcanelon), [#51](https://github.com/gadenbuie/xaringanExtra/issues/51), [#58](https://github.com/gadenbuie/xaringanExtra/issues/58))
-  
+
 - Changing a panelset tab now emits a window resize event in hopes that any
   HTMLwidgets contained in the panel will resize to fit the panel container
   (thanks [@mfherman](https://github.com/mfherman) [#64](https://github.com/gadenbuie/xaringanExtra/issues/64))
@@ -147,13 +152,13 @@
   "share bar" to the bottom of your slides when embedded in an `<iframe`> in
   another page. Another function `embed_xaringan()` is provided to embed slides
   in blogdown and R Markdown HTML sites in a responsive container.
-  
+
 ## Updates and Changes
 
 * Various updates do `use_logo()` documentation. The class to hide the logo is
   `.hide_logo` and the logo CSS and JavaScript are embedded directly for
   xaringan >= 0.16 (thanks [@chainsawriot](https://github.com/chainsawriot), [#22](https://github.com/gadenbuie/xaringanExtra/issues/22), [#24](https://github.com/gadenbuie/xaringanExtra/issues/24), [#25](https://github.com/gadenbuie/xaringanExtra/issues/25), [#30](https://github.com/gadenbuie/xaringanExtra/issues/30))
-  
+
 * Updated cookie settings when storing editable fields ([#42](https://github.com/gadenbuie/xaringanExtra/issues/42))
 
 * Disabled spell check and auto complete in editable areas ([#16](https://github.com/gadenbuie/xaringanExtra/issues/16))
@@ -168,7 +173,7 @@
   result in an informative warning without throwing an error. The panelset
   also does a better job of handling many tabs, which are now wrapped into
   multiple lines of tabs. (thanks [@realauggieheschmeyer](https://github.com/realauggieheschmeyer), [#37](https://github.com/gadenbuie/xaringanExtra/issues/37), [#38](https://github.com/gadenbuie/xaringanExtra/issues/38), [#39](https://github.com/gadenbuie/xaringanExtra/issues/39)).
-  
+
 * In conjunction with the item above, the `style_panelset()` has been renamed
   `style_panelset_tabs()`. This more clearly describes the part of the panelset
   that is styled, and it helps clarify the meaning of the more concise function

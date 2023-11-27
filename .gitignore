@@ -7,6 +7,7 @@ node_modules/
 
 # Directories that start with _
 _*/
+!tests/testthat/_snaps/
 
 ## https://github.com/github/gitignore/blob/master/R.gitignore
 # History files

@@ -80,17 +80,17 @@ A panelset designed for showing off code, but useful for anything really.
 }
 \section{Functions}{
 \itemize{
-\item \code{use_panelset}: Adds panelset to your xaringan slides.
+\item \code{use_panelset()}: Adds panelset to your xaringan slides.
 
-\item \code{style_panelset_tabs}: Style the panelset. Returns an \pkg{htmltools} \verb{<style>}
+\item \code{style_panelset_tabs()}: Style the panelset. Returns an \pkg{htmltools} \verb{<style>}
 tag.
 
-\item \code{style_panelset}: Deprecated, renamed \code{style_panelset_tabs()}.
+\item \code{style_panelset()}: Deprecated, renamed \code{style_panelset_tabs()}.
 
-\item \code{html_dependency_panelset}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
+\item \code{html_dependency_panelset()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
 view dependencies. Most users will want to use \code{use_panelset()}.
-}}
 
+}}
 \section{Usage}{
  To add panelset to your xaringan presentation, add the
 following code chunk to your slides' R Markdown file.

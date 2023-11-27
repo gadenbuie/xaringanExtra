@@ -24,12 +24,12 @@ slideshow. To disable, reload the slides.
 }
 \section{Functions}{
 \itemize{
-\item \code{use_fit_screen}: Use the fit-to-screen extension in your xaringan slides.
+\item \code{use_fit_screen()}: Use the fit-to-screen extension in your xaringan slides.
 
-\item \code{html_dependency_fit_screen}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the fit
+\item \code{html_dependency_fit_screen()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the fit
 screen dependencies. Most users will want to use \code{use_fit_screen()}.
-}}
 
+}}
 \section{Usage}{
  To enable fit-to-screen, add the following code chunk to your
 slides:

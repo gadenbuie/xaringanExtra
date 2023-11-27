@@ -49,17 +49,17 @@ permanent copy of the slides with the markup by printing your presentation
 }
 \section{Functions}{
 \itemize{
-\item \code{use_scribble}: Adds scribble to your xaringan slides.
+\item \code{use_scribble()}: Adds scribble to your xaringan slides.
 
-\item \code{html_dependency_fabricjs}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
+\item \code{html_dependency_fabricjs()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
 \code{fabric.js} dependencies for use in xaringan and R Markdown documents.
 Most users will want to use \code{use_scribble()} instead.
 
-\item \code{html_dependency_scribble}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
+\item \code{html_dependency_scribble()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
 scribble dependencies for use in xaringan and R Markdown documents. Most
 users will want to use \code{use_scribble()} instead.
-}}
 
+}}
 \section{Usage}{
  To add scribble to your \code{xaringan} presentation,
 add the following code chunk to your slides' R Markdown file.
