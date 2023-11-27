@@ -23,12 +23,12 @@ Tachyons is a collection of CSS utility classes that works beautifully with
 }
 \section{Functions}{
 \itemize{
-\item \code{use_tachyons}: Adds tachyons to your xaringan slides.
+\item \code{use_tachyons()}: Adds tachyons to your xaringan slides.
 
-\item \code{html_dependency_tachyons}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
+\item \code{html_dependency_tachyons()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
 view dependencies. Most users will want to use \code{use_tachyons()}.
-}}
 
+}}
 \section{Usage}{
  To add tachyons to your xaringan presentation, add the
 following code chunk to your slides' R Markdown file.

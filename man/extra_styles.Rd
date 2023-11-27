@@ -39,12 +39,12 @@ to your slides.
 }
 \section{Functions}{
 \itemize{
-\item \code{use_extra_styles}: Add the extra CSS styles to your slides
+\item \code{use_extra_styles()}: Add the extra CSS styles to your slides
 
-\item \code{html_dependency_extra_styles}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
+\item \code{html_dependency_extra_styles()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
 extra styles dependencies. Most users will want to use \code{use_extra_styles()}.
-}}
 
+}}
 \examples{
 use_extra_styles()
 

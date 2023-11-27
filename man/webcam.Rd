@@ -40,12 +40,12 @@ drag and drop the video within the browser window.
 }
 \section{Functions}{
 \itemize{
-\item \code{use_webcam}: Add the webcam extension to your slides
+\item \code{use_webcam()}: Add the webcam extension to your slides
 
-\item \code{html_dependency_webcam}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the webcam
+\item \code{html_dependency_webcam()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the webcam
 dependencies. Most users will want to use \code{use_webcam()}.
-}}
 
+}}
 \examples{
 use_webcam()
 

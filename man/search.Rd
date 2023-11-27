@@ -70,14 +70,14 @@ Search gives you a way to quickly search for text on slides.
 }
 \section{Functions}{
 \itemize{
-\item \code{use_search}: Adds search to your xaringan slides.
+\item \code{use_search()}: Adds search to your xaringan slides.
 
-\item \code{html_dependency_search}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the search
+\item \code{html_dependency_search()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the search
 dependencies. Most users will want to use \code{use_search()}.
 
-\item \code{style_search}: Style the search input.
-}}
+\item \code{style_search()}: Style the search input.
 
+}}
 \section{Usage}{
  To add search to your xaringan presentation, add the
 following code chunk to your slides' R Markdown file.

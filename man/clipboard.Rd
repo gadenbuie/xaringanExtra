@@ -76,17 +76,17 @@ htmltools::tagList(
 }
 \section{Functions}{
 \itemize{
-\item \code{use_clipboard}: Adds \strong{clipboard} to your xaringan slides or R
+\item \code{use_clipboard()}: Adds \strong{clipboard} to your xaringan slides or R
 Markdown HTML output.
 
-\item \code{html_dependency_clipboardjs}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
+\item \code{html_dependency_clipboardjs()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
 \href{https://clipboardjs.com/}{clipboard.js} library. For expert use.
 
-\item \code{html_dependency_clipboard}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
+\item \code{html_dependency_clipboard()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the
 clipboard dependencies for use in xaringan and R Markdown documents. Most
 users will want to use \code{use_clipboard()} instead.
-}}
 
+}}
 \examples{
 use_clipboard()
 

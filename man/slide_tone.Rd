@@ -21,12 +21,12 @@ same for incremental slides.
 }
 \section{Functions}{
 \itemize{
-\item \code{use_slide_tone}: Adds slide tone to your xaringan slides.
+\item \code{use_slide_tone()}: Adds slide tone to your xaringan slides.
 
-\item \code{html_dependency_slide_tone}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
+\item \code{html_dependency_slide_tone()}: Returns an \link[htmltools:htmlDependency]{htmltools::htmlDependency} with the tile
 view dependencies. Most users will want to use \code{use_slide_tone()}.
-}}
 
+}}
 \section{Usage}{
  To add slide tone to your xaringan presentation, add the
 following code chunk to your slides' R Markdown file.

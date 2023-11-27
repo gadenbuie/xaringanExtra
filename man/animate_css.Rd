@@ -46,16 +46,16 @@ just-add-water-awesomeness."
 }
 \section{Functions}{
 \itemize{
-\item \code{use_animate_css}: Use animate.css in your xaringan slides.
+\item \code{use_animate_css()}: Use animate.css in your xaringan slides.
 
-\item \code{html_dependency_animate_css}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
+\item \code{html_dependency_animate_css()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
 view dependencies. Most users will want to use \code{use_animate_css()}.
 
-\item \code{use_animate_all}: Use a default animation for all slides. Sets coupled
+\item \code{use_animate_all()}: Use a default animation for all slides. Sets coupled
 in an out animations for all slides that can be disabled on individual
 slides by adding the class \code{.no-animation}.
-}}
 
+}}
 \section{Usage}{
  To add animate.css to your xaringan presentation, add the
 following code chunk to your slides' R Markdown file.

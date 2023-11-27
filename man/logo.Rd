@@ -54,12 +54,12 @@ which types of slides will not get the logo by default.
 }
 \section{Functions}{
 \itemize{
-\item \code{use_logo}: Adds logo to your xaringan slides.
+\item \code{use_logo()}: Adds logo to your xaringan slides.
 
-\item \code{html_dependency_logo}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
+\item \code{html_dependency_logo()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
 view dependencies. Most users will want to use \code{use_logo()}.
-}}
 
+}}
 \section{Usage}{
  To add a logo to your xaringan presentation, add the
 following code chunk to your slides' R Markdown file.

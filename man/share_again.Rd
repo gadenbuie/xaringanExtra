@@ -44,13 +44,13 @@ the share menu.
 }
 \section{Functions}{
 \itemize{
-\item \code{use_share_again}: Add the \emph{share again} bar to your slides (only shown
+\item \code{use_share_again()}: Add the \emph{share again} bar to your slides (only shown
 when embedded in an \verb{<iframe>})
 
-\item \code{style_share_again}: Style the \emph{share again} bar to match your slides, or
+\item \code{style_share_again()}: Style the \emph{share again} bar to match your slides, or
 choose the social media sites included in the share menu
-}}
 
+}}
 \examples{
 # In your slides call
 use_share_again()

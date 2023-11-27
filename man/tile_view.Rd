@@ -21,12 +21,12 @@ jump to the slide, or press \strong{O} to exit tile view.
 }
 \section{Functions}{
 \itemize{
-\item \code{use_tile_view}: Adds tile view to your xaringan slides.
+\item \code{use_tile_view()}: Adds tile view to your xaringan slides.
 
-\item \code{html_dependency_tile_view}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
+\item \code{html_dependency_tile_view()}: Returns an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}} with the tile
 view dependencies. Most users will want to use \code{use_tile_view()}.
-}}
 
+}}
 \section{Usage}{
  To add tile view to your xaringan presentation, add the
 following code chunk to your slides' R Markdown file.
