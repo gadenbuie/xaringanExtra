@@ -6,7 +6,7 @@
 ^node_modules$
 ^package-lock\.json$
 ^package\.json$
-^_tmp$
+^_dev$
 ^tests/manual$
 ^README\.Rmd$
 ^README\.html$
