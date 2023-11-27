@@ -162,7 +162,7 @@ panelset_match_vars <- function(x = NULL) {
 html_dependency_panelset <- function() {
   htmltools::htmlDependency(
     name = "panelset",
-    version = "0.2.6",
+    version = "0.2.7",
     package = "xaringanExtra",
     src = "panelset",
     script = "panelset.js",
