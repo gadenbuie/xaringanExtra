@@ -3,6 +3,13 @@
 * **panelset** now works even better in Quarto documents, using the same syntax
   as [used for panelsets in R Markdown documents](http://pkg.garrickadenbuie.com/xaringanExtra/#/panelset?id=use-in-r-markdown) ([#190](https://github.com/gadenbuie/xaringanExtra/issues/190)).
 
+* **panelset** now supports a [fenced div](https://pandoc.org/MANUAL.html#extension-fenced_divs)
+  syntax where `::: {.panelset}` is used to start a panelset and each panel is
+  defined by a new heading within the fenced div. When used in this way, the
+  heading level of the subsections is ignored, the highest level subsection
+  heading within the fenced div determines the section level that creates a new
+  panel ([#191](https://github.com/gadenbuie/xaringanExtra/issues/191)).
+
 # xaringanExtra 0.7.0
 
 * BREAKING CHANGE: All arguments to `use_banner()` must be named. `use_banner()`
