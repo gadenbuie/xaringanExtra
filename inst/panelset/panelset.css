@@ -1,4 +1,9 @@
-/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.23, autoprefixer: v9.7.3) */
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,last 2 versions,not dead
+*/
 
 .panelset {
   width: 100%;
@@ -22,16 +27,11 @@
 }
 
 .panelset .panel-tabs {
-  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
-  -webkit-box-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
   overflow-y: visible;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -40,18 +40,14 @@
 }
 
 .panelset .panel-tabs * {
-  -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
 
 .panelset .panel-tabs .panel-tab {
   min-height: 50px;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   padding: 0.5em 1em;
   font-family: var(--panel-tab-font-family);
   opacity: var(--panel-tab-inactive-opacity);
