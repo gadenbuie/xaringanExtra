@@ -61,8 +61,9 @@ use_panelset <- function(in_xaringan = NULL) {
 #'   tab. Default is `currentColor`.
 #' @param hover_foreground The text color of a hovered panel tab. Default is
 #'   `currentColor`.
-#' @param tabs_border_bottom The border color between the tabs and content.
-#'   Default is `#ddd`.
+#' @param separator_color,tabs_border_bottom The border color between the tabs
+#'   and content. Default is `#ddd`. `tabs_border_bottom` is superseded by
+#'   `separator_color` but is kept for backwards compatibility.
 #' @param tabs_sideways_max_width The maximum width of the tabs in sideways
 #'   mode. The default value is `25%`. A value between 25% and 33% is
 #'   recommended. The tabs can only ever be at most 50% of the container width.
@@ -76,8 +77,10 @@ use_panelset <- function(in_xaringan = NULL) {
 #'   a tab when it is active or the color of the bottom border of a tab when it
 #'   is hovered or focused. Defaults are `currentColor`.
 #' @param selector The CSS selector used to choose which panelset is being
-#'   styled. In most cases, you can use the default selector and style all
-#'   panelsets on the page.
+#'   styled. In most cases, you can use the default selector to style all
+#'   panelsets on the page. When `selector` is `NULL`, `style_panelset()` will
+#'   return the styles without wrapping them in a `<style>` tag so they can be
+#'   used in inline styles.
 #' @export
 style_panelset_tabs <- function(
   foreground = NULL,
@@ -89,6 +92,7 @@ style_panelset_tabs <- function(
   hover_background = NULL,
   hover_foreground = NULL,
   hover_border_color = NULL,
+  separator_color = NULL,
   tabs_border_bottom = NULL,
   tabs_sideways_max_width = NULL,
   inactive_opacity = NULL,
@@ -97,8 +101,8 @@ style_panelset_tabs <- function(
 ) {
   if (length(list(...))) {
     warning(
-      "The arguments to `syle_panelset()` changed in xaringanExtra 0.1.0. ",
-      "Please refer to the documentation to update your slides.",
+      "The argument names of `style_panelset()` changed in xaringanExtra 0.1.0. ",
+      "Please refer to the documentation to update to the latest names.",
       immediate. = TRUE
     )
   }
@@ -118,10 +122,12 @@ style_panelset_tabs <- function(
     args["--panel-tab-font-family"] <- "Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace"
   }
 
-  style <- ""
-  for (var in names(args)) {
-    style <- paste0(style, var, ": ", args[var], ";")
+  style <- htmltools::css(!!!args)
+
+  if (is.null(selector)) {
+    return(htmltools::HTML(style))
   }
+
   style <- paste0("<style>", selector, "{", style, "}</style>")
   htmltools::HTML(style)
 }
@@ -144,6 +150,7 @@ panelset_match_vars <- function(x = NULL) {
     hover_background = "--panel-tab-hover-background",
     hover_foreground = "--panel-tab-hover-foreground",
     hover_border_color = "--panel-tab-hover-border-color",
+    separator_color = "--panel-tabs-separator-color",
     tabs_border_bottom = "--panel-tabs-border-bottom",
     inactive_opacity = "--panel-tab-inactive-opacity",
     font_family = "--panel-tab-font-family",
