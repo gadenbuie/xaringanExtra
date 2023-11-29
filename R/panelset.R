@@ -112,7 +112,7 @@ style_panelset_tabs <- function(
   args <- lapply(fn_args, function(x) get(x))
   args <- args[vapply(args, function(x) !is.null(x), TRUE)]
   if (!length(args)) {
-    return(invisible(NULL))
+    return(NULL)
   }
 
   names(args) <- panelset_match_vars(names(args))
