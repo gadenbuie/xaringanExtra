@@ -15,6 +15,19 @@
   border of the active tab are handled. `style_panelset_tabs()` gains a new
   `separator_color` argument to replace `tabs_border_bottom` (#192).
 
+* **panelset** now fully supports panelset chunks in Quarto, either with
+  `#| panelset: true` for chunk options or the alternative syntax specifying the
+  panel names for the source and output panels (#193):
+
+  ````markdown
+  ```{r}
+  #| panelset:
+  #|  - source: The Code
+  #|  - output: The Result
+  rnorm(10)
+  ```
+  ````
+
 # xaringanExtra 0.7.0
 
 * BREAKING CHANGE: All arguments to `use_banner()` must be named. `use_banner()`
