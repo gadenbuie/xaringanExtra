@@ -97,7 +97,7 @@ style_panelset_tabs <- function(
   tabs_sideways_max_width = NULL,
   inactive_opacity = NULL,
   font_family = NULL,
-  selector = ".panelset"
+  selector = ":root"
 ) {
   if (length(list(...))) {
     warning(
