@@ -21,6 +21,21 @@
       .map(el => el.textContent.trim())
 
     const panelIds = {}
+    let panelsetIdx = 0
+    const panelsetIds = []
+
+    const uniquePanelsetId = (id) => {
+      const panelsetNumber = () => (++panelsetIdx).toString().padStart(3, '0')
+
+      if (typeof id === 'undefined' || id === '') {
+        id = 'panelset_' + panelsetNumber()
+      } else if (panelsetIds.includes(id)) {
+        id = id + '_' + panelsetNumber()
+      }
+
+      panelsetIds.push(id)
+      return id
+    }
 
     const uniquePanelId = (name) => {
       name = encodeURIComponent(name.toLowerCase().replace(/[\s]/g, '-'))
@@ -87,10 +102,10 @@
       return params.get(panelset)
     }
 
-    const reflowPanelSet = (panels, idx) => {
+    const reflowPanelSet = (panels, id) => {
       const res = document.createElement('div')
       res.className = 'panelset'
-      res.id = 'panelset' + (idx > 0 ? idx : '')
+      res.id = uniquePanelsetId(id)
       const panelSelected = getCurrentPanelFromUrl(res.id)
 
       // create header row
@@ -175,10 +190,11 @@
       if (!clicked.classList.contains('panel-tab')) return
       if (clicked.classList.contains('panel-tab-active')) return
 
+      // clicked is a .panel-tab: .panelset > .panel-tabs > .panel-tab
       const tabs = clicked.parentNode
-        .querySelectorAll('.panel-tab')
+        .querySelectorAll(':scope > .panel-tab')
       const panels = clicked.parentNode.parentNode
-        .querySelectorAll('.panel')
+        .querySelectorAll(':scope > .panel')
       const panelTabClicked = clicked.children[0].getAttribute('aria-controls')
       const panelClicked = clicked.parentNode.parentNode.id
 
@@ -212,8 +228,9 @@
       updateUrl(params)
     }
 
-    const initPanelSet = (panelset, idx) => {
-      let panels = Array.from(panelset.querySelectorAll('.panel'))
+    const initPanelSet = (panelset) => {
+      let panels = Array.from(panelset.querySelectorAll(':scope > .panel'))
+
       const pandocSectionSelector = ':is(section, .section)[class*="level"]'
       if (!panels.length) {
         // we're in tabset-alike R Markdown or Quarto
@@ -254,7 +271,7 @@
       if (!panels.length) return
 
       const contents = panels.map(processPanelItem).filter(o => o !== null)
-      const newPanelSet = reflowPanelSet(contents, idx)
+      const newPanelSet = reflowPanelSet(contents, panelset.id)
       newPanelSet.classList = panelset.classList
       panelset.parentNode.insertBefore(newPanelSet, panelset)
       panelset.parentNode.removeChild(panelset)
@@ -298,7 +315,21 @@
       .querySelectorAll('[data-panelset="true"]')
       .forEach(el => el.classList.add('panelset'))
 
-    Array.from(document.querySelectorAll('.panelset')).map(initPanelSet)
+    const panelsets = {atomic: [], nested: []}
+    Array.from(document.querySelectorAll('.panelset'))
+      .forEach(el => {
+        if (el.querySelector('.panelset')) {
+          // push nested panelsets to the start of the list (inner -> outer)
+          panelsets.nested.unshift(el)
+        } else {
+          // put panelsets without nested panelsets at the beginning
+          panelsets.atomic.push(el)
+        }
+      })
+
+    // initialize atomic panelsets first, then nested panelsets
+    panelsets.atomic.map(initPanelSet)
+    panelsets.nested.map(initPanelSet)
 
     if (typeof slideshow !== 'undefined') {
       const getVisibleActivePanelInfo = () => {
