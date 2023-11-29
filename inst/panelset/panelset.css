@@ -137,11 +137,6 @@
   margin-top: 0;
 }
 
-.panelset .panel > :last-child,
-.panelset .panel > section:last-child > :last-child {
-  margin-bottom: 0;
-}
-
 /* ---- Sideways Panelset ---- */
 
 @media (min-width: 480px) {
