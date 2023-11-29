@@ -20,11 +20,12 @@ style_panelset_tabs(
   hover_background = NULL,
   hover_foreground = NULL,
   hover_border_color = NULL,
+  separator_color = NULL,
   tabs_border_bottom = NULL,
   tabs_sideways_max_width = NULL,
   inactive_opacity = NULL,
   font_family = NULL,
-  selector = ".panelset"
+  selector = ":root"
 )
 
 style_panelset(...)
@@ -55,8 +56,9 @@ is hovered or focused. Defaults are \code{currentColor}.}
 \item{hover_foreground}{The text color of a hovered panel tab. Default is
 \code{currentColor}.}
 
-\item{tabs_border_bottom}{The border color between the tabs and content.
-Default is \verb{#ddd}.}
+\item{separator_color, tabs_border_bottom}{The border color between the tabs
+and content. Default is \verb{#ddd}. \code{tabs_border_bottom} is superseded by
+\code{separator_color} but is kept for backwards compatibility.}
 
 \item{tabs_sideways_max_width}{The maximum width of the tabs in sideways
 mode. The default value is \verb{25\%}. A value between 25\% and 33\% is
@@ -68,8 +70,10 @@ recommended. The tabs can only ever be at most 50\% of the container width.}
 Default is a monospace system font stack.}
 
 \item{selector}{The CSS selector used to choose which panelset is being
-styled. In most cases, you can use the default selector and style all
-panelsets on the page.}
+styled. In most cases, you can use the default selector to style all
+panelsets on the page. When \code{selector} is \code{NULL}, \code{style_panelset()} will
+return the styles without wrapping them in a \verb{<style>} tag so they can be
+used in inline styles.}
 }
 \value{
 An \code{htmltools::tagList()} with the panelset dependencies, or an

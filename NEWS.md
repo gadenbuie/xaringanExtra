@@ -10,6 +10,11 @@
   heading within the fenced div determines the section level that creates a new
   panel (#191).
 
+* **panelset** CSS was revamped for better ergonomics, in particular to improve
+  how the border bottom separating the tabs from the content and the bottom
+  border of the active tab are handled. `style_panelset_tabs()` gains a new
+  `separator_color` argument to replace `tabs_border_bottom` (#192).
+
 # xaringanExtra 0.7.0
 
 * BREAKING CHANGE: All arguments to `use_banner()` must be named. `use_banner()`
