@@ -28,6 +28,37 @@
   ```
   ````
 
+* Nested **panelsets** are now supported (#194)! In xaringan slides and when
+  using the hand-rolled panelset syntax, you can now nest panelsets within
+  panelsets. In R Markdown or Quarto documents, panelsets chunks can be nested
+  within panelset sections. Nesting panelset sections requires the fenced div
+  syntax:
+
+  ````markdown
+  # Nested fenced divs
+
+  ::: {.panelset #outer}
+
+  ## One
+
+  Outer panel One.
+
+  ::: {.panelset #inner}
+  ### One A
+
+  Inner panel One A.
+
+  ### One B
+
+  Inner panel One B.
+  :::
+
+  ## Two
+
+  Outer panel Two.
+  :::
+  ````
+
 # xaringanExtra 0.7.0
 
 * BREAKING CHANGE: All arguments to `use_banner()` must be named. `use_banner()`
