@@ -282,7 +282,7 @@ panelset_chunk_before_xaringan <- function(x, options) {
     "",
     .hooks$source(x, options),
     "\n]\n",
-    sprintf(".panel[.panel-name[%s]", panelset_output),
+    sprintf(".panel[.panel-name[%s]", panel_output),
     "\n",
     sep = "\n"
   )
