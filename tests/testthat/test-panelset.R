@@ -8,7 +8,7 @@ test_that("style_panelset_tabs", {
     hover_background = "#fafafa",
     hover_border_color = "var(--text-lightest)",
     inactive_opacity = 1,
-    tabs_border_bottom = "var(--text-mild)"
+    separator_color = "var(--text-mild)"
   )
 
   testthat::expect_snapshot(css)
