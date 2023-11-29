@@ -217,10 +217,21 @@ register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
   })
 
   knitr::opts_hooks$set(panelset = function(options) {
+    panelset <- options$panelset
+    if (isFALSE(panelset)) return()
+
     # panelset chunks ignore global options and default to results="hold"
     # but can be overwritten by the local chunk options if declared explicitly
     chunk_opts <- attr(knitr::knit_code$get(options$label), "chunk_opts")
     options$results <- chunk_opts$results %||% "hold"
+
+    # Create chunk options for the panelset source and output labels, while
+    # allowing for local chunk options to override the defaults
+    labels <- panelset_source_opts(panelset)
+    options$panelset_panel_source <- chunk_opts$panelset_panel_source %||% labels["source"]
+    options$panelset_panel_output <- chunk_opts$panelset_panel_output %||% labels["output"]
+    options$panelset <- TRUE
+
     options
   })
 }
@@ -230,7 +241,10 @@ panelset_source_opts <- function(opt) {
     return(NULL)
   }
 
-  default <- c(source = "Code", output = "Output")
+  default <- c(
+    source = knitr::opts_chunk$get("panelset_panel_source") %||% "Code",
+    output = knitr::opts_chunk$get("panelset_panel_output") %||% "Output"
+  )
   opt <- unlist(opt)
   if (isTRUE(opt) || length(opt) < 1 || !is.character(opt)) {
     return(default)
@@ -249,7 +263,7 @@ panelset_source_opts <- function(opt) {
     names(opt) <- names(default)[seq_along(opt)]
   }
 
-  if (!length(opt) == 2) {
+  if (length(opt) != 2) {
     opt <- c(
       opt[intersect(names(default), names(opt))],
       default[setdiff(names(default), names(opt))]
@@ -260,30 +274,32 @@ panelset_source_opts <- function(opt) {
 }
 
 panelset_chunk_before_xaringan <- function(x, options) {
-  panel_names <- panelset_source_opts(options$panelset)
+  panel_source <- options[["panelset_panel_source"]]
+  panel_output <- options[["panelset_panel_output"]]
 
   paste(
-    sprintf(".panel[.panel-name[%s]", panel_names["source"]),
+    sprintf(".panel[.panel-name[%s]", panel_source),
     "",
     .hooks$source(x, options),
     "\n]\n",
-    sprintf(".panel[.panel-name[%s]", panel_names["output"]),
+    sprintf(".panel[.panel-name[%s]", panelset_output),
     "\n",
     sep = "\n"
   )
 }
 
 panelset_chunk_before_html <- function(x, options) {
-  panel_names <- panelset_source_opts(options$panelset)
+  panel_source <- options[["panelset_panel_source"]]
+  panel_output <- options[["panelset_panel_output"]]
 
   paste(
     '<div class="panel">',
-    sprintf('<div class="panel-name">%s</div>', panel_names["source"]),
+    sprintf('<div class="panel-name">%s</div>', panel_source),
     "",
     .hooks$source(x, options),
     "\n</div>\n",
     '<div class="panel">',
-    sprintf('<div class="panel-name">%s</div>', panel_names["output"]),
+    sprintf('<div class="panel-name">%s</div>', panel_output),
     "\n",
     sep = "\n"
   )

@@ -294,6 +294,10 @@
     }
 
     // initialize panels
+    document
+      .querySelectorAll('[data-panelset="true"]')
+      .forEach(el => el.classList.add('panelset'))
+
     Array.from(document.querySelectorAll('.panelset')).map(initPanelSet)
 
     if (typeof slideshow !== 'undefined') {
