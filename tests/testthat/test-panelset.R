@@ -1,17 +1,34 @@
 test_that("style_panelset_tabs", {
-  css <- style_panelset_tabs(
-    foreground = "var(--text-mild)",
-    background = "unset",
-    active_foreground = "var(--text-dark)",
-    active_background = "var(--text-lightest)",
-    active_border_color = "var(--purple)",
-    hover_background = "#fafafa",
-    hover_border_color = "var(--text-lightest)",
-    inactive_opacity = 1,
-    separator_color = "var(--text-mild)"
+  expect_snapshot(
+    style_panelset_tabs(
+      foreground = "var(--text-mild)",
+      background = "unset",
+      active_foreground = "var(--text-dark)",
+      active_background = "var(--text-lightest)",
+      active_border_color = "var(--purple)",
+      hover_background = "#fafafa",
+      hover_border_color = "var(--text-lightest)",
+      inactive_opacity = 1,
+      separator_color = "var(--text-mild)"
+    )
   )
 
-  testthat::expect_snapshot(css)
+  expect_snapshot(
+    style_panelset_tabs(
+      foreground = "var(--text-mild)",
+      background = "unset",
+      active_foreground = "var(--text-dark)",
+      active_background = "var(--text-lightest)",
+      active_border_color = "var(--purple)",
+      hover_background = "#fafafa",
+      hover_border_color = "var(--text-lightest)",
+      inactive_opacity = 1,
+      separator_color = "var(--text-mild)",
+      selector = NULL
+    )
+  )
+
+  expect_warning(expect_null(style_panelset_tabs(foo = "bar")))
 })
 
 describe("panelset_source_opts()", {
