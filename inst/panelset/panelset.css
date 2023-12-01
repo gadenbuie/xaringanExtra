@@ -273,3 +273,9 @@
 .remark-container .panelset.sideways.right .panel-tabs .panel-tab a {
   text-align: right;
 }
+
+/* Other remarkjs (xaringan) specific styles */
+.remark-container .panelset .panel-tabs .panel-tab:focus > a {
+  /* The outline isn't needed, since navigation is always <- or -> */
+  outline: none;
+}
