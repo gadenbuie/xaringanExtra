@@ -249,8 +249,9 @@
 
     function findPanelByName (panelset, name) {
       const matches = Array.from(
-        panelset.querySelectorAll(':scope > .panel')
-      ).filter(p => p.innerText.trim() === name)
+        panelset.querySelectorAll(':scope > .panel-tabs > .panel-tab')
+      ).filter(p => p.innerText.toLowerCase().trim() === name)
+
       if (!matches) {
         console.error(
           `No panel with name "${name}" found in panelset ${panelset.id}`,
@@ -258,6 +259,7 @@
         )
         return
       }
+
       if (matches > 1) {
         console.warn(
           `Multiple panels with name "${name}" found in panelset ${panelset.id}`,
@@ -267,7 +269,7 @@
       return matches[0]
     }
 
-    function togglePanel (panelset, target) {
+    function togglePanel (panelset, target, updateGroup = true) {
       // target is a .panel-tab element or a panel name
       if (!(target instanceof window.HTMLElement)) {
         target = findPanelByName(panelset, target)
@@ -304,6 +306,18 @@
 
       // emit window resize event to trick html widgets into fitting to the panel width
       window.dispatchEvent(new window.Event('resize'))
+
+      if (updateGroup && panelset.dataset.group) {
+        panelset.dispatchEvent(
+          new window.CustomEvent('panelset:group', {
+            bubbles: true,
+            detail: {
+              group: panelset.dataset.group,
+              panel: target.innerText.toLowerCase().trim(),
+            },
+          })
+        )
+      }
 
       // update query string
       const params = updateSearchParams(panelset.id, targetPanelId)
@@ -392,6 +406,15 @@
             ev.stopPropagation()
           }
         })
+
+      // synchronize with the panelset group
+      if (newPanelSet.dataset.group) {
+        window.addEventListener('panelset:group', ev => {
+          if (ev.target === newPanelSet) return
+          if (ev.detail.group !== newPanelSet.dataset.group) return
+          togglePanel(newPanelSet, ev.detail.panel, false)
+        })
+      }
 
       return panels
     }
