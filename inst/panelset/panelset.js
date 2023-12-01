@@ -25,6 +25,11 @@
     let panelsetIdx = 0
     const panelsetIds = []
 
+    /**
+     * Generates a unique panelset ID.
+     * @param {string} id - The optional ID to be used as a base for the panelset ID.
+     * @returns {string} - The generated unique panelset ID.
+     */
     const uniquePanelsetId = id => {
       const panelsetNumber = () => (++panelsetIdx).toString().padStart(3, '0')
 
@@ -38,6 +43,13 @@
       return id
     }
 
+    /**
+     * Generates a unique panel ID based on the provided name, by appending an
+     * increasing integer to the name to make it unique.
+     *
+     * @param {string} name - The name to generate the panel ID from.
+     * @returns {string} The unique panel ID.
+     */
     const uniquePanelId = name => {
       name = encodeURIComponent(name.toLowerCase().replace(/[\s]/g, '-'))
       if (Object.keys(panelIds).includes(name)) {
@@ -48,6 +60,15 @@
       return name
     }
 
+    /**
+     * Identifies the panel name based on the given item, taking into account
+     * the various ways that panel names can be specified in R Markdown, Quarto,
+     * or revealjs.
+     *
+     * @param {HTMLElement} item - The item to identify the panel name from.
+     * @returns {string} The identified panel name or undefined if no name can
+     * be identified.
+     */
     const identifyPanelName = item => {
       let name = 'Panel'
 
@@ -96,10 +117,19 @@
           .filter(c => !/^level\d$/.test(c))
           .toString(),
         style: el.style.cssText,
-        dataset: el.dataset,
+        dataset: el.dataset
       }
     }
 
+    /**
+     * Processes an original section of content and prepare data for the content
+     * panel the item will become.
+     *
+     * @param {HTMLElement} item - The panel item to process.
+     * @returns {Object|null} - An object containing the panel's name, content,
+     * id, active status, and other attributes. Returns null if the panel name
+     * cannot be identified.
+     */
     const processPanelItem = item => {
       const name = identifyPanelName(item)
       if (!name) {
@@ -112,19 +142,41 @@
         active:
           item.dataset &&
           ['', 'true'].includes(item.dataset.active?.toLowerCase()),
-        ...getElementAttributes(item),
+        ...getElementAttributes(item)
       }
     }
 
-    const getCurrentPanelFromUrl = panelset => {
+    /**
+     * Retrieves the current panel from the URL parameters.
+     * @param {string} panelsetId - The ID of the panelset.
+     * @returns {string|null} - The current panel ID or null if not in the URL.
+     */
+    const getCurrentPanelFromUrl = panelsetId => {
       const params = new URLSearchParams(window.location.search)
-      return params.get(panelset)
+      return params.get(panelsetId)
     }
 
-    function getInitSelectedPanel (panels, id) {
+    /**
+     * Returns the initial selected panel ID based on the provided panels and
+     * the ID of the corresponding panelset. The active panel is chosen
+     * following:
+     *
+     * 1. If the panselset appears in the URL, use the panel ID from the URL.
+     * 2. If there is an active panel, use the ID of the first active panel.
+     * 3. Use the ID of the first panel in the array.
+     *
+     * Note that groups are not considered here. If the panelset is part of a
+     * group, the group state will be updated after the initial panelset is
+     * created.
+     *
+     * @param {Array} panels - The array of panel objects.
+     * @param {string} panelsetId - The ID of the panelset specified in the URL.
+     * @returns {string} - The ID of the initial selected panel.
+     */
+    function getInitSelectedPanel (panels, panelsetId) {
       const panelIds = panels.map(p => p.id)
 
-      const panelSelectedUrl = getCurrentPanelFromUrl(id)
+      const panelSelectedUrl = getCurrentPanelFromUrl(panelsetId)
       if (panelSelectedUrl && panelIds.includes(panelSelectedUrl)) {
         return panelSelectedUrl
       }
@@ -137,6 +189,22 @@
       return panels[0].id
     }
 
+    /**
+     * Creates a panel set element with header tabs and corresponding content
+     * sections.
+     *
+     * @param {Array} panels - An array of panel objects.
+     * @param {Object} options - An object containing optional parameters for
+     * the panel set.
+     * @param {string} options.id - The ID of the panel set element.
+     * @param {string} options.classes - Additional CSS classes to be applied to
+     * the panel set element.
+     * @param {string} options.style - Inline CSS styles to be applied to the
+     * panel set element.
+     * @param {Object} options.dataset - Custom data attributes to be added to
+     * the panel set element.
+     * @returns {HTMLElement} - The created panel set element.
+     */
     const reflowPanelSet = (panels, { id, classes, style, dataset }) => {
       const res = document.createElement('div')
       res.classList = 'panelset' + (classes ? ' ' + classes : '')
@@ -209,19 +277,34 @@
     /*
      * Update selected panel for panelset or delete panelset from query string
      *
-     * @param panelset Panelset ID to update in the search params
-     * @param panel Panel ID of selected panel in panelset, or null to delete from search params
-     * @param params Current params object, or params from window.location.search
+     * @param panelset Panelset ID to update in the search params @param panel
+     * Panel ID of selected panel in panelset, or null to delete from search
+     * params @param params Current params object, or params from
+     * window.location.search
+     */
+
+    /**
+     * Updates the search parameters with the specified panelset and panel
+     * values. If a panel is provided, it sets the panelset and panel in the
+     * search parameters. If no panel is provided, it removes the panelset from
+     * the search parameters.
+     *
+     * @param {string} panelsetId - The ID of the panelset.
+     * @param {string} [panelId] - The ID of the panel (optional).
+     * @param {URLSearchParams} [params=new
+     * URLSearchParams(window.location.search)] - The search parameters object
+     * (optional).
+     * @returns {URLSearchParams} - The updated search parameters object.
      */
     function updateSearchParams (
-      panelset,
-      panel,
+      panelsetId,
+      panelId,
       params = new URLSearchParams(window.location.search)
     ) {
-      if (panel) {
-        params.set(panelset, panel)
+      if (panelId) {
+        params.set(panelsetId, panelId)
       } else {
-        params.delete(panelset)
+        params.delete(panelsetId)
       }
       return params
     }
@@ -237,6 +320,10 @@
       window.history.replaceState(uri, '', uri)
     }
 
+    /**
+     * Handles the click event on a panel tab within a panelset.
+     * @param {HTMLElement} clicked - The clicked element.
+     */
     function handleClickedPanel (clicked) {
       const panelset = clicked.closest('.panelset')
       if (!panelset) return
@@ -247,6 +334,15 @@
       togglePanel(panelset, clicked)
     }
 
+    /**
+     * Finds a panel by name within a panelset. `name` is compared with the
+     * panel tab text content, case-insensitive and trimmed.
+     *
+     * @param {HTMLElement} panelset - The panelset element.
+     * @param {string} name - The name of the panel tab to find.
+     * @returns {HTMLElement|undefined} - The matching panel element, or
+     * undefined if not found.
+     */
     function findPanelByName (panelset, name) {
       const matches = Array.from(
         panelset.querySelectorAll(':scope > .panel-tabs > .panel-tab')
@@ -269,6 +365,16 @@
       return matches[0]
     }
 
+    /**
+     * Toggles the visibility of a panel in a panelset.
+     *
+     * @param {HTMLElement} panelset - The panelset element containing the
+     * panels.
+     * @param {HTMLElement|string} target - The target panel or panel name to
+     * toggle.
+     * @param {'string'} [update='all'] - The update mode for the
+     * panelset. Possible values are 'all', 'group', or 'url'.
+     */
     function togglePanel (panelset, target, update = 'all') {
       // target is a .panel-tab element or a panel name
       if (!(target instanceof window.HTMLElement)) {
@@ -316,7 +422,7 @@
         panelset.dispatchEvent(
           new window.CustomEvent('panelset:group', {
             bubbles: true,
-            detail: { group, panel },
+            detail: { group, panel }
           })
         )
       }
@@ -328,6 +434,14 @@
       }
     }
 
+    /**
+     * Initializes a panel set from the original markup into a full panelset.
+     * This includes creating the panel tabs, rearranging content, adding event
+     * listeners, and synchronizing with a panel set group.
+     *
+     * @param {HTMLElement} panelset - The `.panelset` element to initialize.
+     * @returns {HTMLElement} - The new panelset element.
+     */
     const initPanelSet = panelset => {
       let panels = Array.from(panelset.querySelectorAll(':scope > .panel'))
 
@@ -374,7 +488,7 @@
       const panelsetAttrs = getElementAttributes(panelset)
       const newPanelSet = reflowPanelSet(contents, {
         id: panelset.id,
-        ...panelsetAttrs,
+        ...panelsetAttrs
       })
       newPanelSet.classList = panelset.classList
       panelset.parentNode.insertBefore(newPanelSet, panelset)
@@ -398,14 +512,14 @@
         .addEventListener('keydown', ev => {
           const self = ev.currentTarget.querySelector('.panel-tab-active')
           if (ev.code === 'Space' || ev.code === 'Enter') {
-            togglePanel(ev.target)
+            togglePanel(newPanelSet, ev.target)
             ev.stopPropagation()
           } else if (ev.code === 'ArrowLeft' && self.previousSibling) {
-            togglePanel(self.previousSibling)
+            togglePanel(newPanelSet, self.previousSibling)
             self.previousSibling.focus()
             ev.stopPropagation()
           } else if (ev.code === 'ArrowRight' && self.nextSibling) {
-            togglePanel(self.nextSibling)
+            togglePanel(newPanelSet, self.nextSibling)
             self.nextSibling.focus()
             ev.stopPropagation()
           }
@@ -427,11 +541,17 @@
         }
       }
 
-      return panels
+      return newPanelSet
     }
 
     const localStorageKey = 'panelset-data'
 
+    /**
+     * Retrieves or creates the stored panel settings from local storage.
+     * @returns {{['string']: 'string'} | {}} The stored panel settings, as an
+     * empty object or an object with group names as keys and the currently
+     * activated panel names as values.
+     */
     function getStoredPanelSettings () {
       const data = window.localStorage.getItem(localStorageKey)
       if (!data) {
@@ -447,6 +567,13 @@
       window.localStorage.setItem(localStorageKey, JSON.stringify(data))
     }
 
+    /**
+     * Sets the stored panel group state in local storage. The group `name` is
+     * used as a key and is globally checked across pages in the same domain.
+     *
+     * @param {string} name - The name of the panel group.
+     * @param {any} value - The value to set for the panel group.
+     */
     function setStoredPanelGroupState (name, value) {
       const data = getStoredPanelSettings()
       data[name] = value
@@ -470,8 +597,8 @@
     })
 
     // initialize atomic panelsets first, then nested panelsets
-    panelsets.atomic.map(initPanelSet)
-    panelsets.nested.map(initPanelSet)
+    panelsets.atomic.forEach(initPanelSet)
+    panelsets.nested.forEach(initPanelSet)
 
     if (typeof slideshow !== 'undefined') {
       const getVisibleActivePanelInfo = () => {
@@ -485,7 +612,7 @@
           return {
             panel,
             panelId: panel.children[0].getAttribute('aria-controls'),
-            panelSetId: panel.parentNode.parentNode.id,
+            panelSetId: panel.parentNode.parentNode.id
           }
         })
       }
@@ -496,7 +623,7 @@
 
         // clear search query for panelsets in current slide
         const params = [
-          ...document.querySelectorAll('.remark-visible .panelset'),
+          ...document.querySelectorAll('.remark-visible .panelset')
         ].reduce(function (params, panelset) {
           return updateSearchParams(panelset.id, null, params)
         }, new URLSearchParams(window.location.search))
