@@ -95,7 +95,19 @@
       if (!name) {
         return null
       }
-      return { name, content: item.children, id: uniquePanelId(name) }
+      return {
+        name,
+        content: item.children,
+        id: uniquePanelId(name),
+        active:
+          item.dataset &&
+          ['', 'true'].includes(item.dataset.active?.toLowerCase()),
+        classes: Array.from(item.classList)
+          .filter(c => !/^level\d$/.test(c))
+          .toString(),
+        style: item.style.cssText,
+        dataset: item.dataset,
+      }
     }
 
     const getCurrentPanelFromUrl = panelset => {
@@ -103,11 +115,28 @@
       return params.get(panelset)
     }
 
+    function getInitSelectedPanel (panels, id) {
+      const panelIds = panels.map(p => p.id)
+
+      const panelSelectedUrl = getCurrentPanelFromUrl(id)
+      if (panelSelectedUrl && panelIds.includes(panelSelectedUrl)) {
+        return panelSelectedUrl
+      }
+
+      const panelsActive = panels.filter(p => p.active)
+      if (panelsActive.length) {
+        return panelsActive[0].id
+      }
+
+      return panels[0].id
+    }
+
     const reflowPanelSet = (panels, id) => {
       const res = document.createElement('div')
       res.className = 'panelset'
       res.id = uniquePanelsetId(id)
-      const panelSelected = getCurrentPanelFromUrl(res.id)
+
+      const panelSelected = getInitSelectedPanel(panels, res.id)
 
       // create header row
       const headerRow = document.createElement('ul')
@@ -115,18 +144,22 @@
       headerRow.setAttribute('role', 'tablist')
       panels
         .map((p, idx) => {
+          const thisPanelIsActive = panelSelected === p.id
+
           const panelHeaderItem = document.createElement('li')
+          panelHeaderItem.id = res.id + '_' + p.id // #panelsetid_panelid
           panelHeaderItem.className = 'panel-tab'
           panelHeaderItem.setAttribute('role', 'tab')
-          const thisPanelIsActive = panelSelected
-            ? panelSelected === p.id
-            : idx === 0
+          panelHeaderItem.tabIndex = 0
           if (thisPanelIsActive) {
             panelHeaderItem.classList.add('panel-tab-active')
             panelHeaderItem.setAttribute('aria-selected', true)
           }
-          panelHeaderItem.tabIndex = 0
-          panelHeaderItem.id = res.id + '_' + p.id // #panelsetid_panelid
+          if (p.dataset) {
+            Object.keys(p.dataset).forEach(key => {
+              panelHeaderItem.dataset[key] = p.dataset[key]
+            })
+          }
 
           const panelHeaderLink = document.createElement('a')
           panelHeaderLink.href =
@@ -145,12 +178,11 @@
 
       panels
         .map((p, idx) => {
+          const thisPanelIsActive = panelSelected === p.id
           const panelContent = document.createElement('section')
-          panelContent.className = 'panel'
+          panelContent.classList = p.classes ? 'panel ' + p.classes : 'panel'
+          panelContent.style.cssText = p.style
           panelContent.setAttribute('role', 'tabpanel')
-          const thisPanelIsActive = panelSelected
-            ? panelSelected === p.id
-            : idx === 0
           panelContent.classList.toggle('panel-active', thisPanelIsActive)
           panelContent.id = p.id
           panelContent.setAttribute('aria-labelledby', p.id)
@@ -380,7 +412,7 @@
           return {
             panel,
             panelId: panel.children[0].getAttribute('aria-controls'),
-            panelSetId: panel.parentNode.parentNode.id
+            panelSetId: panel.parentNode.parentNode.id,
           }
         })
       }
@@ -391,7 +423,7 @@
 
         // clear search query for panelsets in current slide
         const params = [
-          ...document.querySelectorAll('.remark-visible .panelset')
+          ...document.querySelectorAll('.remark-visible .panelset'),
         ].reduce(function (params, panelset) {
           return updateSearchParams(panelset.id, null, params)
         }, new URLSearchParams(window.location.search))
