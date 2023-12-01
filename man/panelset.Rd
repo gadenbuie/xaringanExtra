@@ -20,6 +20,7 @@ style_panelset_tabs(
   hover_background = NULL,
   hover_foreground = NULL,
   hover_border_color = NULL,
+  focus_ring = NULL,
   separator_color = NULL,
   tabs_border_bottom = NULL,
   tabs_sideways_max_width = NULL,
@@ -55,6 +56,8 @@ is hovered or focused. Defaults are \code{currentColor}.}
 
 \item{hover_foreground}{The text color of a hovered panel tab. Default is
 \code{currentColor}.}
+
+\item{focus_ring}{The outline style for the tab focus ring.}
 
 \item{separator_color, tabs_border_bottom}{The border color between the tabs
 and content. Default is \verb{#ddd}. \code{tabs_border_bottom} is superseded by
