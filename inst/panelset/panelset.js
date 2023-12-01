@@ -90,6 +90,16 @@
       return name
     }
 
+    function getElementAttributes (el) {
+      return {
+        classes: Array.from(el.classList)
+          .filter(c => !/^level\d$/.test(c))
+          .toString(),
+        style: el.style.cssText,
+        dataset: el.dataset,
+      }
+    }
+
     const processPanelItem = item => {
       const name = identifyPanelName(item)
       if (!name) {
@@ -102,11 +112,7 @@
         active:
           item.dataset &&
           ['', 'true'].includes(item.dataset.active?.toLowerCase()),
-        classes: Array.from(item.classList)
-          .filter(c => !/^level\d$/.test(c))
-          .toString(),
-        style: item.style.cssText,
-        dataset: item.dataset,
+        ...getElementAttributes(item),
       }
     }
 
@@ -131,10 +137,16 @@
       return panels[0].id
     }
 
-    const reflowPanelSet = (panels, id) => {
+    const reflowPanelSet = (panels, { id, classes, style, dataset }) => {
       const res = document.createElement('div')
-      res.className = 'panelset'
+      res.classList = 'panelset' + (classes ? ' ' + classes : '')
       res.id = uniquePanelsetId(id)
+      res.style.cssText = style
+      if (dataset) {
+        Object.keys(dataset).forEach(key => {
+          res.dataset[key] = dataset[key]
+        })
+      }
 
       const panelSelected = getInitSelectedPanel(panels, res.id)
 
@@ -341,7 +353,11 @@
       if (!panels.length) return
 
       const contents = panels.map(processPanelItem).filter(o => o !== null)
-      const newPanelSet = reflowPanelSet(contents, panelset.id)
+      const panelsetAttrs = getElementAttributes(panelset)
+      const newPanelSet = reflowPanelSet(contents, {
+        id: panelset.id,
+        ...panelsetAttrs,
+      })
       newPanelSet.classList = panelset.classList
       panelset.parentNode.insertBefore(newPanelSet, panelset)
       panelset.parentNode.removeChild(panelset)
