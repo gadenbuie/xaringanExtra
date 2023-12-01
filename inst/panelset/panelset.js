@@ -269,7 +269,7 @@
       return matches[0]
     }
 
-    function togglePanel (panelset, target, updateGroup = true) {
+    function togglePanel (panelset, target, update = 'all') {
       // target is a .panel-tab element or a panel name
       if (!(target instanceof window.HTMLElement)) {
         target = findPanelByName(panelset, target)
@@ -307,21 +307,25 @@
       // emit window resize event to trick html widgets into fitting to the panel width
       window.dispatchEvent(new window.Event('resize'))
 
-      if (updateGroup && panelset.dataset.group) {
+      if (['all', 'group'].includes(update) && panelset.dataset.group) {
+        const group = panelset.dataset.group
+        const panel = target.innerText.toLowerCase().trim()
+
+        setStoredPanelGroupState(group, panel)
+
         panelset.dispatchEvent(
           new window.CustomEvent('panelset:group', {
             bubbles: true,
-            detail: {
-              group: panelset.dataset.group,
-              panel: target.innerText.toLowerCase().trim(),
-            },
+            detail: { group, panel },
           })
         )
       }
 
       // update query string
-      const params = updateSearchParams(panelset.id, targetPanelId)
-      updateUrl(params)
+      if (['all', 'url'].includes(update)) {
+        const params = updateSearchParams(panelset.id, targetPanelId)
+        updateUrl(params)
+      }
     }
 
     const initPanelSet = panelset => {
@@ -412,11 +416,41 @@
         window.addEventListener('panelset:group', ev => {
           if (ev.target === newPanelSet) return
           if (ev.detail.group !== newPanelSet.dataset.group) return
-          togglePanel(newPanelSet, ev.detail.panel, false)
+          togglePanel(newPanelSet, ev.detail.panel, 'url')
         })
+
+        const groupData = getStoredPanelSettings()
+        const currentPanelFromUrl = getCurrentPanelFromUrl(newPanelSet.id)
+
+        if (!currentPanelFromUrl && groupData[newPanelSet.dataset.group]) {
+          togglePanel(newPanelSet, groupData[newPanelSet.dataset.group], null)
+        }
       }
 
       return panels
+    }
+
+    const localStorageKey = 'panelset-data'
+
+    function getStoredPanelSettings () {
+      const data = window.localStorage.getItem(localStorageKey)
+      if (!data) {
+        window.localStorage.setItem(localStorageKey, '{}')
+        return {}
+      }
+      if (data) {
+        return JSON.parse(data)
+      }
+    }
+
+    function setStoredPanelSettings (data) {
+      window.localStorage.setItem(localStorageKey, JSON.stringify(data))
+    }
+
+    function setStoredPanelGroupState (name, value) {
+      const data = getStoredPanelSettings()
+      data[name] = value
+      setStoredPanelSettings(data)
     }
 
     // initialize panels
