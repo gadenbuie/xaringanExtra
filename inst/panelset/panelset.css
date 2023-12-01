@@ -34,6 +34,11 @@
   --_hover-border-top-color: var(--panel-tab-hover-border-top-color, transparent);
   --_hover-border-bottom-color: var(--panel-tab-hover-border-bottom-color, currentColor);
 
+  --_focus-ring: var(
+    --panel-tab-focus-ring,
+    solid var(--bs-focus-ring-color, var(--_active-border-color)) var(--bs-focus-ring-width, 2px)
+  );
+
   --_inactive-opacity: var(--panel-tab-inactive-opacity, 0.5);
   --_font-family: var(--panel-tab-font-family, inherit);
   --_transition-duration: var(--panel-tab-transition-duration, 0.5s);
@@ -98,22 +103,17 @@
   border: none;
 }
 
-.panelset .panel-tabs .panel-tab:hover,
-.panelset .panel-tabs .panel-tab:focus {
-  --_border-top-color: var(--_hover-border-top-color);
-  --_border-bottom-color: var(--_hover-border-bottom-color);
-  --_foreground: var(--_hover-foreground);
-  --_background: var(--_hover-background);
-}
-
 .panelset .panel-tabs .panel-tab:hover {
   opacity: 1;
   cursor: pointer;
   z-index: 10;
 }
 
-.panelset .panel-tabs .panel-tab:focus {
-  outline: none;
+.panelset .panel-tabs .panel-tab:hover {
+  --_border-top-color: var(--_hover-border-top-color);
+  --_border-bottom-color: var(--_hover-border-bottom-color);
+  --_foreground: var(--_hover-foreground);
+  --_background: var(--_hover-background);
 }
 
 .panelset .panel-tabs .panel-tab.panel-tab-active {
@@ -122,6 +122,15 @@
   --_border-top-color: var(--_active-border-top-color);
   --_border-bottom-color: var(--_active-border-bottom-color);
   opacity: 1;
+}
+
+.panelset .panel-tabs .panel-tab:focus {
+  outline: none;
+}
+
+.panelset .panel-tabs .panel-tab:focus > a {
+  outline: var(--_focus-ring);
+  outline-offset: 2px;
 }
 
 .panelset .panel {

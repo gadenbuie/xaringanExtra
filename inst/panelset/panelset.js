@@ -230,11 +230,12 @@
           panelHeaderItem.id = res.id + '_' + p.id // #panelsetid_panelid
           panelHeaderItem.className = 'panel-tab'
           panelHeaderItem.setAttribute('role', 'tab')
-          panelHeaderItem.tabIndex = 0
           if (thisPanelIsActive) {
-            panelHeaderItem.classList.add('panel-tab-active')
-            panelHeaderItem.setAttribute('aria-selected', true)
+            panelHeaderItem.tabIndex = 0
           }
+          panelHeaderItem.classList.toggle('panel-tab-active', thisPanelIsActive)
+          panelHeaderItem.setAttribute('aria-selected', thisPanelIsActive)
+
           if (p.dataset) {
             Object.keys(p.dataset).forEach(key => {
               panelHeaderItem.dataset[key] = p.dataset[key]
@@ -262,10 +263,12 @@
           const panelContent = document.createElement('section')
           panelContent.classList = p.classes ? 'panel ' + p.classes : 'panel'
           panelContent.style.cssText = p.style
-          panelContent.setAttribute('role', 'tabpanel')
           panelContent.classList.toggle('panel-active', thisPanelIsActive)
           panelContent.id = p.id
+          // https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/
+          panelContent.setAttribute('role', 'tabpanel')
           panelContent.setAttribute('aria-labelledby', p.id)
+          panelContent.tabIndex = 0
           Array.from(p.content).forEach(el => panelContent.appendChild(el))
           return panelContent
         })
@@ -392,22 +395,18 @@
       // Set tab state
       Array.from(tabs).forEach(t => {
         t.classList.remove('panel-tab-active')
-        t.removeAttribute('aria-selected')
+        t.setAttribute('aria-selected', false)
+        t.removeAttribute('tabindex')
       })
 
       target.classList.add('panel-tab-active')
       target.setAttribute('aria-selected', true)
+      target.tabIndex = 0
 
       Array.from(panels).forEach(p => {
-        if (p.id === targetPanelId) {
-          p.classList.add('panel-active')
-          p.removeAttribute('tabIndex')
-          p.hidden = false
-        } else {
-          p.classList.remove('panel-active')
-          p.setAttribute('tabIndex', -1)
-          p.hidden = true
-        }
+        const isActive = p.id === targetPanelId
+        p.classList.toggle('panel-active', isActive)
+        p.hidden = !isActive
       })
 
       // emit window resize event to trick html widgets into fitting to the panel width
