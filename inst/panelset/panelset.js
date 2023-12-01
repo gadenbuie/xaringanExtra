@@ -1,5 +1,5 @@
 /* global slideshow */
-(function () {
+;(function () {
   const ready = function (fn) {
     /* MIT License Copyright (c) 2016 Nuclei */
     /* https://github.com/nuclei/readyjs */
@@ -17,14 +17,15 @@
   }
 
   ready(function () {
-    [...document.querySelectorAll('.panel-name')]
-      .map(el => el.textContent.trim())
+    ;[...document.querySelectorAll('.panel-name')].map(el =>
+      el.textContent.trim()
+    )
 
     const panelIds = {}
     let panelsetIdx = 0
     const panelsetIds = []
 
-    const uniquePanelsetId = (id) => {
+    const uniquePanelsetId = id => {
       const panelsetNumber = () => (++panelsetIdx).toString().padStart(3, '0')
 
       if (typeof id === 'undefined' || id === '') {
@@ -37,7 +38,7 @@
       return id
     }
 
-    const uniquePanelId = (name) => {
+    const uniquePanelId = name => {
       name = encodeURIComponent(name.toLowerCase().replace(/[\s]/g, '-'))
       if (Object.keys(panelIds).includes(name)) {
         name += ++panelIds[name]
@@ -47,7 +48,7 @@
       return name
     }
 
-    const identifyPanelName = (item) => {
+    const identifyPanelName = item => {
       let name = 'Panel'
 
       // If the item doesn't have a parent element, then we've already processed
@@ -89,7 +90,7 @@
       return name
     }
 
-    const processPanelItem = (item) => {
+    const processPanelItem = item => {
       const name = identifyPanelName(item)
       if (!name) {
         return null
@@ -97,7 +98,7 @@
       return { name, content: item.children, id: uniquePanelId(name) }
     }
 
-    const getCurrentPanelFromUrl = (panelset) => {
+    const getCurrentPanelFromUrl = panelset => {
       const params = new URLSearchParams(window.location.search)
       return params.get(panelset)
     }
@@ -117,7 +118,9 @@
           const panelHeaderItem = document.createElement('li')
           panelHeaderItem.className = 'panel-tab'
           panelHeaderItem.setAttribute('role', 'tab')
-          const thisPanelIsActive = panelSelected ? panelSelected === p.id : idx === 0
+          const thisPanelIsActive = panelSelected
+            ? panelSelected === p.id
+            : idx === 0
           if (thisPanelIsActive) {
             panelHeaderItem.classList.add('panel-tab-active')
             panelHeaderItem.setAttribute('aria-selected', true)
@@ -126,7 +129,8 @@
           panelHeaderItem.id = res.id + '_' + p.id // #panelsetid_panelid
 
           const panelHeaderLink = document.createElement('a')
-          panelHeaderLink.href = '?' + res.id + '=' + p.id + '#' + panelHeaderItem.id
+          panelHeaderLink.href =
+            '?' + res.id + '=' + p.id + '#' + panelHeaderItem.id
           panelHeaderLink.setAttribute('onclick', 'return false;')
           panelHeaderLink.tabIndex = -1 // list item is tabable, not link
           panelHeaderLink.innerHTML = p.name
@@ -144,7 +148,9 @@
           const panelContent = document.createElement('section')
           panelContent.className = 'panel'
           panelContent.setAttribute('role', 'tabpanel')
-          const thisPanelIsActive = panelSelected ? panelSelected === p.id : idx === 0
+          const thisPanelIsActive = panelSelected
+            ? panelSelected === p.id
+            : idx === 0
           panelContent.classList.toggle('panel-active', thisPanelIsActive)
           panelContent.id = p.id
           panelContent.setAttribute('aria-labelledby', p.id)
@@ -163,7 +169,11 @@
      * @param panel Panel ID of selected panel in panelset, or null to delete from search params
      * @param params Current params object, or params from window.location.search
      */
-    function updateSearchParams (panelset, panel, params = new URLSearchParams(window.location.search)) {
+    function updateSearchParams (
+      panelset,
+      panel,
+      params = new URLSearchParams(window.location.search)
+    ) {
       if (panel) {
         params.set(panelset, panel)
       } else {
@@ -175,66 +185,94 @@
     /*
      * Update the URL to match params
      */
-    const updateUrl = (params) => {
+    const updateUrl = params => {
       if (typeof params === 'undefined') return
-      params = params.toString() ? ('?' + params.toString()) : ''
+      params = params.toString() ? '?' + params.toString() : ''
       const { pathname, hash } = window.location
       const uri = pathname + params + hash
       window.history.replaceState(uri, '', uri)
     }
 
-    const togglePanel = (clicked) => {
-      if (clicked.nodeName.toUpperCase() === 'A') {
-        clicked = clicked.parentElement
+    function handleClickedPanel (clicked) {
+      const panelset = clicked.closest('.panelset')
+      if (!panelset) return
+
+      clicked = clicked.closest('.panel-tab')
+      if (!clicked) return
+
+      togglePanel(panelset, clicked)
+    }
+
+    function findPanelByName (panelset, name) {
+      const matches = Array.from(
+        panelset.querySelectorAll(':scope > .panel')
+      ).filter(p => p.innerText.trim() === name)
+      if (!matches) {
+        console.error(
+          `No panel with name "${name}" found in panelset ${panelset.id}`,
+          { panelset, name }
+        )
+        return
       }
-      if (!clicked.classList.contains('panel-tab')) return
-      if (clicked.classList.contains('panel-tab-active')) return
+      if (matches > 1) {
+        console.warn(
+          `Multiple panels with name "${name}" found in panelset ${panelset.id}`,
+          { panelset, name }
+        )
+      }
+      return matches[0]
+    }
 
-      // clicked is a .panel-tab: .panelset > .panel-tabs > .panel-tab
-      const tabs = clicked.parentNode
-        .querySelectorAll(':scope > .panel-tab')
-      const panels = clicked.parentNode.parentNode
-        .querySelectorAll(':scope > .panel')
-      const panelTabClicked = clicked.children[0].getAttribute('aria-controls')
-      const panelClicked = clicked.parentNode.parentNode.id
+    function togglePanel (panelset, target) {
+      // target is a .panel-tab element or a panel name
+      if (!(target instanceof window.HTMLElement)) {
+        target = findPanelByName(panelset, target)
+        if (!target) return
+      }
 
-      Array.from(tabs)
-        .forEach(t => {
-          t.classList.remove('panel-tab-active')
-          t.removeAttribute('aria-selected')
-        })
-      Array.from(panels)
-        .forEach(p => {
-          const active = p.id === panelTabClicked
-          p.classList.toggle('panel-active', active)
-          // make inactive panels inaccessible by keyboard navigation
-          if (active) {
-            p.removeAttribute('tabIndex')
-            p.removeAttribute('aria-hidden')
-          } else {
-            p.setAttribute('tabIndex', -1)
-            p.setAttribute('aria-hidden', true)
-          }
-        })
+      const tabs = panelset.querySelectorAll(
+        ':scope > .panel-tabs > .panel-tab'
+      )
+      const panels = panelset.querySelectorAll(':scope > .panel')
 
-      clicked.classList.add('panel-tab-active')
-      clicked.setAttribute('aria-selected', true)
+      const targetPanelId = target.children[0].getAttribute('aria-controls')
+
+      // Set tab state
+      Array.from(tabs).forEach(t => {
+        t.classList.remove('panel-tab-active')
+        t.removeAttribute('aria-selected')
+      })
+
+      target.classList.add('panel-tab-active')
+      target.setAttribute('aria-selected', true)
+
+      Array.from(panels).forEach(p => {
+        if (p.id === targetPanelId) {
+          p.classList.add('panel-active')
+          p.removeAttribute('tabIndex')
+          p.hidden = false
+        } else {
+          p.classList.remove('panel-active')
+          p.setAttribute('tabIndex', -1)
+          p.hidden = true
+        }
+      })
 
       // emit window resize event to trick html widgets into fitting to the panel width
-      window.dispatchEvent(new Event('resize'))
+      window.dispatchEvent(new window.Event('resize'))
 
       // update query string
-      const params = updateSearchParams(panelClicked, panelTabClicked)
+      const params = updateSearchParams(panelset.id, targetPanelId)
       updateUrl(params)
     }
 
-    const initPanelSet = (panelset) => {
+    const initPanelSet = panelset => {
       let panels = Array.from(panelset.querySelectorAll(':scope > .panel'))
 
       const pandocSectionSelector = ':is(section, .section)[class*="level"]'
       if (!panels.length) {
         // we're in tabset-alike R Markdown or Quarto
-        const getSectionLevel = (el) => {
+        const getSectionLevel = el => {
           const levels = [...el.classList].filter(s => s.match(/^level/))
           return levels.length ? levels[0].replace('level', '') : levels
         }
@@ -277,10 +315,10 @@
       panelset.parentNode.removeChild(panelset)
 
       // click and touch events
-      const panelTabs = newPanelSet.querySelector('.panel-tabs');
-      ['click', 'touchend'].forEach(eventType => {
+      const panelTabs = newPanelSet.querySelector('.panel-tabs')
+      ;['click', 'touchend'].forEach(eventType => {
         panelTabs.addEventListener(eventType, function (ev) {
-          togglePanel(ev.target)
+          handleClickedPanel(ev.target)
           ev.stopPropagation()
         })
       })
@@ -291,7 +329,7 @@
       // key events
       newPanelSet
         .querySelector('.panel-tabs')
-        .addEventListener('keydown', (ev) => {
+        .addEventListener('keydown', ev => {
           const self = ev.currentTarget.querySelector('.panel-tab-active')
           if (ev.code === 'Space' || ev.code === 'Enter') {
             togglePanel(ev.target)
@@ -315,17 +353,16 @@
       .querySelectorAll('[data-panelset="true"]')
       .forEach(el => el.classList.add('panelset'))
 
-    const panelsets = {atomic: [], nested: []}
-    Array.from(document.querySelectorAll('.panelset'))
-      .forEach(el => {
-        if (el.querySelector('.panelset')) {
-          // push nested panelsets to the start of the list (inner -> outer)
-          panelsets.nested.unshift(el)
-        } else {
-          // put panelsets without nested panelsets at the beginning
-          panelsets.atomic.push(el)
-        }
-      })
+    const panelsets = { atomic: [], nested: [] }
+    Array.from(document.querySelectorAll('.panelset')).forEach(el => {
+      if (el.querySelector('.panelset')) {
+        // push nested panelsets to the start of the list (inner -> outer)
+        panelsets.nested.unshift(el)
+      } else {
+        // put panelsets without nested panelsets at the beginning
+        panelsets.atomic.push(el)
+      }
+    })
 
     // initialize atomic panelsets first, then nested panelsets
     panelsets.atomic.map(initPanelSet)
@@ -333,7 +370,9 @@
 
     if (typeof slideshow !== 'undefined') {
       const getVisibleActivePanelInfo = () => {
-        const slidePanels = document.querySelectorAll('.remark-visible .panel-tab-active')
+        const slidePanels = document.querySelectorAll(
+          '.remark-visible .panel-tab-active'
+        )
 
         if (!slidePanels.length) return null
 
@@ -351,10 +390,11 @@
         document.activeElement.blur()
 
         // clear search query for panelsets in current slide
-        const params = [...document.querySelectorAll('.remark-visible .panelset')]
-          .reduce(function (params, panelset) {
-            return updateSearchParams(panelset.id, null, params)
-          }, new URLSearchParams(window.location.search))
+        const params = [
+          ...document.querySelectorAll('.remark-visible .panelset')
+        ].reduce(function (params, panelset) {
+          return updateSearchParams(panelset.id, null, params)
+        }, new URLSearchParams(window.location.search))
 
         updateUrl(params)
       })
@@ -366,12 +406,13 @@
           // only first panel gets focus
           slidePanels[0].panel.focus()
           // but still update the url to reflect all active panels
-          const params = slidePanels.reduce(
-            function (params, { panelId, panelSetId }) {
-              return updateSearchParams(panelSetId, panelId, params)
-            },
-            new URLSearchParams(window.location.search)
-          )
+          const params = slidePanels.reduce(function (
+            params,
+            { panelId, panelSetId }
+          ) {
+            return updateSearchParams(panelSetId, panelId, params)
+          },
+          new URLSearchParams(window.location.search))
           updateUrl(params)
         }
       })
