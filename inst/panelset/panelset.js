@@ -21,6 +21,18 @@
       el.textContent.trim()
     )
 
+    function inRevealjs () {
+      return typeof window.Reveal !== 'undefined'
+    }
+
+    function inRemarkjs () {
+      return typeof window.remark !== 'undefined'
+    }
+
+    function inRemarkSlide (el) {
+      return inRemarkjs() && el.closest('.remark-slide')
+    }
+
     const panelIds = {}
     let panelsetIdx = 0
     const panelsetIds = []
@@ -76,6 +88,11 @@
       // it, probably because we're in an Rmd, and it's been removed from the DOM
       if (!item.parentElement) {
         return
+      }
+
+      if (item.matches('.panel')) {
+        if (item.dataset.name) return item.dataset.name
+        if (item.getAttribute('name')) return item.getAttribute('name')
       }
 
       // In R Markdown when header-attrs.js is present, we may have found a
@@ -263,7 +280,8 @@
       panels
         .map((p, idx) => {
           const thisPanelIsActive = panelSelected === p.id
-          const panelContent = document.createElement('section')
+          const panelTag = inRevealjs() ? 'div' : 'section'
+          const panelContent = document.createElement(panelTag)
           panelContent.classList = p.classes ? 'panel ' + p.classes : 'panel'
           panelContent.style.cssText = p.style
           panelContent.classList.toggle('panel-active', thisPanelIsActive)
@@ -356,7 +374,7 @@
 
       function stopEvent () {
         ev.preventDefault()
-        if (panelset.closest('.remark-slide')) {
+        if (inRemarkjs() || inRevealjs()) {
           ev.stopPropagation()
         }
       }
@@ -375,7 +393,8 @@
       }
 
       if (
-        panelset.closest('.remark-slide') ||
+        inRemarkSlide(panelset) ||
+        inRevealjs() ||
         panelset.getAttribute('aria-orientation') === 'horizontal'
       ) {
         if (ev.code === 'ArrowLeft') direction = 'prev'
@@ -430,7 +449,7 @@
      * @param {'string'} [update='all'] - The update mode for the
      * panelset. Possible values are 'all', 'group', or 'url'.
      */
-    function togglePanel (panelset, target, update = 'all') {
+    function togglePanel (panelset, target, update = 'all', tabIndex = 0) {
       // target is a .panel-tab element or a panel name
       if (!(target instanceof window.HTMLElement)) {
         target = findPanelByName(panelset, target)
@@ -453,7 +472,7 @@
 
       target.classList.add('panel-tab-active')
       target.setAttribute('aria-selected', true)
-      target.tabIndex = 0
+      target.tabIndex = tabIndex
 
       Array.from(panels).forEach(p => {
         const isActive = p.id === targetPanelId
@@ -505,7 +524,8 @@
       }
 
       if (!sibling) return
-      togglePanel(panelset, sibling)
+      const update = parseInt(target.tabIndex) < 0 ? 'url' : 'all'
+      togglePanel(panelset, sibling, update, target.tabIndex)
       sibling.focus()
       return sibling
     }
@@ -677,7 +697,7 @@
     panelsets.atomic.forEach(initPanelSet)
     panelsets.nested.forEach(initPanelSet)
 
-    if (typeof slideshow !== 'undefined') {
+    if (inRemarkjs()) {
       const getVisibleActivePanelInfo = () => {
         const slidePanels = document.querySelectorAll(
           '.remark-visible .panel-tab-active'
@@ -724,6 +744,60 @@
           new URLSearchParams(window.location.search))
           updateUrl(params)
         }
+      })
+    }
+
+    if (inRevealjs()) {
+      window.Reveal.on('slidechanged', function ({ currentSlide, previousSlide, ...data }) {
+        // clear focus from any active panel-tab in the previous slide
+        const previousActive = previousSlide.querySelector('.panelset .panel-tab:focus')
+        if (previousActive) {
+          previousActive.blur()
+          previousActive.removeAttribute('tabindex')
+        }
+
+        const previousPanelsets = previousSlide.querySelectorAll('.panelset')
+        if (previousPanelsets.length) {
+          // clear search query for panelsets in previous slide
+          const params = [
+            ...previousSlide.querySelectorAll('.panelset')
+          ].reduce(function (params, panelset) {
+            return updateSearchParams(panelset.id, null, params)
+          }, new URLSearchParams(window.location.search))
+
+          updateUrl(params)
+        }
+
+        const firstPanelset = currentSlide.querySelector('.panelset')
+        if (!firstPanelset) return
+
+        const panelIdFromUrl = getCurrentPanelFromUrl(firstPanelset.id)
+        const panelFromUrl = !panelIdFromUrl
+          ? null
+          : firstPanelset
+            .querySelector(`[aria-controls="${panelIdFromUrl}"]`)
+            ?.parentElement
+
+        const firstPanel = panelIdFromUrl
+          ? panelFromUrl
+          : firstPanelset.querySelector('.panel-tab-active')
+
+        if (!firstPanel) return
+        firstPanel.setAttribute('tabindex', '-1')
+        firstPanel.focus()
+
+        // update url for all panels on this slide
+        const params = [
+          ...currentSlide.querySelectorAll('.panelset')
+        ].reduce(function (params, panelset) {
+          return updateSearchParams(
+            panelset.id,
+            panelset.querySelector('.panel-active').id,
+            params
+          )
+        }, new URLSearchParams(window.location.search))
+
+        updateUrl(params)
       })
     }
   })

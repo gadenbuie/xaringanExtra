@@ -133,6 +133,10 @@
   outline-offset: 2px;
 }
 
+.panelset .panel-tabs .panel-tab:focus[tabindex="-1"] > a {
+  outline: none;
+}
+
 .panelset .panel {
   display: none;
 }
@@ -279,4 +283,9 @@
 .remark-container .panelset .panel-tabs .panel-tab:focus > a {
   /* The outline isn't needed, since navigation is always <- or -> */
   outline: none;
+}
+
+/* Reveal (Quarto) specific styles */
+.reveal .panelset .panel-tabs {
+  margin-left: 0;
 }
