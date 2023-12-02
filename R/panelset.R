@@ -235,6 +235,34 @@ register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
     options$panelset_panel_output <- chunk_opts$panelset_panel_output %||% labels["output"]
     options$panelset <- TRUE
 
+    if (!(chunk_opts$echo %||% TRUE) || !(chunk_opts$eval %||% TRUE)) {
+      # it doesn't make sense to have a panelset chunk that doesn't both
+      # echo and evaluate, so we'll throw for the benefit of the user
+      stop(
+        "`panelset` chunks must have both `echo = TRUE` and `evaluate = TRUE`."
+      )
+    }
+
+    forced <- c()
+    for (opt in c("echo", "eval")) {
+      if (!isTRUE(chunk_opts[[opt]])) {
+        forced <- c(forced, opt)
+      }
+    }
+
+    if (length(forced)) {
+      warning(
+        sprintf(
+          "'panelset' is forcing %s to `TRUE` for chunk '%s'.",
+          paste0("`", forced, "`", collapse = " and "),
+          options$label
+        )
+      )
+    }
+
+    options$echo <- TRUE
+    options$eval <- TRUE
+
     options
   })
 }
