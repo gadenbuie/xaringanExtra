@@ -341,6 +341,55 @@
     }
 
     /**
+     * Handles keydown events for the `.panel-tabs` element within a panelset.
+     * This performs two actions: toggling the panel via space or enter and
+     * moving to the next or previous panel via arrow keys, depending on the
+     * panelset orientation.
+     *
+     * @see https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/
+     *
+     * @param {HTMLElement} panelset - The panelset element.
+     * @param {KeyboardEvent} ev - The keydown event.
+     */
+    function handlePanelTabsKeydown (panelset, ev) {
+      const target = ev.currentTarget.querySelector('.panel-tab-active')
+
+      function stopEvent () {
+        ev.preventDefault()
+        if (panelset.closest('.remark-slide')) {
+          ev.stopPropagation()
+        }
+      }
+
+      if (ev.code === 'Space' || ev.code === 'Enter') {
+        togglePanel(panelset, ev.target)
+        stopEvent()
+        return
+      }
+
+      let direction
+
+      if (panelset.getAttribute('aria-orientation') === 'vertical') {
+        if (ev.code === 'ArrowUp') direction = 'prev'
+        if (ev.code === 'ArrowDown') direction = 'next'
+      }
+
+      if (
+        panelset.closest('.remark-slide') ||
+        panelset.getAttribute('aria-orientation') === 'horizontal'
+      ) {
+        if (ev.code === 'ArrowLeft') direction = 'prev'
+        if (ev.code === 'ArrowRight') direction = 'next'
+      }
+
+      if (!direction) return
+
+      const newActive = toggleSibling(panelset, target, direction)
+      if (newActive) stopEvent()
+      return newActive
+    }
+
+    /**
      * Finds a panel by name within a panelset. `name` is compared with the
      * panel tab text content, case-insensitive and trimmed.
      *
@@ -550,36 +599,7 @@
       newPanelSet
         .querySelector('.panel-tabs')
         .addEventListener('keydown', ev => {
-          const self = ev.currentTarget.querySelector('.panel-tab-active')
-          if (ev.code === 'Space' || ev.code === 'Enter') {
-            togglePanel(newPanelSet, ev.target)
-            ev.stopPropagation()
-            return
-          }
-
-          let direction
-
-          if (newPanelSet.getAttribute('aria-orientation') === 'vertical') {
-            direction =
-              ev.code === 'ArrowUp'
-                ? 'prev'
-                : ev.code === 'ArrowDown'
-                  ? 'next'
-                  : null
-          }
-
-          if (newPanelSet.getAttribute('aria-orientation') === 'horizontal') {
-            direction =
-              ev.code === 'ArrowLeft'
-                ? 'prev'
-                : ev.code === 'ArrowRight'
-                  ? 'next'
-                  : null
-          }
-
-          if (!direction) return
-          toggleSibling(newPanelSet, self, direction)
-          ev.preventDefault()
+          handlePanelTabsKeydown(newPanelSet, ev)
         })
 
       // synchronize with the panelset group
