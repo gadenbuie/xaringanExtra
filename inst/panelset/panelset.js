@@ -233,7 +233,10 @@
           if (thisPanelIsActive) {
             panelHeaderItem.tabIndex = 0
           }
-          panelHeaderItem.classList.toggle('panel-tab-active', thisPanelIsActive)
+          panelHeaderItem.classList.toggle(
+            'panel-tab-active',
+            thisPanelIsActive
+          )
           panelHeaderItem.setAttribute('aria-selected', thisPanelIsActive)
 
           if (p.dataset) {
@@ -434,6 +437,31 @@
     }
 
     /**
+     * Toggles the sibling panel in the specified direction.
+     *
+     * @param {HTMLElement} panelset - The panelset element.
+     * @param {HTMLElement} target - The target panel element.
+     * @param {"next" | "prev"} [direction="next"] - The direction to toggle the
+     * sibling panel. Possible values are "next" and "prev".
+     */
+    function toggleSibling (panelset, target, direction = 'next') {
+      let sibling
+      switch (direction) {
+        case 'next':
+          sibling = target.nextSibling
+          break
+        case 'prev':
+          sibling = target.previousSibling
+          break
+      }
+
+      if (!sibling) return
+      togglePanel(panelset, sibling)
+      sibling.focus()
+      return sibling
+    }
+
+    /**
      * Initializes a panel set from the original markup into a full panelset.
      * This includes creating the panel tabs, rearranging content, adding event
      * listeners, and synchronizing with a panel set group.
@@ -483,13 +511,26 @@
 
       if (!panels.length) return
 
+      // create content panels
       const contents = panels.map(processPanelItem).filter(o => o !== null)
+
+      // create panelset
       const panelsetAttrs = getElementAttributes(panelset)
       const newPanelSet = reflowPanelSet(contents, {
         id: panelset.id,
         ...panelsetAttrs
       })
       newPanelSet.classList = panelset.classList
+
+      // set orientation
+      const isVertical = panelset.matches(
+        '.sideways, .vertical, [aria-orientation="vertical"]'
+      )
+      newPanelSet.setAttribute(
+        'aria-orientation',
+        isVertical ? 'vertical' : 'horizontal'
+      )
+
       panelset.parentNode.insertBefore(newPanelSet, panelset)
       panelset.parentNode.removeChild(panelset)
 
@@ -513,15 +554,32 @@
           if (ev.code === 'Space' || ev.code === 'Enter') {
             togglePanel(newPanelSet, ev.target)
             ev.stopPropagation()
-          } else if (ev.code === 'ArrowLeft' && self.previousSibling) {
-            togglePanel(newPanelSet, self.previousSibling)
-            self.previousSibling.focus()
-            ev.stopPropagation()
-          } else if (ev.code === 'ArrowRight' && self.nextSibling) {
-            togglePanel(newPanelSet, self.nextSibling)
-            self.nextSibling.focus()
-            ev.stopPropagation()
+            return
           }
+
+          let direction
+
+          if (newPanelSet.getAttribute('aria-orientation') === 'vertical') {
+            direction =
+              ev.code === 'ArrowUp'
+                ? 'prev'
+                : ev.code === 'ArrowDown'
+                  ? 'next'
+                  : null
+          }
+
+          if (newPanelSet.getAttribute('aria-orientation') === 'horizontal') {
+            direction =
+              ev.code === 'ArrowLeft'
+                ? 'prev'
+                : ev.code === 'ArrowRight'
+                  ? 'next'
+                  : null
+          }
+
+          if (!direction) return
+          toggleSibling(newPanelSet, self, direction)
+          ev.preventDefault()
         })
 
       // synchronize with the panelset group

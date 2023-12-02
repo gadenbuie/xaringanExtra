@@ -149,12 +149,13 @@
 /* ---- Sideways Panelset ---- */
 
 @media (min-width: 480px) {
-  .panelset.sideways {
+  .panelset[aria-orientation="vertical"] {
     display: flex;
     flex-direction: row;
+    margin-bottom: 1rem;
   }
 
-  .panelset.sideways .panel-tabs {
+  .panelset[aria-orientation="vertical"] .panel-tabs {
     box-shadow: none;
     flex-direction: column;
     align-items: stretch;
@@ -165,46 +166,46 @@
     max-width: var(--_tabs-sideways-max-width);
   }
 
-  .panelset.sideways .panel {
+  .panelset[aria-orientation="vertical"] .panel {
     max-width: calc(100% - var(--_tabs-sideways-max-width) - 1em);
   }
 
-  .panelset.sideways .panel-tabs .panel-tab {
+  .panelset[aria-orientation="vertical"] .panel-tabs .panel-tab {
     border-top: unset;
     border-bottom: unset;
     padding-left: 0;
   }
 
-  .panelset.sideways:not(.right) .panel-tabs .panel-tab {
+  .panelset[aria-orientation="vertical"]:not(.right) .panel-tabs .panel-tab {
     text-align: left;
     border-right: var(--_tabs-separator-width) solid var(--_border-bottom-color);
     margin-right: calc(-1 * var(--_tabs-separator-width));
   }
 
-  .panelset.sideways.right .panel-tabs .panel-tab {
+  .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
     text-align: right;
     border-left: var(--_tabs-separator-width) solid var(--_border-bottom-color);
     margin-left: calc(-1 * var(--_tabs-separator-width));
   }
 
-  .panelset.sideways.right {
+  .panelset[aria-orientation="vertical"].right {
     flex-direction: row-reverse;
     justify-content: space-between;
   }
 
-  .panelset.sideways.right .panel-tabs {
+  .panelset[aria-orientation="vertical"].right .panel-tabs {
     margin-right: 0;
     margin-left: 1em;
     border-right: unset;
     border-left: var(--_tabs-separator);
   }
 
-  .panelset.sideways.right .panel-tabs .panel-tab {
+  .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
     padding-left: 1em;
     width: 100%;
   }
 
-  .panelset.sideways.right .panel-tabs .panel-tab a {
+  .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab a {
     text-align: right;
   }
 }
@@ -215,12 +216,12 @@
   In the future, we could use CSS nesting instead once it's availble.
 */
 
-.remark-container .panelset.sideways {
+.remark-container .panelset[aria-orientation="vertical"] {
   display: flex;
   flex-direction: row;
 }
 
-.remark-container .panelset.sideways .panel-tabs {
+.remark-container .panelset[aria-orientation="vertical"] .panel-tabs {
   box-shadow: none;
   flex-direction: column;
   align-items: stretch;
@@ -231,46 +232,46 @@
   max-width: var(--_tabs-sideways-max-width);
 }
 
-.remark-container .panelset.sideways .panel {
+.remark-container .panelset[aria-orientation="vertical"] .panel {
   max-width: calc(100% - var(--_tabs-sideways-max-width) - 1em);
 }
 
-.remark-container .panelset.sideways .panel-tabs .panel-tab {
+.remark-container .panelset[aria-orientation="vertical"] .panel-tabs .panel-tab {
   border-top: unset;
   border-bottom: unset;
   padding-left: 0;
 }
 
-.remark-container .panelset.sideways:not(.right) .panel-tabs .panel-tab {
+.remark-container .panelset[aria-orientation="vertical"]:not(.right) .panel-tabs .panel-tab {
   text-align: left;
   border-right: var(--_tabs-separator-width) solid var(--_border-bottom-color);
   margin-right: calc(-1 * var(--_tabs-separator-width));
 }
 
-.remark-container .panelset.sideways.right .panel-tabs .panel-tab {
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
   text-align: right;
   border-left: var(--_tabs-separator-width) solid var(--_border-bottom-color);
   margin-left: calc(-1 * var(--_tabs-separator-width));
 }
 
-.remark-container .panelset.sideways.right {
+.remark-container .panelset[aria-orientation="vertical"].right {
   flex-direction: row-reverse;
   justify-content: space-between;
 }
 
-.remark-container .panelset.sideways.right .panel-tabs {
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs {
   margin-right: 0;
   margin-left: 1em;
   border-right: unset;
   border-left: var(--_tabs-separator);
 }
 
-.remark-container .panelset.sideways.right .panel-tabs .panel-tab {
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
   padding-left: 1em;
   width: 100%;
 }
 
-.remark-container .panelset.sideways.right .panel-tabs .panel-tab a {
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab a {
   text-align: right;
 }
 
