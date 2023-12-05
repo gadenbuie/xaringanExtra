@@ -1,0 +1,291 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,last 2 versions,not dead
+*/
+
+.panelset {
+  width: 100%;
+  position: relative;
+  --_tabs-separator-color: var(--panel-tabs-separator-color, var(--panel-tabs-border-bottom, #ddd));
+  --_tabs-separator-width: var(--panel-tabs-separator-width, 2px);
+  --_tabs-separator: var(--_tabs-separator-width) solid var(--_tabs-separator-color);
+  --_tabs-sideways-max-width: var(--panel-tabs-sideways-max-width, 25%);
+  --_tabs-spacing: var(--panel-tabs-spacing, 0);
+
+  --_foreground: var(--panel-tab-foreground, currentColor);
+  --_background: var(--panel-tab-background, unset);
+  --_active-foreground: var(--panel-tab-active-foreground, currentColor);
+  --_active-background: var(--panel-tab-active-background, unset);
+  --_hover-foreground: var(--panel-tab-hover-foreground, currentColor);
+  --_hover-background: var(--panel-tab-hover-background, unset);
+
+  --_border-color: var(--panel-tab-border-color, transparent);
+  --_border-top-color: var(--panel-tab-border-top-color, var(--_border-color));
+  --_border-bottom-color: var(--panel-tab-border-bottom-color, var(--_border-color));
+  --_border-width: var(--_tabs-separator-width) 0;
+  --_border-radius: var(--panel-tab-border-radius, 0);
+
+  --_active-border-color: var(--panel-tab-active-border-color, currentColor);
+  --_active-border-top-color: var(--panel-tab-active-border-top-color, var(--_active-border-color));
+  --_active-border-bottom-color: var(--panel-tab-active-border-bottom-color, var(--_active-border-color));
+
+  --_hover-border-top-color: var(--panel-tab-hover-border-top-color, transparent);
+  --_hover-border-bottom-color: var(--panel-tab-hover-border-bottom-color, currentColor);
+
+  --_focus-ring: var(
+    --panel-tab-focus-ring,
+    solid var(--bs-focus-ring-color, var(--_active-border-color)) var(--bs-focus-ring-width, 2px)
+  );
+
+  --_inactive-opacity: var(--panel-tab-inactive-opacity, 0.5);
+  --_font-family: var(--panel-tab-font-family, inherit);
+  --_transition-duration: var(--panel-tab-transition-duration, 0.5s);
+}
+
+.panelset * {
+  box-sizing: border-box;
+}
+
+.panelset .panel-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  overflow: visible;
+  padding: 0;
+  gap: var(--_tabs-spacing);
+  border-bottom: var(--_tabs-separator);
+}
+
+.panelset .panel-tabs * {
+  transition: opacity var(--_transition-duration) ease;
+}
+
+.panelset .panel-tabs .panel-tab {
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 1em;
+  font-family: var(--_font-family);
+  opacity: var(--_inactive-opacity);
+  border-width: var(--_border-width);
+  border-style: solid;
+  border-radius: var(--_border-radius);
+  border-top-color: var(--_border-top-color);
+  border-bottom-color: var(--_border-bottom-color);
+  margin-bottom: calc(-1 * var(--_tabs-separator-width));
+  color: var(--_foreground);
+  background-color: var(--_background);
+  list-style: none;
+  z-index: 5;
+}
+
+.panelset .panel-tabs .panel-tab > a {
+  color: currentColor;
+  text-decoration: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.panelset .panel-tabs .panel-tab > a:focus {
+  outline: none;
+  text-decoration: none;
+  border: none;
+}
+
+.panelset .panel-tabs .panel-tab > a:hover {
+  text-decoration: none;
+  border: none;
+}
+
+.panelset .panel-tabs .panel-tab:hover {
+  opacity: 1;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.panelset .panel-tabs .panel-tab:hover {
+  --_border-top-color: var(--_hover-border-top-color);
+  --_border-bottom-color: var(--_hover-border-bottom-color);
+  --_foreground: var(--_hover-foreground);
+  --_background: var(--_hover-background);
+}
+
+.panelset .panel-tabs .panel-tab.panel-tab-active {
+  --_foreground: var(--_active-foreground);
+  --_background: var(--_active-background);
+  --_border-top-color: var(--_active-border-top-color);
+  --_border-bottom-color: var(--_active-border-bottom-color);
+  opacity: 1;
+}
+
+.panelset .panel-tabs .panel-tab:focus {
+  outline: none;
+}
+
+.panelset .panel-tabs .panel-tab:focus > a {
+  outline: var(--_focus-ring);
+  outline-offset: 2px;
+}
+
+.panelset .panel-tabs .panel-tab:focus[tabindex="-1"] > a {
+  outline: none;
+}
+
+.panelset .panel {
+  display: none;
+}
+
+.panelset .panel-active {
+  display: block;
+}
+
+.panelset .panel > :first-child,
+.panelset .panel > section:first-child > :first-child {
+  margin-top: 0;
+}
+
+/* ---- Sideways Panelset ---- */
+
+@media (min-width: 480px) {
+  .panelset[aria-orientation="vertical"] {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+  }
+
+  .panelset[aria-orientation="vertical"] .panel-tabs {
+    box-shadow: none;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0;
+    margin-right: 1em;
+    border-right: var(--_tabs-separator);
+    border-bottom: unset;
+    max-width: var(--_tabs-sideways-max-width);
+  }
+
+  .panelset[aria-orientation="vertical"] .panel {
+    max-width: calc(100% - var(--_tabs-sideways-max-width) - 1em);
+  }
+
+  .panelset[aria-orientation="vertical"] .panel-tabs .panel-tab {
+    border-top: unset;
+    border-bottom: unset;
+    padding-left: 0;
+  }
+
+  .panelset[aria-orientation="vertical"]:not(.right) .panel-tabs .panel-tab {
+    text-align: left;
+    border-right: var(--_tabs-separator-width) solid var(--_border-bottom-color);
+    margin-right: calc(-1 * var(--_tabs-separator-width));
+  }
+
+  .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
+    text-align: right;
+    border-left: var(--_tabs-separator-width) solid var(--_border-bottom-color);
+    margin-left: calc(-1 * var(--_tabs-separator-width));
+  }
+
+  .panelset[aria-orientation="vertical"].right {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  .panelset[aria-orientation="vertical"].right .panel-tabs {
+    margin-right: 0;
+    margin-left: 1em;
+    border-right: unset;
+    border-left: var(--_tabs-separator);
+  }
+
+  .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
+    padding-left: 1em;
+    width: 100%;
+  }
+
+  .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab a {
+    text-align: right;
+  }
+}
+
+/*
+  This next part repeats the same CSS inside the @media query above but with
+  remarkjs-specific classes to ensure that sideways panelsets are always used.
+  In the future, we could use CSS nesting instead once it's availble.
+*/
+
+.remark-container .panelset[aria-orientation="vertical"] {
+  display: flex;
+  flex-direction: row;
+}
+
+.remark-container .panelset[aria-orientation="vertical"] .panel-tabs {
+  box-shadow: none;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0;
+  margin-right: 1em;
+  border-right: var(--_tabs-separator);
+  border-bottom: unset;
+  max-width: var(--_tabs-sideways-max-width);
+}
+
+.remark-container .panelset[aria-orientation="vertical"] .panel {
+  max-width: calc(100% - var(--_tabs-sideways-max-width) - 1em);
+}
+
+.remark-container .panelset[aria-orientation="vertical"] .panel-tabs .panel-tab {
+  border-top: unset;
+  border-bottom: unset;
+  padding-left: 0;
+}
+
+.remark-container .panelset[aria-orientation="vertical"]:not(.right) .panel-tabs .panel-tab {
+  text-align: left;
+  border-right: var(--_tabs-separator-width) solid var(--_border-bottom-color);
+  margin-right: calc(-1 * var(--_tabs-separator-width));
+}
+
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
+  text-align: right;
+  border-left: var(--_tabs-separator-width) solid var(--_border-bottom-color);
+  margin-left: calc(-1 * var(--_tabs-separator-width));
+}
+
+.remark-container .panelset[aria-orientation="vertical"].right {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs {
+  margin-right: 0;
+  margin-left: 1em;
+  border-right: unset;
+  border-left: var(--_tabs-separator);
+}
+
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
+  padding-left: 1em;
+  width: 100%;
+}
+
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab a {
+  text-align: right;
+}
+
+/* Other remarkjs (xaringan) specific styles */
+.remark-container .panelset .panel-tabs .panel-tab:focus > a {
+  /* The outline isn't needed, since navigation is always <- or -> */
+  outline: none;
+}
+
+/* Reveal (Quarto) specific styles */
+.reveal .panelset .panel-tabs {
+  margin-left: 0;
+}

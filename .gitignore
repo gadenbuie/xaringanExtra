@@ -9,6 +9,7 @@ node_modules/
 _*/
 !tests/testthat/_snaps/
 !_extensions/
+!_extensions/*/_extension.yml
 
 ## https://github.com/github/gitignore/blob/master/R.gitignore
 # History files
