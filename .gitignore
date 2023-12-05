@@ -8,6 +8,7 @@ node_modules/
 # Directories that start with _
 _*/
 !tests/testthat/_snaps/
+!_extensions/
 
 ## https://github.com/github/gitignore/blob/master/R.gitignore
 # History files
@@ -77,3 +78,5 @@ Temporary Items
 .apdisk
 README.html
 docs/
+
+/.luarc.json
