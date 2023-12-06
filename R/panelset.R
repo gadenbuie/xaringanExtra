@@ -76,6 +76,7 @@ use_panelset <- function(in_xaringan = NULL) {
 #' @param active_border_color,hover_border_color The color of the top border of
 #'   a tab when it is active or the color of the bottom border of a tab when it
 #'   is hovered or focused. Defaults are `currentColor`.
+#' @param focus_ring The outline style for the tab focus ring.
 #' @param selector The CSS selector used to choose which panelset is being
 #'   styled. In most cases, you can use the default selector to style all
 #'   panelsets on the page. When `selector` is `NULL`, `style_panelset()` will
@@ -92,6 +93,7 @@ style_panelset_tabs <- function(
   hover_background = NULL,
   hover_foreground = NULL,
   hover_border_color = NULL,
+  focus_ring = NULL,
   separator_color = NULL,
   tabs_border_bottom = NULL,
   tabs_sideways_max_width = NULL,
@@ -150,6 +152,7 @@ panelset_match_vars <- function(x = NULL) {
     hover_background = "--panel-tab-hover-background",
     hover_foreground = "--panel-tab-hover-foreground",
     hover_border_color = "--panel-tab-hover-border-color",
+    focus_ring = "--panel-tab-focus-ring",
     separator_color = "--panel-tabs-separator-color",
     tabs_border_bottom = "--panel-tabs-border-bottom",
     inactive_opacity = "--panel-tab-inactive-opacity",
@@ -218,7 +221,11 @@ register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
 
   knitr::opts_hooks$set(panelset = function(options) {
     panelset <- options$panelset
-    if (isFALSE(panelset)) return()
+    if (isFALSE(panelset)) return(options)
+    if (isFALSE(options$include)) {
+      options$panelset <- FALSE
+      return(options)
+    }
 
     # panelset chunks ignore global options and default to results="hold"
     # but can be overwritten by the local chunk options if declared explicitly
@@ -231,6 +238,35 @@ register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
     options$panelset_panel_source <- chunk_opts$panelset_panel_source %||% labels["source"]
     options$panelset_panel_output <- chunk_opts$panelset_panel_output %||% labels["output"]
     options$panelset <- TRUE
+
+    if (!(chunk_opts$echo %||% TRUE) || !(chunk_opts$eval %||% TRUE)) {
+      # it doesn't make sense to have a panelset chunk that doesn't both
+      # echo and evaluate, so we'll throw for the benefit of the user
+      stop(
+        "`panelset` chunks must have both `echo = TRUE` and `eval = TRUE`, ",
+        "but at least one of these options was set to `FALSE` for this chunk."
+      )
+    }
+
+    forced <- c()
+    for (opt in c("echo", "eval")) {
+      if (!isTRUE(options[[opt]])) {
+        forced <- c(forced, opt)
+      }
+    }
+
+    if (length(forced)) {
+      warning(
+        sprintf(
+          "'panelset' is forcing %s to `TRUE` for chunk '%s'.",
+          paste0("`", forced, "`", collapse = " and "),
+          options$label
+        )
+      )
+    }
+
+    options$echo <- TRUE
+    options$eval <- TRUE
 
     options
   })

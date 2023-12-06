@@ -52,6 +52,20 @@ for (doc in docs) {
 message("Rendering panelset/rmarkdown example")
 rmarkdown::render(file.path("docs", "panelset", "rmarkdown.Rmd"), quiet = TRUE)
 
+message("Updating quarto panelset extension")
+for (ext in c("js", "css")) {
+  fs::file_copy(
+    fs::path_package("xaringanExtra", "panelset", "panelset", ext = ext),
+    fs::path(
+      here::here("_extensions", "panelset"),
+      "panelset",
+      ext = ext
+    ),
+    overwrite = TRUE
+  )
+}
+
+
 message("Rendering README")
 rmarkdown::render("README.Rmd", quiet = TRUE)
 
