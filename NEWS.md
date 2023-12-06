@@ -59,6 +59,49 @@
   :::
   ````
 
+* **panelset** fully supports [Quarto Revealjs Presentations](https://quarto.org/docs/presentations/revealjs/).
+  All of panelset's features in xaringan are fully supported in Quarto slides,
+  including automatically stepping through the panels on a slides (#195).
+
+* **panelset** now supports synchronized panels (#195)! Give each panelset a `group`
+  attribute with a unique name, e.g. `{.panelset group="language"}`, and the
+  selected tab will be synchronized across all other panelsets with the same
+  group name. The tab selection is synchronized by tab name, so if the user
+  switches from the "R" tab to the "Python" tab, all panelsets with
+  `group="language"` will have their "Python" tab activated (if they have one).
+
+  The chosen panel tab is stored in the user's browser, which means that the
+  user's choice is reflected across all pages on your domain. It's also
+  remembered when they return to your page later (in the same browser).
+  Technically, this feature uses the browser's
+  [localStorage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
+  and no user data is transmitted anywhere.
+
+* **panelset** is now also a Quarto extension that can be installed and used
+  without requiring R (#195). To install the extension, run the following in
+  your terminal.
+
+  ```bash
+  quarto add gadenbuie/xaringanExtra
+  ```
+
+  Then, in your Quarto document, add the following to the YAML front matter:
+
+  ```yaml
+  filters:
+    - panelset
+  ```
+
+* **panelset** now forces the chunk options `echo = TRUE` and `eval = TRUE`,
+  when `panelset = TRUE` is used. Without these options, panelset's knitr hooks
+  can't correctly convert the chunk source and output into two separate panels.
+
+  When these options are disabled via a chunk option on the panelset chunk,
+  panelset will give an error to help you spot this issue early. But if `echo`
+  and `eval` are globally set to `FALSE`, panelset will no automatically set
+  them to `TRUE`. This is especially helpful in Quarto revealjs presentations
+  where Quarto defaults to `echo = FALSE` (#196).
+
 # xaringanExtra 0.7.0
 
 * BREAKING CHANGE: All arguments to `use_banner()` must be named. `use_banner()`
