@@ -231,59 +231,68 @@ color: #d14;
 .panelset {
 width: 100%;
 position: relative;
---panel-tabs-border-bottom: #ddd;
---panel-tabs-sideways-max-width: 25%;
---panel-tab-foreground: currentColor;
---panel-tab-background: unset;
---panel-tab-active-foreground: currentColor;
---panel-tab-active-background: unset;
---panel-tab-hover-foreground: currentColor;
---panel-tab-hover-background: unset;
---panel-tab-active-border-color: currentColor;
---panel-tab-hover-border-color: currentColor;
---panel-tab-inactive-opacity: 0.5;
---panel-tab-font-family: inherit;
+--_tabs-separator-color: var(--panel-tabs-separator-color, var(--panel-tabs-border-bottom, #ddd));
+--_tabs-separator-width: var(--panel-tabs-separator-width, 2px);
+--_tabs-separator: var(--_tabs-separator-width) solid var(--_tabs-separator-color);
+--_tabs-sideways-max-width: var(--panel-tabs-sideways-max-width, 25%);
+--_tabs-spacing: var(--panel-tabs-spacing, 0);
+--_foreground: var(--panel-tab-foreground, currentColor);
+--_background: var(--panel-tab-background, unset);
+--_active-foreground: var(--panel-tab-active-foreground, currentColor);
+--_active-background: var(--panel-tab-active-background, unset);
+--_hover-foreground: var(--panel-tab-hover-foreground, currentColor);
+--_hover-background: var(--panel-tab-hover-background, unset);
+--_border-color: var(--panel-tab-border-color, transparent);
+--_border-top-color: var(--panel-tab-border-top-color, var(--_border-color));
+--_border-bottom-color: var(--panel-tab-border-bottom-color, var(--_border-color));
+--_border-width: var(--_tabs-separator-width) 0;
+--_border-radius: var(--panel-tab-border-radius, 0);
+--_active-border-color: var(--panel-tab-active-border-color, currentColor);
+--_active-border-top-color: var(--panel-tab-active-border-top-color, var(--_active-border-color));
+--_active-border-bottom-color: var(--panel-tab-active-border-bottom-color, var(--_active-border-color));
+--_hover-border-top-color: var(--panel-tab-hover-border-top-color, transparent);
+--_hover-border-bottom-color: var(--panel-tab-hover-border-bottom-color, currentColor);
+--_focus-ring: var(
+--panel-tab-focus-ring,
+solid var(--bs-focus-ring-color, var(--_active-border-color)) var(--bs-focus-ring-width, 2px)
+);
+--_inactive-opacity: var(--panel-tab-inactive-opacity, 0.5);
+--_font-family: var(--panel-tab-font-family, inherit);
+--_transition-duration: var(--panel-tab-transition-duration, 0.5s);
 }
 .panelset * {
 box-sizing: border-box;
 }
 .panelset .panel-tabs {
-display: -webkit-box;
 display: flex;
 flex-wrap: wrap;
--webkit-box-orient: horizontal;
--webkit-box-direction: normal;
 flex-direction: row;
--webkit-box-pack: start;
 justify-content: start;
--webkit-box-align: center;
 align-items: center;
-overflow-y: visible;
-overflow-x: auto;
--webkit-overflow-scrolling: touch;
-padding: 0 0 2px 0;
-box-shadow: inset 0 -2px 0px var(--panel-tabs-border-bottom);
+overflow: visible;
+padding: 0;
+gap: var(--_tabs-spacing);
+border-bottom: var(--_tabs-separator);
 }
 .panelset .panel-tabs * {
--webkit-transition: opacity 0.5s ease;
-transition: opacity 0.5s ease;
+transition: opacity var(--_transition-duration) ease;
 }
 .panelset .panel-tabs .panel-tab {
 min-height: 50px;
-display: -webkit-box;
 display: flex;
--webkit-box-pack: center;
 justify-content: center;
--webkit-box-align: center;
 align-items: center;
 padding: 0.5em 1em;
-font-family: var(--panel-tab-font-family);
-opacity: var(--panel-tab-inactive-opacity);
-border-top: 2px solid transparent;
-border-bottom: 2px solid transparent;
-margin-bottom: -2px;
-color: var(--panel-tab-foreground);
-background-color: var(--panel-tab-background);
+font-family: var(--_font-family);
+opacity: var(--_inactive-opacity);
+border-width: var(--_border-width);
+border-style: solid;
+border-radius: var(--_border-radius);
+border-top-color: var(--_border-top-color);
+border-bottom-color: var(--_border-bottom-color);
+margin-bottom: calc(-1 * var(--_tabs-separator-width));
+color: var(--_foreground);
+background-color: var(--_background);
 list-style: none;
 z-index: 5;
 }
@@ -304,24 +313,32 @@ text-decoration: none;
 border: none;
 }
 .panelset .panel-tabs .panel-tab:hover {
-border-bottom-color: var(--panel-tab-hover-border-color);
-color: var(--panel-tab-hover-foreground);
-background-color: var(--panel-tab-hover-background);
 opacity: 1;
 cursor: pointer;
 z-index: 10;
 }
-.panelset .panel-tabs .panel-tab:focus {
-outline: none;
-color: var(--panel-tab-hover-foreground);
-border-bottom-color: var(--panel-tab-hover-border-color);
-background-color: var(--panel-tab-hover-background);
+.panelset .panel-tabs .panel-tab:hover {
+--_border-top-color: var(--_hover-border-top-color);
+--_border-bottom-color: var(--_hover-border-bottom-color);
+--_foreground: var(--_hover-foreground);
+--_background: var(--_hover-background);
 }
 .panelset .panel-tabs .panel-tab.panel-tab-active {
-border-top-color: var(--panel-tab-active-border-color);
-color: var(--panel-tab-active-foreground);
-background-color: var(--panel-tab-active-background);
+--_foreground: var(--_active-foreground);
+--_background: var(--_active-background);
+--_border-top-color: var(--_active-border-top-color);
+--_border-bottom-color: var(--_active-border-bottom-color);
 opacity: 1;
+}
+.panelset .panel-tabs .panel-tab:focus {
+outline: none;
+}
+.panelset .panel-tabs .panel-tab:focus > a {
+outline: var(--_focus-ring);
+outline-offset: 2px;
+}
+.panelset .panel-tabs .panel-tab:focus[tabindex="-1"] > a {
+outline: none;
 }
 .panelset .panel {
 display: none;
@@ -329,97 +346,125 @@ display: none;
 .panelset .panel-active {
 display: block;
 }
+.panelset .panel > :first-child,
+.panelset .panel > section:first-child > :first-child {
+margin-top: 0;
+}
 
 @media (min-width: 480px) {
-.panelset.sideways {
+.panelset[aria-orientation="vertical"] {
 display: flex;
 flex-direction: row;
+margin-bottom: 1rem;
 }
-.panelset.sideways .panel-tabs {
+.panelset[aria-orientation="vertical"] .panel-tabs {
 box-shadow: none;
 flex-direction: column;
-align-items: start;
+align-items: stretch;
 margin: 0;
 margin-right: 1em;
-border-right: 2px solid var(--panel-tabs-border-bottom);
-max-width: var(--panel-tabs-sideways-max-width);
+border-right: var(--_tabs-separator);
+border-bottom: unset;
+max-width: var(--_tabs-sideways-max-width);
 }
-.panelset.sideways .panel {
-max-width: calc(100% - var(--panel-tabs-sideways-max-width) - 1em);
+.panelset[aria-orientation="vertical"] .panel {
+max-width: calc(100% - var(--_tabs-sideways-max-width) - 1em);
 }
-.panelset.sideways .panel-tabs .panel-tab {
+.panelset[aria-orientation="vertical"] .panel-tabs .panel-tab {
 border-top: unset;
 border-bottom: unset;
 padding-left: 0;
 }
-.panelset.sideways.right {
+.panelset[aria-orientation="vertical"]:not(.right) .panel-tabs .panel-tab {
+text-align: left;
+border-right: var(--_tabs-separator-width) solid var(--_border-bottom-color);
+margin-right: calc(-1 * var(--_tabs-separator-width));
+}
+.panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
+text-align: right;
+border-left: var(--_tabs-separator-width) solid var(--_border-bottom-color);
+margin-left: calc(-1 * var(--_tabs-separator-width));
+}
+.panelset[aria-orientation="vertical"].right {
 flex-direction: row-reverse;
 justify-content: space-between;
 }
-.panelset.sideways.right {
-text-align: inherit;
-}
-.panelset.sideways.right .panel-tabs {
-align-items: end;
+.panelset[aria-orientation="vertical"].right .panel-tabs {
 margin-right: 0;
 margin-left: 1em;
 border-right: unset;
-border-left: 2px solid var(--panel-tabs-border-bottom);
+border-left: var(--_tabs-separator);
 }
-.panelset.sideways.right .panel-tabs .panel-tab {
+.panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
 padding-left: 1em;
 width: 100%;
 }
-.panelset.sideways.right .panel-tabs .panel-tab a {
+.panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab a {
 text-align: right;
 }
 }
 
-.remark-container .panelset.sideways {
+.remark-container .panelset[aria-orientation="vertical"] {
 display: flex;
 flex-direction: row;
 }
-.remark-container .panelset.sideways .panel-tabs {
+.remark-container .panelset[aria-orientation="vertical"] .panel-tabs {
 box-shadow: none;
 flex-direction: column;
-align-items: start;
+align-items: stretch;
 margin: 0;
 margin-right: 1em;
-border-right: 2px solid var(--panel-tabs-border-bottom);
-max-width: var(--panel-tabs-sideways-max-width);
+border-right: var(--_tabs-separator);
+border-bottom: unset;
+max-width: var(--_tabs-sideways-max-width);
 }
-.remark-container .panelset.sideways .panel {
-max-width: calc(100% - var(--panel-tabs-sideways-max-width) - 1em);
+.remark-container .panelset[aria-orientation="vertical"] .panel {
+max-width: calc(100% - var(--_tabs-sideways-max-width) - 1em);
 }
-.remark-container .panelset.sideways .panel-tabs .panel-tab {
+.remark-container .panelset[aria-orientation="vertical"] .panel-tabs .panel-tab {
 border-top: unset;
 border-bottom: unset;
 padding-left: 0;
 }
-.remark-container .panelset.sideways.right {
+.remark-container .panelset[aria-orientation="vertical"]:not(.right) .panel-tabs .panel-tab {
+text-align: left;
+border-right: var(--_tabs-separator-width) solid var(--_border-bottom-color);
+margin-right: calc(-1 * var(--_tabs-separator-width));
+}
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
+text-align: right;
+border-left: var(--_tabs-separator-width) solid var(--_border-bottom-color);
+margin-left: calc(-1 * var(--_tabs-separator-width));
+}
+.remark-container .panelset[aria-orientation="vertical"].right {
 flex-direction: row-reverse;
 justify-content: space-between;
 }
-.remark-container .panelset.sideways.right {
-text-align: inherit;
-}
-.remark-container .panelset.sideways.right .panel-tabs {
-align-items: end;
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs {
 margin-right: 0;
 margin-left: 1em;
 border-right: unset;
-border-left: 2px solid var(--panel-tabs-border-bottom);
+border-left: var(--_tabs-separator);
 }
-.remark-container .panelset.sideways.right .panel-tabs .panel-tab {
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab {
 padding-left: 1em;
 width: 100%;
 }
-.remark-container .panelset.sideways.right .panel-tabs .panel-tab a {
+.remark-container .panelset[aria-orientation="vertical"].right .panel-tabs .panel-tab a {
 text-align: right;
+}
+
+.remark-container .panelset .panel-tabs .panel-tab:focus > a {
+
+outline: none;
+}
+
+.reveal .panelset .panel-tabs {
+margin-left: 0;
 }
 </style>
 <script>/* global slideshow */
-(function () {
+;(function () {
   const ready = function (fn) {
     /* MIT License Copyright (c) 2016 Nuclei */
     /* https://github.com/nuclei/readyjs */
@@ -437,12 +482,52 @@ text-align: right;
   }
 
   ready(function () {
-    [...document.querySelectorAll('.panel-name')]
-      .map(el => el.textContent.trim())
+    ;[...document.querySelectorAll('.panel-name')].map(el =>
+      el.textContent.trim()
+    )
+
+    function inRevealjs () {
+      return typeof window.Reveal !== 'undefined'
+    }
+
+    function inRemarkjs () {
+      return typeof window.remark !== 'undefined'
+    }
+
+    function inRemarkSlide (el) {
+      return inRemarkjs() && el.closest('.remark-slide')
+    }
 
     const panelIds = {}
+    let panelsetIdx = 0
+    const panelsetIds = []
 
-    const uniquePanelId = (name) => {
+    /**
+     * Generates a unique panelset ID.
+     * @param {string} id - The optional ID to be used as a base for the panelset ID.
+     * @returns {string} - The generated unique panelset ID.
+     */
+    const uniquePanelsetId = id => {
+      const panelsetNumber = () => (++panelsetIdx).toString().padStart(3, '0')
+
+      if (typeof id === 'undefined' || id === '') {
+        id = 'panelset_' + panelsetNumber()
+      } else if (panelsetIds.includes(id)) {
+        id = id + '_' + panelsetNumber()
+      }
+
+      panelsetIds.push(id)
+      return id
+    }
+
+    /**
+     * Generates a unique panel ID based on the provided name, by appending an
+     * increasing integer to the name to make it unique.
+     *
+     * @param {string} name - The name to generate the panel ID from.
+     * @returns {string} The unique panel ID.
+     */
+    const uniquePanelId = name => {
       name = encodeURIComponent(name.toLowerCase().replace(/[\s]/g, '-'))
       if (Object.keys(panelIds).includes(name)) {
         name += ++panelIds[name]
@@ -452,13 +537,27 @@ text-align: right;
       return name
     }
 
-    const identifyPanelName = (item) => {
+    /**
+     * Identifies the panel name based on the given item, taking into account
+     * the various ways that panel names can be specified in R Markdown, Quarto,
+     * or revealjs.
+     *
+     * @param {HTMLElement} item - The item to identify the panel name from.
+     * @returns {string} The identified panel name or undefined if no name can
+     * be identified.
+     */
+    const identifyPanelName = item => {
       let name = 'Panel'
 
       // If the item doesn't have a parent element, then we've already processed
       // it, probably because we're in an Rmd, and it's been removed from the DOM
       if (!item.parentElement) {
         return
+      }
+
+      if (item.matches('.panel')) {
+        if (item.dataset.name) return item.dataset.name
+        if (item.getAttribute('name')) return item.getAttribute('name')
       }
 
       // In R Markdown when header-attrs.js is present, we may have found a
@@ -494,24 +593,112 @@ text-align: right;
       return name
     }
 
-    const processPanelItem = (item) => {
+    function getElementAttributes (el) {
+      return {
+        classes: Array.from(el.classList)
+          .filter(c => !/^level\d$/.test(c))
+          .toString(),
+        style: el.style.cssText,
+        dataset: el.dataset
+      }
+    }
+
+    /**
+     * Processes an original section of content and prepare data for the content
+     * panel the item will become.
+     *
+     * @param {HTMLElement} item - The panel item to process.
+     * @returns {Object|null} - An object containing the panel's name, content,
+     * id, active status, and other attributes. Returns null if the panel name
+     * cannot be identified.
+     */
+    const processPanelItem = item => {
       const name = identifyPanelName(item)
       if (!name) {
         return null
       }
-      return { name, content: item.children, id: uniquePanelId(name) }
+      return {
+        name,
+        content: item.children,
+        id: uniquePanelId(name),
+        active:
+          item.dataset &&
+          ['', 'true'].includes(item.dataset.active?.toLowerCase()),
+        ...getElementAttributes(item)
+      }
     }
 
-    const getCurrentPanelFromUrl = (panelset) => {
+    /**
+     * Retrieves the current panel from the URL parameters.
+     * @param {string} panelsetId - The ID of the panelset.
+     * @returns {string|null} - The current panel ID or null if not in the URL.
+     */
+    const getCurrentPanelFromUrl = panelsetId => {
       const params = new URLSearchParams(window.location.search)
-      return params.get(panelset)
+      return params.get(panelsetId)
     }
 
-    const reflowPanelSet = (panels, idx) => {
+    /**
+     * Returns the initial selected panel ID based on the provided panels and
+     * the ID of the corresponding panelset. The active panel is chosen
+     * following:
+     *
+     * 1. If the panselset appears in the URL, use the panel ID from the URL.
+     * 2. If there is an active panel, use the ID of the first active panel.
+     * 3. Use the ID of the first panel in the array.
+     *
+     * Note that groups are not considered here. If the panelset is part of a
+     * group, the group state will be updated after the initial panelset is
+     * created.
+     *
+     * @param {Array} panels - The array of panel objects.
+     * @param {string} panelsetId - The ID of the panelset specified in the URL.
+     * @returns {string} - The ID of the initial selected panel.
+     */
+    function getInitSelectedPanel (panels, panelsetId) {
+      const panelIds = panels.map(p => p.id)
+
+      const panelSelectedUrl = getCurrentPanelFromUrl(panelsetId)
+      if (panelSelectedUrl && panelIds.includes(panelSelectedUrl)) {
+        return panelSelectedUrl
+      }
+
+      const panelsActive = panels.filter(p => p.active)
+      if (panelsActive.length) {
+        return panelsActive[0].id
+      }
+
+      return panels[0].id
+    }
+
+    /**
+     * Creates a panel set element with header tabs and corresponding content
+     * sections.
+     *
+     * @param {Array} panels - An array of panel objects.
+     * @param {Object} options - An object containing optional parameters for
+     * the panel set.
+     * @param {string} options.id - The ID of the panel set element.
+     * @param {string} options.classes - Additional CSS classes to be applied to
+     * the panel set element.
+     * @param {string} options.style - Inline CSS styles to be applied to the
+     * panel set element.
+     * @param {Object} options.dataset - Custom data attributes to be added to
+     * the panel set element.
+     * @returns {HTMLElement} - The created panel set element.
+     */
+    const reflowPanelSet = (panels, { id, classes, style, dataset }) => {
       const res = document.createElement('div')
-      res.className = 'panelset'
-      res.id = 'panelset' + (idx > 0 ? idx : '')
-      const panelSelected = getCurrentPanelFromUrl(res.id)
+      res.classList = 'panelset' + (classes ? ' ' + classes : '')
+      res.id = uniquePanelsetId(id)
+      res.style.cssText = style
+      if (dataset) {
+        Object.keys(dataset).forEach(key => {
+          res.dataset[key] = dataset[key]
+        })
+      }
+
+      const panelSelected = getInitSelectedPanel(panels, res.id)
 
       // create header row
       const headerRow = document.createElement('ul')
@@ -519,19 +706,30 @@ text-align: right;
       headerRow.setAttribute('role', 'tablist')
       panels
         .map((p, idx) => {
+          const thisPanelIsActive = panelSelected === p.id
+
           const panelHeaderItem = document.createElement('li')
+          panelHeaderItem.id = res.id + '_' + p.id // #panelsetid_panelid
           panelHeaderItem.className = 'panel-tab'
           panelHeaderItem.setAttribute('role', 'tab')
-          const thisPanelIsActive = panelSelected ? panelSelected === p.id : idx === 0
           if (thisPanelIsActive) {
-            panelHeaderItem.classList.add('panel-tab-active')
-            panelHeaderItem.setAttribute('aria-selected', true)
+            panelHeaderItem.tabIndex = 0
           }
-          panelHeaderItem.tabIndex = 0
-          panelHeaderItem.id = res.id + '_' + p.id // #panelsetid_panelid
+          panelHeaderItem.classList.toggle(
+            'panel-tab-active',
+            thisPanelIsActive
+          )
+          panelHeaderItem.setAttribute('aria-selected', thisPanelIsActive)
+
+          if (p.dataset) {
+            Object.keys(p.dataset).forEach(key => {
+              panelHeaderItem.dataset[key] = p.dataset[key]
+            })
+          }
 
           const panelHeaderLink = document.createElement('a')
-          panelHeaderLink.href = '?' + res.id + '=' + p.id + '#' + panelHeaderItem.id
+          panelHeaderLink.href =
+            '?' + res.id + '=' + p.id + '#' + panelHeaderItem.id
           panelHeaderLink.setAttribute('onclick', 'return false;')
           panelHeaderLink.tabIndex = -1 // list item is tabable, not link
           panelHeaderLink.innerHTML = p.name
@@ -546,13 +744,17 @@ text-align: right;
 
       panels
         .map((p, idx) => {
-          const panelContent = document.createElement('section')
-          panelContent.className = 'panel'
-          panelContent.setAttribute('role', 'tabpanel')
-          const thisPanelIsActive = panelSelected ? panelSelected === p.id : idx === 0
+          const thisPanelIsActive = panelSelected === p.id
+          const panelTag = inRevealjs() ? 'div' : 'section'
+          const panelContent = document.createElement(panelTag)
+          panelContent.classList = p.classes ? 'panel ' + p.classes : 'panel'
+          panelContent.style.cssText = p.style
           panelContent.classList.toggle('panel-active', thisPanelIsActive)
           panelContent.id = p.id
+          // https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/
+          panelContent.setAttribute('role', 'tabpanel')
           panelContent.setAttribute('aria-labelledby', p.id)
+          panelContent.tabIndex = 0
           Array.from(p.content).forEach(el => panelContent.appendChild(el))
           return panelContent
         })
@@ -564,15 +766,34 @@ text-align: right;
     /*
      * Update selected panel for panelset or delete panelset from query string
      *
-     * @param panelset Panelset ID to update in the search params
-     * @param panel Panel ID of selected panel in panelset, or null to delete from search params
-     * @param params Current params object, or params from window.location.search
+     * @param panelset Panelset ID to update in the search params @param panel
+     * Panel ID of selected panel in panelset, or null to delete from search
+     * params @param params Current params object, or params from
+     * window.location.search
      */
-    function updateSearchParams (panelset, panel, params = new URLSearchParams(window.location.search)) {
-      if (panel) {
-        params.set(panelset, panel)
+
+    /**
+     * Updates the search parameters with the specified panelset and panel
+     * values. If a panel is provided, it sets the panelset and panel in the
+     * search parameters. If no panel is provided, it removes the panelset from
+     * the search parameters.
+     *
+     * @param {string} panelsetId - The ID of the panelset.
+     * @param {string} [panelId] - The ID of the panel (optional).
+     * @param {URLSearchParams} [params=new
+     * URLSearchParams(window.location.search)] - The search parameters object
+     * (optional).
+     * @returns {URLSearchParams} - The updated search parameters object.
+     */
+    function updateSearchParams (
+      panelsetId,
+      panelId,
+      params = new URLSearchParams(window.location.search)
+    ) {
+      if (panelId) {
+        params.set(panelsetId, panelId)
       } else {
-        params.delete(panelset)
+        params.delete(panelsetId)
       }
       return params
     }
@@ -580,64 +801,215 @@ text-align: right;
     /*
      * Update the URL to match params
      */
-    const updateUrl = (params) => {
+    const updateUrl = params => {
       if (typeof params === 'undefined') return
-      params = params.toString() ? ('?' + params.toString()) : ''
+      params = params.toString() ? '?' + params.toString() : ''
       const { pathname, hash } = window.location
       const uri = pathname + params + hash
       window.history.replaceState(uri, '', uri)
     }
 
-    const togglePanel = (clicked) => {
-      if (clicked.nodeName.toUpperCase() === 'A') {
-        clicked = clicked.parentElement
-      }
-      if (!clicked.classList.contains('panel-tab')) return
-      if (clicked.classList.contains('panel-tab-active')) return
+    /**
+     * Handles the click event on a panel tab within a panelset.
+     * @param {HTMLElement} clicked - The clicked element.
+     */
+    function handleClickedPanel (clicked) {
+      const panelset = clicked.closest('.panelset')
+      if (!panelset) return
 
-      const tabs = clicked.parentNode
-        .querySelectorAll('.panel-tab')
-      const panels = clicked.parentNode.parentNode
-        .querySelectorAll('.panel')
-      const panelTabClicked = clicked.children[0].getAttribute('aria-controls')
-      const panelClicked = clicked.parentNode.parentNode.id
+      clicked = clicked.closest('.panel-tab')
+      if (!clicked) return
 
-      Array.from(tabs)
-        .forEach(t => {
-          t.classList.remove('panel-tab-active')
-          t.removeAttribute('aria-selected')
-        })
-      Array.from(panels)
-        .forEach(p => {
-          const active = p.id === panelTabClicked
-          p.classList.toggle('panel-active', active)
-          // make inactive panels inaccessible by keyboard navigation
-          if (active) {
-            p.removeAttribute('tabIndex')
-            p.removeAttribute('aria-hidden')
-          } else {
-            p.setAttribute('tabIndex', -1)
-            p.setAttribute('aria-hidden', true)
-          }
-        })
-
-      clicked.classList.add('panel-tab-active')
-      clicked.setAttribute('aria-selected', true)
-
-      // emit window resize event to trick html widgets into fitting to the panel width
-      window.dispatchEvent(new Event('resize'))
-
-      // update query string
-      const params = updateSearchParams(panelClicked, panelTabClicked)
-      updateUrl(params)
+      togglePanel(panelset, clicked)
     }
 
-    const initPanelSet = (panelset, idx) => {
-      let panels = Array.from(panelset.querySelectorAll('.panel'))
+    /**
+     * Handles keydown events for the `.panel-tabs` element within a panelset.
+     * This performs two actions: toggling the panel via space or enter and
+     * moving to the next or previous panel via arrow keys, depending on the
+     * panelset orientation.
+     *
+     * @see https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/
+     *
+     * @param {HTMLElement} panelset - The panelset element.
+     * @param {KeyboardEvent} ev - The keydown event.
+     */
+    function handlePanelTabsKeydown (panelset, ev) {
+      const target = ev.currentTarget.querySelector('.panel-tab-active')
+
+      function stopEvent () {
+        ev.preventDefault()
+        if (inRemarkjs() || inRevealjs()) {
+          ev.stopPropagation()
+        }
+      }
+
+      if (ev.code === 'Space' || ev.code === 'Enter') {
+        togglePanel(panelset, ev.target)
+        stopEvent()
+        return
+      }
+
+      let direction
+
+      if (panelset.getAttribute('aria-orientation') === 'vertical') {
+        if (ev.code === 'ArrowUp') direction = 'prev'
+        if (ev.code === 'ArrowDown') direction = 'next'
+      }
+
+      if (
+        inRemarkSlide(panelset) ||
+        inRevealjs() ||
+        panelset.getAttribute('aria-orientation') === 'horizontal'
+      ) {
+        if (ev.code === 'ArrowLeft') direction = 'prev'
+        if (ev.code === 'ArrowRight') direction = 'next'
+      }
+
+      if (!direction) return
+
+      const newActive = toggleSibling(panelset, target, direction)
+      if (newActive) stopEvent()
+      return newActive
+    }
+
+    /**
+     * Finds a panel by name within a panelset. `name` is compared with the
+     * panel tab text content, case-insensitive and trimmed.
+     *
+     * @param {HTMLElement} panelset - The panelset element.
+     * @param {string} name - The name of the panel tab to find.
+     * @returns {HTMLElement|undefined} - The matching panel element, or
+     * undefined if not found.
+     */
+    function findPanelByName (panelset, name) {
+      const matches = Array.from(
+        panelset.querySelectorAll(':scope > .panel-tabs > .panel-tab')
+      ).filter(p => p.innerText.toLowerCase().trim() === name)
+
+      if (!matches) {
+        console.error(
+          `No panel with name "${name}" found in panelset ${panelset.id}`,
+          { panelset, name }
+        )
+        return
+      }
+
+      if (matches > 1) {
+        console.warn(
+          `Multiple panels with name "${name}" found in panelset ${panelset.id}`,
+          { panelset, name }
+        )
+      }
+      return matches[0]
+    }
+
+    /**
+     * Toggles the visibility of a panel in a panelset.
+     *
+     * @param {HTMLElement} panelset - The panelset element containing the
+     * panels.
+     * @param {HTMLElement|string} target - The target panel or panel name to
+     * toggle.
+     * @param {'string'} [update='all'] - The update mode for the
+     * panelset. Possible values are 'all', 'group', or 'url'.
+     */
+    function togglePanel (panelset, target, update = 'all', tabIndex = 0) {
+      // target is a .panel-tab element or a panel name
+      if (!(target instanceof window.HTMLElement)) {
+        target = findPanelByName(panelset, target)
+        if (!target) return
+      }
+
+      const tabs = panelset.querySelectorAll(
+        ':scope > .panel-tabs > .panel-tab'
+      )
+      const panels = panelset.querySelectorAll(':scope > .panel')
+
+      const targetPanelId = target.children[0].getAttribute('aria-controls')
+
+      // Set tab state
+      Array.from(tabs).forEach(t => {
+        t.classList.remove('panel-tab-active')
+        t.setAttribute('aria-selected', false)
+        t.removeAttribute('tabindex')
+      })
+
+      target.classList.add('panel-tab-active')
+      target.setAttribute('aria-selected', true)
+      target.tabIndex = tabIndex
+
+      Array.from(panels).forEach(p => {
+        const isActive = p.id === targetPanelId
+        p.classList.toggle('panel-active', isActive)
+        p.hidden = !isActive
+      })
+
+      // emit window resize event to trick html widgets into fitting to the panel width
+      window.dispatchEvent(new window.Event('resize'))
+
+      if (['all', 'group'].includes(update) && panelset.dataset.group) {
+        const group = panelset.dataset.group
+        const panel = target.innerText.toLowerCase().trim()
+
+        setStoredPanelGroupState(group, panel)
+
+        panelset.dispatchEvent(
+          new window.CustomEvent('panelset:group', {
+            bubbles: true,
+            detail: { group, panel }
+          })
+        )
+      }
+
+      // update query string
+      if (['all', 'url'].includes(update)) {
+        const params = updateSearchParams(panelset.id, targetPanelId)
+        updateUrl(params)
+      }
+    }
+
+    /**
+     * Toggles the sibling panel in the specified direction.
+     *
+     * @param {HTMLElement} panelset - The panelset element.
+     * @param {HTMLElement} target - The target panel element.
+     * @param {"next" | "prev"} [direction="next"] - The direction to toggle the
+     * sibling panel. Possible values are "next" and "prev".
+     */
+    function toggleSibling (panelset, target, direction = 'next') {
+      let sibling
+      switch (direction) {
+        case 'next':
+          sibling = target.nextSibling
+          break
+        case 'prev':
+          sibling = target.previousSibling
+          break
+      }
+
+      if (!sibling) return
+      const update = parseInt(target.tabIndex) < 0 ? 'url' : 'all'
+      togglePanel(panelset, sibling, update, target.tabIndex)
+      sibling.focus()
+      return sibling
+    }
+
+    /**
+     * Initializes a panel set from the original markup into a full panelset.
+     * This includes creating the panel tabs, rearranging content, adding event
+     * listeners, and synchronizing with a panel set group.
+     *
+     * @param {HTMLElement} panelset - The `.panelset` element to initialize.
+     * @returns {HTMLElement} - The new panelset element.
+     */
+    const initPanelSet = panelset => {
+      let panels = Array.from(panelset.querySelectorAll(':scope > .panel'))
+
       const pandocSectionSelector = ':is(section, .section)[class*="level"]'
       if (!panels.length) {
         // we're in tabset-alike R Markdown or Quarto
-        const getSectionLevel = (el) => {
+        const getSectionLevel = el => {
           const levels = [...el.classList].filter(s => s.match(/^level/))
           return levels.length ? levels[0].replace('level', '') : levels
         }
@@ -673,17 +1045,34 @@ text-align: right;
 
       if (!panels.length) return
 
+      // create content panels
       const contents = panels.map(processPanelItem).filter(o => o !== null)
-      const newPanelSet = reflowPanelSet(contents, idx)
+
+      // create panelset
+      const panelsetAttrs = getElementAttributes(panelset)
+      const newPanelSet = reflowPanelSet(contents, {
+        id: panelset.id,
+        ...panelsetAttrs
+      })
       newPanelSet.classList = panelset.classList
+
+      // set orientation
+      const isVertical = panelset.matches(
+        '.sideways, .vertical, [aria-orientation="vertical"]'
+      )
+      newPanelSet.setAttribute(
+        'aria-orientation',
+        isVertical ? 'vertical' : 'horizontal'
+      )
+
       panelset.parentNode.insertBefore(newPanelSet, panelset)
       panelset.parentNode.removeChild(panelset)
 
       // click and touch events
-      const panelTabs = newPanelSet.querySelector('.panel-tabs');
-      ['click', 'touchend'].forEach(eventType => {
+      const panelTabs = newPanelSet.querySelector('.panel-tabs')
+      ;['click', 'touchend'].forEach(eventType => {
         panelTabs.addEventListener(eventType, function (ev) {
-          togglePanel(ev.target)
+          handleClickedPanel(ev.target)
           ev.stopPropagation()
         })
       })
@@ -694,31 +1083,90 @@ text-align: right;
       // key events
       newPanelSet
         .querySelector('.panel-tabs')
-        .addEventListener('keydown', (ev) => {
-          const self = ev.currentTarget.querySelector('.panel-tab-active')
-          if (ev.code === 'Space' || ev.code === 'Enter') {
-            togglePanel(ev.target)
-            ev.stopPropagation()
-          } else if (ev.code === 'ArrowLeft' && self.previousSibling) {
-            togglePanel(self.previousSibling)
-            self.previousSibling.focus()
-            ev.stopPropagation()
-          } else if (ev.code === 'ArrowRight' && self.nextSibling) {
-            togglePanel(self.nextSibling)
-            self.nextSibling.focus()
-            ev.stopPropagation()
-          }
+        .addEventListener('keydown', ev => {
+          handlePanelTabsKeydown(newPanelSet, ev)
         })
 
-      return panels
+      // synchronize with the panelset group
+      if (newPanelSet.dataset.group) {
+        window.addEventListener('panelset:group', ev => {
+          if (ev.target === newPanelSet) return
+          if (ev.detail.group !== newPanelSet.dataset.group) return
+          togglePanel(newPanelSet, ev.detail.panel, 'url')
+        })
+
+        const groupData = getStoredPanelSettings()
+        const currentPanelFromUrl = getCurrentPanelFromUrl(newPanelSet.id)
+
+        if (!currentPanelFromUrl && groupData[newPanelSet.dataset.group]) {
+          togglePanel(newPanelSet, groupData[newPanelSet.dataset.group], null)
+        }
+      }
+
+      return newPanelSet
+    }
+
+    const localStorageKey = 'panelset-data'
+
+    /**
+     * Retrieves or creates the stored panel settings from local storage.
+     * @returns {{['string']: 'string'} | {}} The stored panel settings, as an
+     * empty object or an object with group names as keys and the currently
+     * activated panel names as values.
+     */
+    function getStoredPanelSettings () {
+      const data = window.localStorage.getItem(localStorageKey)
+      if (!data) {
+        window.localStorage.setItem(localStorageKey, '{}')
+        return {}
+      }
+      if (data) {
+        return JSON.parse(data)
+      }
+    }
+
+    function setStoredPanelSettings (data) {
+      window.localStorage.setItem(localStorageKey, JSON.stringify(data))
+    }
+
+    /**
+     * Sets the stored panel group state in local storage. The group `name` is
+     * used as a key and is globally checked across pages in the same domain.
+     *
+     * @param {string} name - The name of the panel group.
+     * @param {any} value - The value to set for the panel group.
+     */
+    function setStoredPanelGroupState (name, value) {
+      const data = getStoredPanelSettings()
+      data[name] = value
+      setStoredPanelSettings(data)
     }
 
     // initialize panels
-    Array.from(document.querySelectorAll('.panelset')).map(initPanelSet)
+    document
+      .querySelectorAll('[data-panelset="true"]')
+      .forEach(el => el.classList.add('panelset'))
 
-    if (typeof slideshow !== 'undefined') {
+    const panelsets = { atomic: [], nested: [] }
+    Array.from(document.querySelectorAll('.panelset')).forEach(el => {
+      if (el.querySelector('.panelset')) {
+        // push nested panelsets to the start of the list (inner -> outer)
+        panelsets.nested.unshift(el)
+      } else {
+        // put panelsets without nested panelsets at the beginning
+        panelsets.atomic.push(el)
+      }
+    })
+
+    // initialize atomic panelsets first, then nested panelsets
+    panelsets.atomic.forEach(initPanelSet)
+    panelsets.nested.forEach(initPanelSet)
+
+    if (inRemarkjs()) {
       const getVisibleActivePanelInfo = () => {
-        const slidePanels = document.querySelectorAll('.remark-visible .panel-tab-active')
+        const slidePanels = document.querySelectorAll(
+          '.remark-visible .panel-tab-active'
+        )
 
         if (!slidePanels.length) return null
 
@@ -736,10 +1184,11 @@ text-align: right;
         document.activeElement.blur()
 
         // clear search query for panelsets in current slide
-        const params = [...document.querySelectorAll('.remark-visible .panelset')]
-          .reduce(function (params, panelset) {
-            return updateSearchParams(panelset.id, null, params)
-          }, new URLSearchParams(window.location.search))
+        const params = [
+          ...document.querySelectorAll('.remark-visible .panelset')
+        ].reduce(function (params, panelset) {
+          return updateSearchParams(panelset.id, null, params)
+        }, new URLSearchParams(window.location.search))
 
         updateUrl(params)
       })
@@ -751,14 +1200,69 @@ text-align: right;
           // only first panel gets focus
           slidePanels[0].panel.focus()
           // but still update the url to reflect all active panels
-          const params = slidePanels.reduce(
-            function (params, { panelId, panelSetId }) {
-              return updateSearchParams(panelSetId, panelId, params)
-            },
-            new URLSearchParams(window.location.search)
-          )
+          const params = slidePanels.reduce(function (
+            params,
+            { panelId, panelSetId }
+          ) {
+            return updateSearchParams(panelSetId, panelId, params)
+          },
+          new URLSearchParams(window.location.search))
           updateUrl(params)
         }
+      })
+    }
+
+    if (inRevealjs()) {
+      window.Reveal.on('slidechanged', function ({ currentSlide, previousSlide, ...data }) {
+        // clear focus from any active panel-tab in the previous slide
+        const previousActive = previousSlide.querySelector('.panelset .panel-tab:focus')
+        if (previousActive) {
+          previousActive.blur()
+          previousActive.removeAttribute('tabindex')
+        }
+
+        const previousPanelsets = previousSlide.querySelectorAll('.panelset')
+        if (previousPanelsets.length) {
+          // clear search query for panelsets in previous slide
+          const params = [
+            ...previousSlide.querySelectorAll('.panelset')
+          ].reduce(function (params, panelset) {
+            return updateSearchParams(panelset.id, null, params)
+          }, new URLSearchParams(window.location.search))
+
+          updateUrl(params)
+        }
+
+        const firstPanelset = currentSlide.querySelector('.panelset')
+        if (!firstPanelset) return
+
+        const panelIdFromUrl = getCurrentPanelFromUrl(firstPanelset.id)
+        const panelFromUrl = !panelIdFromUrl
+          ? null
+          : firstPanelset
+            .querySelector(`[aria-controls="${panelIdFromUrl}"]`)
+            ?.parentElement
+
+        const firstPanel = panelIdFromUrl
+          ? panelFromUrl
+          : firstPanelset.querySelector('.panel-tab-active')
+
+        if (!firstPanel) return
+        firstPanel.setAttribute('tabindex', '-1')
+        firstPanel.focus()
+
+        // update url for all panels on this slide
+        const params = [
+          ...currentSlide.querySelectorAll('.panelset')
+        ].reduce(function (params, panelset) {
+          return updateSearchParams(
+            panelset.id,
+            panelset.querySelector('.panel-active').id,
+            params
+          )
+        }, new URLSearchParams(window.location.search))
+
+        updateUrl(params)
       })
     }
   })
@@ -895,7 +1399,7 @@ display: none;
 
 <pre class="r"><code>xaringanExtra::use_panelset()</code></pre>
 <pre class="r"><code>xaringanExtra::style_panelset_tabs(font_family = &quot;inherit&quot;)</code></pre>
-<style>.panelset{--panel-tab-font-family: inherit;}</style>
+<style>:root{--panel-tab-font-family:inherit;}</style>
 <div id="panels-in-r-markdown" class="section level2 panelset">
 <h2 class="panelset">Panels in R Markdown!</h2>
 <p>Similar to R Markdown’s <a href="https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html">tabset
