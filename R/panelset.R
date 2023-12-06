@@ -221,7 +221,11 @@ register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
 
   knitr::opts_hooks$set(panelset = function(options) {
     panelset <- options$panelset
-    if (isFALSE(panelset)) return()
+    if (isFALSE(panelset)) return(options)
+    if (isFALSE(options$include)) {
+      options$panelset <- FALSE
+      return(options)
+    }
 
     # panelset chunks ignore global options and default to results="hold"
     # but can be overwritten by the local chunk options if declared explicitly
@@ -239,7 +243,8 @@ register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
       # it doesn't make sense to have a panelset chunk that doesn't both
       # echo and evaluate, so we'll throw for the benefit of the user
       stop(
-        "`panelset` chunks must have both `echo = TRUE` and `evaluate = TRUE`."
+        "`panelset` chunks must have both `echo = TRUE` and `eval = TRUE`, ",
+        "but at least one of these options was set to `FALSE` for this chunk."
       )
     }
 
