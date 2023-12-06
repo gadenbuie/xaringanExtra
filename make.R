@@ -34,6 +34,35 @@ docs <- file.path(
   )
 )
 
+panelset_ext <- yaml::read_yaml("_extensions/panelset/_extension.yml")
+panelset_now <- xaringanExtra:::read_panelset_version()
+
+if (panelset_now != panelset_ext$version) {
+  message("Updating quarto panelset extension")
+
+  # Copy panelset assets
+  for (ext in c("js", "css")) {
+    fs::file_copy(
+      fs::path_package("xaringanExtra", "panelset", "panelset", ext = ext),
+      fs::path(
+        here::here("_extensions", "panelset"),
+        "panelset",
+        ext = ext
+      ),
+      overwrite = TRUE
+    )
+  }
+
+  # update version in quarto extension
+  panelset_ext$version <- panelset_now
+  panelset_ext$contributes$filters <- list(panelset_ext$contributes$filters)
+  yaml::write_yaml(
+    panelset_ext,
+    "_extensions/panelset/_extension.yml",
+    indent.mapping.sequence = TRUE
+  )
+}
+
 for (doc in docs) {
   if (dir.exists(lib_path <- file.path(doc, "libs"))) {
     unlink(lib_path, recursive = TRUE)
@@ -51,20 +80,6 @@ for (doc in docs) {
 
 message("Rendering panelset/rmarkdown example")
 rmarkdown::render(file.path("docs", "panelset", "rmarkdown.Rmd"), quiet = TRUE)
-
-message("Updating quarto panelset extension")
-for (ext in c("js", "css")) {
-  fs::file_copy(
-    fs::path_package("xaringanExtra", "panelset", "panelset", ext = ext),
-    fs::path(
-      here::here("_extensions", "panelset"),
-      "panelset",
-      ext = ext
-    ),
-    overwrite = TRUE
-  )
-}
-
 
 message("Rendering README")
 rmarkdown::render("README.Rmd", quiet = TRUE)

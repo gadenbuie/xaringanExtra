@@ -172,13 +172,27 @@ panelset_match_vars <- function(x = NULL) {
 html_dependency_panelset <- function() {
   htmltools::htmlDependency(
     name = "panelset",
-    version = "0.2.7",
+    version = read_panelset_version(),
     package = "xaringanExtra",
     src = "panelset",
     script = "panelset.js",
     stylesheet = "panelset.css"
   )
 }
+
+read_panelset_version <- local({
+  version <- NULL
+  function() {
+    src <- system.file("panelset", "panelset.js", package = "xaringanExtra")
+    if (is.null(version)) {
+      lines <- readLines(src)
+      v <- grep("/* VERSION: ", lines, value = TRUE, fixed = TRUE)
+      v <- gsub("[^0-9.]", "", v)
+      version <<- v
+    }
+    return(version)
+  }
+})
 
 # package env to hold original knitr hooks
 .hooks <- new.env(parent = emptyenv())

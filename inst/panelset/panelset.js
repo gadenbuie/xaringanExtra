@@ -1,3 +1,16 @@
+/* Panelset
+ * Tab panels for web projects created from markdown with Quarto and R Markdown.
+ *
+ * https://pkg.garrickadenbuie.com/xaringanExtra/#/panelset
+ *
+ * Copyright (c) 2019-2024 Garrick Aden-Buie
+ *
+ * This software is released under the MIT License.
+ * https://opensource.org/licenses/MIT
+ */
+
+/* VERSION: 0.3.0 */
+
 /* global slideshow */
 ;(function () {
   const ready = function (fn) {
