@@ -245,7 +245,7 @@ register_panelset_knitr_hooks <- function(in_xaringan = NULL) {
 
     forced <- c()
     for (opt in c("echo", "eval")) {
-      if (!isTRUE(chunk_opts[[opt]])) {
+      if (!isTRUE(options[[opt]])) {
         forced <- c(forced, opt)
       }
     }
