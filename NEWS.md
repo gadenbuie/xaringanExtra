@@ -63,9 +63,9 @@
   All of panelset's features in xaringan are fully supported in Quarto slides,
   including automatically stepping through the panels on a slides (#195).
 
-* **panelset** now supports synchronized panels (#195)! Give each panelset a `group`
-  attribute with a unique name, e.g. `{.panelset group="language"}`, and the
-  selected tab will be synchronized across all other panelsets with the same
+* **panelset** now supports synchronized panels (#195)! Give each panelset a
+  `group` attribute with a unique name, e.g. `{.panelset group="language"}`, and
+  the selected tab will be synchronized across all other panelsets with the same
   group name. The tab selection is synchronized by tab name, so if the user
   switches from the "R" tab to the "Python" tab, all panelsets with
   `group="language"` will have their "Python" tab activated (if they have one).
@@ -82,7 +82,7 @@
   your terminal.
 
   ```bash
-  quarto add gadenbuie/xaringanExtra
+  quarto add gadenbuie/xaringanExtra/panelset
   ```
 
   Then, in your Quarto document, add the following to the YAML front matter:
@@ -98,7 +98,7 @@
 
   When these options are disabled via a chunk option on the panelset chunk,
   panelset will give an error to help you spot this issue early. But if `echo`
-  and `eval` are globally set to `FALSE`, panelset will no automatically set
+  and `eval` are globally set to `FALSE`, panelset will now automatically set
   them to `TRUE`. This is especially helpful in Quarto revealjs presentations
   where Quarto defaults to `echo = FALSE` (#196).
 
