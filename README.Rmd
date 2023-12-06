@@ -7,7 +7,7 @@ always_allow_html: true
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/xaringanExtra)](https://CRAN.R-project.org/package=xaringanExtra)
 [![xaringanExtra status badge](https://gadenbuie.r-universe.dev/badges/xaringanExtra)](https://gadenbuie.r-universe.dev)
-[![tic](https://github.com/gadenbuie/xaringanExtra/actions/workflows/tic.yml/badge.svg)](https://github.com/gadenbuie/xaringanExtra/actions/workflows/tic.yml)
+[![R-CMD-check](https://github.com/gadenbuie/xaringanExtra/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/gadenbuie/xaringanExtra/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ```{r include=FALSE}
@@ -41,7 +41,7 @@ IN_README <- TRUE
 - Fit your slides to [fill the browser window](#-fit-to-screen)
 - Add [extra CSS styles](#-extra-styles)
 
-Each item can be enabled separately, 
+Each item can be enabled separately,
 or load everything at once with a single call.
 
 ````markdown
@@ -82,14 +82,14 @@ install.packages('xaringanExtra')
 #### &#x1F4FA; [Tile View Demo](https://pkg.garrickadenbuie.com/xaringanExtra/tile-view/)
 
 Tile view gives you a way to quickly jump between slides.
-Just press <kbd>O</kbd> 
+Just press <kbd>O</kbd>
 (the letter **O** for **O**verview)
 at any point in your slideshow and the tile view appears.
 Click on a slide to jump to the slide, or press <kbd>O</kbd> to exit tile view.
 
 ![](man/figures/tile-view.png)
 
-To add tile view to your xaringan presentation, 
+To add tile view to your xaringan presentation,
 add the following code chunk to your slides' R Markdown file.
 
 ````markdown
@@ -107,9 +107,9 @@ by the same name by [Stephen Hesperus](https://github.com/StephenHesperus).
 
 #### &#x1F4FA; [Editable Demo](https://pkg.garrickadenbuie.com/xaringanExtra/editable/)
 
-Editable gives you a way to write directly inside your slides, 
-updating your content live. 
-Make any element of your slides editable by using the `.can-edit[...]` class. 
+Editable gives you a way to write directly inside your slides,
+updating your content live.
+Make any element of your slides editable by using the `.can-edit[...]` class.
 
 ![](man/figures/editable.gif)
 
@@ -121,20 +121,20 @@ xaringanExtra::use_editable(expires = 1)
 ```
 ````
 
-Then, to make a component of your slides editable, 
+Then, to make a component of your slides editable,
 use the `.can-edit[]` class.
 
 ```markdown
 ## .can-edit[You can edit this slide title]
 ```
 
-Editable fields that only have the `.can-edit` class 
-are reset whenever the slides are re-loaded in your browser. 
-If you want to store the edited values and 
-have them persist across browser sessions, 
-give each editable field a `.key-<NAME>` class. 
-Be sure to make each key unique and 
-note that the key name must be a valid CSS class, 
+Editable fields that only have the `.can-edit` class
+are reset whenever the slides are re-loaded in your browser.
+If you want to store the edited values and
+have them persist across browser sessions,
+give each editable field a `.key-<NAME>` class.
+Be sure to make each key unique and
+note that the key name must be a valid CSS class,
 i.e. it cannot contain spaces.
 
 ```markdown
@@ -173,7 +173,7 @@ and a share menu for one-click (or tap!) sharing on social media sites.
 Add share again to your slides in three easy steps.
 
 1. Add `use_share_again()` to your slides
-    
+
     ````markdown
     ```{r share-again, echo=FALSE}`r ''`
     xaringanExtra::use_share_again()
@@ -197,11 +197,11 @@ Add share again to your slides in three easy steps.
     xaringanExtra::embed_xaringan(url = "share-again.html", ratio = "4:3")
     ```
     ````
-    
-    `embed_xaringan()` works with 
-    <span style="text-decoration: underline">any</span> xaringan presentation, 
+
+    `embed_xaringan()` works with
+    <span style="text-decoration: underline">any</span> xaringan presentation,
     _share again_ not required!
-    
+
     Here's what your [slides will look like](https://pkg.garrickadenbuie.com/xaringanExtra/share-again/)
     in an R Markdown HTML document.
 
@@ -209,10 +209,10 @@ Add share again to your slides in three easy steps.
 
 #### &#x1F4FA; [Broadcast Demo](https://pkg.garrickadenbuie.com/xaringanExtra/broadcast/)
 
-**Broadcast** lets others follow along, in real time! 
-Built with [PeerJS](https://peerjs.com), 
-**broadcast** give you a unique URL to share with your viewers. 
-Then, when they load your slides, 
+**Broadcast** lets others follow along, in real time!
+Built with [PeerJS](https://peerjs.com),
+**broadcast** give you a unique URL to share with your viewers.
+Then, when they load your slides,
 their slides will automatically follow you as you present!
 
 ```{r child="man/fragments/broadcast-details.Rmd"}
@@ -223,7 +223,7 @@ their slides will automatically follow you as you present!
 #### &#x1F4FA; [Scribble Demo](https://pkg.garrickadenbuie.com/xaringanExtra/scribble/)
 
 Scribble lets you draw on your [xaringan](https://slides.yihui.org/xaringan) slides.
-Click the *pencil* icon or press <kbd>S</kbd> to begin drawing. 
+Click the *pencil* icon or press <kbd>S</kbd> to begin drawing.
 Pressing <kbd>S</kbd> or starting the drawing mode toggles the scribble toolbox.
 There, you'll find the *eraser* button, which helps you remove lines from your drawing.
 Or click the *trash* button to clear the drawings on the current slide.
@@ -245,7 +245,7 @@ This means that each partial slide will have it's own drawing layer
 and your drawings on one slide won't carry over to the next.
 (But they'll still be there when you switch back!)
 
-To save a copy of the slide with your drawings, 
+To save a copy of the slide with your drawings,
 your best option is to print your presentation from the browser.
 
 ## &#x1F50A; Slide Tone
@@ -253,17 +253,17 @@ your best option is to print your presentation from the browser.
 #### &#x1F4FA; [Slide Tone Demo](https://pkg.garrickadenbuie.com/xaringanExtra/slide-tone/)
 
 Slide tone plays a subtle sound when you change slides.
-It was 
+It was
 [requested by a blind R user](https://github.com/yihui/xaringan/issues/214)
 and enables users to hear an auditory signal of their progress through the slides.
 
 The tones increase in pitch for each slide from a low C to a high C note.
 The tone pitch stays the same for incremental slides.
 
-Visit the 
+Visit the
 [slide tone demo slides](https://pkg.garrickadenbuie.com/xaringanExtra/slide-tone/)
 to experience it yourself.
-Or include slide tone in your next xaringan presentation 
+Or include slide tone in your next xaringan presentation
 by adding the following code chunk to your slides' R Markdown.
 
 ````markdown
@@ -276,7 +276,7 @@ xaringanExtra::use_slide_tone()
 
 #### &#x1F4FA; [Animate.css Demo](https://pkg.garrickadenbuie.com/xaringanExtra/animate-css/)
 
-[Animate.css] is a popular collection of CSS animations. It contains 
+[Animate.css] is a popular collection of CSS animations. It contains
 
 > a bunch of cool, fun, and cross-browser animations for you to use in your
 > projects. Great for emphasis, home pages, sliders, and general
@@ -286,11 +286,11 @@ Use `use_animate_css()` to include the animate.css stylesheets in your slides.
 This function automatically modifies the CSS selector that enables the animation
 so that only the slides that are visible are animated.
 This drastically improves performance on large slide decks with many animations.
-For use in other HTML documents, 
-set `xaringan = FALSE` to load the default `animate.css` file 
+For use in other HTML documents,
+set `xaringan = FALSE` to load the default `animate.css` file
 without this performance tweak.
 
-To use animate.css in your slides, 
+To use animate.css in your slides,
 add the following code chunk to your slides' R Markdown.
 
 ````markdown
@@ -308,14 +308,14 @@ class: animated slideInRight fadeOutLeft
 
 ## This slide...
 
-- slides in from the right 
+- slides in from the right
 - and fades out to the left on exit
 ```
 
 If you want to use the same slide transitions for all slides,
 you can use `use_animate_all()`.
-This function sets a default in and out animation for all slides. 
-Animations can be disabled for individual slides 
+This function sets a default in and out animation for all slides.
+Animations can be disabled for individual slides
 by adding the class `no-animation` to the slide.
 
 ````markdown
@@ -324,7 +324,7 @@ xaringanExtra::use_animate_all("slide_left")
 ```
 ````
 
-Note: because `use_animate_all()` only imports the CSS required for the slide in and slide out animations, 
+Note: because `use_animate_all()` only imports the CSS required for the slide in and slide out animations,
 you need to also include `use_animate_css()` (see above)
 if you want to use other animations from `animate.css` in your slides.
 
@@ -332,7 +332,7 @@ if you want to use other animations from `animate.css` in your slides.
 
 #### &#x1F4FA; [Panelset Demo](https://pkg.garrickadenbuie.com/xaringanExtra/panelset/)
 
-Panelset adds accessible tabbed panels — 
+Panelset adds accessible tabbed panels —
 just like R Markdown's `.tabset` panels —
 to your xaringan slides.
 You can activate a panel by clicking on the tab,
@@ -351,7 +351,7 @@ xaringanExtra::use_panelset()
 ![](man/figures/panelset.gif)
 
 Then, create a `.panelset[...]` that contains `.panel[]`s.
-Each `.panel[]` should have a `.panel-name[]` and content 
+Each `.panel[]` should have a `.panel-name[]` and content
 (everything that isn't the panel's name).
 
 ```markdown
@@ -407,11 +407,11 @@ Here's the example used in the demo slides.
 
 #### &#x1F4FA; [Logo Demo](https://pkg.garrickadenbuie.com/xaringanExtra/logo/)
 
-`use_logo()` adds a logo to all of your slides. 
-You can make the logo a clickable link and choose where on the slide it is placed. 
+`use_logo()` adds a logo to all of your slides.
+You can make the logo a clickable link and choose where on the slide it is placed.
 You can also set which types of slides will not get the logo by default.
 
-To add a logo to your xaringan presentation, 
+To add a logo to your xaringan presentation,
 add the following code chunk to your slides' R Markdown file.
 
 ````markdown
@@ -517,11 +517,11 @@ xaringanExtra::use_tachyons()
 ````
 
 Tachyons provides small, single-purpose CSS classes that are easily composed to achieve larger functionality and styles.
-In the 
+In the
 [remarkjs content classes syntax](https://github.com/gnab/remark/wiki/Markdown#content-classes),
 you can compose classes by chaining them together.
-For example, 
-the following markdown produces a box with a 
+For example,
+the following markdown produces a box with a
 washed green background (`.bg-washed-green`)
 and a dark green border (`.b--dark-green`)
 on all sides (`.ba`)
@@ -533,7 +533,7 @@ with a large top margin (`.mt5`).
 
 ```markdown
 .bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
-The only way to write good code is to write tons of bad code first. 
+The only way to write good code is to write tons of bad code first.
 Feeling shame about bad code stops you from getting to good code
 
 .tr[
@@ -616,15 +616,15 @@ clipboard works in xaringan slides, R Markdown documents, blogdown sites, and Sh
 #### &#x1F4FA; [Fit to Screen Demo](https://pkg.garrickadenbuie.com/xaringanExtra/fit-screen/)
 
 xaringan/remark slides scale at a consistent ratio when the browser window is resized.
-In other words, if the slide ratio is `4:3`, 
-then remark scales the slides and positions them in the browser window 
+In other words, if the slide ratio is `4:3`,
+then remark scales the slides and positions them in the browser window
 so that they maintain the aspect ratio.
 
-In certain situations, 
+In certain situations,
 like when showing slides in split screen next to another window like RStudio,
 this causes the slides to become rather small.
 Alternatively,
-it's a great way to be able to adapt your slides 
+it's a great way to be able to adapt your slides
 to the aspect ratio of the projector or television screen
 when you don't know the ratio ahead of time.
 

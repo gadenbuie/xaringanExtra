@@ -7,7 +7,7 @@ xaringanExtra
 status](https://www.r-pkg.org/badges/version/xaringanExtra)](https://CRAN.R-project.org/package=xaringanExtra)
 [![xaringanExtra status
 badge](https://gadenbuie.r-universe.dev/badges/xaringanExtra)](https://gadenbuie.r-universe.dev)
-[![tic](https://github.com/gadenbuie/xaringanExtra/actions/workflows/tic.yml/badge.svg)](https://github.com/gadenbuie/xaringanExtra/actions/workflows/tic.yml)
+[![R-CMD-check](https://github.com/gadenbuie/xaringanExtra/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/gadenbuie/xaringanExtra/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 <!-- Links -->
@@ -381,7 +381,7 @@ class: animated slideInRight fadeOutLeft
 
 ## This slide...
 
-- slides in from the right 
+- slides in from the right
 - and fades out to the left on exit
 ```
 
@@ -827,7 +827,7 @@ box has a shadow (`.shadow-5`) and medium-large horizontal padding
 
 ``` markdown
 .bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
-The only way to write good code is to write tons of bad code first. 
+The only way to write good code is to write tons of bad code first.
 Feeling shame about bad code stops you from getting to good code
 
 .tr[
