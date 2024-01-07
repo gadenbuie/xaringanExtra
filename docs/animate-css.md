@@ -37,7 +37,7 @@ class: animated slideInRight fadeOutLeft
 
 ## This slide...
 
-- slides in from the right 
+- slides in from the right
 - and fades out to the left on exit
 ```
 

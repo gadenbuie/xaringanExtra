@@ -6,7 +6,7 @@
 status](https://www.r-pkg.org/badges/version/xaringanExtra)](https://CRAN.R-project.org/package=xaringanExtra)
 [![xaringanExtra status
 badge](https://gadenbuie.r-universe.dev/badges/xaringanExtra)](https://gadenbuie.r-universe.dev)
-[![tic](https://github.com/gadenbuie/xaringanExtra/actions/workflows/tic.yml/badge.svg)](https://github.com/gadenbuie/xaringanExtra/actions/workflows/tic.yml)
+[![R-CMD-check](https://github.com/gadenbuie/xaringanExtra/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/gadenbuie/xaringanExtra/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 <!-- Links -->

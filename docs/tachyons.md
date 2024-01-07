@@ -30,7 +30,7 @@ box has a shadow (`.shadow-5`) and medium-large horizontal padding
 
 ``` markdown
 .bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
-The only way to write good code is to write tons of bad code first. 
+The only way to write good code is to write tons of bad code first.
 Feeling shame about bad code stops you from getting to good code
 
 .tr[

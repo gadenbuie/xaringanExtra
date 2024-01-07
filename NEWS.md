@@ -82,7 +82,7 @@
   your terminal.
 
   ```bash
-  quarto add gadenbuie/xaringanExtra/panelset
+  quarto add gadenbuie/xaringanExtra
   ```
 
   Then, in your Quarto document, add the following to the YAML front matter:
