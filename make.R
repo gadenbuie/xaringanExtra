@@ -1,3 +1,5 @@
+#! /usr/bin/env Rscript
+
 devtools::document()
 devtools::install(dependencies = FALSE)
 
