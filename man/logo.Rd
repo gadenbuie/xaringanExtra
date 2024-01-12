@@ -10,6 +10,7 @@ use_logo(
   image_url,
   width = "110px",
   height = "128px",
+  logo_class = "xaringan-extra-logo",
   position = css_position(top = "1em", right = "1em"),
   link_url = NULL,
   exclude_class = c("title-slide", "inverse", "hide_logo")
@@ -18,6 +19,7 @@ use_logo(
 html_dependency_logo(
   link_url = NULL,
   exclude_class = c("title-slide", "inverse", "hide_logo"),
+  logo_class = "xaringan-extra-logo",
   inline = NULL
 )
 }
@@ -28,6 +30,8 @@ a full URL or the path to the image relative to your slides file.}
 \item{width}{Width in CSS units of the logo}
 
 \item{height}{Height in CSS units of the logo}
+
+\item{logo_class}{Optionnally choose a class name for your logo, if you need more than one}
 
 \item{position}{The position of the logo from the sides of the slide. Use
 \code{\link[=css_position]{css_position()}} to specify.}
