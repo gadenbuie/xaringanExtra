@@ -83,3 +83,4 @@ Collate:
     'utils.R'
     'webcam.R'
     'xaringanExtra-package.R'
+    'flashcard.R'
