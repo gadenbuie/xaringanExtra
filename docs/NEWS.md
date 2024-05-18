@@ -28,6 +28,11 @@
   ```
   ````
 
+  Unlike in R Markdown, where you always need to place panelset chunks in a
+  `::: {.panelset}` div, in Quarto panelset code chunks automatically create
+  their own panelsets. You can still use the `::: {.panelset}` syntax to add
+  additional panels to the same panelset ([#196](https://github.com/gadenbuie/xaringanExtra/issues/196)).
+
 * Nested **panelsets** are now supported ([#194](https://github.com/gadenbuie/xaringanExtra/issues/194))! In xaringan slides and when
   using the hand-rolled panelset syntax, you can now nest panelsets within
   panelsets. In R Markdown or Quarto documents, panelsets chunks can be nested

@@ -552,7 +552,7 @@
      * @returns {HTMLElement} - The new panelset element.
      */
     const initPanelSet = panelset => {
-      let panels = Array.from(panelset.querySelectorAll(':scope > .panel'))
+      let panels = Array.from(panelset.querySelectorAll(':scope > .panel, :scope > .cell > .panel'))
 
       const pandocSectionSelector = ':is(section, .section)[class*="level"]'
       if (!panels.length) {
@@ -693,7 +693,16 @@
     // initialize panels
     document
       .querySelectorAll('[data-panelset="true"]')
-      .forEach(el => el.classList.add('panelset'))
+      .forEach(el => {
+        const isCell = el.classList.contains('cell')
+        const hasParentPanelset = el.parentElement.classList.contains('panelset')
+        if (!isCell || !hasParentPanelset) {
+          // We let `data-panelset="true"` create a new panelset, unless it's on
+          // a code cell that's already inside a panelset, in which case the
+          // panels will be folded into the parent panelset.
+          el.classList.add('panelset')
+        }
+      })
 
     const panelsets = { atomic: [], nested: [] }
     Array.from(document.querySelectorAll('.panelset')).forEach(el => {
