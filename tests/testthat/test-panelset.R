@@ -110,114 +110,59 @@ extract_slides_text <- function(path) {
 }
 
 test_that("panelset knitr chunks with plots", {
-  rmd <- paste(
-    "```{r echo=FALSE}",
-    "xaringanExtra::use_panelset(in_xaringan = TRUE)",
-    "```",
-    "",
-    "```{r plot, panelset = TRUE}",
-    "hist(precip)",
-    "```",
-    sep = "\n"
-  )
-  out <- render_slide_text(rmd)
-
-  expect_equal(
-    out,
-    paste(
-      c(
-        ".panel[.panel-name[Code]",
-        "",
-        "```r",
-        "hist(precip)",
-        "```",
-        "",
-        "]",
-        "",
-        ".panel[.panel-name[Output]",
-        "",
-        "![](slides_files/figure-html/plot-1.png)&lt;!-- --&gt;",
-        "",
-        "]"
-      ),
-      collapse = "\n"
+  expect_snapshot(
+    cat(
+      render_slide_text(
+        paste(
+          "```{r echo=FALSE}",
+          "xaringanExtra::use_panelset(in_xaringan = TRUE)",
+          "```",
+          "",
+          "```{r plot, panelset = TRUE}",
+          "hist(precip)",
+          "```",
+          sep = "\n"
+        )
+      )
     )
   )
 })
 
 test_that("panelset knitr chunks with custom tab names", {
-  rmd <- paste(
-    "```{r echo=FALSE}",
-    "xaringanExtra::use_panelset(in_xaringan = TRUE)",
-    "```",
-    "",
-    "```{r plot, panelset = c(source = 'Hist', output = 'Plot')}",
-    "hist(precip)",
-    "```",
-    sep = "\n"
-  )
-  out <- render_slide_text(rmd)
-
-  expect_equal(
-    out,
-    paste(
-      c(
-        ".panel[.panel-name[Hist]",
-        "",
-        "```r",
-        "hist(precip)",
-        "```",
-        "",
-        "]",
-        "",
-        ".panel[.panel-name[Plot]",
-        "",
-        "![](slides_files/figure-html/plot-1.png)&lt;!-- --&gt;",
-        "",
-        "]"
-      ),
-      collapse = "\n"
+  expect_snapshot(
+    cat(
+      render_slide_text(
+        paste(
+          "```{r echo=FALSE}",
+          "xaringanExtra::use_panelset(in_xaringan = TRUE)",
+          "```",
+          "",
+          "```{r plot, panelset = c(source = 'Hist', output = 'Plot')}",
+          "hist(precip)",
+          "```",
+          sep = "\n"
+        )
+      )
     )
   )
 })
 
 test_that("panelset knitr chunks with mutiple outputs", {
-  rmd <- paste(
-    "```{r echo=FALSE}",
-    "xaringanExtra::use_panelset(in_xaringan = TRUE)",
-    "```",
-    "",
-    "```{r panelset = TRUE}",
-    'print("Oak is strong and also gives shade.")',
-    'print("The lake sparkled in the red hot sun.")',
-    "```",
-    sep = "\n"
-  )
-  out <- render_slide_text(rmd)
-
-  expect_equal(
-    out,
-    paste(
-      c(
-        ".panel[.panel-name[Code]",
-        "",
-        "```r",
-        "print(\"Oak is strong and also gives shade.\")",
-        "print(\"The lake sparkled in the red hot sun.\")",
-        "```",
-        "",
-        "]",
-        "",
-        ".panel[.panel-name[Output]",
-        "",
-        "```",
-        "## [1] \"Oak is strong and also gives shade.\"",
-        "## [1] \"The lake sparkled in the red hot sun.\"",
-        "```",
-        "",
-        "]"
-      ),
-      collapse = "\n"
+  expect_snapshot(
+    cat(
+      render_slide_text(
+        paste(
+          "```{r echo=FALSE}",
+          "xaringanExtra::use_panelset(in_xaringan = TRUE)",
+          "```",
+          "",
+          "```{r panelset = TRUE}",
+          'print("Oak is strong and also gives shade.")',
+          'print("The lake sparkled in the red hot sun.")',
+          "```",
+          sep = "\n"
+        )
+      )
     )
   )
 })
