@@ -16,3 +16,4 @@
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
 ^_extensions$
+^\.luarc\.json$
