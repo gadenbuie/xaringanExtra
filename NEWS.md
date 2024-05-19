@@ -1,4 +1,4 @@
-# xaringanExtra (development version)
+# xaringanExtra 0.8.0
 
 * **panelset** now works even better in Quarto documents, using the same syntax
   as [used for panelsets in R Markdown documents](http://pkg.garrickadenbuie.com/xaringanExtra/#/panelset?id=use-in-r-markdown) (#190).
