@@ -1,4 +1,9 @@
-# xaringanExtra (development version)
+# xaringanExtra 0.8.0
+
+This release focuses entirely on improving the **panelset** feature, especially
+in Quarto web pages and slides. Panelset is also now a Quarto extension that can
+be installed with `quarto add gadenbuie/xaringanExtra` and can be used with any
+computation engine.
 
 * **panelset** now works even better in Quarto documents, using the same syntax
   as [used for panelsets in R Markdown documents](http://pkg.garrickadenbuie.com/xaringanExtra/#/panelset?id=use-in-r-markdown) ([#190](https://github.com/gadenbuie/xaringanExtra/issues/190)).
