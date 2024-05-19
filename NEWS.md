@@ -1,3 +1,5 @@
+# xaringanExtra (development version)
+
 # xaringanExtra 0.8.0
 
 This release focuses entirely on improving the **panelset** feature, especially
