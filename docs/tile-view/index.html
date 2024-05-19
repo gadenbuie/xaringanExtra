@@ -63,7 +63,7 @@ class: inverse, center, middle
 Install the **xaringan** package from [Github](https://github.com/yihui/xaringan):
 
 
-```r
+``` r
 devtools::install_github("yihui/xaringan")
 ```
 
@@ -216,7 +216,7 @@ Limitations:
 # R Code
 
 
-```r
+``` r
 # a boring regression
 fit = lm(dist ~ 1 + speed, data = cars)
 coef(summary(fit))
@@ -228,7 +228,7 @@ coef(summary(fit))
 # speed         3.932409  0.4155128  9.463990 1.489836e-12
 ```
 
-```r
+``` r
 dojutsu = c('地爆天星', '天照', '加具土命', '神威', '須佐能乎', '無限月読')
 grep('天', dojutsu, value = TRUE)
 ```
@@ -242,7 +242,7 @@ grep('天', dojutsu, value = TRUE)
 # R Plots
 
 
-```r
+``` r
 par(mar = c(4, 4, 1, .1))
 plot(cars, pch = 19, col = 'darkgray', las = 1)
 abline(fit, lwd = 2)
@@ -257,7 +257,7 @@ abline(fit, lwd = 2)
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
 
-```r
+``` r
 knitr::kable(head(mtcars), format = 'html')
 ```
 
@@ -493,7 +493,7 @@ if (TRUE) {
 ````
 Output:
 
-```r
+``` r
 if (TRUE) {
 * message("Very important!") 
 }
@@ -525,7 +525,7 @@ ggplot(mtcars) +
 Output:
 
 
-```r
+``` r
 library(ggplot2)
 ggplot(mtcars) + 
   aes(mpg, disp) + 
@@ -656,7 +656,7 @@ See [yihui/xaringan#83](https://github.com/yihui/xaringan/issues/83) for an exam
 Don't want to learn CSS? Okay, you can use some user-contributed themes. A theme typically consists of two CSS files `foo.css` and `foo-fonts.css`, where `foo` is the theme name. Below are some existing themes:
 
 
-```r
+``` r
 names(xaringan:::list_css())
 ```
 
