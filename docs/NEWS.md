@@ -1,3 +1,9 @@
+# xaringanExtra (development version)
+
+* Fixed an issue that caused panelset to incorrectly apply classes from the `.panel` markup container ([#200](https://github.com/gadenbuie/xaringanExtra/issues/200)).
+
+* Panelset now applies margin spacing between tabs and panels as `margin-top` on the `.panel` element, rather than `margin-bottom` on the `.panel-tabs` container. This lets you control the spacing between tabs and panel using classes on the `.panel` container ([#202](https://github.com/gadenbuie/xaringanExtra/issues/202)).
+
 # xaringanExtra 0.8.0
 
 This release focuses entirely on improving the **panelset** feature, especially
@@ -35,7 +41,7 @@ computation engine.
 
   Unlike in R Markdown, where you always need to place panelset chunks in a
   `::: {.panelset}` div, in Quarto, panelset code chunks automatically create
-  their own panelsets with two tabs (code and output). Use the 
+  their own panelsets with two tabs (code and output). Use the
   `::: {.panelset}` syntax to add more than one panelset code chunk to the same
   panelset ([#196](https://github.com/gadenbuie/xaringanExtra/issues/196)).
 
