@@ -2,6 +2,8 @@
 
 * Fixed an issue that caused panelset to incorrectly apply classes from the `.panel` markup container (#200).
 
+* Panelset now applies margin spacing between tabs and panels as `margin-top` on the `.panel` element, rather than `margin-bottom` on the `.panel-tabs` container. This lets you control the spacing between tabs and panel using classes on the `.panel` container (#202).
+
 # xaringanExtra 0.8.0
 
 This release focuses entirely on improving the **panelset** feature, especially

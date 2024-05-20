@@ -58,6 +58,7 @@
   padding: 0;
   gap: var(--_tabs-spacing);
   border-bottom: var(--_tabs-separator);
+  margin-bottom: 0;
 }
 
 .panelset .panel-tabs * {
@@ -139,6 +140,7 @@
 
 .panelset .panel {
   display: none;
+  margin-top: 1rem;
 }
 
 .panelset .panel-active {
