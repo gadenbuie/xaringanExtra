@@ -9,7 +9,7 @@
  * https://opensource.org/licenses/MIT
  */
 
-/* VERSION: 0.3.0 */
+/* VERSION: 0.3.1 */
 
 /* global slideshow */
 ;(function () {
@@ -143,11 +143,9 @@
 
     function getElementAttributes (el) {
       return {
-        classes: Array.from(el.classList)
-          .filter(c => !/^level\d$/.test(c))
-          .toString(),
+        classes: Array.from(el.classList).filter(c => !/^level\d$/.test(c)),
         style: el.style.cssText,
-        dataset: el.dataset
+        dataset: el.dataset,
       }
     }
 
@@ -172,7 +170,7 @@
         active:
           item.dataset &&
           ['', 'true'].includes(item.dataset.active?.toLowerCase()),
-        ...getElementAttributes(item)
+        ...getElementAttributes(item),
       }
     }
 
@@ -237,7 +235,9 @@
      */
     const reflowPanelSet = (panels, { id, classes, style, dataset }) => {
       const res = document.createElement('div')
-      res.classList = 'panelset' + (classes ? ' ' + classes : '')
+      if (classes.length) {
+        classes.forEach(cls => res.classList.add(cls))
+      }
       res.id = uniquePanelsetId(id)
       res.style.cssText = style
       if (dataset) {
@@ -295,7 +295,10 @@
           const thisPanelIsActive = panelSelected === p.id
           const panelTag = inRevealjs() ? 'div' : 'section'
           const panelContent = document.createElement(panelTag)
-          panelContent.classList = p.classes ? 'panel ' + p.classes : 'panel'
+          panelContent.classList.add('panel')
+          if (p.classes.length) {
+            p.classes.forEach(cls => panelContent.classList.add(cls))
+          }
           panelContent.style.cssText = p.style
           panelContent.classList.toggle('panel-active', thisPanelIsActive)
           panelContent.id = p.id
@@ -505,7 +508,7 @@
         panelset.dispatchEvent(
           new window.CustomEvent('panelset:group', {
             bubbles: true,
-            detail: { group, panel }
+            detail: { group, panel },
           })
         )
       }
@@ -552,7 +555,9 @@
      * @returns {HTMLElement} - The new panelset element.
      */
     const initPanelSet = panelset => {
-      let panels = Array.from(panelset.querySelectorAll(':scope > .panel, :scope > .cell > .panel'))
+      let panels = Array.from(
+        panelset.querySelectorAll(':scope > .panel, :scope > .cell > .panel')
+      )
 
       const pandocSectionSelector = ':is(section, .section)[class*="level"]'
       if (!panels.length) {
@@ -600,7 +605,7 @@
       const panelsetAttrs = getElementAttributes(panelset)
       const newPanelSet = reflowPanelSet(contents, {
         id: panelset.id,
-        ...panelsetAttrs
+        ...panelsetAttrs,
       })
       newPanelSet.classList = panelset.classList
 
@@ -691,18 +696,16 @@
     }
 
     // initialize panels
-    document
-      .querySelectorAll('[data-panelset="true"]')
-      .forEach(el => {
-        const isCell = el.classList.contains('cell')
-        const hasParentPanelset = el.parentElement.classList.contains('panelset')
-        if (!isCell || !hasParentPanelset) {
-          // We let `data-panelset="true"` create a new panelset, unless it's on
-          // a code cell that's already inside a panelset, in which case the
-          // panels will be folded into the parent panelset.
-          el.classList.add('panelset')
-        }
-      })
+    document.querySelectorAll('[data-panelset="true"]').forEach(el => {
+      const isCell = el.classList.contains('cell')
+      const hasParentPanelset = el.parentElement.classList.contains('panelset')
+      if (!isCell || !hasParentPanelset) {
+        // We let `data-panelset="true"` create a new panelset, unless it's on
+        // a code cell that's already inside a panelset, in which case the
+        // panels will be folded into the parent panelset.
+        el.classList.add('panelset')
+      }
+    })
 
     const panelsets = { atomic: [], nested: [] }
     Array.from(document.querySelectorAll('.panelset')).forEach(el => {
@@ -731,7 +734,7 @@
           return {
             panel,
             panelId: panel.children[0].getAttribute('aria-controls'),
-            panelSetId: panel.parentNode.parentNode.id
+            panelSetId: panel.parentNode.parentNode.id,
           }
         })
       }
@@ -742,7 +745,7 @@
 
         // clear search query for panelsets in current slide
         const params = [
-          ...document.querySelectorAll('.remark-visible .panelset')
+          ...document.querySelectorAll('.remark-visible .panelset'),
         ].reduce(function (params, panelset) {
           return updateSearchParams(panelset.id, null, params)
         }, new URLSearchParams(window.location.search))
@@ -770,57 +773,62 @@
     }
 
     if (inRevealjs()) {
-      window.Reveal.on('slidechanged', function ({ currentSlide, previousSlide, ...data }) {
-        // clear focus from any active panel-tab in the previous slide
-        const previousActive = previousSlide.querySelector('.panelset .panel-tab:focus')
-        if (previousActive) {
-          previousActive.blur()
-          previousActive.removeAttribute('tabindex')
-        }
+      window.Reveal.on(
+        'slidechanged',
+        function ({ currentSlide, previousSlide, ...data }) {
+          // clear focus from any active panel-tab in the previous slide
+          const previousActive = previousSlide.querySelector(
+            '.panelset .panel-tab:focus'
+          )
+          if (previousActive) {
+            previousActive.blur()
+            previousActive.removeAttribute('tabindex')
+          }
 
-        const previousPanelsets = previousSlide.querySelectorAll('.panelset')
-        if (previousPanelsets.length) {
-          // clear search query for panelsets in previous slide
-          const params = [
-            ...previousSlide.querySelectorAll('.panelset')
-          ].reduce(function (params, panelset) {
-            return updateSearchParams(panelset.id, null, params)
-          }, new URLSearchParams(window.location.search))
+          const previousPanelsets = previousSlide.querySelectorAll('.panelset')
+          if (previousPanelsets.length) {
+            // clear search query for panelsets in previous slide
+            const params = [
+              ...previousSlide.querySelectorAll('.panelset'),
+            ].reduce(function (params, panelset) {
+              return updateSearchParams(panelset.id, null, params)
+            }, new URLSearchParams(window.location.search))
+
+            updateUrl(params)
+          }
+
+          const firstPanelset = currentSlide.querySelector('.panelset')
+          if (!firstPanelset) return
+
+          const panelIdFromUrl = getCurrentPanelFromUrl(firstPanelset.id)
+          const panelFromUrl = !panelIdFromUrl
+            ? null
+            : firstPanelset.querySelector(`[aria-controls="${panelIdFromUrl}"]`)
+                ?.parentElement
+
+          const firstPanel = panelIdFromUrl
+            ? panelFromUrl
+            : firstPanelset.querySelector('.panel-tab-active')
+
+          if (!firstPanel) return
+          firstPanel.setAttribute('tabindex', '-1')
+          firstPanel.focus()
+
+          // update url for all panels on this slide
+          const params = [...currentSlide.querySelectorAll('.panelset')].reduce(
+            function (params, panelset) {
+              return updateSearchParams(
+                panelset.id,
+                panelset.querySelector('.panel-active').id,
+                params
+              )
+            },
+            new URLSearchParams(window.location.search)
+          )
 
           updateUrl(params)
         }
-
-        const firstPanelset = currentSlide.querySelector('.panelset')
-        if (!firstPanelset) return
-
-        const panelIdFromUrl = getCurrentPanelFromUrl(firstPanelset.id)
-        const panelFromUrl = !panelIdFromUrl
-          ? null
-          : firstPanelset
-            .querySelector(`[aria-controls="${panelIdFromUrl}"]`)
-            ?.parentElement
-
-        const firstPanel = panelIdFromUrl
-          ? panelFromUrl
-          : firstPanelset.querySelector('.panel-tab-active')
-
-        if (!firstPanel) return
-        firstPanel.setAttribute('tabindex', '-1')
-        firstPanel.focus()
-
-        // update url for all panels on this slide
-        const params = [
-          ...currentSlide.querySelectorAll('.panelset')
-        ].reduce(function (params, panelset) {
-          return updateSearchParams(
-            panelset.id,
-            panelset.querySelector('.panel-active').id,
-            params
-          )
-        }, new URLSearchParams(window.location.search))
-
-        updateUrl(params)
-      })
+      )
     }
   })
 })()
