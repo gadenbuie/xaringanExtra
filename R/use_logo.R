@@ -43,23 +43,25 @@ NULL
 #'   class are excluded.
 #' @param width Width in CSS units of the logo
 #' @param height Height in CSS units of the logo
+#' @param logo_class Optionnally choose a class name for your logo, if you need more than one
 #' @export
 use_logo <- function(
   image_url,
   width = "110px",
   height = "128px",
+  logo_class = "xaringan-extra-logo",
   position = css_position(top = "1em", right = "1em"),
   link_url = NULL,
-  exclude_class = c("title-slide", "inverse", "hide_logo")
-) {
+  exclude_class = c("title-slide", "inverse", "hide_logo")){
+
 	htmltools::div(
 		htmltools::tags$style(
 			type = "text/css",
 			htmltools::HTML(
-				logo_css(image_url, width, height, position)
+				logo_css(image_url, width, height, position, logo_class)
 			)
 		),
-		html_dependency_logo(link_url, exclude_class)
+		html_dependency_logo(link_url, exclude_class, logo_class)
 	)
 }
 
@@ -115,11 +117,12 @@ is_css_position <- function(x) {
 html_dependency_logo <- function(
 	link_url = NULL,
   exclude_class = c("title-slide", "inverse", "hide_logo"),
+  logo_class = "xaringan-extra-logo",
 	inline = NULL
 ) {
 	inline <- inline %||% xaringan_version("0.16")
 
-	logo_code_js <- logo_js(link_url, exclude_class)
+	logo_code_js <- logo_js(link_url, exclude_class, logo_class)
 
 	ret <- if (inline) {
 		htmltools::HTML(paste0("<script>", logo_code_js, "</script>"))
@@ -140,7 +143,7 @@ html_dependency_logo <- function(
   htmltools::tagList(ret)
 }
 
-logo_css <- function(url, width, height, position) {
+logo_css <- function(url, width, height, position, logo_class) {
   if (!is_css_position(position)) {
     stop("Please use `css_position()` to specify the position of your logo", call. = FALSE)
   }
@@ -151,20 +154,23 @@ logo_css <- function(url, width, height, position) {
   })
   width <- htmltools::validateCssUnit(width)
   height <- htmltools::validateCssUnit(height)
-  sprintf(".xaringan-extra-logo {
-width: %s;
-height: %s;
-z-index: 0;
-background-image: url(%s);
-background-size: contain;
-background-repeat: no-repeat;
-position: absolute;
-%s%s%s%s
-}
-", width, height, url, p$top, p$right, p$bottom, p$left)
+  sprintf(".%s {
+          width: %s;
+          height: %s;
+          z-index: 0;
+          background-image: url(%s);
+          background-size: contain;
+          background-repeat: no-repeat;
+          position: absolute;
+          %s%s%s%s
+          }",
+          logo_class, width, height, url, p$top, p$right, p$bottom, p$left)
 }
 
-logo_js <- function(link_url, exclude_class = c("title-slide", "inverse", "hide_logo")) {
+logo_js <- function(link_url,
+                    exclude_class = c("title-slide", "inverse", "hide_logo"),
+                    logo_class = "xaringan-extra-logo") {
+
   element <- if (!is.null(link_url)) 'a' else 'div'
   link <- if (!is.null(link_url)) sprintf("'%s'", link_url) else "null"
 
@@ -191,7 +197,7 @@ logo_js <- function(link_url, exclude_class = c("title-slide", "inverse", "hide_
       document.querySelectorAll('.remark-slide-content%s')
         .forEach(function (slide) {
           const logo = document.createElement('%s')
-          logo.classList = 'xaringan-extra-logo'
+          logo.classList = '%s'
           logo.href = %s
           slide.appendChild(logo)
         })
@@ -199,5 +205,5 @@ logo_js <- function(link_url, exclude_class = c("title-slide", "inverse", "hide_
   }
   document.addEventListener('DOMContentLoaded', addLogo)
 })()",
-    exclude_class, element, link)
+  exclude_class, element, logo_class, link)
 }
