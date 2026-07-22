@@ -96,7 +96,7 @@ freezeframe_options <- function(
   if (identical(trigger, "none")) trigger <- FALSE
   stopifnot(
     "selector must be a character" = is.character(selector),
-    "selector must be non-missing" = length(selector) > 0 && !is.na(selector),
+    "selector must be non-missing" = length(selector) > 0 && all(!is.na(selector)),
     "overlay must be boolean" = is.logical(overlay),
     "responsive must be boolean" = is.logical(responsive),
     "warnings must be boolean" = is.logical(warnings)
